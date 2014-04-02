@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyText
+  valor: 1.5
+  client_id: 1
+  forma_de_pagamento: MyString
+
+two:
+  descricao: MyText
+  valor: 1.5
+  client_id: 1
+  forma_de_pagamento: MyString
