@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: 
+  celular: 
+  telefone: 
+  ramal: 
+  endereco: 
+  complemento: 
+  empresa: 
+  sexo: 
+  data_de_nascimento: 2014-04-01
+
+two:
+  nome: 
+  celular: 
+  telefone: 
+  ramal: 
+  endereco: 
+  complemento: 
+  empresa: 
+  sexo: 
+  data_de_nascimento: 2014-04-01

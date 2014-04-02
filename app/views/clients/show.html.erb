@@ -1,0 +1,37 @@
+<%- model_class = Client -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
+  <dd><%= @client.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:celular) %>:</strong></dt>
+  <dd><%= @client.celular %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
+  <dd><%= @client.telefone %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ramal) %>:</strong></dt>
+  <dd><%= @client.ramal %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:endereco) %>:</strong></dt>
+  <dd><%= @client.endereco %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:complemento) %>:</strong></dt>
+  <dd><%= @client.complemento %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:empresa) %>:</strong></dt>
+  <dd><%= @client.empresa %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sexo) %>:</strong></dt>
+  <dd><%= @client.sexo %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:data_de_nascimento) %>:</strong></dt>
+  <dd><%= @client.data_de_nascimento %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              clients_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_client_path(@client), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              client_path(@client),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
