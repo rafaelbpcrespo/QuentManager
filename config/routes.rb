@@ -1,4 +1,6 @@
 QuentManager::Application.routes.draw do
+  resources :products
+
   resources :orders
 
   resources :clients
