@@ -48,7 +48,7 @@ pt-BR:
     - Outubro
     - Novembro
     - Dezembro
-    order:
+    pedido:
     - :day
     - :month
     - :year

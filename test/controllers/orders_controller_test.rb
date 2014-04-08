@@ -2,13 +2,13 @@ require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
   setup do
-    @order = orders(:one)
+    @pedido = pedidos(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:orders)
+    assert_not_nil assigns(:pedidos)
   end
 
   test "should get new" do
@@ -16,32 +16,32 @@ class OrdersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create order" do
-    assert_difference('Order.count') do
-      post :create, order: { client_id: @order.client_id, descricao: @order.descricao, forma_de_pagamento: @order.forma_de_pagamento, valor: @order.valor }
+  test "should create pedido" do
+    assert_difference('Pedido.count') do
+      post :create, pedido: { client_id: @pedido.client_id, descricao: @pedido.descricao, forma_de_pagamento: @pedido.forma_de_pagamento, valor: @pedido.valor }
     end
 
-    assert_redirected_to order_path(assigns(:order))
+    assert_redirected_to order_path(assigns(:pedido))
   end
 
-  test "should show order" do
-    get :show, id: @order
+  test "should show pedido" do
+    get :show, id: @pedido
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @order
+    get :edit, id: @pedido
     assert_response :success
   end
 
-  test "should update order" do
-    patch :update, id: @order, order: { client_id: @order.client_id, descricao: @order.descricao, forma_de_pagamento: @order.forma_de_pagamento, valor: @order.valor }
-    assert_redirected_to order_path(assigns(:order))
+  test "should update pedido" do
+    patch :update, id: @pedido, pedido: { client_id: @pedido.client_id, descricao: @pedido.descricao, forma_de_pagamento: @pedido.forma_de_pagamento, valor: @pedido.valor }
+    assert_redirected_to order_path(assigns(:pedido))
   end
 
-  test "should destroy order" do
-    assert_difference('Order.count', -1) do
-      delete :destroy, id: @order
+  test "should destroy pedido" do
+    assert_difference('Pedido.count', -1) do
+      delete :destroy, id: @pedido
     end
 
     assert_redirected_to orders_path

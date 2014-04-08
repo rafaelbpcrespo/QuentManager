@@ -1,0 +1,32 @@
+<%= form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :client_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :client_id, Cliente.all, :id, :nome, :default => "Selecione", :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :descricao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :descricao, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :valor, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :valor, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :forma_de_pagamento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :forma_de_pagamento, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                pedidos_path, :class => 'btn' %>
+  </div>
+<% end %>

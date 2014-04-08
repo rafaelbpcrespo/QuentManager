@@ -2,13 +2,13 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
   setup do
-    @product = products(:one)
+    @produto = produtos(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:products)
+    assert_not_nil assigns(:produtos)
   end
 
   test "should get new" do
@@ -16,32 +16,32 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create product" do
-    assert_difference('Product.count') do
-      post :create, product: { nome: @product.nome, valor_unitario: @product.valor_unitario }
+  test "should create produto" do
+    assert_difference('Produto.count') do
+      post :create, produto: { nome: @produto.nome, valor_unitario: @produto.valor_unitario }
     end
 
-    assert_redirected_to product_path(assigns(:product))
+    assert_redirected_to product_path(assigns(:produto))
   end
 
-  test "should show product" do
-    get :show, id: @product
+  test "should show produto" do
+    get :show, id: @produto
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @product
+    get :edit, id: @produto
     assert_response :success
   end
 
-  test "should update product" do
-    patch :update, id: @product, product: { nome: @product.nome, valor_unitario: @product.valor_unitario }
-    assert_redirected_to product_path(assigns(:product))
+  test "should update produto" do
+    patch :update, id: @produto, produto: { nome: @produto.nome, valor_unitario: @produto.valor_unitario }
+    assert_redirected_to product_path(assigns(:produto))
   end
 
-  test "should destroy product" do
-    assert_difference('Product.count', -1) do
-      delete :destroy, id: @product
+  test "should destroy produto" do
+    assert_difference('Produto.count', -1) do
+      delete :destroy, id: @produto
     end
 
     assert_redirected_to products_path
