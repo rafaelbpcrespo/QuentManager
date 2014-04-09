@@ -2,9 +2,8 @@
 <html>
 <head>
   <title>QuentManager</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag :defaults, "nested_form" %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -22,7 +21,7 @@
             <ul class="nav">
               <li><%= link_to "Clientes", "/clientes"  %></li>
               <li><%= link_to "Pedidos", "/pedidos"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><%= link_to "Produtos", "/produtos"  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

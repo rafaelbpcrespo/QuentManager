@@ -1,25 +1,20 @@
-<%= form_for(@produto) do |f| %>
-  <% if @produto.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
-
-      <ul>
-      <% @produto.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @produto, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :valor_unitario, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :valor_unitario, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
-  </div>
-  <div class="field">
-    <%= f.label :valor_unitario %><br>
-    <%= f.text_field :valor_unitario %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                produtos_path, :class => 'btn' %>
   </div>
 <% end %>

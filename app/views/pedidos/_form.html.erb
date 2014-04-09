@@ -1,8 +1,8 @@
-<%= form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :client_id, :class => 'control-label' %>
+    <%= f.label :cliente_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.collection_select :client_id, Cliente.all, :id, :nome, :default => "Selecione", :class => 'text_field' %>
+      <%= f.collection_select :cliente_id, Cliente.all, :id, :nome, :default => "Selecione", :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
@@ -11,6 +11,19 @@
       <%= f.text_area :descricao, :class => 'text_field' %>
     </div>
   </div>
+
+  <div class="control-group">
+  <%= f.label :produto, :class => 'control-label' %> 
+   <div class="controls">
+    <%= f.fields_for :item_de_pedidos do |item| %>
+      <%= item.collection_select :produto_id, Produto.all, :id, :nome, :default => "Selecione", :class => 'text_field' %>
+      <%= item.link_to_remove "Remover este item" %>
+    <% end %>
+<p><%= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>
+    </div>
+  </div>
+
+
   <div class="control-group">
     <%= f.label :valor, :class => 'control-label' %>
     <div class="controls">
