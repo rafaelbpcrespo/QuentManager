@@ -25,6 +25,7 @@ class PedidosController < ApplicationController
   # POST /pedidos.json
   def create
     @pedido = Pedido.new(pedido_params)
+    debugger
 
     respond_to do |format|
       if @pedido.save
@@ -69,6 +70,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :valor, :client_id, :forma_de_pagamento)
+      params.require(:pedido).permit(:descricao, :valor, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id])
     end
 end

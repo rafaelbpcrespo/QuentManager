@@ -17914,3 +17914,3193 @@ Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:08:58 -0
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:08:58 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:14:27 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.2ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  Rendered pedidos/index.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 237ms (Views: 231.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:28 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+Processing by PedidosController#new as HTML
+  [1m[36mCliente Load (0.2ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  [1m[35mProduto Load (0.2ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered pedidos/_form.html.erb (64.7ms)
+  Rendered pedidos/new.html.erb within layouts/application (68.8ms)
+Completed 200 OK in 84ms (Views: 81.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:30 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:31 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:31 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:14:31 -0300
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2014-04-08 21:14:35 -0300
+Processing by PedidosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DeLfDB5djfCVs+OoInQFKKTFUe8n0GkuPONnb2LaVpM=", "pedido"=>{"cliente_id"=>"1", "descricao"=>"dsa", "item_de_pedidos_attributes"=>{"1397002472573"=>{"produto_id"=>"1", "_destroy"=>"false"}}, "valor"=>"1", "forma_de_pagamento"=>""}, "commit"=>"Criar Pedido"}
+Unpermitted parameters: cliente_id, item_de_pedidos_attributes
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  INSERT INTO "pedidos" ("created_at", "descricao", "forma_de_pagamento", "updated_at", "valor") VALUES (?, ?, ?, ?, ?)  [["created_at", Wed, 09 Apr 2014 00:14:35 UTC +00:00], ["descricao", "dsa"], ["forma_de_pagamento", ""], ["updated_at", Wed, 09 Apr 2014 00:14:35 UTC +00:00], ["valor", 1.0]]
+  [1m[36m (101.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/pedidos/1
+Completed 302 Found in 111ms (ActiveRecord: 104.7ms)
+
+
+Started GET "/pedidos/1" for 127.0.0.1 at 2014-04-08 21:14:36 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPedido Load (0.2ms)[0m  SELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered pedidos/show.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (undefined method `client_id' for #<Pedido:0x000001017581c0>):
+     9:   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
+    10:   <dd><%= @pedido.valor %></dd>
+    11:   <dt><strong><%= model_class.human_attribute_name(:client_id) %>:</strong></dt>
+    12:   <dd><%= @pedido.client_id %></dd>
+    13:   <dt><strong><%= model_class.human_attribute_name(:forma_de_pagamento) %>:</strong></dt>
+    14:   <dd><%= @pedido.forma_de_pagamento %></dd>
+    15: </dl>
+  app/views/pedidos/show.html.erb:12:in `_app_views_pedidos_show_html_erb__4326767715718321500_2159678700'
+
+
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.5ms)
+
+
+Started GET "/pedidos/1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPedido Load (0.1ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered pedidos/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 30ms (Views: 29.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:15:29 -0300
+  [1m[36mItemDePedido Load (1.3ms)[0m  [1mSELECT "item_de_pedidos".* FROM "item_de_pedidos"[0m
+  [1m[35mPedido Load (0.2ms)[0m  SELECT "pedidos".* FROM "pedidos"
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:17:46 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.2ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  Rendered pedidos/index.html.erb within layouts/application (22.6ms)
+Completed 500 Internal Server Error in 36ms
+
+ActionView::Template::Error (undefined method `client_id' for #<Pedido:0x00000101306c98>):
+    20:         <td><%= link_to pedido.id, pedido_path(pedido) %></td>
+    21:         <td><%= pedido.descricao %></td>
+    22:         <td><%= pedido.valor %></td>
+    23:         <td><%= pedido.client_id %></td>
+    24:         <td><%= pedido.forma_de_pagamento %></td>
+    25:         <td><%=l pedido.created_at %></td>
+    26:         <td>
+  app/views/pedidos/index.html.erb:23:in `block in _app_views_pedidos_index_html_erb__3120971553006321087_2157671880'
+  app/views/pedidos/index.html.erb:18:in `_app_views_pedidos_index_html_erb__3120971553006321087_2157671880'
+
+
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.1ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (26.3ms)
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  Rendered pedidos/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 214ms (Views: 213.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:03 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+Processing by PedidosController#new as HTML
+  [1m[35mCliente Load (0.2ms)[0m  SELECT "clientes".* FROM "clientes"
+  [1m[36mProduto Load (0.2ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered pedidos/_form.html.erb (56.7ms)
+  Rendered pedidos/new.html.erb within layouts/application (61.6ms)
+Completed 200 OK in 78ms (Views: 76.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:18:06 -0300
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2014-04-08 21:18:11 -0300
+Processing by PedidosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DeLfDB5djfCVs+OoInQFKKTFUe8n0GkuPONnb2LaVpM=", "pedido"=>{"cliente_id"=>"1", "descricao"=>"", "item_de_pedidos_attributes"=>{"1397002689526"=>{"produto_id"=>"1", "_destroy"=>"false"}}, "valor"=>"", "forma_de_pagamento"=>""}, "commit"=>"Criar Pedido"}
+Unpermitted parameters: cliente_id, item_de_pedidos_attributes
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "pedidos" ("created_at", "descricao", "forma_de_pagamento", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 09 Apr 2014 00:20:14 UTC +00:00], ["descricao", ""], ["forma_de_pagamento", ""], ["updated_at", Wed, 09 Apr 2014 00:20:14 UTC +00:00]]
+  [1m[35m (100.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/pedidos/2
+Completed 302 Found in 123684ms (ActiveRecord: 103.8ms)
+
+
+Started GET "/pedidos/2" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPedido Load (0.3ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered pedidos/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 47ms (Views: 28.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:20:15 -0300
+
+
+Started GET "/pedidos/2" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPedido Load (0.5ms)[0m  SELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered pedidos/show.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 294ms (Views: 277.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:13 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:52:14 -0300
+
+
+Started GET "/pedidos/2/edit" for 127.0.0.1 at 2014-04-08 21:52:16 -0300
+Processing by PedidosController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  Rendered pedidos/_form.html.erb (16.4ms)
+  Rendered pedidos/edit.html.erb within layouts/application (22.3ms)
+Completed 500 Internal Server Error in 29ms
+
+ActionView::Template::Error (undefined method `merge' for :nome:Symbol):
+    2:   <div class="control-group">
+    3:     <%= f.label :cliente_id, :class => 'control-label' %>
+    4:     <div class="controls">
+    5:       <%= f.collection_select :pedido, :cliente_id, Cliente.all, :id, :nome, :default => "Selecione", :class => 'text_field' %>
+    6:     </div>
+    7:   </div>
+    8:   <div class="control-group">
+  app/views/pedidos/_form.html.erb:5:in `block in _app_views_pedidos__form_html_erb___2137716425828458531_2196639540'
+  app/views/pedidos/_form.html.erb:1:in `_app_views_pedidos__form_html_erb___2137716425828458531_2196639540'
+  app/views/pedidos/edit.html.erb:5:in `_app_views_pedidos_edit_html_erb__1102427047915884377_2196838640'
+
+
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.3ms)
+
+
+Started GET "/pedidos/2/edit" for 127.0.0.1 at 2014-04-08 21:52:56 -0300
+Processing by PedidosController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPedido Load (0.1ms)[0m  SELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered pedidos/_form.html.erb (3.7ms)
+  Rendered pedidos/edit.html.erb within layouts/application (5.1ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (undefined method `merge' for :nome:Symbol):
+    2:   <div class="control-group">
+    3:     <%= f.label :cliente_id, :class => 'control-label' %>
+    4:     <div class="controls">
+    5:       <%= f.collection_select :pedido, :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
+    6:     </div>
+    7:   </div>
+    8:   <div class="control-group">
+  app/views/pedidos/_form.html.erb:5:in `block in _app_views_pedidos__form_html_erb___2137716425828458531_2195202000'
+  app/views/pedidos/_form.html.erb:1:in `_app_views_pedidos__form_html_erb___2137716425828458531_2195202000'
+  app/views/pedidos/edit.html.erb:5:in `_app_views_pedidos_edit_html_erb__1102427047915884377_2196838640'
+
+
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+
+
+Started GET "/pedidos/2/edit" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+Processing by PedidosController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPedido Load (0.1ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mCliente Load (0.5ms)[0m  SELECT "clientes".* FROM "clientes"
+  [1m[36mItemDePedido Load (2.9ms)[0m  [1mSELECT "item_de_pedidos".* FROM "item_de_pedidos" WHERE "item_de_pedidos"."pedido_id" = ?[0m  [["pedido_id", 2]]
+  [1m[35mProduto Load (0.2ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered pedidos/_form.html.erb (66.9ms)
+  Rendered pedidos/edit.html.erb within layouts/application (69.0ms)
+Completed 200 OK in 85ms (Views: 79.2ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:05 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:06 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:06 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:06 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:06 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:06 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:06 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:53:06 -0300
+
+
+Started GET "/pedidos/2/edit" for 127.0.0.1 at 2014-04-08 21:53:41 -0300
+Processing by PedidosController#edit as HTML
+  Parameters: {"id"=>"2"}
+Completed 500 Internal Server Error in 1ms
+
+RuntimeError (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+  app/models/pedido.rb:2:in `<class:Pedido>'
+  app/models/pedido.rb:1:in `<top (required)>'
+  app/controllers/pedidos_controller.rb:68:in `set_pedido'
+
+
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.4ms)
+
+
+Started GET "/pedidos/2/edit" for 127.0.0.1 at 2014-04-08 21:57:20 -0300
+Processing by PedidosController#edit as HTML
+  Parameters: {"id"=>"2"}
+Completed 500 Internal Server Error in 1ms
+
+RuntimeError (`attr_accessible` is extracted out of Rails into a gem. Please use new recommended protection model for params(strong_parameters) or add `protected_attributes` to your Gemfile to use old one.):
+  app/models/pedido.rb:2:in `<class:Pedido>'
+  app/models/pedido.rb:1:in `<top (required)>'
+  app/controllers/pedidos_controller.rb:68:in `set_pedido'
+
+
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/rafaelbarcellos/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.3ms)
+
+
+Started GET "/pedidos/2/edit" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+Processing by PedidosController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPedido Load (0.1ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mCliente Load (0.2ms)[0m  SELECT "clientes".* FROM "clientes"
+  [1m[36mItemDePedido Load (0.2ms)[0m  [1mSELECT "item_de_pedidos".* FROM "item_de_pedidos" WHERE "item_de_pedidos"."pedido_id" = ?[0m  [["pedido_id", 2]]
+  [1m[35mProduto Load (0.2ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered pedidos/_form.html.erb (37.2ms)
+  Rendered pedidos/edit.html.erb within layouts/application (38.7ms)
+Completed 200 OK in 62ms (Views: 51.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:37 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  Rendered pedidos/index.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 39ms (Views: 38.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:44 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+Processing by PedidosController#new as HTML
+  [1m[35mCliente Load (0.2ms)[0m  SELECT "clientes".* FROM "clientes"
+  [1m[36mProduto Load (0.2ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered pedidos/_form.html.erb (8.0ms)
+  Rendered pedidos/new.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 34ms (Views: 33.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:57:46 -0300
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2014-04-08 21:57:59 -0300
+Processing by PedidosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yTVDfj0CAmA4QYgTjmisxCsTrt4jbG4aVoUermJVY8k=", "pedido"=>{"cliente_id"=>"1", "descricao"=>"das", "valor"=>"", "forma_de_pagamento"=>""}, "commit"=>"Criar Pedido"}
+Unpermitted parameters: cliente_id
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "pedidos" ("created_at", "descricao", "forma_de_pagamento", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 09 Apr 2014 00:58:49 UTC +00:00], ["descricao", "das"], ["forma_de_pagamento", ""], ["updated_at", Wed, 09 Apr 2014 00:58:49 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/pedidos/3
+Completed 302 Found in 50733ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/pedidos/3" for 127.0.0.1 at 2014-04-08 21:58:49 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  Rendered pedidos/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 43ms (Views: 29.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:50 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.2ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  Rendered pedidos/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 40ms (Views: 38.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:54 -0300
+
+
+Started DELETE "/pedidos/1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+Processing by PedidosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"yTVDfj0CAmA4QYgTjmisxCsTrt4jbG4aVoUermJVY8k=", "id"=>"1"}
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/pedidos
+Completed 302 Found in 6ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  Rendered pedidos/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 33ms (Views: 32.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:57 -0300
+
+
+Started DELETE "/pedidos/2" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+Processing by PedidosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"yTVDfj0CAmA4QYgTjmisxCsTrt4jbG4aVoUermJVY8k=", "id"=>"2"}
+  [1m[35mPedido Load (0.4ms)[0m  SELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "pedidos" WHERE "pedidos"."id" = ?  [["id", 2]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/pedidos
+Completed 302 Found in 9ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.3ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  Rendered pedidos/index.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 33ms (Views: 31.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:58:59 -0300
+
+
+Started DELETE "/pedidos/3" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+Processing by PedidosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"yTVDfj0CAmA4QYgTjmisxCsTrt4jbG4aVoUermJVY8k=", "id"=>"3"}
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "3"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 3]]
+  [1m[35m (1.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/pedidos
+Completed 302 Found in 7ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  Rendered pedidos/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 28ms (Views: 26.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:00 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:01 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+Processing by PedidosController#new as HTML
+  [1m[35mCliente Load (0.3ms)[0m  SELECT "clientes".* FROM "clientes"
+  [1m[36mProduto Load (0.2ms)[0m  [1mSELECT "produtos".* FROM "produtos"[0m
+  Rendered pedidos/_form.html.erb (52.3ms)
+  Rendered pedidos/new.html.erb within layouts/application (54.3ms)
+Completed 200 OK in 78ms (Views: 75.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:02 -0300
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2014-04-08 21:59:06 -0300
+Processing by PedidosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yTVDfj0CAmA4QYgTjmisxCsTrt4jbG4aVoUermJVY8k=", "pedido"=>{"cliente_id"=>"1", "descricao"=>"aaa", "valor"=>"", "forma_de_pagamento"=>""}, "commit"=>"Criar Pedido"}
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "pedidos" ("cliente_id", "created_at", "descricao", "forma_de_pagamento", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cliente_id", 1], ["created_at", Wed, 09 Apr 2014 00:59:16 UTC +00:00], ["descricao", "aaa"], ["forma_de_pagamento", ""], ["updated_at", Wed, 09 Apr 2014 00:59:16 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/pedidos/4
+Completed 302 Found in 9357ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/pedidos/4" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  Rendered pedidos/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:16 -0300
+
+
+Started DELETE "/pedidos/4" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+Processing by PedidosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"yTVDfj0CAmA4QYgTjmisxCsTrt4jbG4aVoUermJVY8k=", "id"=>"4"}
+  [1m[35mPedido Load (0.2ms)[0m  SELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1  [["id", "4"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "pedidos" WHERE "pedidos"."id" = ?  [["id", 4]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/pedidos
+Completed 302 Found in 9ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.3ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  Rendered pedidos/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 31ms (Views: 30.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:19 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:20 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+Processing by PedidosController#new as HTML
+  [1m[36mCliente Load (0.2ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  [1m[35mProduto Load (0.2ms)[0m  SELECT "produtos".* FROM "produtos"
+  Rendered pedidos/_form.html.erb (15.0ms)
+  Rendered pedidos/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 44ms (Views: 43.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 21:59:21 -0300
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2014-04-08 21:59:32 -0300
+Processing by PedidosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yTVDfj0CAmA4QYgTjmisxCsTrt4jbG4aVoUermJVY8k=", "pedido"=>{"cliente_id"=>"1", "descricao"=>"bbb", "item_de_pedidos_attributes"=>{"1397005163912"=>{"produto_id"=>"1", "_destroy"=>"false"}}, "valor"=>"", "forma_de_pagamento"=>""}, "commit"=>"Criar Pedido"}
+Unpermitted parameters: _destroy
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "pedidos" ("cliente_id", "created_at", "descricao", "forma_de_pagamento", "updated_at") VALUES (?, ?, ?, ?, ?)  [["cliente_id", 1], ["created_at", Wed, 09 Apr 2014 01:00:59 UTC +00:00], ["descricao", "bbb"], ["forma_de_pagamento", ""], ["updated_at", Wed, 09 Apr 2014 01:00:59 UTC +00:00]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "item_de_pedidos" ("created_at", "pedido_id", "produto_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Wed, 09 Apr 2014 01:00:59 UTC +00:00], ["pedido_id", 5], ["produto_id", 1], ["updated_at", Wed, 09 Apr 2014 01:00:59 UTC +00:00]]
+  [1m[35m (98.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/pedidos/5
+Completed 302 Found in 86963ms (ActiveRecord: 100.2ms)
+
+
+Started GET "/pedidos/5" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPedido Load (0.2ms)[0m  [1mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  Rendered pedidos/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 22:00:59 -0300
+
+
+Started GET "/pedidos/5" for 127.0.0.1 at 2014-04-08 22:01:52 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mPedido Load (0.3ms)[0m  SELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT 1  [["id", "5"]]
+  [1m[36mCliente Load (0.4ms)[0m  [1mSELECT "clientes".* FROM "clientes" WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pedidos/show.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 49ms (Views: 46.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/produtos.css?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/products.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-08 22:01:53 -0300

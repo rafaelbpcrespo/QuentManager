@@ -8,7 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:descricao) %></th>
       <th><%= model_class.human_attribute_name(:valor) %></th>
-      <th><%= model_class.human_attribute_name(:client_id) %></th>
+      <th><%= model_class.human_attribute_name(:cliente_id) %></th>
       <th><%= model_class.human_attribute_name(:forma_de_pagamento) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -20,7 +20,7 @@
         <td><%= link_to pedido.id, pedido_path(pedido) %></td>
         <td><%= pedido.descricao %></td>
         <td><%= pedido.valor %></td>
-        <td><%= pedido.client_id %></td>
+        <td><%= pedido.cliente_id %></td>
         <td><%= pedido.forma_de_pagamento %></td>
         <td><%=l pedido.created_at %></td>
         <td>

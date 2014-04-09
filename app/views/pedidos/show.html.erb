@@ -8,8 +8,8 @@
   <dd><%= @pedido.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
   <dd><%= @pedido.valor %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:client_id) %>:</strong></dt>
-  <dd><%= @pedido.client_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
+  <dd><%= @pedido.cliente.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:forma_de_pagamento) %>:</strong></dt>
   <dd><%= @pedido.forma_de_pagamento %></dd>
 </dl>
