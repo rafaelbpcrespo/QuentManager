@@ -21,7 +21,7 @@
   <tbody>
     <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= link_to cliente.id, client_path(cliente) %></td>
+        <td><%= link_to cliente.id, cliente_path(cliente) %></td>
         <td><%= cliente.nome %></td>
         <td><%= cliente.celular %></td>
         <td><%= cliente.telefone %></td>

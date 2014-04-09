@@ -20,7 +20,7 @@
         <td><%= link_to pedido.id, pedido_path(pedido) %></td>
         <td><%= pedido.descricao %></td>
         <td><%= pedido.valor %></td>
-        <td><%= pedido.cliente_id %></td>
+        <td><%= pedido.cliente.nome %></td>
         <td><%= pedido.forma_de_pagamento %></td>
         <td><%=l pedido.created_at %></td>
         <td>

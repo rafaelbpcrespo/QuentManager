@@ -15,6 +15,7 @@ class PedidosController < ApplicationController
   # GET /pedidos/new
   def new
     @pedido = Pedido.new
+    @pedido.item_de_pedidos.build
   end
 
   # GET /pedidos/1/edit
