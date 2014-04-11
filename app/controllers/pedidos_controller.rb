@@ -20,6 +20,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1/edit
   def edit
+    debugger
   end
 
   # POST /pedidos
@@ -42,8 +43,27 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1
   # PATCH/PUT /pedidos/1.json
   def update
+    #debugger
+    parametros = pedido_params
+    itens = params[:pedido][:item_de_pedidos_attributes]
+    for i in 0..params[:pedido][:item_de_pedidos_attributes].count do
+      debugger
+      if itens["#{i}"] != nil
+        if itens["#{i}"][:_destroy] == "1"
+          codigo_item = itens["#{i}"][:id]
+          item = ItemDePedido.find(codigo_item.to_i)
+          item.destroy
+          itens.delete("#{i}")
+        else
+          itens.delete("#{i}")
+        end
+      end
+    end
+      parametros[:item_de_pedidos_attributes].replace(itens)
+
+      debugger
     respond_to do |format|
-      if @pedido.update(pedido_params)
+      if @pedido.update(parametros)
         format.html { redirect_to @pedido, notice: 'Pedido was successfully updated.' }
         format.json { head :no_content }
       else
@@ -71,6 +91,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :valor, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id])
+      params.require(:pedido).permit(:descricao, :valor, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :_destroy])
     end
 end
