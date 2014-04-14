@@ -42,9 +42,11 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :sexo, :class => 'control-label' %>
-      <%= f.radio_button :sexo, "Masculino", :class => 'radio_button' %>M
-      <%= f.radio_button :sexo, "Feminino", :class => 'radio_button' %>F
+      <%= f.label :sexo, :class => 'control-label' %>
+      <%= label :sexo, "M", :class =>"radio inline" %>
+      <%= f.radio_button :sexo, "M" , :checked => true, :value => "Masculino" %>
+      <%= label :sexo, "F", :class =>"radio inline" %>
+      <%= f.radio_button :sexo, "F" , :checked => false, :value => "Feminino" %>
   </div>
   <div class="control-group">
     <%= f.label :data_de_nascimento, :class => 'control-label' %>
