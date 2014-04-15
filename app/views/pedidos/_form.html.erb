@@ -6,9 +6,57 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :descricao, :class => 'control-label' %>
+    <%= f.label :arroz, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :descricao, :class => 'text_field' %>
+      <%= label :arroz, "Branco", :class =>"checkbox inline" %>
+      <%= check_box_tag :arroz, "Branco", false, :value => "Branco"%>
+      <%= label :arroz, "Integral", :class =>"checkbox inline" %>
+      <%= check_box_tag :arroz, "Integral", false, :value => "Integral" %>
+      <%= label :arroz, "A la Grega", :class =>"checkbox inline" %>
+      <%= check_box_tag :arroz, "A la Grega", false, :value => "A la Grega" %>
+      <%= label :arroz, "Brócolis", :class =>"checkbox inline" %>
+      <%= check_box_tag :arroz, "Brócolis", false, :value => "Brócolis" %>
+    </div>
+  </div>
+
+<div class="control-group">
+    <%= f.label :feijao, :class => 'control-label' %>
+    <div class="controls">
+      <%= label :feijao, "Sim", :class =>"checkbox inline" %>
+      <%= check_box_tag :feijao, "Sim", false, :value => "Sim" %>
+      <%= label :feijao, "Não", :class =>"checkbox inline" %>
+      <%= check_box_tag :feijao, "Não", false, :value => "Não" %>
+    </div>
+  </div>
+
+<div class="control-group">
+    <%= f.label :farofa, :class => 'control-label' %>
+    <div class="controls">
+      <%= label :farofa, "Sim", :class =>"checkbox inline" %>
+      <%= check_box_tag :farofa, "Sim", false, :value => "Sim" %>
+      <%= label :farofa, "Não", :class =>"checkbox inline" %>
+      <%= check_box_tag :farofa, "Não", false, :value => "Não" %>
+    </div>
+  </div>
+
+<div class="control-group">
+    <%= f.label :carne, :class => 'control-label' %>
+    <div class="controls">
+      <%= text_field_tag :carne %>
+    </div>
+  </div>
+
+<div class="control-group">
+    <%= f.label :acompanhamento, :class => 'control-label' %>
+    <div class="controls">
+      <%= text_field_tag :acompanhamento %>
+    </div>
+  </div>
+
+<div class="control-group">
+    <%= f.label :salada, :class => 'control-label' %>
+    <div class="controls">
+      <%= text_field_tag :salada %>
     </div>
   </div>
 

@@ -27,8 +27,19 @@ class PedidosController < ApplicationController
   # POST /pedidos.json
   def create
     @pedido = Pedido.new(pedido_params)
-    debugger
 
+    descricao = "Arroz "+ params[:arroz] 
+      if params[:feijao] = "Sim"
+        descricao = descricao + ", Feijao, "
+      end
+
+      if params[:farofa] == "Sim"
+        descricao = descricao + ", Farofa,"
+      end
+
+    descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+
+    @pedido.descricao = descricao
     respond_to do |format|
       if @pedido.save
         format.html { redirect_to @pedido, notice: 'Pedido was successfully created.' }
