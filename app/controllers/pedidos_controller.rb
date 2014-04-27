@@ -20,7 +20,6 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1/edit
   def edit
-    debugger
   end
 
   # POST /pedidos
@@ -57,22 +56,34 @@ class PedidosController < ApplicationController
     #debugger
     parametros = pedido_params
     itens = params[:pedido][:item_de_pedidos_attributes]
-    for i in 0..params[:pedido][:item_de_pedidos_attributes].count do
-      debugger
-      if itens["#{i}"] != nil
-        if itens["#{i}"][:_destroy] == "1"
-          codigo_item = itens["#{i}"][:id]
-          item = ItemDePedido.find(codigo_item.to_i)
-          item.destroy
-          itens.delete("#{i}")
-        else
-          itens.delete("#{i}")
+    if !itens.nil?
+      for i in 0..params[:pedido][:item_de_pedidos_attributes].count do
+        if itens["#{i}"] != nil
+          if itens["#{i}"][:_destroy] == "1"
+            codigo_item = itens["#{i}"][:id]
+            item = ItemDePedido.find(codigo_item.to_i)
+            item.destroy
+            itens.delete("#{i}")
+          else
+            itens.delete("#{i}")
+          end
         end
       end
+        parametros[:item_de_pedidos_attributes].replace(itens)
     end
-      parametros[:item_de_pedidos_attributes].replace(itens)
+      descricao = "Arroz "+ params[:arroz] 
+      if params[:feijao] = "Sim"
+        descricao = descricao + ", Feijao, "
+      end
 
-      debugger
+      if params[:farofa] == "Sim"
+        descricao = descricao + ", Farofa,"
+      end
+
+    descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+
+    @pedido.descricao = descricao
+
     respond_to do |format|
       if @pedido.update(parametros)
         format.html { redirect_to @pedido, notice: 'Pedido was successfully updated.' }
