@@ -24,6 +24,13 @@
               <li><%= link_to "Clientes", "/clientes"  %></li>
               <li><%= link_to "Pedidos", "/pedidos"  %></li>
               <li><%= link_to "Produtos", "/produtos"  %></li>
+              <li><% if usuario_signed_in? %>
+    Logado como <%= current_usuario.email %>. Não é você?
+    <%= link_to "Sair", destroy_usuario_session_path, :method => :delete %></li>
+  <% else %>
+    <li><%= link_to "Cadastrar", new_usuario_registration_path %> </li> 
+    <li><%= link_to "Entrar", new_usuario_session_path %></li>
+  <% end %>
             </ul>
           </div><!--/.nav-collapse -->
           <div id="user_nav">
@@ -31,7 +38,7 @@
     Logado como <%= current_usuario.email %>. Não é você?
     <%= link_to "Sair", destroy_usuario_session_path, :method => :delete %>
   <% else %>
-    <%= link_to "Cadastrar", new_usuario_registration_path %> or <%= link_to "Entrar", new_usuario_session_path %>
+    <%= link_to "Cadastrar", new_usuario_registration_path %> ou <%= link_to "Entrar", new_usuario_session_path %>
   <% end %>
 </div>
         </div>
