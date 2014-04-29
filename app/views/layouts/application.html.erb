@@ -28,10 +28,10 @@
           </div><!--/.nav-collapse -->
           <div id="user_nav">
   <% if usuario_signed_in? %>
-    Signed in as <%= current_usuario.email %>. Not you?
-    <%= link_to "Sign out", destroy_usuario_session_path, :method => :delete %>
+    Logado como <%= current_usuario.email %>. Não é você?
+    <%= link_to "Sair", destroy_usuario_session_path, :method => :delete %>
   <% else %>
-    <%= link_to "Sign up", new_usuario_registration_path %> or <%= link_to "sign in", new_usuario_session_path %>
+    <%= link_to "Cadastrar", new_usuario_registration_path %> or <%= link_to "Entrar", new_usuario_session_path %>
   <% end %>
 </div>
         </div>

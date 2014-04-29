@@ -9,7 +9,7 @@
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:valor_unitario) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
   </thead>
   <tbody>
@@ -20,12 +20,12 @@
         <td><%= produto.valor_unitario %></td>
         <td><%=l produto.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%= link_to t('.editar', :default => t("helpers.links.editar")),
                       edit_produto_path(produto), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
                       produto_path(produto),
                       :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este cliente?')) },
                       :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
@@ -33,6 +33,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.novo', :default => t("helpers.links.novo_produto")),
             new_produto_path,
             :class => 'btn btn-primary' %>
