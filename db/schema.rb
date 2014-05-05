@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430005304) do
+ActiveRecord::Schema.define(version: 20140505165700) do
 
   create_table "clientes", force: true do |t|
     t.string   "nome"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140430005304) do
     t.date     "data_de_nascimento"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "usuario_id"
   end
 
   create_table "item_de_pedidos", force: true do |t|
@@ -64,9 +65,12 @@ ActiveRecord::Schema.define(version: 20140430005304) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "cliente_id"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
 
