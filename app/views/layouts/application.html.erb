@@ -26,10 +26,10 @@
               <li><%= link_to "Produtos", "/produtos"  %></li>
               <li><% if usuario_signed_in? %>
     Logado como <%= current_usuario.email %>. Não é você?
-    <%= link_to "Sair", destroy_usuario_session_path, :method => :delete %></li>
+    <%= link_to "Sair", destroy_usuario_session_path, :class => 'btn btn-link btn-xs', :method => :delete %></li>
   <% else %>
-    <li><%= link_to "Cadastrar", new_usuario_registration_path %> </li> 
-    <li><%= link_to "Entrar", new_usuario_session_path %></li>
+    <li><%= link_to "Cadastrar", new_usuario_registration_path, :class => 'btn btn-link btn-xs' %> </li> 
+    <li><%= link_to "Entrar", new_usuario_session_path, :class => 'btn btn-link btn-xs' %></li>
   <% end %>
             </ul>
           </div><!--/.nav-collapse -->
