@@ -26,7 +26,8 @@ class PedidosController < ApplicationController
   # POST /pedidos.json
   def create
     @pedido = Pedido.new(pedido_params)
-
+    debugger
+    @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     descricao = "Arroz "+ params[:arroz] 
       if params[:feijao] = "Sim"
         descricao = descricao + ", Feijao, "

@@ -9,6 +9,8 @@
          <p class="alert"><%= alert %></p>
 </head>
 <body>
+ 
+
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -18,28 +20,30 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">QuentManager</a>
+          <a class="brand" href="#">SiQuitutes</a>
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Clientes", "/clientes"  %></li>
               <li><%= link_to "Pedidos", "/pedidos"  %></li>
               <li><%= link_to "Produtos", "/produtos"  %></li>
-              <li><% if usuario_signed_in? %> <%= current_usuario.email %> </li>
-    <li><%= link_to "Sair", destroy_usuario_session_path, :class => 'btn btn-link btn-xs', :method => :delete %></li>
+              <li><%= link_to "TESTEE", "#"  %></li>
+              <li><%= link_to "Cadastre-se", new_usuario_registration_path%></li>
+            
+              <li><% if usuario_signed_in? %>Usuário: <%= current_usuario.email %><%= link_to "Sair", destroy_usuario_session_path, :class => 'btn btn-link btn-xs', :method => :delete %></li>
   <% else %>
-    <li><%= link_to "Cadastrar", new_usuario_registration_path, :class => 'btn btn-link btn-xs' %> </li> 
-    <li><%= link_to "Entrar", new_usuario_session_path, :class => 'btn btn-link btn-xs' %></li>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "navbar-form navbar-right" , :id => ""})  do |f| %>
+  <div class="form-group">
+  <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+  </div>
+  <div class="form-group">
+  <%= f.password_field :password, autocomplete: "off", placeholder: "Senha" %>
+  </div>
+  <%= f.submit "Entrar", :class => "btn btn-primary" %>
+<% end %>
   <% end %>
             </ul>
           </div><!--/.nav-collapse -->
-          <div id="user_nav">
-  <% if usuario_signed_in? %>
-    Logado como <%= current_usuario.email %>. Não é você?
-    <%= link_to "Sair", destroy_usuario_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Cadastrar", new_usuario_registration_path %> ou <%= link_to "Entrar", new_usuario_session_path %>
-  <% end %>
-</div>
+          
         </div>
       </div>
     </div>
