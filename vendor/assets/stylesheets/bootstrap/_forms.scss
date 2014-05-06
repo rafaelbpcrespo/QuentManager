@@ -114,11 +114,15 @@ output {
 // input[type="search"]
 // input[type="tel"]
 // input[type="color"]
+    input[type="text"] { 
+        height: 25px; 
+        }
 
 .form-control {
   display: block;
   width: 100%;
-  height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  height: 30px;
+  //height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: $padding-base-vertical $padding-base-horizontal;
   font-size: $font-size-base;
   line-height: $line-height-base;

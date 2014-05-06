@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <title>QuentManager</title>
@@ -6,7 +6,6 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
          <p class="notice"><%= notice %></p>
-         <p class="alert"><%= alert %></p>
 </head>
 <body>
  
@@ -36,7 +35,7 @@
   <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
   </div>
   <div class="form-group">
-  <%= f.password_field :password, autocomplete: "off", placeholder: "Senha" %>
+  <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "input-height-large" %>
   </div>
   <%= f.submit "Entrar", :class => "btn btn-primary" %>
 <% end %>

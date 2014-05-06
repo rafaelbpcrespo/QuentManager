@@ -1,6 +1,6 @@
 <%= nested_form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :cliente_id, :class => 'control-label' %>
+    <%#= f.label :cliente_id, :class => 'control-label' %>
     <div class="controls">
       <%#= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
     </div>
