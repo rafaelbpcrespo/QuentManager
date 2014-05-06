@@ -1,0 +1,2 @@
+module CarnesHelper
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  quantidade: 1
+  disponibilidade: false
+
+two:
+  nome: MyString
+  quantidade: 1
+  disponibilidade: false

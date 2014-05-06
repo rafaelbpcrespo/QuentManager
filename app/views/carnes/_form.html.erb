@@ -1,0 +1,27 @@
+<%= form_for @carne, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :quantidade, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :quantidade, :class => 'text_field' %>
+    </div>
+  </div>
+<div class="control-group">
+      <%= f.label :disponibilidade, :class => 'control-label' %>
+      <%= label :disponibilidade, "Ativar", :class =>"radio inline" %>
+      <%= f.radio_button :disponibilidade, true , :checked => true, :value => true %>
+      <%= label :disponibilidade, "Desativar", :class =>"radio inline" %>
+      <%= f.radio_button :disponibilidade, false , :value => false %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                carnes_path, :class => 'btn' %>
+  </div>
+<% end %>

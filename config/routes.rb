@@ -1,4 +1,6 @@
 QuentManager::Application.routes.draw do
+  resources :carnes
+
   devise_for :usuarios, :controllers => { :registrations => "registrations"}
   resources :produtos
 

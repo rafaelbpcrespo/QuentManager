@@ -25,7 +25,7 @@
               <li><%= link_to "Clientes", "/clientes"  %></li>
               <li><%= link_to "Pedidos", "/pedidos"  %></li>
               <li><%= link_to "Produtos", "/produtos"  %></li>
-              <li><%= link_to "TESTEE", "#"  %></li>
+              <li><%= link_to "Carnes", "/carnes"  %></li>
               <li><%= link_to "Cadastre-se", new_usuario_registration_path%></li>
             
               <li><% if usuario_signed_in? %>Usuário: <%= current_usuario.email %><%= link_to "Sair", destroy_usuario_session_path, :class => 'btn btn-link btn-xs', :method => :delete %></li>
