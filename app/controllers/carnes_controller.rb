@@ -25,7 +25,6 @@ class CarnesController < ApplicationController
   # POST /carnes.json
   def create
     @carne = Carne.new(carne_params)
-    debugger
 
     respond_to do |format|
       if @carne.save
@@ -41,7 +40,6 @@ class CarnesController < ApplicationController
   # PATCH/PUT /carnes/1
   # PATCH/PUT /carnes/1.json
   def update
-    debugger
     respond_to do |format|
       if @carne.update(carne_params)
         format.html { redirect_to @carne, notice: 'Carne was successfully updated.' }

@@ -9,7 +9,6 @@
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:quantidade) %></th>
       <th><%= model_class.human_attribute_name(:disponibilidade) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -20,7 +19,6 @@
         <td><%= carne.nome %></td>
         <td><%= carne.quantidade %></td>
         <td><% if carne.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
-        <td><%=l carne.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_carne_path(carne), :class => 'btn btn-mini' %>

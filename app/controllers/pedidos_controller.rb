@@ -14,6 +14,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/new
   def new
+    @carnes_disponiveis = Carne.where(:disponibilidade => true)
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
   end
@@ -26,8 +27,9 @@ class PedidosController < ApplicationController
   # POST /pedidos.json
   def create
     @pedido = Pedido.new(pedido_params)
-    debugger
     @pedido.cliente = Cliente.find(current_usuario.cliente.id)
+    debugger
+    @pedido.carne = Carne.where(:nome => params[:carne]).first
     descricao = "Arroz "+ params[:arroz] 
       if params[:feijao] = "Sim"
         descricao = descricao + ", Feijao, "
@@ -42,6 +44,8 @@ class PedidosController < ApplicationController
     @pedido.descricao = descricao
     respond_to do |format|
       if @pedido.save
+        carne = @pedido.carne
+        carne.decrescer
         format.html { redirect_to @pedido, notice: 'Pedido was successfully created.' }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
