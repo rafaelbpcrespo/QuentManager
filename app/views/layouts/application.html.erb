@@ -52,7 +52,9 @@
   <div class="row">
       <div class="span3">
         <h2>Resumo</h2>
-          <p> Quantidade de clientes: </p><%= @qtd_clientes %>
+          <p> Quantidade de clientes: <%= Cliente.all.count %> </p>
+          <p> Total de pedidos hoje: <%= Pedido.de_hoje %> </p>
+
         </div>
       <div class="span8"><%= yield %></div>
   </div>

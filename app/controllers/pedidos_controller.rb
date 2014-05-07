@@ -21,6 +21,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1/edit
   def edit
+    @carnes_disponiveis = Carne.where(:disponibilidade => true)
   end
 
   # POST /pedidos
@@ -28,7 +29,7 @@ class PedidosController < ApplicationController
   def create
     @pedido = Pedido.new(pedido_params)
     @pedido.cliente = Cliente.find(current_usuario.cliente.id)
-    debugger
+    
     @pedido.carne = Carne.where(:nome => params[:carne]).first
     descricao = "Arroz "+ params[:arroz] 
       if params[:feijao] = "Sim"
@@ -91,6 +92,8 @@ class PedidosController < ApplicationController
 
     respond_to do |format|
       if @pedido.update(parametros)
+        carne = @pedido.carne
+        carne.decrescer        
         format.html { redirect_to @pedido, notice: 'Pedido was successfully updated.' }
         format.json { head :no_content }
       else

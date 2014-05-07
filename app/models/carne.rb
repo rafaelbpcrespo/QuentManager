@@ -2,7 +2,9 @@ class Carne < ActiveRecord::Base
   has_many :pedidos
 
   def verificar_quantidade
-    if self.quantidade = 0
+    debugger
+    if self.quantidade == 0
+      debugger
       self.disponibilidade = false
       self.save
     end
