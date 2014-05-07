@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>QuentManager</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
+  <%= csrf_meta_tags %>
+    <meta http-equiv="refresh" content="5" />
+         <p id="notice"><%= notice %></p>
+         <p class="alerts"><%= alert %></p>
+</head>
+<body>
+ 
+
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">SiQuitutes</a>
+          <div class="container nav-collapse">
+            <ul class="nav">
+              <li><%= link_to "Clientes", "/clientes"  %></li>
+              <li><%= link_to "Pedidos", "/pedidos"  %></li>
+              <li><%= link_to "Produtos", "/produtos"  %></li>
+              <li><%= link_to "Carnes", "/carnes"  %></li>
+              <li><%= link_to "Cadastre-se", new_usuario_registration_path%></li>
+            
+              <li><% if usuario_signed_in? %>Usuário: <%= current_usuario.email %><%= link_to "Sair", destroy_usuario_session_path, :class => 'btn btn-link btn-xs', :method => :delete %></li>
+  <% else %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :method => :GET, :html => { :class => "navbar-form navbar-right" , :id => ""})  do |f| %>
+  <div class="form-group">
+  <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+  </div>
+  <div class="form-group">
+  <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "input-height-large" %>
+  </div>
+  <%= f.submit "Entrar", :class => "btn btn-primary" %>
+<% end %>
+  <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+          
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
+  <div class="row">
+      <div class="span3">
+        <h2>Resumo</h2>
+          <p> Quantidade de clientes: <%= Cliente.all.count %> </p>
+          <p> Total de pedidos hoje: <%= Pedido.de_hoje %> </p>
+          <p> Valor total vendido hoje: R$ <%= Pedido.vendidos_hoje %> </p>
+          <% Carne.all.each do |carne| %>
+            <% if carne.disponibilidade? %>
+          <p> <%= carne.nome %>: <%= carne.quantidade %> disponíveis </p>
+            <% end %>
+        <% end %>
+<%= Time.now %>
+        </div>
+      <div class="span8"><%= yield %><%= Time.now %></div>
+  </div>
+</div>
+
+</body>
+</html>

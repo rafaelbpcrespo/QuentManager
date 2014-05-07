@@ -1,6 +1,6 @@
 class CarnesController < ApplicationController
   before_action :set_carne, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_usuario!
   # GET /carnes
   # GET /carnes.json
   def index
@@ -28,7 +28,7 @@ class CarnesController < ApplicationController
 
     respond_to do |format|
       if @carne.save
-        format.html { redirect_to @carne, notice: 'Carne was successfully created.' }
+        format.html { redirect_to @carne, notice: 'Nova Carne cadastrada com sucesso.' }
         format.json { render action: 'show', status: :created, location: @carne }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class CarnesController < ApplicationController
   def update
     respond_to do |format|
       if @carne.update(carne_params)
-        format.html { redirect_to @carne, notice: 'Carne was successfully updated.' }
+        format.html { redirect_to @carne, notice: 'Carne atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

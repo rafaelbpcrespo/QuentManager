@@ -5,7 +5,8 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
-         <p class="notice"><%= notice %></p>
+         <p id="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 </head>
 <body>
  
@@ -19,7 +20,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">SiQuitutes</a>
+          <a class="brand" href="/">SiQuitutes</a>
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Clientes", "/clientes"  %></li>
@@ -50,13 +51,24 @@
 
 <div class="container">
   <div class="row">
+      <% if usuario_signed_in? %>
       <div class="span3">
         <h2>Resumo</h2>
           <p> Quantidade de clientes: <%= Cliente.all.count %> </p>
           <p> Total de pedidos hoje: <%= Pedido.de_hoje %> </p>
+          <p> Valor total vendido hoje: R$ <%= Pedido.vendidos_hoje %> </p>
+          <% Carne.all.each do |carne| %>
+            <% if carne.disponibilidade? %>
+          <p> <%= carne.nome %>: <%= carne.quantidade %> disponíveis </p>
+            <% end %>
+        <% end %>
 
         </div>
-      <div class="span8"><%= yield %></div>
+      <div class="span8"><%= yield %>
+      <%= Time.now %></div>
+      <% else %>
+        <%= yield %>
+      <% end %>
   </div>
 </div>
 

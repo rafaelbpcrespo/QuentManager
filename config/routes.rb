@@ -8,7 +8,9 @@ QuentManager::Application.routes.draw do
 
   resources :clientes
 
-  root to: "pedidos#index"
+  resources :home
+
+  root to: "home#index"
 
   # The priority is based upon pedido of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

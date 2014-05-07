@@ -1,5 +1,6 @@
 class ProdutosController < ApplicationController
   before_action :set_produto, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_usuario!
 
   # GET /produtos
   # GET /produtos.json
@@ -28,7 +29,7 @@ class ProdutosController < ApplicationController
 
     respond_to do |format|
       if @produto.save
-        format.html { redirect_to @produto, notice: 'Produto was successfully created.' }
+        format.html { redirect_to @produto, notice: 'Novo Produto cadastrado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @produto }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class ProdutosController < ApplicationController
   def update
     respond_to do |format|
       if @produto.update(produto_params)
-        format.html { redirect_to @produto, notice: 'Produto was successfully updated.' }
+        format.html { redirect_to @produto, notice: 'Produto atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

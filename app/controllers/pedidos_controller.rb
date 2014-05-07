@@ -1,10 +1,11 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_usuario!
 
   # GET /pedidos
   # GET /pedidos.json
   def index
-    @pedidos = Pedido.all
+    @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day)
   end
 
   # GET /pedidos/1
@@ -27,27 +28,30 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
+    descricao = ""
     @pedido = Pedido.new(pedido_params)
     @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     
     @pedido.carne = Carne.where(:nome => params[:carne]).first
-    descricao = "Arroz "+ params[:arroz] 
+      if !params[:arroz].nil?
+        descricao = "Arroz "+ params[:arroz] + ","
+      end
       if params[:feijao] = "Sim"
-        descricao = descricao + ", Feijao, "
+        descricao = descricao + " Feijao, "
       end
 
       if params[:farofa] == "Sim"
-        descricao = descricao + ", Farofa,"
+        descricao = descricao + " Farofa,"
       end
 
     descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
-
+    #@pedido.valor =
     @pedido.descricao = descricao
     respond_to do |format|
       if @pedido.save
         carne = @pedido.carne
         carne.decrescer
-        format.html { redirect_to @pedido, notice: 'Pedido was successfully created.' }
+        format.html { redirect_to @pedido, notice: 'Novo Pedido realizado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
         format.html { render action: 'new' }
@@ -59,7 +63,7 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1
   # PATCH/PUT /pedidos/1.json
   def update
-    #debugger
+    descricao = ""
     parametros = pedido_params
     itens = params[:pedido][:item_de_pedidos_attributes]
     if !itens.nil?
@@ -77,24 +81,27 @@ class PedidosController < ApplicationController
       end
         parametros[:item_de_pedidos_attributes].replace(itens)
     end
-      descricao = "Arroz "+ params[:arroz] 
+      if !params[:arroz].nil?
+        descricao = "Arroz "+ params[:arroz]  + ","
+      end
       if params[:feijao] = "Sim"
-        descricao = descricao + ", Feijao, "
+        descricao = descricao + " Feijao, "
       end
 
       if params[:farofa] == "Sim"
-        descricao = descricao + ", Farofa,"
+        descricao = descricao + " Farofa,"
       end
 
     descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
-
     @pedido.descricao = descricao
-
+    @pedido.calcular_valor
+    parametros[:valor] = @pedido.valor
+    debugger
     respond_to do |format|
       if @pedido.update(parametros)
         carne = @pedido.carne
-        carne.decrescer        
-        format.html { redirect_to @pedido, notice: 'Pedido was successfully updated.' }
+        #carne.decrescer        
+        format.html { redirect_to @pedido, notice: 'Pedido atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
