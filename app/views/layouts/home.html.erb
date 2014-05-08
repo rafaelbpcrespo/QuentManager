@@ -34,7 +34,8 @@
               <li><%= link_to "Cadastre-se", new_usuario_registration_path%></li>
               <% end %>
             
-              <li><% if usuario_signed_in? %>Usuário: <%= current_usuario.email %><%= link_to "Sair", destroy_usuario_session_path, :class => 'btn btn-link btn-xs', :method => :delete %></li>
+              <li><% if usuario_signed_in? %><%= link_to "#{current_usuario.email}", cliente_path(current_usuario.cliente.id) %></li>
+              <li><%= link_to "Sair", destroy_usuario_session_path, :class => 'btn btn-danger', :method => :delete %></li>
   <% else %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :method => :GET, :html => { :class => "navbar-form navbar-right" , :id => ""})  do |f| %>
   <div class="form-group">
