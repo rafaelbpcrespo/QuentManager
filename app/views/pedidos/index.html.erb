@@ -26,13 +26,7 @@
     </tr>
   </thead>
   <tbody>
-  <%# if current_usuario.admin? %>
     <% @pedidos.each do |pedido| %>
-  <%# end %>
-  <%# if !current_usuario.admin? %>
-    <%# pedido = @pedido %>
-  <%# end %>
-
       <tr>
         <td><%= link_to pedido.id, pedido_path(pedido) %></td>
         <td><%= pedido.descricao %></td>
