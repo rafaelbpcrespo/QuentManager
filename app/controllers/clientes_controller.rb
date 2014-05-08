@@ -6,7 +6,11 @@ class ClientesController < ApplicationController
   # GET /clientes
   # GET /clientes.json
   def index
-    @clientes = Cliente.all
+    if current_usuario.admin?
+      @clientes = Cliente.all
+    else
+      @clientes = Cliente.find_all_by_id(current_usuario.cliente.id)
+    end
   end
 
   # GET /clientes/1
