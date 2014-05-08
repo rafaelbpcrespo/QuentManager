@@ -33,7 +33,7 @@
         <td><%= cliente.data_de_nascimento %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
-                      edit_cliente_path(cliente), :class => 'btn btn-primary' %>
+                      edit_usuario_registration_path(cliente), :class => 'btn btn-primary' %>
           <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
                       cliente_path(cliente),
                       :method => :delete,

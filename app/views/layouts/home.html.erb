@@ -30,7 +30,7 @@
               <li><%= link_to "Produtos", "/produtos"  %></li>
               <li><%= link_to "Carnes", "/carnes"  %></li>
               <% end %>
-              <% if usuario_signed_in? %>
+              <% if !usuario_signed_in? %>
               <li><%= link_to "Cadastre-se", new_usuario_registration_path%></li>
               <% end %>
             
