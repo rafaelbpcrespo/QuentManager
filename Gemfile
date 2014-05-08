@@ -9,6 +9,7 @@ gem 'therubyracer'
 gem 'sqlite3'
 
 gem 'devise'
+gem 'cancancan', '~> 1.7'
 
 gem 'nested_form'
 # Use SCSS for stylesheets
