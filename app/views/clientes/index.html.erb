@@ -19,7 +19,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @clientes.each do |cliente| %>
+    <% if current_usuario.admin? %>
+        <% @clientes.each do |cliente| %>
+    <% end %>
+    <% if !current_usuario.admin? %>
+         <% cliente = current_usuario.cliente %>
+    <% end %>
+
       <tr>
         <td><%= link_to cliente.id, cliente_path(cliente) %></td>
         <td><%= cliente.nome %></td>
@@ -33,7 +39,7 @@
         <td><%= cliente.data_de_nascimento %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
-                      edit_cliente_path(cliente), :class => 'btn btn-mini' %>
+                      edit_cliente_path(cliente), :class => 'btn btn-primary' %>
           <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
                       cliente_path(cliente),
                       :method => :delete,

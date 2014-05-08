@@ -6,7 +6,11 @@ class PedidosController < ApplicationController
   # GET /pedidos
   # GET /pedidos.json
   def index
-    @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day)
+    if current_usuario.admin?
+      @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day)
+    else
+      @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day, :cliente_id => current_usuario.cliente.id)
+    end
   end
 
   # GET /pedidos/1
@@ -48,6 +52,9 @@ class PedidosController < ApplicationController
     descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     #@pedido.valor =
     @pedido.descricao = descricao
+    debugger
+    @pedido.calcular_valor
+    #parametros[:valor] = @pedido.valor
     respond_to do |format|
       if @pedido.save
         carne = @pedido.carne
@@ -97,7 +104,6 @@ class PedidosController < ApplicationController
     @pedido.descricao = descricao
     @pedido.calcular_valor
     parametros[:valor] = @pedido.valor
-    debugger
     respond_to do |format|
       if @pedido.update(parametros)
         carne = @pedido.carne

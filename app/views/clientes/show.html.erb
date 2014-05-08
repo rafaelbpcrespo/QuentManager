@@ -26,9 +26,9 @@
 
 <div class="form-actions">
   <%= link_to t('.voltar', :default => t("helpers.links.voltar")),
-              clientes_path, :class => 'btn'  %>
+              clientes_path, :class => 'btn btn-primary'  %>
   <%= link_to t('.editar', :default => t("helpers.links.editar")),
-              edit_cliente_path(@cliente), :class => 'btn' %>
+              edit_cliente_path(@cliente), :class => 'btn btn-primary' %>
   <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
               cliente_path(@cliente),
               :method => 'delete',
