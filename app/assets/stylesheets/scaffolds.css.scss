@@ -36,9 +36,18 @@ div {
 }
 
 //#notice {
-//  color: green;
-//  text-align: center;
-//}
+ .alert-success {
+  background-color: #99FF99;
+  color: green;
+  text-align: center;
+}
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: center;
+   }
 
 .field_with_errors {
   padding: 2px;
@@ -54,7 +63,7 @@ div {
   margin-bottom: 20px;
   background-color: #f0f0f0;
   h2 {
-    text-align: left;
+    text-ign: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
     font-size: 12px;

@@ -1,5 +1,6 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
   before_action :authenticate_usuario!
 
   # GET /pedidos
