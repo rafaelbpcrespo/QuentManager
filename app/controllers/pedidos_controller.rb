@@ -52,7 +52,6 @@ class PedidosController < ApplicationController
     descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     #@pedido.valor =
     @pedido.descricao = descricao
-    debugger
     @pedido.calcular_valor
     #parametros[:valor] = @pedido.valor
     respond_to do |format|

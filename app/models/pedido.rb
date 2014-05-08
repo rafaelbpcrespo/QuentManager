@@ -21,7 +21,6 @@ class Pedido < ActiveRecord::Base
     self.item_de_pedidos.each do |item|
       valor_pedido = valor_pedido + item.produto.valor_unitario
     end
-    debugger
     self.valor = valor_pedido
   end
 end
