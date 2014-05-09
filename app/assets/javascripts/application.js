@@ -11,8 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.maskedinput
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap/bootstrap
 //= require_tree .
 //= vendor/assets/javascripts/bootstrap/bootstrap.js
+
+jQuery(function($){
+  $("#usuario_cliente_attributes_celular").mask("(99)99999-9999");
+  $("#usuario_cliente_attributes_telefone").mask("(99)9999-9999");
+  $("#usuario_cliente_attributes_data_de_nascimento").mask("99/99/9999");
+});
+
