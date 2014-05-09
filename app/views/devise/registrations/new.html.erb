@@ -57,15 +57,6 @@
       <%= cliente_form.text_field :empresa, :class => 'text_field' %>
     </div>
   </div>
-    <% if can? :manage, Carne %>
-  <div class="control-group">
-      <%= f.label :tipo, :class => 'control-label' %>
-      <%= label :tipo, "Admin", :class =>"radio inline" %>
-      <%= f.radio_button :tipo, "Admin" , :checked => true, :value => "Administrador" %>
-      <%= label :tipo, "Usuario", :class =>"radio inline" %>
-      <%= f.radio_button :tipo, "Usuario" , :checked => false, :value => "Usuario" %>
-  </div>
-  <% end %>
   
   <div class="control-group">
       <%= cliente_form.label :sexo, :class => 'control-label' %>
