@@ -15,3 +15,4 @@
 //= require twitter/bootstrap
 //= require bootstrap/bootstrap
 //= require_tree .
+//= vendor/assets/javascripts/bootstrap/bootstrap.js
