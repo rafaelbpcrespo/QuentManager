@@ -10,6 +10,19 @@
     <div class="controls">
       <%= f.text_field :valor_unitario, :class => 'text_field' %>
     </div>
+    </div>
+  <div class="control-group">
+    <%= f.label :tipo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :tipo, ["Bebida", "Carne", "Mantimento", "Tempero"], :prompt => "Selecione", :class => 'text_field' %>
+      <%#= f.text_field :tipo, :class => 'text_field' %>
+    </div>
+    </div>
+  <div class="control-group">
+    <%= f.label :quantidade, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :quantidade, :class => 'text_field' %>
+    </div>
   </div>
 
   <div class="form-actions">

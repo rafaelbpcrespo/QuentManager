@@ -1,7 +1,7 @@
 <%- model_class = Pedido -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
-  <% if Time.now.hour > 6 && Time.now.hour < 17 %>
+  <% if Time.now.hour > 6 && Time.now.hour < 20 %>
 <%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
             new_pedido_path,
             :class => 'btn btn-primary' %>
@@ -47,7 +47,7 @@
     <% end %>
   </tbody>
 </table>
-<% if Time.now.hour > 6 && Time.now.hour < 17 %>
+<% if Time.now.hour > 6 && Time.now.hour < 20 %>
 <%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
             new_pedido_path,
             :class => 'btn btn-primary' %>

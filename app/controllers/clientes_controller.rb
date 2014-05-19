@@ -31,7 +31,7 @@ class ClientesController < ApplicationController
   # POST /clientes.json
   def create
     @cliente = Cliente.new(cliente_params)
-
+    debugger
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'Novo Cliente cadastrado com sucesso.' }
