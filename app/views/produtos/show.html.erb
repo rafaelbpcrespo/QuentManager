@@ -8,6 +8,12 @@
   <dd><%= @produto.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor_unitario) %>:</strong></dt>
   <dd><%= @produto.valor_unitario %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tipo) %>:</strong></dt>
+  <dd><%= @produto.tipo %></dd>  
+  <dt><strong><%= model_class.human_attribute_name(:quantidade) %>:</strong></dt>
+  <dd><%= @produto.quantidade %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:limite_minimo) %>:</strong></dt>
+  <dd><%= @produto.limite_minimo %></dd>
 </dl>
 
 <div class="form-actions">

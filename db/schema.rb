@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519154126) do
+ActiveRecord::Schema.define(version: 20140520175831) do
 
   create_table "carnes", force: true do |t|
     t.string   "nome"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140519154126) do
     t.datetime "updated_at"
     t.string   "tipo"
     t.integer  "quantidade"
+    t.string   "limite_minimo"
   end
 
   create_table "usuarios", force: true do |t|
