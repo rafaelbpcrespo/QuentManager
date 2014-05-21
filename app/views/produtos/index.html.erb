@@ -28,6 +28,8 @@
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
                       edit_produto_path(produto), :class => 'btn btn-mini' %>
+          <%= link_to t('.atualizar', :default => t("helpers.links.atualizar")),
+                      atualizar_produto_path(produto), method: :post, :class => 'btn btn-mini' %>
           <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
                       produto_path(produto),
                       :method => :delete,

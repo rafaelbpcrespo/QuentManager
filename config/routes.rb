@@ -2,7 +2,14 @@ QuentManager::Application.routes.draw do
   resources :carnes
 
   devise_for :usuarios, :controllers => { :registrations => "registrations"}
-  resources :produtos
+  
+  #match "/produtos/atualizar/:id" => "produtos#atualizar", via: [:get, :post]
+  resources :produtos do
+    member do
+      post :atualizar
+      post :atualizar_estoque
+    end
+  end
 
   resources :pedidos
 

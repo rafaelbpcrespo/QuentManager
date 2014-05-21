@@ -63,6 +63,24 @@ class ProdutosController < ApplicationController
     end
   end
 
+  def atualizar
+
+  end
+
+  def atualizar_estoque
+    produto = Produto.find(params[:id])
+    quantidade = params[:qtd]
+    debugger
+    if params[:tipo] == "Adicionar"
+    #if tipo == "Adicionar"
+      produto.atualizar(quantidade)
+    elsif params[:tipo] == "Subtrair"
+      quantidade = quantidade * (-1)
+      produto.atualizar(quantidade)
+    end
+    redirect_to produto_path(produto)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_produto
