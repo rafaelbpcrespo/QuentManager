@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20140520175831) do
     t.datetime "updated_at"
     t.string   "tipo"
     t.integer  "quantidade"
-    t.string   "limite_minimo"
+    t.integer  "limite_minimo"
   end
 
   create_table "usuarios", force: true do |t|

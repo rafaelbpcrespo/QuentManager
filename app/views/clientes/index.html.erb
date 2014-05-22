@@ -30,7 +30,7 @@
         <td><%= cliente.complemento %></td>
         <td><%= cliente.empresa %></td>
         <td><%= cliente.sexo %></td>
-        <td><%= cliente.data_de_nascimento %></td>
+        <td><%=l cliente.data_de_nascimento %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
                       edit_cliente_path(cliente), :class => 'btn btn-primary' %>

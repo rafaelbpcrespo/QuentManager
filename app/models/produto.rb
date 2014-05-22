@@ -4,8 +4,18 @@ class Produto < ActiveRecord::Base
 
   validates :tipo, :nome, :quantidade, :valor_unitario, presence: true
 
+  scope :bebidas, -> { where(tipo: "Bebida") }
+
   def atualizar(quantidade)
     self.quantidade = self.quantidade + quantidade
     self.save
+  end
+
+  def abaixo_do_limite?
+    if  self.quantidade <= self.limite_minimo
+      return true
+    else
+      return false
+    end
   end
 end

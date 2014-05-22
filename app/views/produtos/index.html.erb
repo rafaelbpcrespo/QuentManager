@@ -8,8 +8,8 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:valor_unitario) %></th>
-      <th><%= model_class.human_attribute_name(:quantidade) %></th>
       <th><%= model_class.human_attribute_name(:tipo) %></th>
+      <th><%= model_class.human_attribute_name(:quantidade) %></th>
       <th><%= model_class.human_attribute_name(:limite_minimo) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.ações', :default => t("helpers.ações") %></th>
@@ -27,9 +27,9 @@
         <td><%=l produto.created_at %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
-                      edit_produto_path(produto), :class => 'btn btn-mini' %>
-          <%= link_to t('.atualizar', :default => t("helpers.links.atualizar")),
-                      atualizar_produto_path(produto), method: :post, :class => 'btn btn-mini' %>
+                      edit_produto_path(produto), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to t('.adicionar/subtrair', :default => t("helpers.links.adicionar/subtrair")),
+                      atualizar_produto_path(produto), method: :post, :class => 'btn btn-mini btn-primary' %>
           <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
                       produto_path(produto),
                       :method => :delete,

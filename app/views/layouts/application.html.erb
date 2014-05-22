@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "bootstrap/bootstrap.js", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
-         <p clas="alert-success"><%= notice %></p>
+         <p class="alert-success"><%= notice %></p>
         <p class="alert-error"><%= alert %></p>
 </head>
 <body>
@@ -75,10 +75,16 @@
           <p> <%= carne.nome %>: <%= carne.quantidade %> disponíveis </p>
             <% end %>
         <% end %>
+        <h4> Produtos abaixo do limite </h4>
+        <% Produto.all.each do |produto| %>
+            <% if produto.abaixo_do_limite? %>
+          <p> <%= produto.nome %> </p>
+            <% end %>
+        <% end %>
 
         </div>
       <div class="span8"><%= yield %>
-      <%= Time.now %></div>
+      </div>
       <% else %>
         <%= yield %>
       <% end %>
