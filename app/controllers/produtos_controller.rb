@@ -69,10 +69,8 @@ class ProdutosController < ApplicationController
 
   def atualizar_estoque
     produto = Produto.find(params[:id])
-    quantidade = params[:qtd]
-    debugger
+    quantidade = params[:qtd].to_i
     if params[:tipo] == "Adicionar"
-    #if tipo == "Adicionar"
       produto.atualizar(quantidade)
     elsif params[:tipo] == "Subtrair"
       quantidade = quantidade * (-1)

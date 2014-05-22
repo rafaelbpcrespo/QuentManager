@@ -25,13 +25,14 @@ class ClientesController < ApplicationController
 
   # GET /clientes/1/edit
   def edit
+    #Tratando retorno de data do Banco de Dados
+    @cliente.data_de_nascimento = @cliente.data_de_nascimento.to_s.split(/\-/).reverse.join('/')
   end
 
   # POST /clientes
   # POST /clientes.json
   def create
     @cliente = Cliente.new(cliente_params)
-    debugger
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'Novo Cliente cadastrado com sucesso.' }

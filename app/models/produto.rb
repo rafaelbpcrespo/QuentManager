@@ -5,8 +5,6 @@ class Produto < ActiveRecord::Base
   validates :tipo, :nome, :quantidade, :valor_unitario, presence: true
 
   def atualizar(quantidade)
-    debugger
-    quantidade = quantidade.to_i
     self.quantidade = self.quantidade + quantidade
     self.save
   end
