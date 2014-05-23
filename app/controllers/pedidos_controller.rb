@@ -33,7 +33,6 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
-    debugger
     descricao = ""
     @pedido = Pedido.new(pedido_params)
     @pedido.cliente = Cliente.find(current_usuario.cliente.id)
