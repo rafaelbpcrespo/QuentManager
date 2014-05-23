@@ -33,6 +33,7 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
+    debugger
     descricao = ""
     @pedido = Pedido.new(pedido_params)
     @pedido.cliente = Cliente.find(current_usuario.cliente.id)
@@ -52,8 +53,24 @@ class PedidosController < ApplicationController
     descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     #@pedido.valor =
     @pedido.descricao = descricao
-    @pedido.calcular_valor
+    itens = params[:pedido][:item_de_pedidos_attributes]
+    if !itens.nil?
+      for i in 0..params[:pedido][:item_de_pedidos_attributes].count do
+        if itens["#{i}"] != nil
+          if itens["#{i}"][:_destroy] == "false"
+            itens.delete("#{i}")
+          end
+        end
+      end
+    end
+    if !itens.blank?
+      @pedido.calcular_valor
+      else
+        @pedido.valor = 0
+      end
     #parametros[:valor] = @pedido.valor
+
+
     respond_to do |format|
       if @pedido.save
         carne = @pedido.carne
@@ -88,6 +105,12 @@ class PedidosController < ApplicationController
       end
         parametros[:item_de_pedidos_attributes].replace(itens)
     end
+
+      if !itens.blank?
+        @pedido.calcular_valor
+      else
+        @pedido.valor = 0
+      end
       if !params[:arroz].nil?
         descricao = "Arroz "+ params[:arroz]  + ","
       end
@@ -101,7 +124,7 @@ class PedidosController < ApplicationController
 
     descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     @pedido.descricao = descricao
-    @pedido.calcular_valor
+    #@pedido.calcular_valor
     parametros[:valor] = @pedido.valor
     respond_to do |format|
       if @pedido.update(parametros)
