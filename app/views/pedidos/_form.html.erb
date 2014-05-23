@@ -67,7 +67,7 @@
   <%= f.label :produto, :class => 'control-label' %> 
    <div class="controls">
     <%= f.fields_for :item_de_pedidos do |item| %>
-      <%= item.collection_select :produto_id, Produto.all, :id, :nome, :class => 'text_field' %>
+      <%= item.collection_select :produto_id, Produto.bebidas, :id, :nome, :class => 'text_field' %>
       <%= item.link_to_remove "Remover este item" %>
     <% end %>
 <p><%= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>
