@@ -19,7 +19,7 @@ class Pedido < ActiveRecord::Base
   def calcular_valor
     valor_pedido = 0
     self.item_de_pedidos.each do |item|
-      valor_pedido = valor_pedido + item.produto.valor_unitario
+      valor_pedido = valor_pedido + (item.produto.valor_unitario * item.quantidade)
     end
     self.valor = valor_pedido
   end
