@@ -67,7 +67,9 @@
   <%= f.label :produto, :class => 'control-label' %> 
    <div class="controls">
     <%= f.fields_for :item_de_pedidos do |item| %>
+    <% debugger %>
       <%= item.collection_select :produto_id, Produto.bebidas, :id, :nome, :prompt => "Nenhuma", :class => 'text_field' %>
+      <%= item.select :quantidade, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10',10]], :selected => item.object.quantidade), :prompt => 0, :class => 'select_field' %>
       <%= item.link_to_remove "Remover este item" %>
     <% end %>
 <p><%= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>

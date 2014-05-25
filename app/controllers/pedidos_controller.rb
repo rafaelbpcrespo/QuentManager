@@ -27,6 +27,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1/edit
   def edit
+    debugger
     @carnes_disponiveis = Carne.where(:disponibilidade => true)
   end
 
@@ -50,23 +51,29 @@ class PedidosController < ApplicationController
       end
 
     descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
-    #@pedido.valor =
     @pedido.descricao = descricao
     itens = params[:pedido][:item_de_pedidos_attributes]
+    debugger
     if !itens.nil?
       for i in 0..params[:pedido][:item_de_pedidos_attributes].count do
         if itens["#{i}"] != nil
-          if itens["#{i}"][:_destroy] == "false"
+          if itens["#{i}"][:produto_id].blank?
             itens.delete("#{i}")
           end
+        else
+          itens.delete("#{i}")
         end
       end
     end
-    if !itens.blank?
-      @pedido.calcular_valor
+      if !itens.blank?
+        @pedido.calcular_valor
       else
+        @pedido.item_de_pedidos.destroy_all
         @pedido.valor = 0
       end
+      debugger
+      params[:pedido][:item_de_pedidos_attributes].replace(itens)
+
     #parametros[:valor] = @pedido.valor
 
 
@@ -89,19 +96,26 @@ class PedidosController < ApplicationController
     descricao = ""
     parametros = pedido_params
     itens = params[:pedido][:item_de_pedidos_attributes]
+    vetor_itens = params[:pedido][:item_de_pedidos_attributes].to_a
     if !itens.nil?
-      for i in 0..params[:pedido][:item_de_pedidos_attributes].count do
-        if itens["#{i}"] != nil
-          if itens["#{i}"][:_destroy] == "1"
-            codigo_item = itens["#{i}"][:id]
+      for indice in 0..vetor_itens.count do
+        debugger
+        if vetor_itens[indice] != nil
+          puts "DELETAR"
+          if vetor_itens[indice][1][:_destroy] == "1"
+            codigo_item = vetor_itens[indice][1]
             item = ItemDePedido.find(codigo_item.to_i)
             item.destroy
-            itens.delete("#{i}")
-          else
-            itens.delete("#{i}")
+            itens.delete("#{vetor_itens[indice][0]}")
+          elsif vetor_itens[indice][1][:produto_id].blank?
+            puts "IGNORAR"
+            itens.delete("#{vetor_itens[indice][0]}")
+            debugger
+            #itens.delete("#{i}")
           end
         end
       end
+      debugger
         parametros[:item_de_pedidos_attributes].replace(itens)
     end
 
@@ -126,6 +140,7 @@ class PedidosController < ApplicationController
     #@pedido.calcular_valor
     parametros[:valor] = @pedido.valor
     respond_to do |format|
+      debugger
       if @pedido.update(parametros)
         carne = @pedido.carne
         #carne.decrescer        
@@ -156,6 +171,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :valor, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :_destroy])
+      params.require(:pedido).permit(:descricao, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end
