@@ -12,6 +12,16 @@ p, ol, ul, td {
   line-height: 18px;
 }
 
+span {
+  color: #000;
+}
+
+.btn-default:focus, .btn-default:hover, .btn-default {
+  background-color: rgb(225, 0, 0);
+  bordero-color: #ADADAD;
+  color: #000000;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;

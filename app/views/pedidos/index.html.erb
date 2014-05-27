@@ -1,12 +1,12 @@
 <%- model_class = Pedido -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
-  <% if Time.now.hour > 6 && Time.now.hour < 20 %>
+  <% if Time.now.hour > 6 && Time.now.hour < 10 %>
 <%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
             new_pedido_path,
             :class => 'btn btn-primary' %>
             <% else %> 
-<%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
+<%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
             "#",
             :class => 'btn btn-default' %>
             <% end %>
@@ -47,12 +47,12 @@
     <% end %>
   </tbody>
 </table>
-<% if Time.now.hour > 6 && Time.now.hour < 20 %>
+<% if Time.now.hour > 6 && Time.now.hour < 10 %>
 <%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
             new_pedido_path,
             :class => 'btn btn-primary' %>
             <% else %> 
-<%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
+<%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
             "#",
             :class => 'btn btn-default' %>
             <% end %>
