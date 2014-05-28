@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520175831) do
+ActiveRecord::Schema.define(version: 20140528192111) do
 
-  create_table "carnes", force: true do |t|
+  create_table "cardapios", force: true do |t|
     t.string   "nome"
     t.integer  "quantidade"
     t.boolean  "disponibilidade"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tipo"
   end
 
   create_table "clientes", force: true do |t|
@@ -51,7 +52,7 @@ ActiveRecord::Schema.define(version: 20140520175831) do
     t.string   "forma_de_pagamento"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "carne_id"
+    t.integer  "cardapio_id"
   end
 
   create_table "produtos", force: true do |t|

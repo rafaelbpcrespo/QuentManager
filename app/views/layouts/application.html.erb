@@ -29,9 +29,9 @@
             <ul class="nav navbar-nav">
               <li><%= link_to "Clientes", "/clientes"  %></li>
               <li><%= link_to "Pedidos", "/pedidos"  %></li>
-              <% if can? :manage, Carne %>
+              <% if can? :manage, Cardapio %>
               <li><%= link_to "Produtos", "/produtos"  %></li>
-              <li><%= link_to "Carnes", "/carnes"  %></li>
+              <li><%= link_to "Cardapios", "/cardapios"  %></li>
               <% end %>
               <% if !usuario_signed_in? %>
               <li><%= link_to "Cadastre-se", new_usuario_registration_path%></li>
@@ -70,9 +70,9 @@
           <p> Quantidade de clientes: <%= Cliente.all.count %> </p>
           <p> Total de pedidos hoje: <%= Pedido.de_hoje %> </p>
           <p> Valor total vendido hoje: R$ <%= Pedido.vendidos_hoje %> </p>
-          <% Carne.all.each do |carne| %>
-            <% if carne.disponibilidade? %>
-          <p> <%= carne.nome %>: <%= carne.quantidade %> disponíveis </p>
+          <% Cardapio.all.each do |cardapio| %>
+            <% if cardapio.disponibilidade? %>
+          <p> <%= cardapio.nome %>: <%= cardapio.quantidade %> disponíveis </p>
             <% end %>
         <% end %>
         <h4> Produtos abaixo do limite </h4>

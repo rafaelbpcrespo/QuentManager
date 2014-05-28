@@ -20,7 +20,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/new
   def new
-    @carnes_disponiveis = Carne.where(:disponibilidade => true)
+    @cardapios_disponiveis = Carne.where(:disponibilidade => true)
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
   end
@@ -28,7 +28,7 @@ class PedidosController < ApplicationController
   # GET /pedidos/1/edit
   def edit
     debugger
-    @carnes_disponiveis = Carne.where(:disponibilidade => true)
+    @cardapios_disponiveis = Carne.where(:disponibilidade => true)
   end
 
   # POST /pedidos
@@ -38,7 +38,7 @@ class PedidosController < ApplicationController
     @pedido = Pedido.new(pedido_params)
     @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     
-    @pedido.carne = Carne.where(:nome => params[:carne]).first
+    @pedido.cardapio = Cardapio.where(:nome => params[:carne]).first
       if !params[:arroz].nil?
         descricao = "Arroz "+ params[:arroz] + ","
       end
@@ -50,7 +50,7 @@ class PedidosController < ApplicationController
         descricao = descricao + " Farofa,"
       end
 
-    descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+    descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     @pedido.descricao = descricao
     itens = params[:pedido][:item_de_pedidos_attributes]
     debugger
@@ -79,8 +79,8 @@ class PedidosController < ApplicationController
 
     respond_to do |format|
       if @pedido.save
-        carne = @pedido.carne
-        carne.decrescer
+        cardapio = @pedido.cardapio
+        cardapio.decrescer
         format.html { redirect_to @pedido, notice: 'Novo Pedido realizado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
@@ -135,14 +135,14 @@ class PedidosController < ApplicationController
         descricao = descricao + " Farofa,"
       end
 
-    descricao = descricao + params[:carne] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+    descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     @pedido.descricao = descricao
     #@pedido.calcular_valor
     parametros[:valor] = @pedido.valor
     respond_to do |format|
       debugger
       if @pedido.update(parametros)
-        carne = @pedido.carne
+        cardapio = @pedido.cardapio
         #carne.decrescer        
         format.html { redirect_to @pedido, notice: 'Pedido atualizado com sucesso.' }
         format.json { head :no_content }

@@ -40,11 +40,11 @@
   </div>
 
 <div class="control-group">
-    <%= f.label :carne, :class => 'control-label' %>
-    <% @carnes_disponiveis.each do |carne| %>
+    <%= f.label :cardapio, :class => 'control-label' %>
+    <% @cardapios_disponiveis.each do |cardapio| %>
     <div class="controls">
-      <%= radio_button_tag :carne, "#{carne.nome}", :value => "#{carne.nome}" %>
-      <%= label :carne, "#{carne.nome}", :class =>"radio inline" %>
+      <%= radio_button_tag :cardapio, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
+      <%= label :cardapio, "#{cardapio.nome}", :class =>"radio inline" %>
     </div>
     <% end %>
   </div>
