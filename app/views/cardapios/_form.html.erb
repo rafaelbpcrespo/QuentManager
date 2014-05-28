@@ -11,6 +11,14 @@
       <%= f.text_field :quantidade, :class => 'text_field' %>
     </div>
   </div>
+
+    <div class="control-group">
+      <%= f.label :tipo, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :tipo, ["Carne", "Acompanhamento", "Salada"], :prompt => "Selecione", :class => 'text_field' %>
+      </div>
+    </div>
+
 <div class="control-group">
       <%= f.label :disponibilidade, :class => 'control-label' %>
       <%= label :disponibilidade, "Ativar", :class =>"radio inline" %>

@@ -20,7 +20,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/new
   def new
-    @cardapios_disponiveis = Carne.where(:disponibilidade => true)
+    @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
   end
@@ -28,7 +28,7 @@ class PedidosController < ApplicationController
   # GET /pedidos/1/edit
   def edit
     debugger
-    @cardapios_disponiveis = Carne.where(:disponibilidade => true)
+    @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
   end
 
   # POST /pedidos

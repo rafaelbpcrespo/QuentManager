@@ -70,6 +70,6 @@ class CardapiosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cardapio_params
-      params.require(:cardapio).permit(:nome, :quantidade, :disponibilidade)
+      params.require(:cardapio).permit(:nome, :quantidade, :disponibilidade, :tipo)
     end
 end

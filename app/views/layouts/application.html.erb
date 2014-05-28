@@ -70,7 +70,7 @@
           <p> Quantidade de clientes: <%= Cliente.all.count %> </p>
           <p> Total de pedidos hoje: <%= Pedido.de_hoje %> </p>
           <p> Valor total vendido hoje: R$ <%= Pedido.vendidos_hoje %> </p>
-          <% Cardapio.all.each do |cardapio| %>
+          <% Cardapio.carne.each do |cardapio| %>
             <% if cardapio.disponibilidade? %>
           <p> <%= cardapio.nome %>: <%= cardapio.quantidade %> disponíveis </p>
             <% end %>
