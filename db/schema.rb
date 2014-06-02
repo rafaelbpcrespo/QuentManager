@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528192111) do
+ActiveRecord::Schema.define(version: 20140602140736) do
 
   create_table "cardapios", force: true do |t|
     t.string   "nome"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20140528192111) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "usuario_id"
+    t.string   "setro"
+    t.string   "cargo"
+    t.string   "setor"
+    t.string   "cpf"
+    t.date     "data_de_pagamento"
   end
 
   create_table "item_de_pedidos", force: true do |t|
