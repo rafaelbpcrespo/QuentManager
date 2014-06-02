@@ -42,8 +42,8 @@
   </div>
 
   <div class="form-actions">
-    <%= submit_tag "Adicionar", :class => 'btn btn-primary' %>
-    <%= link_to t('.atualizar_estoque', :default => t("helpers.links.atualizar_estoque")),
+    <%= submit_tag "Confirmar", :class => 'btn btn-primary' %>
+    <%#= link_to t('.atualizar_estoque', :default => t("helpers.links.atualizar_estoque")),
                       atualizar_estoque_produto_path, method: :post, :class => 'btn btn-mini' %>
     <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
                 produtos_path, :class => 'btn' %>
