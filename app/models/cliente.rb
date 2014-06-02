@@ -1,6 +1,7 @@
 class Cliente < ActiveRecord::Base
   has_many :pedidos
   belongs_to :usuario
+  belongs_to :empresa
 
   def formatar_data
     data = I18n.l(self.data_de_nascimento)

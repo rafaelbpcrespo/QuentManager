@@ -1,4 +1,6 @@
 QuentManager::Application.routes.draw do
+  resources :empresas
+
   resources :cardapios
 
   devise_for :usuarios, :controllers => { :registrations => "registrations"}

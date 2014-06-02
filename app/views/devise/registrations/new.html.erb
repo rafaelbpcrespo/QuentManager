@@ -30,7 +30,8 @@
       <div class="control-group">
         <%= cliente_form.label :empresa, :class => 'control-label' %>
         <div class="controls">
-          <%= cliente_form.select :empresa, options_for_select([["Ventura","Ventura"], ["Halliburton","Halliburton"], ["Aker","Aker"]]), :prompt => "Selecione", :class => 'text_field' %>
+          <%= cliente_form.collection_select :empresa_id, Empresa.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
+          <%#= cliente_form.select :empresa, options_for_select([["Ventura","Ventura"], ["Halliburton","Halliburton"], ["Aker","Aker"]]), :prompt => "Selecione", :class => 'text_field' %>
         </div>
       </div>
       <div class="control-group">
