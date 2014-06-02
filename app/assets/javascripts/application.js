@@ -22,9 +22,7 @@ jQuery(function($){
   $("#usuario_cliente_attributes_celular").mask("(99)99999-9999");
   $("#usuario_cliente_attributes_telefone").mask("(99)9999-9999");
   $("#usuario_cliente_attributes_data_de_nascimento").mask("99/99/9999");
-  $("#usuario_cliente_attributes_data_de_pagamento").mask("99/99/9999");
   $("#cliente_data_de_nascimento").mask("99/99/9999");
-  $("#cliente_data_de_pagamento").mask("99/99/9999");
 });
 
 

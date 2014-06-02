@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140602140736) do
     t.string   "cargo"
     t.string   "setor"
     t.string   "cpf"
-    t.date     "data_de_pagamento"
+    t.string   "data_de_pagamento"
   end
 
   create_table "item_de_pedidos", force: true do |t|

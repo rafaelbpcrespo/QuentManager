@@ -5,6 +5,14 @@
       <%= f.text_field :nome, :class => 'text_field' %>
     </div>
   </div>
+  
+  <div class="control-group">
+    <%= f.label :cpf, "CPF", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cpf, :class => 'text_field' %>
+    </div>
+  </div>
+
   <div class="control-group">
     <%= f.label :celular, :class => 'control-label' %>
     <div class="controls">
@@ -38,15 +46,37 @@
   <div class="control-group">
     <%= f.label :empresa, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :empresa, :class => 'text_field' %>
+      <%= f.select :empresa, options_for_select([["Ventura","Ventura"], ["Halliburton","Halliburton"], ["Aker","Aker"]], :selected => f.object.empresa), :class => 'text_field' %>
     </div>
   </div>
+
+  <div class="control-group">
+    <%= f.label :cargo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cargo, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :setor, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :setor, :class => 'text_field' %>
+    </div>
+  </div>
+
   <div class="control-group">
       <%= f.label :sexo, :class => 'control-label' %>
       <%= label :sexo, "M", :class =>"radio inline" %>
       <%= f.radio_button :sexo, "M" , :checked => true, :value => "Masculino" %>
       <%= label :sexo, "F", :class =>"radio inline" %>
       <%= f.radio_button :sexo, "F" , :checked => false, :value => "Feminino" %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :data_de_pagamento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_de_pagamento, :class => 'text_field' %>
+    </div>
   </div>
 
   <div class="control-group">
