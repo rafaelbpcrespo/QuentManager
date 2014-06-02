@@ -43,7 +43,7 @@
     <%= f.label :cardapio, :class => 'control-label' %>
     <% @carnes_disponiveis.each do |cardapio| %>
     <div class="controls">
-      <%= radio_button_tag :cardapio, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
+      <%= check_box_tag :cardapio, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
       <%= label :cardapio, "#{cardapio.nome}", :class =>"radio inline" %>
     </div>
     <% end %>
@@ -96,3 +96,7 @@
                 pedidos_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+checkboxlimit(document.forms.new_pedido.cardapio,1)
+</script>
