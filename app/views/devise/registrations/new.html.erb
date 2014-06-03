@@ -28,7 +28,7 @@
     <fieldset class="teste">
       <legend>Dados Profissionais</legend>
       <div class="control-group">
-        <%= cliente_form.label :empresa, :class => 'control-label' %>
+        <%= cliente_form.label :empresa_id, "Empresa", :class => 'control-label' %>
         <div class="controls">
           <%= cliente_form.collection_select :empresa_id, Empresa.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
           <%#= cliente_form.select :empresa, options_for_select([["Ventura","Ventura"], ["Halliburton","Halliburton"], ["Aker","Aker"]]), :prompt => "Selecione", :class => 'text_field' %>

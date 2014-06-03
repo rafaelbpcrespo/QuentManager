@@ -36,7 +36,9 @@ class PedidosController < ApplicationController
   def create
     descricao = ""
     @pedido = Pedido.new(pedido_params)
-    @pedido.cliente = Cliente.find(current_usuario.cliente.id)
+    if @pedido.cliente.nil?
+      @pedido.cliente = Cliente.find(current_usuario.cliente.id)
+    end
     
     @pedido.cardapio = Cardapio.where(:nome => params[:carne]).first
       if !params[:arroz].nil?
