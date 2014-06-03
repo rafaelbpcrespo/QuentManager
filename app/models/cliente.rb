@@ -3,6 +3,8 @@ class Cliente < ActiveRecord::Base
   belongs_to :usuario
   belongs_to :empresa
 
+  validates :nome, presence: true
+
   def formatar_data
     data = I18n.l(self.data_de_nascimento)
   end
