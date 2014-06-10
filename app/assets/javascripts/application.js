@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery.maskedinput
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require bootstrap/bootstrap
 //= require_tree .
 //= vendor/assets/javascripts/bootstrap/bootstrap.js
