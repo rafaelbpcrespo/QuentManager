@@ -13,9 +13,7 @@
 //= require jquery
 //= require jquery.maskedinput
 //= require jquery_ujs
-//= require bootstrap/bootstrap
 //= require_tree .
-//= vendor/assets/javascripts/bootstrap/bootstrap.js
 
 jQuery(function($){
   $("#usuario_cliente_attributes_celular").mask("(99)99999-9999");

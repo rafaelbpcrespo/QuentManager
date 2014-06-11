@@ -23,7 +23,7 @@ QuentManager::Application.configure do
   config.active_record.migration_error = :page_load
 
 config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-c#onfig.action_mailer.default_url_options = { :host => 'http://siquitutes.herokuapp.com' }
+#onfig.action_mailer.default_url_options = { :host => 'http://siquitutes.herokuapp.com' }
 
 
   #These settings are for the sending out email for active admin and consequently the   devise mailer
@@ -38,7 +38,7 @@ c#onfig.action_mailer.default_url_options = { :host => 'http://siquitutes.heroku
     :domain             => 'gmail.com', #you can also use google.com
     :authentication     => :plain,
     :user_name          => 'rafaelbpcrespo@gmail.com',
-    :password           => '17rafa12R'
+    :password           => '17rafa12R',
     :enable_starttls_auto => true
 }
 

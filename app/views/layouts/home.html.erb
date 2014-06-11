@@ -3,28 +3,22 @@
 <head>
   <title>QuentManager</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%= stylesheet_link_tag    "bootstrap.min.css", media: "all", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "bootstrap/bootstrap.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "bootstrap.min.js", "data-turbolinks-track" => false %>
+
   <%= csrf_meta_tags %>
          <p clas="alert-success"><%= notice %></p>
         <p class="alert-error"><%= alert %></p>
 </head>
 <body>
- 
-
-
-    <div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
       <div class="navbar navbar-inner" role="navigation">
         <div class="container">
           <!-- <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"> -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+
             <a class="brand" href="/">SiQuitutes</a>
-          </div>
+          
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li><%= link_to "Clientes", "/clientes"  %></li>
@@ -61,6 +55,9 @@
         </div>
       </div>
 
+ 
+
+    
 
 <div class="container">
   <div class="row">
