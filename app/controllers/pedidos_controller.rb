@@ -27,7 +27,6 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1/edit
   def edit
-    debugger
     @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
   end
 
@@ -55,7 +54,7 @@ class PedidosController < ApplicationController
     descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     @pedido.descricao = descricao
     itens = params[:pedido][:item_de_pedidos_attributes]
-    debugger
+
     if !itens.nil?
       for i in 0..params[:pedido][:item_de_pedidos_attributes].count do
         if itens["#{i}"] != nil
@@ -73,7 +72,6 @@ class PedidosController < ApplicationController
         @pedido.item_de_pedidos.destroy_all
         @pedido.valor = 0
       end
-      debugger
       params[:pedido][:item_de_pedidos_attributes].replace(itens)
 
     #parametros[:valor] = @pedido.valor
@@ -101,7 +99,6 @@ class PedidosController < ApplicationController
     vetor_itens = params[:pedido][:item_de_pedidos_attributes].to_a
     if !itens.nil?
       for indice in 0..vetor_itens.count do
-        debugger
         if vetor_itens[indice] != nil
           puts "DELETAR"
           if vetor_itens[indice][1][:_destroy] == "1"
@@ -112,12 +109,10 @@ class PedidosController < ApplicationController
           elsif vetor_itens[indice][1][:produto_id].blank?
             puts "IGNORAR"
             itens.delete("#{vetor_itens[indice][0]}")
-            debugger
             #itens.delete("#{i}")
           end
         end
       end
-      debugger
         parametros[:item_de_pedidos_attributes].replace(itens)
     end
 
@@ -142,7 +137,6 @@ class PedidosController < ApplicationController
     #@pedido.calcular_valor
     parametros[:valor] = @pedido.valor
     respond_to do |format|
-      debugger
       if @pedido.update(parametros)
         cardapio = @pedido.cardapio
         #carne.decrescer        
