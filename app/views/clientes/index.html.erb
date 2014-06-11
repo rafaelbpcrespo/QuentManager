@@ -9,7 +9,7 @@
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:celular) %></th>
       <th><%= model_class.human_attribute_name(:ramal) %></th>
-      <th><%= model_class.human_attribute_name(:empresa) %></th>
+      <th><%#= model_class.human_attribute_name(:empresa) %></th>
       <th><%= model_class.human_attribute_name(:sexo) %></th>
       <th><%= model_class.human_attribute_name(:data_de_nascimento) %></th>
       <th>Ações</th>
@@ -22,7 +22,7 @@
         <td><%= cliente.nome_abreviado %></td>
         <td><%= cliente.celular %></td>
         <td><%= cliente.ramal %></td>
-        <td><%= cliente.empresa.nome %></td>
+        <td><%#= cliente.empresa.nome %></td>
         <td><%= cliente.sexo %></td>
         <td><%=l cliente.data_de_nascimento %></td>
         <td>
