@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602184356) do
+ActiveRecord::Schema.define(version: 20140626200552) do
 
   create_table "cardapios", force: true do |t|
     t.string   "nome"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 20140602184356) do
     t.string   "cpf"
     t.string   "data_de_pagamento"
     t.integer  "empresa_id"
+    t.string   "rg"
+    t.string   "numero"
+    t.string   "bairro"
+    t.string   "cidade"
+    t.string   "telefone_empresa"
+    t.string   "celular_empresa"
+    t.string   "email_empresa"
   end
 
   create_table "empresas", force: true do |t|
