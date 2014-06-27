@@ -7,11 +7,12 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:cpf) %></th>
       <th><%= model_class.human_attribute_name(:celular) %></th>
       <th><%= model_class.human_attribute_name(:ramal) %></th>
-      <th><%#= model_class.human_attribute_name(:empresa) %></th>
+      <th><%= model_class.human_attribute_name(:empresa) %></th>
       <th><%= model_class.human_attribute_name(:sexo) %></th>
-      <th><%#= model_class.human_attribute_name(:data_de_nascimento) %></th>
+      <th><%= model_class.human_attribute_name(:data_de_nascimento) %></th>
       <th>Ações</th>
     </tr>
   </thead>
@@ -20,11 +21,12 @@
       <tr>
         <td><%= link_to cliente.id, cliente_path(cliente) %></td>
         <td><%= cliente.nome_abreviado %></td>
+        <td><%= cliente.cpf %></td>
         <td><%= cliente.celular %></td>
         <td><%= cliente.ramal %></td>
-        <td><%#= cliente.empresa.nome %></td>
+        <td><%= cliente.empresa.nome %></td>
         <td><%= cliente.sexo %></td>
-        <td><%#=l cliente.data_de_nascimento %></td>
+        <td><%=l cliente.data_de_nascimento %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
                       edit_cliente_path(cliente), :class => 'btn btn-primary' %>
