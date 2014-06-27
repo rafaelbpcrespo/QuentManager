@@ -11,7 +11,9 @@ class Cliente < ActiveRecord::Base
 
   def nome_abreviado
     nomes = self.nome.split
-    return nomes[0] + " " + nomes[1]
+    if nomes.count > 2
+      return nomes[0] + " " + nomes[1]
+    end
   end
   # def data_de_nascimento_str=(data_de_nascimento_str)
   #   self.data_de_nascimento = self.data_de_nascimento_str
