@@ -12,7 +12,6 @@
       <th><%= model_class.human_attribute_name(:ramal) %></th>
       <th><%= model_class.human_attribute_name(:empresa) %></th>
       <th><%= model_class.human_attribute_name(:sexo) %></th>
-      <th><%= model_class.human_attribute_name(:data_de_nascimento) %></th>
       <th>Ações</th>
     </tr>
   </thead>
@@ -26,7 +25,6 @@
         <td><%= cliente.ramal %></td>
         <td><%= cliente.empresa.nome %></td>
         <td><%= cliente.sexo %></td>
-        <td><%=l cliente.data_de_nascimento %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
                       edit_cliente_path(cliente), :class => 'btn btn-primary' %>
