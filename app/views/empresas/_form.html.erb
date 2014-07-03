@@ -17,7 +17,12 @@
       <%= f.text_field :endereco, :class => 'text_field' %>
     </div>
   </div>
-
+  <div class="control-group">
+    <%= f.label :observacao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :observacao, :class => 'text_field' %>
+    </div>
+  </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
