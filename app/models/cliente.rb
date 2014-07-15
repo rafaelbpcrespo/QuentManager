@@ -15,6 +15,14 @@ class Cliente < ActiveRecord::Base
       return nomes[0] + " " + nomes[1]
     end
   end
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['nome LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
   # def data_de_nascimento_str=(data_de_nascimento_str)
   #   self.data_de_nascimento = self.data_de_nascimento_str
   # end

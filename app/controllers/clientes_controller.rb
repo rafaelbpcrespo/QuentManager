@@ -7,7 +7,7 @@ class ClientesController < ApplicationController
   # GET /clientes.json
   def index
     if current_usuario.admin?
-      @clientes = Cliente.all
+      @clientes = Cliente.search(params[:search])
     else
       @clientes = Cliente.find_all_by_id(current_usuario.cliente.id)
     end
@@ -66,6 +66,10 @@ class ClientesController < ApplicationController
       format.html { redirect_to clientes_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @clientes = Cliente.search params[:search]
   end
 
   private
