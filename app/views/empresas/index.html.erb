@@ -37,6 +37,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @empresas, renderer: BootstrapPagination::Rails %>
 
 <%= link_to t('.nova_empresa', :default => t("helpers.links.nova_empresa")),
             new_empresa_path,

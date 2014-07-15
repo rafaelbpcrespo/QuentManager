@@ -47,6 +47,8 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @pedidos, renderer: BootstrapPagination::Rails %>
+
 <% if Time.now.hour > 6 && Time.now.hour < 10 %>
 <%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
             new_pedido_path,

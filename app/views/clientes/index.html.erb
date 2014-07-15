@@ -49,6 +49,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
 
 <%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
             new_cliente_path,
