@@ -11,6 +11,7 @@ gem 'pg'
 
 gem 'devise'
 gem 'cancancan', '~> 1.7'
+gem 'will_paginate-bootstrap'
 
 gem 'nested_form'
 # Use SCSS for stylesheets
