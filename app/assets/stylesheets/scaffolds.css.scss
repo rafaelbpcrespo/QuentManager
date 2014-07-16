@@ -17,7 +17,6 @@ p, ol, ul, td {
   padding-left: 450px;
 }
 
-
 span {
   color: #000;
 }
@@ -32,6 +31,10 @@ pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
+}
+
+.input-search, btn-search{
+  height: 30px !important; 
 }
 
 .teste {
