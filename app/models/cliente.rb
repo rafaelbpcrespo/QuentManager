@@ -18,7 +18,6 @@ class Cliente < ActiveRecord::Base
 
   def self.search(search,empresa)
     if search
-      debugger
       find(:all, :conditions => ['nome LIKE ? AND empresa_id LIKE ?', "%#{search}%", "%#{empresa}%"])
     else
       find(:all)
