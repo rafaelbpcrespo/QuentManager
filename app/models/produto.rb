@@ -4,7 +4,7 @@ class Produto < ActiveRecord::Base
 
   validates :tipo, :nome, :quantidade, :valor_unitario, presence: true
 
-  scope :bebidas, -> { where(tipo: "Bebida") }
+  scope :bebidas, -> { where(categoria: "Bebida") }
 
   def atualizar(quantidade)
     self.quantidade = self.quantidade + quantidade
@@ -18,4 +18,12 @@ class Produto < ActiveRecord::Base
       return false
     end
   end
+
+  def exibicao_select
+    "#{self.nome} #{self.tipo}"
+  end
+
+  # def fix_rate 
+  #   self[:valor_unitario = valor_unitario_before_type_cast. tr(' $, ' , ' ' )
+  # end
 end

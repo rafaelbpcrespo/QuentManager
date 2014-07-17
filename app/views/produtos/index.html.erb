@@ -11,6 +11,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:valor_unitario) %></th>
+      <th><%= model_class.human_attribute_name(:categoria) %></th>
       <th><%= model_class.human_attribute_name(:tipo) %></th>
       <th><%= model_class.human_attribute_name(:quantidade) %></th>
       <th><%= model_class.human_attribute_name(:limite_minimo) %></th>
@@ -23,6 +24,7 @@
         <td><%= link_to produto.id, produto_path(produto) %></td>
         <td><%= produto.nome %></td>
         <td><%= produto.valor_unitario %></td>
+        <td><%= produto.categoria %></td>
         <td><%= produto.tipo %></td>
         <td><%= produto.quantidade %></td>
         <td><%= produto.limite_minimo %></td>
