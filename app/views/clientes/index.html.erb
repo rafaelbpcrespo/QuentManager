@@ -10,7 +10,7 @@
       <%= text_field_tag :search, params[:search], :class => "form-control input-search", placeholder: "Buscar Clientes" %>
       <%#= f.collection_select :empresa_id, Empresa.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
       <%#= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
-      <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :class => "form-control input-search" %>
+      <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas", :class => "form-control input-search" %>
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
            of using a Rails form helper -->
     <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-default btn-search' %>
