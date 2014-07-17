@@ -9,7 +9,6 @@
 <div class="row-fluid">
 
   <div class="span2">
-    <%= render "side_bar" %>
   </div>
   <!--end sidebar-->
 
@@ -26,7 +25,7 @@
   </dl>
 
     <%= link_to 'Cancelar', clientes_path %>
-    <%= link_to 'Confirmar Bloqueio', confirmar_desbloqueio_cliente_path(@cliente), :class => "btn btn-success" %>
+    <%= link_to 'Confirmar Desbloqueio', confirmar_desbloqueio_cliente_path(@cliente), :class => "btn btn-success" %>
   </div>
   <!--end content-->
 

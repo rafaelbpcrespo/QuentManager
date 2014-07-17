@@ -38,6 +38,7 @@ class ClientesController < ApplicationController
     @cliente.bloquear!
 
     if @cliente.save
+      BloqueioMailer.bloquear(@cliente.usuario).deliver
       flash[:notice] = "Cliente bloqueado"
     else
       flash[:alert] = "Erro ao bloquear cliente"
