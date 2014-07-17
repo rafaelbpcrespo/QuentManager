@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:quantidade) %></th>
+      <th><%= model_class.human_attribute_name(:valor) %></th>
       <th><%= model_class.human_attribute_name(:disponibilidade) %></th>
       <th><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
@@ -18,6 +19,7 @@
         <td><%= link_to cardapio.id, cardapio_path(cardapio) %></td>
         <td><%= cardapio.nome %></td>
         <td><%= cardapio.quantidade %></td>
+        <td><%= cardapio.valor %></td>
         <td><% if cardapio.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),

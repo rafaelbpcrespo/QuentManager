@@ -8,6 +8,10 @@
   <dd><%= @cardapio.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:quantidade) %>:</strong></dt>
   <dd><%= @cardapio.quantidade %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
+  <dd><%= @cardapio.valor %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
+  <dd><%= @cardapio.observacao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong></dt>
   <dd><% if @cardapio.disponibilidade? %> Ativado <% else %> Desativado <% end %></dd>
 </dl>
