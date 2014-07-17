@@ -13,6 +13,8 @@ class Cliente < ActiveRecord::Base
     nomes = self.nome.split
     if nomes.count > 2
       return nomes[0] + " " + nomes[1]
+    else
+      return self.nome
     end
   end
 
@@ -25,6 +27,33 @@ class Cliente < ActiveRecord::Base
       find(:all)
     end
   end
+
+    def bloqueado?
+      self[:bloqueado]
+    end
+
+    def desbloqueado?
+      !self.bloqueado?
+    end
+
+    def bloquear
+      self.bloqueado = true
+    end
+
+    def bloquear!
+      self.bloquear
+      self.save!
+    end
+
+    def desbloquear
+      self.bloqueado = false
+    end
+
+    def desbloquear!
+      self.desbloquear
+      self.save!
+    end
+
   # def data_de_nascimento_str=(data_de_nascimento_str)
   #   self.data_de_nascimento = self.data_de_nascimento_str
   # end

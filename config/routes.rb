@@ -15,7 +15,14 @@ QuentManager::Application.routes.draw do
 
   resources :pedidos
 
-  resources :clientes
+  resources :clientes do
+    member do
+      get :bloquear
+      get :confirmar_bloqueio
+      get :desbloquear
+      get :confirmar_desbloqueio
+    end
+  end
 
   resources :home
 

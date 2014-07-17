@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703205156) do
+ActiveRecord::Schema.define(version: 20140717190909) do
 
   create_table "cardapios", force: true do |t|
     t.string   "nome"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140703205156) do
     t.string   "telefone_empresa"
     t.string   "celular_empresa"
     t.string   "email_empresa"
+    t.boolean  "bloqueado"
   end
 
   create_table "empresas", force: true do |t|

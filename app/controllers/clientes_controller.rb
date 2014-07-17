@@ -29,6 +29,39 @@ class ClientesController < ApplicationController
     @cliente.data_de_nascimento = @cliente.data_de_nascimento.to_s.split(/\-/).reverse.join('/')
   end
 
+  def bloquear
+    @cliente = Cliente.find(params[:id])
+  end
+
+  def confirmar_bloqueio
+    @cliente = Cliente.find(params[:id])
+    @cliente.bloquear!
+
+    if @cliente.save
+      flash[:notice] = "Cliente bloqueado"
+    else
+      flash[:alert] = "Erro ao bloquear cliente"
+    end
+    redirect_to clientes_path
+  end
+
+  def desbloquear
+    @cliente = Cliente.find(params[:id])
+  end
+
+  def confirmar_desbloqueio
+    @cliente = Cliente.find(params[:id])
+    @cliente.desbloquear!
+
+    if @cliente.save
+      flash[:notice] = "Cliente bloqueado"
+    else
+      flash[:alert] = "Erro ao bloquear cliente"
+    end
+    redirect_to clientes_path
+  end
+
+
   # POST /clientes
   # POST /clientes.json
   def create

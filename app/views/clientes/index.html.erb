@@ -26,6 +26,7 @@
       <th><%= model_class.human_attribute_name(:ramal) %></th>
       <th><%= model_class.human_attribute_name(:empresa) %></th>
       <th><%= model_class.human_attribute_name(:sexo) %></th>
+      <th><%= model_class.human_attribute_name(:bloqueado) %></th>
       <th>Ações</th>
     </tr>
   </thead>
@@ -39,9 +40,15 @@
         <td><%= cliente.ramal %></td>
         <td><%= cliente.empresa.nome %></td>
         <td><%= cliente.sexo %></td>
+        <td><%= cliente.bloqueado? ? "Sim" : "Não" %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
                       edit_cliente_path(cliente), :class => 'btn btn-primary' %>
+          <% if cliente.bloqueado? %>
+            <%= link_to 'Desbloquear', desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-small btn-success", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} %>
+          <% else %>
+            <%= link_to 'Bloquear', bloquear_cliente_path(cliente), html_options = {:class => "btn btn-small btn-danger", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} %>
+          <% end %>
           <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
                       cliente_path(cliente),
                       :method => :delete,
