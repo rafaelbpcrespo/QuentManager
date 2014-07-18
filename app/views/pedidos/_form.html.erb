@@ -21,6 +21,24 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :guarnicao_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :guarnicao_id, Guarnicao.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :feijao, :class => 'control-label' %>
+    <div class="controls">
+      <%= label :cardapio, "Sim", :class =>"radio inline" %>
+      <%= radio_button :feijao, "true", :value => "true" %>
+      <%= label :cardapio, "Não", :class =>"radio inline" %>
+      <%= radio_button :feijao, "false", :value => "false" %>
+    </div>
+  </div>
+
+
   <!-- <div class="control-group">
     <%#= f.label :arroz, :class => 'control-label' %>
     <div class="controls">
@@ -35,15 +53,6 @@
     </div>
   </div>
  -->
-<div class="control-group">
-    <%= f.label :feijao, :class => 'control-label' %>
-    <div class="controls">
-      <%= label :feijao, "Sim", :class =>"checkbox inline" %>
-      <%= check_box_tag :feijao, "Sim", false, :value => "Sim" %>
-      <%= label :feijao, "Não", :class =>"checkbox inline" %>
-      <%= check_box_tag :feijao, "Não", false, :value => "Não" %>
-    </div>
-  </div>
 
 <div class="control-group">
     <%= f.label :farofa, :class => 'control-label' %>
@@ -59,17 +68,10 @@
     <%= f.label :cardapio, :class => 'control-label' %>
     <% @carnes_disponiveis.each do |cardapio| %>
     <div class="controls">
-      <%= radio_button_tag :cardapio, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
+      <%= radio_button :cardapio_id, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
       <%= label :cardapio, "#{cardapio.nome}", :class =>"radio inline" %>
     </div>
     <% end %>
-  </div>
-
-<div class="control-group">
-    <%= f.label :acompanhamento, :class => 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :acompanhamento %>
-    </div>
   </div>
 
   <div class="control-group">
@@ -92,6 +94,7 @@
       <%= f.text_field :valor, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :forma_de_pagamento, :class => 'control-label' %>
     <div class="controls">
