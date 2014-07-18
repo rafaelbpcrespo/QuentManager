@@ -8,19 +8,26 @@
   </div>
   <% end %>
   <div class="control-group">
-    <%= f.label :arroz, :class => 'control-label' %>
+    <%= f.label :arroz_id, :class => 'control-label' %>
     <div class="controls">
-      <%= label :arroz, "Branco", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Branco", false, :value => "Branco"%>
-      <%= label :arroz, "Integral", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Integral", false, :value => "Integral" %>
-      <%= label :arroz, "A la Grega", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "A la Grega", false, :value => "A la Grega" %>
-      <%= label :arroz, "Brócolis", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Brócolis", false, :value => "Brócolis" %>
+      <%= f.collection_select :arroz_id, Arroz.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
     </div>
   </div>
 
+  <!-- <div class="control-group">
+    <%#= f.label :arroz, :class => 'control-label' %>
+    <div class="controls">
+      <%#= label :arroz, "Branco", :class =>"checkbox inline" %>
+      <%#= check_box_tag :arroz, "Branco", false, :value => "Branco"%>
+      <%#= label :arroz, "Integral", :class =>"checkbox inline" %>
+      <%#= check_box_tag :arroz, "Integral", false, :value => "Integral" %>
+      <%#= label :arroz, "A la Grega", :class =>"checkbox inline" %>
+      <%#= check_box_tag :arroz, "A la Grega", false, :value => "A la Grega" %>
+      <%#= label :arroz, "Brócolis", :class =>"checkbox inline" %>
+      <%#= check_box_tag :arroz, "Brócolis", false, :value => "Brócolis" %>
+    </div>
+  </div>
+ -->
 <div class="control-group">
     <%= f.label :feijao, :class => 'control-label' %>
     <div class="controls">

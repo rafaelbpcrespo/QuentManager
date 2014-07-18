@@ -3,6 +3,7 @@ class Pedido < ActiveRecord::Base
   has_many :item_de_pedidos
   has_many :produtos, through: :item_de_pedidos
   belongs_to :cardapio
+  belongs_to :arroz
   accepts_nested_attributes_for :item_de_pedidos,  :allow_destroy => true
 
   scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }

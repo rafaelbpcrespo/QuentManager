@@ -1,0 +1,40 @@
+<%- model_class = Arroz -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+  <%= link_to t('.novo_arroz', :default => t("helpers.links.novo_arroz")),
+            new_arroz_path,
+            :class => 'btn btn-primary' %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:disponibilidade) %></th>
+      <th><%=t '.ações', :default => t("helpers.ações") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @arrozes.each do |arroz| %>
+      <tr>
+        <td><%= link_to arroz.id, arroz_path(arroz) %></td>
+        <td><%= arroz.nome %></td>
+        <td><%= arroz.disponibilidade %></td>
+        <td>
+          <%= link_to t('.editar', :default => t("helpers.links.editar")),
+                      edit_arroz_path(arroz), :class => 'btn btn-mini' %>
+          <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
+                      arroz_path(arroz),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este tipo de Arroz?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%#= will_paginate @arrozes, renderer: BootstrapPagination::Rails %>
+
+<%= link_to t('.novo_arroz', :default => t("helpers.links.novo_arroz")),
+            new_arroz_path,
+            :class => 'btn btn-primary' %>
