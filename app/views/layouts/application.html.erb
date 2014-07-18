@@ -1,45 +1,29 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <title>QuentManager</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
-  <%= stylesheet_link_tag    "bootstrap.min.css", media: "all", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "bootstrap.min.js", "data-turbolinks-track" => false %>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <%#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%#= stylesheet_link_tag    "bootstrap.min.css", media: "all", "data-turbolinks-track" => false %>
+  <%= stylesheet_link_tag    "style.css", media: "all", "data-turbolinks-track" => false %>
+  <%#= javascript_include_tag "application", "data-turbolinks-track" => false %>
+  <%#= javascript_include_tag "bootstrap.min.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "jquery.min.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "jquery.cycle2.js", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
-         <p class="alert-success"><%= notice %></p>
+<!--          <p class="alert-success"><%= notice %></p>
         <p class="alert-error"><%= alert %></p>
-</head>
+ -->
+    <!-- <meta charset="utf-8"> -->
+     <link rel="shortcut icon" href="favicon.ico">
+    <meta name="description" content="Siquitutes">
+    <meta name="keywords" content="Siquitutes, almoço, macaé, quentinha, quentinha macaé, entrega, comida, food" />
+    <meta name="author" content="R2L Solutions">
+    <title>Si Quitutes</title>
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+  </head>
+    
 <body>
- 
-
-
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar navbar-inner" role="navigation">
-        <div class="container">
-          <!-- <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"> -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="/">SiQuitutes</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><%= link_to "Clientes", "/clientes"  %></li>
-              <li><%= link_to "Pedidos", "/pedidos"  %></li>
-              <% if can? :manage, Cardapio %>
-              <li><%= link_to "Produtos", "/produtos"  %></li>
-              <li><%= link_to "Cardapios", "/cardapios"  %></li>
-              <li><%= link_to "Empresas", "/empresas"  %></li>
-              <% end %>
-              <% if !usuario_signed_in? %>
-              <li><%= link_to "Cadastre-se", new_usuario_registration_path%></li>
-              <% end %>
-              </ul>
-              <% if usuario_signed_in? %>
+  <div id="header">                            
+  <% if usuario_signed_in? %>
               <ul class="nav navbar-nav navbar-right">              
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
@@ -50,49 +34,44 @@
                 </ul>
               </li>
              <% else %>
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "navbar-form navbar-right" , :id => ""})  do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "navbar-form navbar-right" , :id => ""})  do |f| %>
                <div class="form-group"><%= f.email_field :email, autofocus: true, placeholder: "Email", :class => "input_default" %></div>
                <div class="form-group">
                 <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "input_default" %> </div>
                <%= f.submit "Entrar", :class => "btn btn-primary" %>
              <% end %>
-            <% end %>
-            </ul>
-          </div><!--/.nav-collapse -->          
-        </div>
-        </nav>
-      </div>
+             <% end %></div>
+  <div id="lineorange">
+    <!-- <div id="boxorange"> Envie-nos sua sugestão <p> contato@siquitutes.com.br </div> -->
 
-
-<div class="container">
-  <div class="row">
-      <% if usuario_signed_in? %>
-      <div class="span3">
-        <h2>Resumo</h2>
-          <p> Quantidade de clientes: <%= Cliente.all.count %> </p>
-          <p> Total de pedidos hoje: <%= Pedido.de_hoje %> </p>
-          <p> Valor total vendido hoje: R$ <%= Pedido.vendidos_hoje %> </p>
-          <% Cardapio.carne.each do |cardapio| %>
-            <% if cardapio.disponibilidade? %>
-          <p> <%= cardapio.nome %>: <%= cardapio.quantidade %> disponíveis </p>
-            <% end %>
-        <% end %>
-        <h4> Produtos abaixo do limite </h4>
-        <% Produto.all.each do |produto| %>
-            <% if produto.abaixo_do_limite? %>
-          <p> <%= produto.nome %> </p>
-            <% end %>
-        <% end %>
-
-        </div>
-      <div class="span8"><%= yield %>
-      </div>
-      <% else %>
-        <%= yield %>
-      <% end %>
   </div>
-</div>
+<div id="all">
+    
+  
+      <div id="navtop">
+        <div id="logo"> </div>
+        <div id="garfos"> </div>
+      </div>
+      <div id="faixa">    
+         <div id="navbaresq"> </div> 
+          <div id="navbar">
+               <div id="home"> <a class="botao" href="#"> <img src="../images/home.png" width="40" height="40"></a></div>
+                <a class="botao" href="#"> Home </a>
+                <% if !usuario_signed_in? %>
+              <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a>
+              <% end %>
+                <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
+                <a class="botao" href="#"> Equipe </a>
+                <a class="botao" href="#"> Sobre </a>
+                <a class="botao" href="#"> Contato</a>
 
-</body>
+          </div>
+
+          <div id="navbardir"></div> 
+      </div>
+      <%= yield %>
+      
+<div id="lineorange"></div>
+ <div id="rodape">Todos os Direitos Reservados <br> R2L Solutions  </div>
+  </body>
 </html>
-
