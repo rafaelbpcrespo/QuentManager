@@ -1,10 +1,10 @@
-<%= form_for @arroz, :html => { :class => 'form-horizontal' } do |f| %>
-  <% if @arroz.errors.any? %>
+<%= form_for @salada, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @salada.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@arroz.errors.count, "error") %> prohibited this arroz from being saved:</h2>
+      <h2><%= pluralize(@salada.errors.count, "error") %> prohibited this arroz from being saved:</h2>
 
       <ul>
-      <% @arroz.errors.full_messages.each do |msg| %>
+      <% @salada.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -28,6 +28,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
-                arrozes_path, :class => 'btn' %>
+                saladas_path, :class => 'btn' %>
   </div>
 <% end %>

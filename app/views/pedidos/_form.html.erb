@@ -14,6 +14,13 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :salada_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :salada_id, Salada.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
+    </div>
+  </div>
+
   <!-- <div class="control-group">
     <%#= f.label :arroz, :class => 'control-label' %>
     <div class="controls">
@@ -62,13 +69,6 @@
     <%= f.label :acompanhamento, :class => 'control-label' %>
     <div class="controls">
       <%= text_field_tag :acompanhamento %>
-    </div>
-  </div>
-
-<div class="control-group">
-    <%= f.label :salada, :class => 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :salada %>
     </div>
   </div>
 

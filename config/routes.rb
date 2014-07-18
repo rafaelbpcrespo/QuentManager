@@ -1,4 +1,6 @@
 QuentManager::Application.routes.draw do
+  resources :saladas
+
   resources :arrozes
 
   resources :empresas
