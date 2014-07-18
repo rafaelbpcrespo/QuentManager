@@ -18,6 +18,42 @@ body {
 	margin-right: 10px;
 }
 
+.menu {
+	list-style: none;
+	float: right;
+	margin: 5px 240px 0 0;
+}
+
+.menu li {
+	list-style: none;
+	text-decoration: none;
+	position: relative;
+	float: right;
+}
+
+.menu li a { color: #fff; text-decoration: none; padding: 5px 10px; display: block;}
+
+.menu li a:hover {
+	color: #FFC335;
+	-moz-box-shadow:0 3px 10px 0 #ccc;
+	-webkit-box-shadow:0 3px 10px 0 #ccc;
+	text-shadow:0px 0px 5px #fff;
+}
+
+.menu li ul{
+	position: absolute;
+	top: 25px;
+	right: 0;
+	background-color: #3F496A;
+	display: none;
+}
+
+.menu li:hover ul, .menu li.over ul{display: block;}
+
+.menu li ul li{
+	display: block;
+	width: 140px;
+}
 #all {
 	width: 960px;
 	padding: 0;
@@ -161,7 +197,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 
 	@font-face {
 	font-family: "Showcard Gothic"; 
-	src: url("../fonts/showg.ttf");
+	src: url("..images/showg.ttf") format('truetype');
 	}
 	
 #colcentral {

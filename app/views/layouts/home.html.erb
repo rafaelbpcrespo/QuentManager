@@ -26,11 +26,11 @@
   <% if usuario_signed_in? %>
               <ul class="menu">              
               <li>
-                <a href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
+                <a href="#"> <%= current_usuario.email %> </a>
                 <ul>
-                  <li><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
-                  <li><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
-                  <li><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
+                  <li class='fonte_menu_dropdown'><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
+                  <li class='fonte_menu_dropdown'><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
+                  <li class="fonte_menu_dropdown"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
                 </ul>
               </li>
              <% else %>
