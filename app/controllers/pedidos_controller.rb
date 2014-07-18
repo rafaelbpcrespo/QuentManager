@@ -33,26 +33,26 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
-    descricao = ""
+    #descricao = ""
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
       @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     end
     
     @pedido.cardapio = Cardapio.where(:nome => params[:carne]).first
-      if !params[:arroz].nil?
-        descricao = "Arroz "+ params[:arroz] + ","
-      end
-      if params[:feijao] = "Sim"
-        descricao = descricao + " Feijao, "
-      end
+      # if !params[:arroz].nil?
+      #   descricao = "Arroz "+ params[:arroz] + ","
+      # end
+      # if params[:feijao] = "Sim"
+      #   descricao = descricao + " Feijao, "
+      # end
 
-      if params[:farofa] == "Sim"
-        descricao = descricao + " Farofa,"
-      end
+      # if params[:farofa] == "Sim"
+      #   descricao = descricao + " Farofa,"
+      # end
 
-    descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
-    @pedido.descricao = descricao
+#    descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+    #@pedido.descricao = 
     itens = params[:pedido][:item_de_pedidos_attributes]
 
     if !itens.nil?
