@@ -1,9 +1,10 @@
 <%- model_class = Empresa -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
-  <%= link_to t('.nova_empresa', :default => t("helpers.links.nova_empresa")),
-            new_empresa_path,
-            :class => 'btn btn-primary' %></h1>
+  <h1>
+    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+    <%= link_to 'Cadastrar Empresa', new_empresa_path, :class=>"btn btn-primary cadastrar" %>
+  </h1>
+        
 </div>
 <table class="table table-striped">
   <thead>
@@ -20,7 +21,7 @@
     <% @empresas.each do |empresa| %>
       <tr>
         <td><%= link_to empresa.id, empresa_path(empresa) %></td>
-        <td><%= empresa.nome %></td>
+        <td><%= link_to empresa.nome, empresa_path(empresa) %></td>
         <td><%= empresa.telefone %></td>
         <td><%= empresa.endereco %></td>
         <td><%= empresa.observacao %></td>
