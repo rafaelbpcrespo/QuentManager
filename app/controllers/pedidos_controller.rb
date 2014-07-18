@@ -34,12 +34,13 @@ class PedidosController < ApplicationController
   # POST /pedidos.json
   def create
     #descricao = ""
+
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
       @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     end
-    
-    @pedido.cardapio = Cardapio.where(:nome => params[:carne]).first
+    debugger
+    @pedido.cardapio = Cardapio.where(:nome => params[:cardapio_id].keys.split[0][0]).first
       # if !params[:arroz].nil?
       #   descricao = "Arroz "+ params[:arroz] + ","
       # end
@@ -76,6 +77,7 @@ class PedidosController < ApplicationController
 
     #parametros[:valor] = @pedido.valor
 
+    debugger
 
     respond_to do |format|
       if @pedido.save
@@ -167,6 +169,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :valor, :id, :cliente_id, :cardapio_id, :arroz_id, :salada_id, :guarnicao_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :valor, :id, :cliente_id, :cardapio_id, :arroz_id, :salada_id, :guarnicao_id, :feijao, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end

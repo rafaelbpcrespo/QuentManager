@@ -31,10 +31,10 @@
   <div class="control-group">
     <%= f.label :feijao, :class => 'control-label' %>
     <div class="controls">
-      <%= label :cardapio, "Sim", :class =>"radio inline" %>
-      <%= radio_button :feijao, "true", :value => "true" %>
-      <%= label :cardapio, "Não", :class =>"radio inline" %>
-      <%= radio_button :feijao, "false", :value => "false" %>
+      <%= label :feijao, "Sim", :class =>"radio inline" %>
+      <%= radio_button :feijao, "true", :value => "feijao" %>
+      <%= label :feijao, "Não", :class =>"radio inline" %>
+      <%= radio_button :feijao, "false", :value => "feijao" %>
     </div>
   </div>
 
@@ -65,11 +65,11 @@
   </div>
 
 <div class="control-group">
-    <%= f.label :cardapio, :class => 'control-label' %>
+    <%= f.label :cardapio_id, :class => 'control-label' %>
     <% @carnes_disponiveis.each do |cardapio| %>
     <div class="controls">
-      <%= radio_button :cardapio_id, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
-      <%= label :cardapio, "#{cardapio.nome}", :class =>"radio inline" %>
+      <%= radio_button :cardapio_id, "#{cardapio.nome}", :value => "#{cardapio.id}" %>
+      <%= label :cardapio_id, "#{cardapio.nome}", :class =>"radio inline" %>
     </div>
     <% end %>
   </div>
