@@ -9,25 +9,22 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:telefone) %></th>
       <th><%= model_class.human_attribute_name(:endereco) %></th>
-      <th><%= model_class.human_attribute_name(:observacao) %></th>
       <th><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
   </thead>
   <tbody>
     <% @empresas.each do |empresa| %>
       <tr>
-        <td><%= link_to empresa.id, empresa_path(empresa) %></td>
         <td><%= link_to empresa.nome, empresa_path(empresa) %></td>
         <td><%= empresa.telefone %></td>
         <td><%= empresa.endereco %></td>
-        <td><%= empresa.observacao %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
-                      edit_empresa_path(empresa), :class => 'btn btn-mini' %>
+                      edit_empresa_path(empresa), :class => 'btn btn-primary' %>
+          <%= link_to 'Ver', empresa_path(empresa), :class => 'btn btn-primary' %>
           <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
                       empresa_path(empresa),
                       :method => :delete,
@@ -40,6 +37,4 @@
 </table>
 <%= will_paginate @empresas, renderer: BootstrapPagination::Rails %>
 
-<%= link_to t('.nova_empresa', :default => t("helpers.links.nova_empresa")),
-            new_empresa_path,
-            :class => 'btn btn-primary' %>
+<%= link_to 'Cadastrar Empresa', new_empresa_path, :class => 'btn btn-primary' %>
