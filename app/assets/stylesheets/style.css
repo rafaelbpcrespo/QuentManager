@@ -3,8 +3,12 @@ body {
 	text-align: center;
 	padding: 0;
 	margin: 0; 
-	background-image: image-url('../images/bgall.jpg') repeat left top; 
+	background-image: image-url('../images/glyphicons_197_remove.png') repeat left top; 
 
+
+}
+
+.button_green {
 
 }
 
@@ -13,13 +17,14 @@ body {
     zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
     *display: inline;
     vertical-align: baseline;
-    margin: 0 2px;
+    margin: 0px;
     outline: none;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     font: 14px/100% Arial, Helvetica, sans-serif;
-    padding: .5em 2em .55em;
+    padding: 10px 6px 10px 10px;
+    /*padding: .5em 2em .55em;*/
     text-shadow: 0 1px 1px rgba(0,0,0,.3);
     -webkit-border-radius: .5em; 
     -moz-border-radius: .5em;
@@ -36,6 +41,38 @@ body {
     top: 1px;
 }
 
+.remover{
+   background-image:url('../images/glyphicons_197_remove.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+}
+
+.:hover{
+color: #faddde;
+border: solid 1px #980c10;
+background: #d81b21;
+background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
+filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+}
+
+.sair{
+   background-image:url('../images/glyphicons_388_exit.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+}
+
+.editar{
+   background-image:url('../images/glyphicons_150_edit.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+}
+
+.listar{
+   background-image:url('../images/glyphicons_190_circle_plus.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+}
 .bigrounded {
 -webkit-border-radius: 2em;
 -moz-border-radius: 2em;
@@ -51,6 +88,15 @@ padding: .2em 1em .275em;
 }
 
 .blue {
+/*    color: #d9eef7;
+    border: solid 1px #0076a3;
+    background: #0095cd;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+    background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+*/}
+
+.blue-cadastrar {
     color: #d9eef7;
     border: solid 1px #0076a3;
     background: #0095cd;
@@ -58,6 +104,7 @@ padding: .2em 1em .275em;
     background: -moz-linear-gradient(top,  #00adee,  #0078a5);
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
 }
+
 .blue:hover {
     background: #007ead;
     background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
@@ -93,12 +140,12 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', end
 }
 
 .red {
-color: #faddde;
+/*color: #faddde;
 border: solid 1px #980c10;
 background: #d81b21;
 background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
 background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
-filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');*/
 }
 
 .red:hover {
@@ -339,7 +386,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 	}	
 	
 .botao:hover {
-	
+	text-decoration: none;
 	height:50px;
 	color: #2ca1ca;
 	}		
