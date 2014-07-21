@@ -1,8 +1,8 @@
 <%- model_class = Empresa -%>
 <div class="page-header">
-  <h1>
-    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
-    <%= link_to 'Cadastrar Empresa', new_empresa_path, :class=>"button blue-cadastrar" %>
+  <h1 class='titulo'>
+    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
+    <%= link_to 'Cadastrar Empresa', new_empresa_path, :class=>"button blue-cadastrar-top" %>
   </h1>
         
 </div>
@@ -18,14 +18,14 @@
   <tbody>
     <% @empresas.each do |empresa| %>
       <tr>
-        <td><%= link_to empresa.nome, empresa_path(empresa) %></td>
+        <td><%= empresa.nome %></td>
         <td><%= empresa.telefone %></td>
         <td><%= empresa.endereco %></td>
         <td>
           <%= link_to edit_empresa_path(empresa), :class => 'button blue' do %>
                       <span class="editar"></span>
                       <% end %>
-          <%= link_to empresa_path(empresa), :class => 'button' do %>
+          <%= link_to empresa_path(empresa), :class => 'button green' do %>
                       <span class="listar"></span>          
           <% end %>
           <%= link_to empresa_path(empresa), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta empresa?')) },
@@ -39,4 +39,4 @@
 </table>
 <%= will_paginate @empresas, renderer: BootstrapPagination::Rails %>
 
-<%= link_to 'Cadastrar Empresa', new_empresa_path, :class => 'button blue-cadastrar' %>
+<%= link_to 'Cadastrar Empresa', new_empresa_path, :class => 'button blue-cadastrar-bottom' %>

@@ -62,10 +62,17 @@
                 <% if !usuario_signed_in? %>
               <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a>
               <% end %>
+              <% if can? :manage, Cardapio %>
+              <a><%= link_to "Produtos", "/produtos", :class => 'botao'  %></a>
+              <a><%= link_to "Cardapios", "/cardapios", :class => 'botao'  %></a>
+              <a><%= link_to "Empresas", "/empresas", :class => 'botao'  %></a>
+              <% end %>
                 <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
                 <a class="botao" href="#"> Equipe </a>
                 <a class="botao" href="#"> Sobre </a>
+                <% if !current_usuario.admin? %>
                 <a class="botao" href="#"> Contato</a>
+                <% end %>
 
           </div>
 

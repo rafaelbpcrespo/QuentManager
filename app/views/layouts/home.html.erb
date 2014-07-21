@@ -57,15 +57,23 @@
       <div id="faixa">    
          <div id="navbaresq"> </div> 
           <div id="navbar">
-               <div id="home"> <a><%= link_to image_tag("../images/home.png", :width => "40", :height => "40"), root_path, :class => 'botao'  %> </a></div>
+               <div id="home"> <a><%= link_to image_tag("../images/home.png", :width => "40", :height => "40"), root_path, :class => 'botao-home'  %> </a></div>
               <a><%= link_to "Home", root_path, :class => 'botao' %></a>
                 <% if !usuario_signed_in? %>
               <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a>
               <% end %>
+              <% if can? :manage, Cardapio %>
+              <a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a>
+              <a><%= link_to "Produtos", "/produtos", :class => 'botao'  %></a>
+              <a><%= link_to "Cardapios", "/cardapios", :class => 'botao'  %></a>
+              <a><%= link_to "Empresas", "/empresas", :class => 'botao'  %></a>
+              <% end %>
+              <a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a>
                 <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
-                <a class="botao" href="#"> Equipe </a>
-                <a class="botao" href="#"> Sobre </a>
+                <% if !current_usuario.admin? %>
                 <a class="botao" href="#"> Contato</a>
+                <% end %>
+
 
           </div>
 
