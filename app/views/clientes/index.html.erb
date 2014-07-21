@@ -3,9 +3,9 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
   <%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
             new_cliente_path,
-            :class => 'btn btn-primary' %></h1>
+            :class => 'button blue-cadastrar-top' %></h1>
 </div>
-<%= form_tag(clientes_path, :method => "get", :class => "navbar-form", id: "search-form") do %>
+<%= form_tag(clientes_path, :method => "get", :class => "busca", id: "search-form") do %>
     <div>
       <%= text_field_tag :search, params[:search], :class => "form-control input-search", placeholder: "Buscar Clientes" %>
       <%#= f.collection_select :empresa_id, Empresa.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
@@ -19,13 +19,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
-      <th><%= model_class.human_attribute_name(:cpf) %></th>
       <th><%= model_class.human_attribute_name(:celular) %></th>
-      <th><%= model_class.human_attribute_name(:ramal) %></th>
       <th><%= model_class.human_attribute_name(:empresa) %></th>
-      <th><%= model_class.human_attribute_name(:sexo) %></th>
       <th><%= model_class.human_attribute_name(:bloqueado) %></th>
       <th>Ações</th>
     </tr>
@@ -33,27 +29,26 @@
   <tbody>
         <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= link_to cliente.id, cliente_path(cliente) %></td>
         <td><%= cliente.nome_abreviado %></td>
-        <td><%= cliente.cpf %></td>
         <td><%= cliente.celular %></td>
-        <td><%= cliente.ramal %></td>
         <td><%= cliente.empresa.nome %></td>
-        <td><%= cliente.sexo %></td>
         <td><%= cliente.bloqueado? ? "Sim" : "Não" %></td>
         <td>
-          <%= link_to t('.editar', :default => t("helpers.links.editar")),
-                      edit_cliente_path(cliente), :class => 'btn btn-primary' %>
-          <% if cliente.bloqueado? %>
-            <%= link_to 'Desbloquear', desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-small btn-success", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} %>
-          <% else %>
-            <%= link_to 'Bloquear', bloquear_cliente_path(cliente), html_options = {:class => "btn btn-small btn-danger", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} %>
+          <%= link_to edit_cliente_path(cliente), :class => 'button blue' do %>
+                      <span class="editar"></span>
+                      <% end %>
+          <%= link_to cliente_path(cliente), :class => 'button green' do %>
+                      <span class="listar"></span>          
           <% end %>
-          <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
-                      cliente_path(cliente),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este cliente?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <% if cliente.bloqueado? %>
+            <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
+                      <span class="desbloquear"></span>
+            <% end %>
+          <% else %>
+            <%= link_to bloquear_cliente_path(cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} do %>
+                      <span class="bloquear"></span>
+            <% end %>
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -63,4 +58,4 @@
 
 <%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
             new_cliente_path,
-            :class => 'btn btn-primary' %>
+            :class => 'button blue-cadastrar-bottom' %>

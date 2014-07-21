@@ -8,6 +8,10 @@ body {
 
 }
 
+.busca {
+	margin-bottom: 20px;
+}
+
 .button {
 	background-color: #FFF;
     display: inline-block;
@@ -40,6 +44,18 @@ body {
 
 .remover{
    background-image:url('../images/glyphicons_197_remove.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+}
+
+.bloquear{
+   background-image:url('../images/glyphicons_199_ban.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+}
+
+.desbloquear{
+   background-image:url('../images/glyphicons_198_ok.png');
    background-repeat:no-repeat;
    padding: 4px 0px 5px 30px;
 }
@@ -501,6 +517,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 }
 
 .table td{
+	font-size: 14px;
 	padding: 3px 10px 3px 10px;
   	border-spacing: 0;
   	border-collapse: collapse;
