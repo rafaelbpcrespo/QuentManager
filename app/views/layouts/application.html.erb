@@ -60,18 +60,19 @@
                <div id="home"> <a class="botao" href="#"> <img src="../images/home.png" width="40" height="40"></a></div>
                 <a class="botao" href="#"> Home </a>
                 <% if !usuario_signed_in? %>
-              <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a>
-              <% end %>
-              <% if can? :manage, Cardapio %>
-              <a><%= link_to "Produtos", "/produtos", :class => 'botao'  %></a>
-              <a><%= link_to "Cardapios", "/cardapios", :class => 'botao'  %></a>
-              <a><%= link_to "Empresas", "/empresas", :class => 'botao'  %></a>
-              <% end %>
-                <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
-                <a class="botao" href="#"> Equipe </a>
-                <a class="botao" href="#"> Sobre </a>
-                <% if !current_usuario.admin? %>
-                <a class="botao" href="#"> Contato</a>
+                  <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a>
+                  <a class="botao" href="#"> Equipe </a>
+                  <a class="botao" href="#"> Sobre </a>
+                  <a class="botao" href="#"> Contato</a>
+                <% else %>
+                  <% if can? :manage, Cardapio %>
+                    <a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a>
+                    <a><%= link_to "Produtos", "/produtos", :class => 'botao'  %></a>
+                    <a><%= link_to "Cardapios", "/cardapios", :class => 'botao'  %></a>
+                    <a><%= link_to "Empresas", "/empresas", :class => 'botao'  %></a>
+                  <% end %>
+                  <a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a>              
+                  <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
                 <% end %>
 
           </div>
