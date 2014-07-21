@@ -1,0 +1,4 @@
+<h3> Informações de Clientes</h3>
+      <p class='info'>Clientes Cadastrados: <%= Cliente.all.count %></p>
+      <p class='info'>Clientes Bloqueados: <%= Cliente.where(bloqueado: true).count %></p>
+      <p class='info'>Clientes Cadastrados hoje: <%= Cliente.where(created_at: Time.now.beginning_of_day).count %></p>

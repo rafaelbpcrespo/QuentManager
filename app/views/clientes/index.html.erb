@@ -1,6 +1,6 @@
 <%- model_class = Cliente -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
   <%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
             new_cliente_path,
             :class => 'button blue-cadastrar-top' %></h1>
@@ -34,10 +34,10 @@
         <td><%= cliente.empresa.nome %></td>
         <td><%= cliente.bloqueado? ? "Sim" : "Não" %></td>
         <td>
-          <%= link_to edit_cliente_path(cliente), :class => 'button blue' do %>
+          <%= link_to edit_cliente_path(cliente), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
                       <span class="editar"></span>
                       <% end %>
-          <%= link_to cliente_path(cliente), :class => 'button green' do %>
+          <%= link_to cliente_path(cliente), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
           <% if cliente.bloqueado? %>

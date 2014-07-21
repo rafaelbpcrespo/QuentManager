@@ -465,6 +465,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 	height: 610px;
 }	
 
+#col {
+	margin-right: 15px;
+	padding-left: 20px;
+	/*border: solid 10px #ffc335;*/
+	border-radius: 12px 12px 12px 12px;
+	float: left;
+	height: 300px;
+	width: 250px;	
+}
+
 #col1 {
 	margin-right: 15px;
 	padding-left: 20px;
@@ -666,4 +676,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
   color: #999;
   cursor: not-allowed;
   background-color: #fff;
+}
+
+.info {
+	font-size: 16px;
+	float: left;
+	margin-top: 0px;
 }

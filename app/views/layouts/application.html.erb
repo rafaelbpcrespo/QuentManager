@@ -80,13 +80,21 @@
           <div id="navbardir"></div> 
       </div>
       <div id="colinf">
-            <div id="col1">
-        <%= yield %>
-      </div>
-      <div id="col3">
-      <%= render :partial => 'barra_lateral' %>
-      </div>
-      </div>
+      <% if usuario_signed_in? %>
+        <div id="col1">
+          <%= yield %>
+        </div>
+        <div id="col3">
+          <%= render :partial => 'barra_lateral' %>
+        </div>
+        </div>
+        </div>     
+      <% else %>
+        <div id="col">
+          <%= yield %>
+        </div>
+        </div>
+      <% end %>
 
       
       
