@@ -319,9 +319,7 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
 
 #lineorange {
 	background-color: #ffc335;
-	height: 9px;
-	
-	
+	height: 9px;	
 }
 
 #boxorange {
@@ -472,7 +470,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 	border-radius: 12px 12px 12px 12px;
 	float: left;
 	height: 300px;
-	width: 250px;	
+	width: 600px;	
 }
 
 #col1 {
@@ -682,4 +680,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 	font-size: 16px;
 	float: left;
 	margin-top: 0px;
+}
+
+.show-clientes {
+  	float: left;
+  	text-align: left;
+  	width: 275px;
+  	height: 300px;
+}
+
+.show-empresas {
+	margin-left: 170px;
+  	text-align: left;
+  	width: 280px;
+  	/*height: 300px;*/
+}
+
+  .form-clientes {
+  	float: left;
+  border: solid 1px;
+  /*padding: 55px;*/
+  /*margin: 30px;*/
+  float: left;
+  border-color: #00FF00;
+  height: 535px;
+  padding-top: 0px;
 }

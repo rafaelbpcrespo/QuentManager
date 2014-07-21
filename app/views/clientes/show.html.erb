@@ -5,56 +5,67 @@
             new_cliente_path,
             :class => 'btn btn-primary' %></h1>
 </div>
+<div>
+<fieldset class='show-clientes'>
+<legend>Dados Pessoais</legend>
+    <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+    <%= @cliente.nome %><br/>
+    <strong>CPF:</strong>
+    <%= @cliente.cpf %><br/>
+    <strong>RG:</strong>
+    <%= @cliente.rg %><br/>
+    <strong><%= model_class.human_attribute_name(:sexo) %>:</strong>
+    <%= @cliente.sexo %><br/>
+    <strong><%= model_class.human_attribute_name(:data_de_nascimento) %>:</strong>
+    <%= @cliente.data_de_nascimento.strftime("%d/%m/%Y") %><br/>
+    <strong>Endereço:</strong>
+    <%= @cliente.endereco %><br/>
+    <strong>Número:</strong>
+    <%= @cliente.numero %><br/>
+    <strong><%= model_class.human_attribute_name(:bairro) %>:</strong>
+    <%= @cliente.bairro %><br/>
+    <strong><%= model_class.human_attribute_name(:cidade) %>:</strong>
+    <%= @cliente.cidade %><br/>
+    <strong><%= model_class.human_attribute_name(:complemento) %>:</strong>
+    <%= @cliente.complemento %><br/>
+    <strong><%= model_class.human_attribute_name(:telefone) %>:</strong>
+    <%= @cliente.telefone %><br/>
+    <strong><%= model_class.human_attribute_name(:celular) %>:</strong>
+    <%= @cliente.celular %>
+</fieldset>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
-  <dd><%= @cliente.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cpf) %>:</strong></dt>
-  <dd><%= @cliente.cpf %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:rg) %>:</strong></dt>
-  <dd><%= @cliente.rg %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sexo) %>:</strong></dt>
-  <dd><%= @cliente.sexo %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:data_de_nascimento) %>:</strong></dt>
-  <dd><%= @cliente.data_de_nascimento %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:endereco) %>:</strong></dt>
-  <dd><%= @cliente.endereco %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:numero) %>:</strong></dt>
-  <dd><%= @cliente.numero %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:bairro) %>:</strong></dt>
-  <dd><%= @cliente.bairro %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cidade) %>:</strong></dt>
-  <dd><%= @cliente.cidade %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:complemento) %>:</strong></dt>
-  <dd><%= @cliente.complemento %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
-  <dd><%= @cliente.telefone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:celular) %>:</strong></dt>
-  <dd><%= @cliente.celular %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:empresa) %>:</strong></dt>
-  <dd><%= @cliente.empresa.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cargo) %>:</strong></dt>
-  <dd><%= @cliente.cargo %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:setor) %>:</strong></dt>
-  <dd><%= @cliente.setor %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telefone_empresa) %>:</strong></dt>
-  <dd><%= @cliente.telefone_empresa %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ramal) %>:</strong></dt>
-  <dd><%= @cliente.ramal %></dd>  
-  <dt><strong><%= model_class.human_attribute_name(:celular_empresa) %>:</strong></dt>
-  <dd><%= @cliente.celular_empresa %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email_empresa) %>:</strong></dt>
-  <dd><%= @cliente.email_empresa %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.voltar', :default => t("helpers.links.voltar")),
-              clientes_path, :class => 'btn btn-primary'  %>
-  <%= link_to t('.editar', :default => t("helpers.links.editar")),
-              edit_cliente_path(@cliente), :class => 'btn btn-primary' %>
-  <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
-              cliente_path(@cliente),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este cliente?')) },
-              :class => 'btn btn-danger' %>
+<fieldset class='show-clientes'>
+<legend>Dados Pessoais</legend>
+    <strong><%= model_class.human_attribute_name(:empresa) %>:</strong>
+    <%= @cliente.empresa.nome %><br/>
+    <strong><%= model_class.human_attribute_name(:cargo) %>:</strong>
+    <%= @cliente.cargo %><br/>
+    <strong><%= model_class.human_attribute_name(:setor) %>:</strong>
+    <%= @cliente.setor %><br/>
+    <strong><%= model_class.human_attribute_name(:telefone_empresa) %>:</strong>
+    <%= @cliente.telefone_empresa %><br/>
+    <strong><%= model_class.human_attribute_name(:ramal) %>:</strong>
+    <%= @cliente.ramal %><br/>
+    <strong><%= model_class.human_attribute_name(:celular_empresa) %>:</strong>
+    <%= @cliente.celular_empresa %><br/>
+    <strong><%= model_class.human_attribute_name(:email_empresa) %>:</strong>
+    <%= @cliente.email_empresa %><br/>
+    </fieldset>
 </div>
+
+    <div class="acoess">
+  <%= link_to t('.voltar', :default => t("helpers.links.voltar")),
+              clientes_path, :class => 'btn'  %>
+  <%= link_to edit_cliente_path(@cliente), :class => 'button blue' do %>
+                      <span class="listar"></span>          
+          <% end %>          
+          <% if @cliente.bloqueado? %>
+            <%= link_to desbloquear_cliente_path(@cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{@cliente.id}"} do %>
+                      <span class="desbloquear"></span>
+            <% end %>
+          <% else %>
+            <%= link_to bloquear_cliente_path(@cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{@cliente.id}"} do %>
+                      <span class="bloquear"></span>
+            <% end %>
+          <% end %>
+    </div>

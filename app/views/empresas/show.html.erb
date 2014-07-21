@@ -6,16 +6,17 @@
             :class => 'button blue-cadastrar' %>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
-  <dd><%= @empresa.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
-  <dd><%= @empresa.telefone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:endereco) %>:</strong></dt>
-  <dd><%= @empresa.endereco %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
-  <dd><%= @empresa.observacao %></dd>
-</dl>
+<fieldset class='show-empresas'>
+  <legend>Dados Cadastrais</legend>
+  <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+  <%= @empresa.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:telefone) %>:</strong>
+  <%= @empresa.telefone %><br/>
+  <strong>Endereço:</strong>
+  <%= @empresa.endereco %><br/>
+  <strong>Observação:</strong>
+  <%= @empresa.observacao %>
+</fieldset>
 
 <div class="form-actions">
   <%= link_to t('.voltar', :default => t("helpers.links.voltar")),

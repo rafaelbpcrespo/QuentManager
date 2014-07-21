@@ -6,7 +6,7 @@
 
   <%= f.fields_for :cliente do |cliente_form| %>
   
-  <fieldset class="teste">
+  <fieldset class="form-clientes">
     <legend>Dados de Sistema</legend>
     <div><%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, :class => "input_default" %></div>
@@ -24,7 +24,7 @@
     </div>
   </fieldset>
 
-      <fieldset class="teste">
+      <fieldset class="form-clientes">
         <legend>Dados Pessoais</legend>
         <div class="control-group">
           <%= cliente_form.label :nome, :class => 'control-label' %>
@@ -101,7 +101,7 @@
         </div>
       </fieldset>
   <div class='cadastro'>
-    <fieldset class="teste">
+    <fieldset class="form-clientes">
       <legend>Dados Profissionais</legend>
       <div class="control-group">
         <%= cliente_form.label :empresa_id, "Empresa", :class => 'control-label' %>

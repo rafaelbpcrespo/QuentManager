@@ -1543,3 +1543,4 @@ $.extend($.fn.cycle.API, {
 });    
 
 })(jQuery);
+
