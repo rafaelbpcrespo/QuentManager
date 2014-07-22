@@ -23,6 +23,26 @@ class Produto < ActiveRecord::Base
     "#{self.nome} #{self.tipo}"
   end
 
+  def self.em_falta
+    total=0
+    Produto.all.each do |p|
+      if p.quantidade == 0
+        total = total +1
+      end
+    end
+      return total    
+  end
+
+  def self.em_alerta
+    total=0
+    Produto.all.each do |p|
+      if p.abaixo_do_limite?
+        total = total +1
+      end
+    end
+      return total
+  end
+
   # def fix_rate 
   #   self[:valor_unitario = valor_unitario_before_type_cast. tr(' $, ' , ' ' )
   # end

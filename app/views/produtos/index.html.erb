@@ -1,17 +1,15 @@
 <%- model_class = Produto -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
-  <%= link_to t('.novo', :default => t("helpers.links.novo_produto")),
-            new_produto_path,
-            :class => 'btn btn-primary' %></h1>
+  <h1 class='titulo'>
+    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
+    <%= link_to 'Cadastrar Produto', new_empresa_path, :class=>"button blue-cadastrar-top" %>
+  </h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:valor_unitario) %></th>
-      <th><%= model_class.human_attribute_name(:categoria) %></th>
       <th><%= model_class.human_attribute_name(:tipo) %></th>
       <th><%= model_class.human_attribute_name(:quantidade) %></th>
       <th><%= model_class.human_attribute_name(:limite_minimo) %></th>
@@ -21,23 +19,25 @@
   <tbody>
     <% @produtos.each do |produto| %>
       <tr>
-        <td><%= link_to produto.id, produto_path(produto) %></td>
         <td><%= produto.nome %></td>
         <td><%= produto.valor_unitario %></td>
-        <td><%= produto.categoria %></td>
         <td><%= produto.tipo %></td>
         <td><%= produto.quantidade %></td>
         <td><%= produto.limite_minimo %></td>
         <td>
-          <%= link_to t('.editar', :default => t("helpers.links.editar")),
-                      edit_produto_path(produto), :class => 'btn btn-mini btn-primary' %>
-          <%= link_to t('.adicionar/subtrair', :default => t("helpers.links.adicionar/subtrair")),
-                      atualizar_produto_path(produto), method: :post, :class => 'btn btn-mini btn-primary' %>
-          <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
-                      produto_path(produto),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este cliente?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <%= link_to edit_produto_path(produto), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+                      <span class="editar"></span>
+                      <% end %>
+          <%= link_to produto_path(produto), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
+                      <span class="listar"></span>          
+          <% end %>
+          <%= link_to atualizar_produto_path(produto), method: :post, :class => 'button green', :title => 'Adicionar/Subtrair' do %>          
+                      <span class="listar"></span>
+                      <% end %>
+          <%= link_to produto_path(produto), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta produto?')) },
+                      :class => 'button red', :title => "Remover" do %>
+                      <span class="remover"></span>
+                      <% end %>
         </td>
       </tr>
     <% end %>
