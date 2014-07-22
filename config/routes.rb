@@ -1,4 +1,6 @@
 QuentManager::Application.routes.draw do
+  resources :entradas
+
   resources :empresas
 
   resources :cardapios

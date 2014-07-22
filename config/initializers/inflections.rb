@@ -59,4 +59,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   # Irregulares
   inflect.irregular "país", "países"
   inflect.irregular 'ItemDePedido', 'ItensDePedidos'
+  inflect.irregular 'PedidoEntrada', 'PedidosEntradas'
+  inflect.irregular 'pedido_entrada', 'pedidos_entradas'
 end
