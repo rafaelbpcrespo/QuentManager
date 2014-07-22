@@ -22,7 +22,7 @@
   <%= link_to t('.voltar', :default => t("helpers.links.voltar")),
               empresas_path, :class => 'btn'  %>
   <%= link_to edit_empresa_path(@empresa), :class => 'button blue' do %>
-                      <span class="listar"></span>          
+                      <span class="editar"></span>          
           <% end %>
 
   <%= link_to empresa_path(@empresa), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta empresa?')) }, :class => 'button red' do %>

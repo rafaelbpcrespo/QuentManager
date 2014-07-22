@@ -1,29 +1,31 @@
 <%- model_class = Cardapio -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
-  <dd><%= @cardapio.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:quantidade) %>:</strong></dt>
-  <dd><%= @cardapio.quantidade %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
-  <dd><%= @cardapio.valor %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
-  <dd><%= @cardapio.observacao %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong></dt>
-  <dd><% if @cardapio.disponibilidade? %> Ativado <% else %> Desativado <% end %></dd>
-</dl>
+<fieldset class='show-produtos'>
+  <legend>Dados Cadastrais</legend>
+  <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+  <%= @cardapio.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
+  <%= @cardapio.quantidade %><br/>
+  <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
+  <%= @cardapio.valor %><br/>
+  <strong><%= model_class.human_attribute_name(:observacao) %>:</strong>
+  <%= @cardapio.observacao %><br/>
+  <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
+  <% if @cardapio.disponibilidade? %> Ativado <% else %> Desativado <% end %>
+
+</fieldset>
 
 <div class="form-actions">
-  <%= link_to t('.voltar', :default => t("helpers.links.voltar")),
+<%= link_to t('.voltar', :default => t("helpers.links.voltar")),
               cardapios_path, :class => 'btn'  %>
-  <%= link_to t('.editar', :default => t("helpers.links.editar")),
-              edit_cardapio_path(@cardapio), :class => 'btn' %>
-  <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
-              cardapio_path(@cardapio),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta cardapio?')) },
-              :class => 'btn btn-danger' %>
+  <%= link_to edit_cardapio_path(@cardapio), :class => 'button blue' do %>
+                      <span class="editar"></span>          
+          <% end %>
+
+  <%= link_to cardapio_path(@cardapio), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta cardapio?')) }, :class => 'button red' do %>
+                        <span class="remover"></span>
+                      <% end %>
 </div>

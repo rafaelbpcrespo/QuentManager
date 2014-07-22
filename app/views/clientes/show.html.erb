@@ -57,7 +57,7 @@
   <%= link_to t('.voltar', :default => t("helpers.links.voltar")),
               clientes_path, :class => 'btn'  %>
   <%= link_to edit_cliente_path(@cliente), :class => 'button blue' do %>
-                      <span class="listar"></span>          
+                      <span class="editar"></span>          
           <% end %>          
           <% if @cliente.bloqueado? %>
             <%= link_to desbloquear_cliente_path(@cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{@cliente.id}"} do %>
