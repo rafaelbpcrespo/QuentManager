@@ -696,6 +696,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
   	/*height: 300px;*/
 }
 
+.show-produtos {
+	margin-left: 170px;
+  	text-align: left;
+  	width: 280px;
+  	/*height: 300px;*/
+}
+
   .form-clientes {
   	float: left;
   border: solid 1px;
