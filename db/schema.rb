@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717214155) do
+ActiveRecord::Schema.define(version: 20140722225725) do
+
+  create_table "arrozes", force: true do |t|
+    t.string   "nome"
+    t.boolean  "disponibilidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cardapios", force: true do |t|
     t.string   "nome"
@@ -61,6 +68,21 @@ ActiveRecord::Schema.define(version: 20140717214155) do
     t.string   "observacao"
   end
 
+  create_table "entradas", force: true do |t|
+    t.string   "nome"
+    t.string   "descricao"
+    t.boolean  "disponibilidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guarnicoes", force: true do |t|
+    t.string   "nome"
+    t.boolean  "disponibilidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "item_de_pedidos", force: true do |t|
     t.integer  "produto_id"
     t.integer  "pedido_id"
@@ -77,6 +99,10 @@ ActiveRecord::Schema.define(version: 20140717214155) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cardapio_id"
+    t.integer  "arroz_id"
+    t.boolean  "feijao"
+    t.integer  "guarnicao_id"
+    t.integer  "salada_id"
   end
 
   create_table "produtos", force: true do |t|
@@ -88,6 +114,13 @@ ActiveRecord::Schema.define(version: 20140717214155) do
     t.integer  "quantidade"
     t.integer  "limite_minimo"
     t.string   "categoria"
+  end
+
+  create_table "saladas", force: true do |t|
+    t.string   "nome"
+    t.boolean  "disponibilidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "usuarios", force: true do |t|
