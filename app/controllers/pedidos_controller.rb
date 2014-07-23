@@ -41,18 +41,15 @@ class PedidosController < ApplicationController
     if @pedido.cliente.nil?
       @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     end
-
+    # ENTRADAS #
     entradas = params[:pedido][:entrada_ids]
     entradas.each do |id|
       if !id.blank?
         entrada = Entrada.find(id.to_i)
-        #debugger
         @pedido.entradas << entrada
       end
-      #debugger
     end
-    
-    debugger
+    ###### FINAL ENTRADAS ########
     
     @pedido.cardapio = Cardapio.where(:nome => params[:cardapio]).first
     #  if !params[:arroz].nil?
