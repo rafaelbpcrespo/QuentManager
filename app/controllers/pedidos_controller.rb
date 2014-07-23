@@ -21,8 +21,10 @@ class PedidosController < ApplicationController
   # GET /pedidos/new
   def new
     @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
+    @entradas_disponiveis = Entrada.where(:disponibilidade => true)
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
+    #@pedido.pedidos_entradas.build
   end
 
   # GET /pedidos/1/edit
@@ -33,26 +35,39 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
-    descricao = ""
+    #debugger
+    #descricao = ""
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
       @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     end
+
+    entradas = params[:pedido][:entrada_ids]
+    entradas.each do |id|
+      if !id.blank?
+        entrada = Entrada.find(id.to_i)
+        #debugger
+        @pedido.entradas << entrada
+      end
+      #debugger
+    end
     
-    @pedido.cardapio = Cardapio.where(:nome => params[:carne]).first
-      if !params[:arroz].nil?
-        descricao = "Arroz "+ params[:arroz] + ","
-      end
-      if params[:feijao] = "Sim"
-        descricao = descricao + " Feijao, "
-      end
+    debugger
+    
+    @pedido.cardapio = Cardapio.where(:nome => params[:cardapio]).first
+    #  if !params[:arroz].nil?
+    #     descricao = "Arroz "+ params[:arroz] + ","
+    #   end
+    #   if params[:feijao] = "Sim"
+    #     descricao = descricao + " Feijao, "
+    #   end
 
-      if params[:farofa] == "Sim"
-        descricao = descricao + " Farofa,"
-      end
+    #   if params[:farofa] == "Sim"
+    #     descricao = descricao + " Farofa,"
+    #   end
 
-    descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
-    @pedido.descricao = descricao
+    # descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+    # @pedido.descricao = descricao
     itens = params[:pedido][:item_de_pedidos_attributes]
 
     if !itens.nil?
@@ -167,6 +182,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :entradas, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end

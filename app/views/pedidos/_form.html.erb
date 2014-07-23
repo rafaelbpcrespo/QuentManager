@@ -7,38 +7,16 @@
     </div>
   </div>
   <% end %>
-  <div class="control-group">
-    <%= f.label :arroz, :class => 'control-label' %>
-    <div class="controls">
-      <%= label :arroz, "Branco", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Branco", false, :value => "Branco"%>
-      <%= label :arroz, "Integral", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Integral", false, :value => "Integral" %>
-      <%= label :arroz, "A la Grega", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "A la Grega", false, :value => "A la Grega" %>
-      <%= label :arroz, "Brócolis", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Brócolis", false, :value => "Brócolis" %>
-    </div>
-  </div>
 
 <div class="control-group">
-    <%= f.label :feijao, :class => 'control-label' %>
+    <%= f.label :entrada, :class => 'control-label' %>
+    <%# @entradas_disponiveis.each do |entrada| %>
     <div class="controls">
-      <%= label :feijao, "Sim", :class =>"checkbox inline" %>
-      <%= check_box_tag :feijao, "Sim", false, :value => "Sim" %>
-      <%= label :feijao, "Não", :class =>"checkbox inline" %>
-      <%= check_box_tag :feijao, "Não", false, :value => "Não" %>
+    <%= collection_check_boxes(:pedido, :entrada_ids, @entradas_disponiveis, :id, :nome) %>
+      <%#= check_box_tag 'pedido[entrada][]', "#{entrada.nome}", @pedido.entradas.includefalse, :value => "#{entrada.nome}" %>
+      <%#= label :entrada, "#{entrada.nome}", :class =>"radio inline" %>
     </div>
-  </div>
-
-<div class="control-group">
-    <%= f.label :farofa, :class => 'control-label' %>
-    <div class="controls">
-      <%= label :farofa, "Sim", :class =>"checkbox inline" %>
-      <%= check_box_tag :farofa, "Sim", false, :value => "Sim" %>
-      <%= label :farofa, "Não", :class =>"checkbox inline" %>
-      <%= check_box_tag :farofa, "Não", false, :value => "Não" %>
-    </div>
+    <% #end %>
   </div>
 
 <div class="control-group">
@@ -51,25 +29,10 @@
     <% end %>
   </div>
 
-<div class="control-group">
-    <%= f.label :acompanhamento, :class => 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :acompanhamento %>
-    </div>
-  </div>
-
-<div class="control-group">
-    <%= f.label :salada, :class => 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :salada %>
-    </div>
-  </div>
-
   <div class="control-group">
   <%= f.label :produto, :class => 'control-label' %> 
    <div class="controls">
     <%= f.fields_for :item_de_pedidos do |item| %>
-    <% debugger %>
       <%= item.collection_select :produto_id, Produto.bebidas, :id, :exibicao_select, :prompt => "Nenhuma", :class => 'text_field' %>
       <%= item.select :quantidade, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10',10]], :selected => item.object.quantidade), :prompt => 0, :class => 'select_field' %>
       <%= item.link_to_remove "Remover este item" %>
@@ -77,7 +40,6 @@
 <p><%= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>
     </div>
   </div>
-
 
   <div class="control-group">
     <%= f.label :valor, :class => 'control-label' %>
