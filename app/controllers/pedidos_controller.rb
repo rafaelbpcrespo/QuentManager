@@ -30,6 +30,8 @@ class PedidosController < ApplicationController
   # GET /pedidos/1/edit
   def edit
     @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
+    @entradas_disponiveis = Entrada.where(:disponibilidade => true)
+
   end
 
   # POST /pedidos
@@ -105,7 +107,8 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1
   # PATCH/PUT /pedidos/1.json
   def update
-    descricao = ""
+#    descricao = ""
+debugger
     parametros = pedido_params
     itens = params[:pedido][:item_de_pedidos_attributes]
     vetor_itens = params[:pedido][:item_de_pedidos_attributes].to_a
@@ -130,24 +133,25 @@ class PedidosController < ApplicationController
 
       if !itens.blank?
         @pedido.calcular_valor
-      else
-        @pedido.valor = 0
       end
-      if !params[:arroz].nil?
-        descricao = "Arroz "+ params[:arroz]  + ","
-      end
-      if params[:feijao] = "Sim"
-        descricao = descricao + " Feijao, "
-      end
+#        @pedido.valor = 0 + params[:valor].to_f
+ #     end
+    #   if !params[:arroz].nil?
+    #     descricao = "Arroz "+ params[:arroz]  + ","
+    #   end
+    #   if params[:feijao] = "Sim"
+    #     descricao = descricao + " Feijao, "
+    #   end
 
-      if params[:farofa] == "Sim"
-        descricao = descricao + " Farofa,"
-      end
+    #   if params[:farofa] == "Sim"
+    #     descricao = descricao + " Farofa,"
+    #   end
 
-    descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
-    @pedido.descricao = descricao
+    # descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+    # @pedido.descricao = descricao
     #@pedido.calcular_valor
-    parametros[:valor] = @pedido.valor
+    debugger
+    #parametros[:valor] = @pedido.valor
     respond_to do |format|
       if @pedido.update(parametros)
         cardapio = @pedido.cardapio

@@ -26,6 +26,8 @@ QuentManager::Application.routes.draw do
     end
   end
 
+    get "home/relatorio_produtos"
+
   resources :home
 
   root to: "home#index"

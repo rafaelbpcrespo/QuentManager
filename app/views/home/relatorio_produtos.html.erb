@@ -1,0 +1,39 @@
+<!-- <fieldset> -->
+    <h2>Estoque<span class="estoque"></span></h2>
+    <fieldset class='quadros'>
+      <h3> Acabando</h3>
+      <table class='rel_estoque'>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Produto.acabando_completo.each do |produto| %>
+            <tr>
+              <td><%= produto.nome %></td>
+              <td><%= produto.quantidade %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </fieldset>
+    <fieldset class='quadros'>
+      <h3> Acabando</h3>    
+      <table class='rel_estoque'>
+        <thead>
+          <tr>
+            <th>Produto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Produto.zerados.each do |produto| %>
+            <tr>
+              <td><%= produto.nome %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </fieldset>
+  <!-- </fieldset> -->

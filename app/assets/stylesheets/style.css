@@ -86,6 +86,35 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', end
    background-repeat:no-repeat;
    padding: 4px 0px 5px 30px;
 }
+
+.usuario{
+   background-image:url('../images/glyphicons_003_user.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 24px;
+   margin-left: 5px;
+}
+
+.pedido{
+   background-image:url('../images/glyphicons_030_pencil.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 24px;
+   margin-left: 5px;
+}
+
+.venda{
+   background-image:url('../images/glyphicons_458_money.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 24px;
+   margin-left: 5px;
+}
+
+.estoque{
+   background-image:url('../images/glyphicons_042_pie_chart.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 26px;
+   margin-left: 5px;
+}
+
 .bigrounded {
 -webkit-border-radius: 2em;
 -moz-border-radius: 2em;
@@ -742,4 +771,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 .form-horizontal .has-feedback .form-control-feedback {
   top: 0;
   right: 15px;
+}
+
+.quadro{
+	/*width: 600px;*/
+	float: left;
+}
+
+.quadros {	
+	height: 200px;
+	width: 260px;
+	margin: 5px;
+	float: left;
+}
+
+.quadros > h3 {
+	margin: 5px 0 5px 0;
+}
+
+.tabela {
+	float: left;
+	border: 1px solid;
+	margin-left: 3px;
+	width: 100px;
+}
+.tabela > tr, .tabela > th, .tabela >td {
+}
+
+.rel_estoque {
+	border: 1px solid;	
+	   width:70%; 
+    margin-left:15%; 
+    margin-right:15%;
 }

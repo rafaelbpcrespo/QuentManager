@@ -42,6 +42,29 @@ class Produto < ActiveRecord::Base
     end
       return total
   end
+  
+  def self.acabando
+    produtos = []
+    Produto.all.map { |p| produtos << p if p.abaixo_do_limite? && !(p.quantidade == 0)  }
+    limite_exibicao = []
+    limite_exibicao << produtos[0]
+    limite_exibicao << produtos[1]
+    limite_exibicao << produtos[2]
+    return limite_exibicao
+  end
+
+
+  def self.acabando_completo
+    produtos = []
+    Produto.all.map { |p| produtos << p if p.abaixo_do_limite? && !(p.quantidade == 0) }
+    return produtos
+  end
+
+  def self.zerados
+    produtos = []
+    Produto.all.map { |p| produtos << p if p.quantidade == 0 }
+    return produtos
+  end
 
   # def fix_rate 
   #   self[:valor_unitario = valor_unitario_before_type_cast. tr(' $, ' , ' ' )

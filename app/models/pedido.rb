@@ -25,4 +25,11 @@ class Pedido < ActiveRecord::Base
     end
     self.valor = valor_pedido
   end
+
+  def self.vendas_do_mes
+    valor = 0;
+    Pedido.find(:all, :conditions => ['created_at > ?', Time.now.beginning_of_month]).map { |p| valor = valor + p.valor}
+    valor
+  end
+
 end
