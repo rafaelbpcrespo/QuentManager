@@ -883,15 +883,14 @@ color: #3f496a;
 
 .validate p span
 {
-	border:0px solid red;
+    border:0px solid red;
     color:red;
     font-size: 11px;    
-	display:block;
+    display:block;
 }
 
 /* FIM STYLE VALIDATE PLUGIN */
 
-.form1{
-
-
+.checkbox_container input {
+    display: inline;
 }

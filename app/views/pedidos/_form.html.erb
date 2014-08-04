@@ -1,62 +1,58 @@
-<%= nested_form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @pedido, :html => { :class => 'validate' } do |f| %>
+  <table>
  <% if can? :manage, Cardapio %>
-  <div class="control-group">
+  <p>
     <%= f.label :cliente_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
-    </div>
-  </div>
+    <%= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
+    </p>
   <% end %>
-
-<div class="control-group">
-    <%= f.label :entrada, :class => 'control-label' %>
+  <p>
+  <fieldset class="form-clientes pess">
+  <legend>Acompanhamentos</legend>
     <%# @entradas_disponiveis.each do |entrada| %>
-    <div class="controls">
-    <%= collection_check_boxes(:pedido, :acompanhamento_ids, @acompanhamentos_disponiveis, :id, :nome) %>
+    <%= collection_check_boxes(:pedido, :acompanhamento_ids, @acompanhamentos_disponiveis, :id, :nome, :inlinr => true) %>
       <%#= check_box_tag 'pedido[entrada][]', "#{entrada.nome}", @pedido.entradas.includefalse, :value => "#{entrada.nome}" %>
       <%#= label :entrada, "#{entrada.nome}", :class =>"radio inline" %>
-    </div>
     <% #end %>
-  </div>
+</fieldset>
+    </p>
+  <p>
 
-<div class="control-group">
+
     <%= f.label :cardapio, :class => 'control-label' %>
     <% @carnes_disponiveis.each do |cardapio| %>
-    <div class="controls">
       <%= radio_button_tag :cardapio, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
-      <%= label :cardapio, "#{cardapio.nome}", :class =>"radio inline" %>
-    </div>
+      <%= "#{cardapio.nome}" %>
     <% end %>
-  </div>
+  </p>
+  <p>
 
-  <div class="control-group">
-  <%= f.label :produto, :class => 'control-label' %> 
-   <div class="controls">
-    <%= f.fields_for :item_de_pedidos do |item| %>
+      <div class="control-group">
+      <%= f.fields_for :item_de_pedidos do |item| %>
+      <div class="controls">
       <%= item.collection_select :produto_id, Produto.bebidas, :id, :exibicao_select, :prompt => "Nenhuma", :class => 'text_field' %>
       <%= item.select :quantidade, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10',10]], :selected => item.object.quantidade), :prompt => 0, :class => 'select_field' %>
       <%= item.link_to_remove "Remover este item" %>
     <% end %>
 <p><%= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>
-    </div>
-  </div>
+</div>
+</div>
+</p>
+  <p>
 
-  <div class="control-group">
     <%= f.label :valor, :class => 'control-label' %>
-    <div class="controls">
       <%= f.text_field :valor, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :forma_de_pagamento, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :forma_de_pagamento, :class => 'text_field' %>
-    </div>
-  </div>
+</p>
+  <p>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
-                pedidos_path, :class => 'btn' %>
-  </div>
+    <%= f.label :forma_de_pagamento, :class => 'control-label' %>
+      <%= f.text_field :forma_de_pagamento, :class => 'text_field' %>
+  </p>
+  <p>
+<br>
+    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", pedidos_path, :class => 'button gray-voltar' %>
+</p>
+</table>
+
 <% end %>
