@@ -21,7 +21,7 @@ class PedidosController < ApplicationController
   # GET /pedidos/new
   def new
     @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
-    @entradas_disponiveis = Entrada.where(:disponibilidade => true)
+    @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
     #@pedido.pedidos_entradas.build
@@ -30,7 +30,7 @@ class PedidosController < ApplicationController
   # GET /pedidos/1/edit
   def edit
     @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
-    @entradas_disponiveis = Entrada.where(:disponibilidade => true)
+    @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
 
   end
 
@@ -44,11 +44,11 @@ class PedidosController < ApplicationController
       @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     end
     # ENTRADAS #
-    entradas = params[:pedido][:entrada_ids]
-    entradas.each do |id|
+    acompanhamentos = params[:pedido][:acompanhamento_ids]
+    acompanhamentos.each do |id|
       if !id.blank?
-        entrada = Entrada.find(id.to_i)
-        @pedido.entradas << entrada
+        acompanhamento = Acompanhamento.find(id.to_i)
+        @pedido.acompanhamentos << acompanhamento
       end
     end
     ###### FINAL ENTRADAS ########
@@ -183,6 +183,6 @@ debugger
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :entradas, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :acompanhamentos, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end
