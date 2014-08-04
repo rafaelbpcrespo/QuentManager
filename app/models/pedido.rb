@@ -1,7 +1,7 @@
 class Pedido < ActiveRecord::Base
   belongs_to :cliente
-  has_many :pedidos_entradas
-  has_many :entradas, through: :pedidos_entradas
+  has_many :pedidos_acompanhamentos
+  has_many :acompanhamentos, through: :pedidos_acompanhamentos
   has_many :item_de_pedidos
   has_many :produtos, through: :item_de_pedidos
   belongs_to :cardapio

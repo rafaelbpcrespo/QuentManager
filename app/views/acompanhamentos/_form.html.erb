@@ -1,0 +1,34 @@
+<%= form_for(@acompanhamento), :html => { :class => 'validate' } do |f| %>
+  <% if @acompanhamento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@acompanhamento.errors.count, "error") %> prohibited this acompanhamento from being saved:</h2>
+
+      <ul>
+      <% @acompanhamento.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+<td>
+<p>
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br>
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.label :disponibilidade %><br>
+    <%= f.check_box :disponibilidade %>
+  </p>
+  <p>
+<br>
+        <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", empresas_path, :class => 'button gray-voltar' %>
+</p>
+</td>
+</table>
+<% end %>
