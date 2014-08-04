@@ -1,32 +1,25 @@
 <%- model_class = Cliente -%>
-<div class="title">
+
   <h1>Desbloquear Cliente</h1>
   <%= link_to '#', html_options = {:class => "btn btn-small btn-info informacoes", :id => "_informacoes", :'data-content' => "Administrador Operacional bloqueia o acesso de um Cliente ao sistema.", :rel => "popover"} do %>
-      <i class="icon-info-sign icon-white"></i>
   <% end %>
-</div>
 
-<div class="row-fluid">
+<div class="show1">
+<fieldset class='form-clientes'>
+<legend>Dados do cliente a ser desbloqueado</legend>
 
-  <div class="span2">
-  </div>
-  <!--end sidebar-->
+   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+    <%= @cliente.nome %><br>
+    <strong><%= model_class.human_attribute_name(:cpf) %>:</strong>
+    <%= @cliente.cpf %><br>
+    <strong><%= model_class.human_attribute_name(:empresa) %>:</strong>
+    <%= @cliente.empresa.nome %><br>
+    <strong><%= model_class.human_attribute_name(:celular) %>:</strong>
+    <%= @cliente.celular %><br>
+ </fieldset>
+</div> 
 
-  <!--div class="span10"-->
-  <dl class="dl-horizontal">
-    <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
-    <dd><%= @cliente.nome %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:cpf) %>:</strong></dt>
-    <dd><%= @cliente.cpf %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:empresa) %>:</strong></dt>
-    <dd><%= @cliente.empresa.nome %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:celular) %>:</strong></dt>
-    <dd><%= @cliente.celular %></dd>
-  </dl>
+      <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
+                clientes_path, :class => 'button gray-voltar' %>
+    <%= link_to 'Confirmar Desbloqueio', confirmar_desbloqueio_cliente_path(@cliente), :class => "button blue-cadastrar-top" %>
 
-    <%= link_to 'Cancelar', clientes_path %>
-    <%= link_to 'Confirmar Desbloqueio', confirmar_desbloqueio_cliente_path(@cliente), :class => "btn btn-success" %>
-  </div>
-  <!--end content-->
-
-</div><!--end row-fluid-->
