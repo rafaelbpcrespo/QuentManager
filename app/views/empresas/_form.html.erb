@@ -1,32 +1,28 @@
-<%= form_for @empresa, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
+<%= form_for @empresa, :html => { :class => 'validate' } do |f| %>
+  <table>
+  <td>
+  <p>
     <%= f.label :nome, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :nome, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
+    <%= f.text_field :nome, :class => 'text_field' %>
+  </p>
+  <p>
     <%= f.label :telefone, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :telefone, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
+    <%= f.text_field :telefone, :class => 'text_field' %>
+  </p>
+  <p> 
     <%= f.label :endereco, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :endereco, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :observacao, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :observacao, :class => 'text_field' %>
-    </div>
-  </div>
-
-  <div class="form-button">
-    <%= f.submit nil, :class => 'button' %>
-    <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
-                empresas_path, :class => 'button' %>
-  </div>
+    <%= f.text_field :endereco, :class => 'text_field' %>
+ </p>
+  <p>
+   <%= f.label :observacao, :class => 'control-label' %>
+   <%= f.text_field :observacao, :class => 'text_field' %>
+  </p>
+  <p>
+<br>
+    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", empresas_path, :class => 'button gray-voltar' %>
+</p>
+</td>
+</table>
+  
 <% end %>

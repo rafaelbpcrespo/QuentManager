@@ -1,9 +1,8 @@
 <%- model_class = Cardapio -%>
-<div class="page-header">
-  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
+<h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 
-<fieldset class='show-produtos'>
+<div class="show1">
+<fieldset class='form-clientes'>
   <legend>Dados Cadastrais</legend>
   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
   <%= @cardapio.nome %><br/>
@@ -15,12 +14,16 @@
   <%= @cardapio.observacao %><br/>
   <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
   <% if @cardapio.disponibilidade? %> Ativado <% else %> Desativado <% end %>
-
 </fieldset>
-
-<div class="form-actions">
-<%= link_to t('.voltar', :default => t("helpers.links.voltar")),
-              cardapios_path, :class => 'btn'  %>
+</div>
+<center>
+<div class="acoes">
+<%= link_to cardapios_path, :class => 'button gray' do  %>
+                      <span class="voltar"></span>          
+          <% end %>
+<%= link_to new_cardapio_path, :class => 'button green', :title => "Novo Cardápio" do %>
+                    <span class="adicionar"></span> 
+         <% end %>
   <%= link_to edit_cardapio_path(@cardapio), :class => 'button blue' do %>
                       <span class="editar"></span>          
           <% end %>
@@ -29,3 +32,4 @@
                         <span class="remover"></span>
                       <% end %>
 </div>
+</center>

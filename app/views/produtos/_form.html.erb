@@ -1,45 +1,36 @@
-<%= form_for @produto, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :nome, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :nome, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
+<%= form_for @produto, :html => { :class => 'validate' } do |f| %>
+<table >
+  <td><p>
+    <%= f.label :nome, :class => '' %>
+    <%= f.text_field :nome, :class => '' %>
+  </p>
+  <p>
     <%= f.label :valor_unitario, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :valor_unitario, :class => 'text_field' %>
-    </div>
-    </div>
-  <div class="control-group">
-    <%= f.label :categoria, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :categoria, ["Bebida", "Carne", "Mantimento", "Tempero"], :prompt => "Selecione", :class => 'text_field' %>
-      <%#= f.text_field :tipo, :class => 'text_field' %>
-    </div>
-    </div>
-  <div class="control-group">
+    <%= f.text_field :valor_unitario, :class => 'text_field' %>
+  </p>
+  <p>
+   <%= f.label :categoria, :class => 'control-label' %>
+   <%= f.select :categoria, ["Bebida", "Carne", "Mantimento", "Tempero"], :prompt => "Selecione", :class => 'text_field' %>
+   <%#= f.text_field :tipo, :class => 'text_field' %>
+  
+  </p>
+  <p>
     <%= f.label :tipo, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :tipo, ["Lata", "Pet 600ml", "Copo", "Garrafa"], :prompt => "Selecione", :class => 'text_field' %>
-    </div>
-    </div>
-  <div class="control-group">
+    <%= f.select :tipo, ["Lata", "Pet 600ml", "Copo", "Garrafa"], :prompt => "Selecione", :class => 'text_field' %>
+   </p>
+  <p>
     <%= f.label :quantidade, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :quantidade, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
+    <%= f.text_field :quantidade, :class => 'text_field' %>
+   </p>
+  <p>
+  <p>
     <%= f.label :limite_minimo, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :limite_minimo, :class => 'text_field' %>
-    </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
-                produtos_path, :class => 'btn' %>
-  </div>
+    <%= f.text_field :limite_minimo, :class => 'text_field' %>
+</p><br>
+<p>
+    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", produtos_path, :class => 'button gray-voltar' %>
+</p>
+</td>
+  </table>
 <% end %>
