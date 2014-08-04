@@ -1,5 +1,5 @@
 QuentManager::Application.routes.draw do
-  resources :entradas
+  resources :acompanhamentos
 
   resources :empresas
 
