@@ -2,11 +2,12 @@
 <html lang="pt-br">
   <head>
     <%#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
-  <%#= stylesheet_link_tag    "bootstrap.min.css", media: "all", "data-turbolinks-track" => false %>
+  <%#= stylesheet_link_tag    "bootstrap.css", media: "all", "data-turbolinks-track" => false %>
   <%= stylesheet_link_tag    "style.css", media: "all", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
-  <%#= javascript_include_tag "bootstrap.min.js", "data-turbolinks-track" => false %>
+  <%#= javascript_include_tag "application", "data-turbolinks-track" => false %>
+  <%#= javascript_include_tag "bootstrap.js", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "jquery.min.js", "data-turbolinks-track" => false %>
+   <%#= javascript_include_tag "jquery.validate.js", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "jquery.cycle2.js", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
 <!--          <p class="alert-success"><%= notice %></p>
@@ -22,85 +23,93 @@
   </head>
     
 <body>
-  <div id="header">                            
-  <% if usuario_signed_in? %>
-              <ul class="menu">              
-              <li>
-                <a href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
-                <ul>
-                  <li><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
-                  <li><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
-                  <li class="fonte_menu_dropdown"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
-                </ul>
-              </li>
-             <% else %>
-             <div class='login'>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "navbar-form navbar-right" , :id => ""})  do |f| %>
-               <div class='login_fields'><%= f.email_field :email, autofocus: true, placeholder: "Email", :class => "input_default" %></div>
-               <div class='login_fields'>
-                <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "input_default" %> </div>
-               <%= f.submit "Entrar", :class => "login_fields" %>
-             <% end %>
-             <% end %></div>
-             </div>
-  <div id="lineorange">
-    <!-- <div id="boxorange"> Envie-nos sua sugestão <p> contato@siquitutes.com.br </div> -->
-
-  </div>
 <div id="all">
-    
-  
+  <div id="header">
+      <% if usuario_signed_in? %>
+          <ul class="menu">              
+          <li>
+            <a href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
+          <ul>
+          <li><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
+          <li><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
+          <li class="fonte_menu_dropdown"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
+          </ul>
+          </li>
+    <% else %>
+      <div class='login'>
+        <%= form_for(resource, :html => { :class => "validate"}, as: resource_name, url: session_path(resource_name))  do |f| %>
+          <div class='login_fields'><%= f.text_field :email, autofocus: true, placeholder: "Email", :class => "validate" %></div>
+          <div class='login_fields'><%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "validate"%></div>
+          <%= f.submit "Entrar", :class => "login_button blue-login"%>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="lineorange">
+    <div id="boxorange"> Envie-nos sua sugestão <p> contato@siquitutes.com.br </div>
+  </div>
+
       <div id="navtop">
-        <div id="logo"> </div>
-        <div id="garfos"> </div>
+          <div id="logo"> </div>
+          <div id="garfos"> </div>
       </div>
       <div id="faixa">    
-         <div id="navbaresq"> </div> 
+        <div id="navbaresq"> </div> 
           <div id="navbar">
-               <div id="home"> <a><%= link_to image_tag("../images/home.png", :width => "40", :height => "40"), root_path, :class => 'botao-home'  %> </a></div>
-              <a><%= link_to "Home", root_path, :class => 'botao' %></a>
-                <% if !usuario_signed_in? %>
-                  <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a>
-                  <a class="botao" href="#"> Equipe </a>
-                  <a class="botao" href="#"> Sobre </a>
-                  <a class="botao" href="#"> Contato</a>
-                <% else %>
+               <div id="home"> <a class="botao" href="#"> <img src="../images/home.png" width="40" height="40"></a></div>
+                  <a class="botao" href="#"> Home </a>
+                  <% if !usuario_signed_in? %>
+                    <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a>
+                    <a class="botao" href="#"> Equipe </a>
+                    <a class="botao" href="#"> Sobre </a>
+                    <a class="botao" href="#"> Contato</a>
+                  <% else %>
                   <% if can? :manage, Cardapio %>
                     <a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a>
                     <a><%= link_to "Produtos", "/produtos", :class => 'botao'  %></a>
                     <a><%= link_to "Cardapios", "/cardapios", :class => 'botao'  %></a>
                     <a><%= link_to "Empresas", "/empresas", :class => 'botao'  %></a>
-                    <a><%= link_to "Entradas", "/entradas", :class => 'botao'  %></a>
                   <% end %>
-                  <a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a>              
+                    <a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a>              
                   <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
-                <% end %>
-
+              <% end %>
           </div>
-
-          <div id="navbardir"></div> 
+        <div id="navbardir"></div> 
       </div>
-      <div id="colinf">
-      <% if usuario_signed_in? %>
-        <div id="col1">
-          <%= yield %>
-        </div>
-        <div id="col3">
-          <%= render :partial => 'barra_lateral' %>
-        </div>
-        </div>
-        </div>     
-      <% else %>
-        <div id="col">
-          <%= yield %>
-        </div>
-        </div>
-      </div>
-      <% end %>
+      <div id="colcentral">
+         
+            <% if usuario_signed_in? %>
+          <div id="coldados">
+            <%= yield %>
+          </div>
+          <div id="colinfo">
+            <%= render :partial => 'barra_lateral' %>
+          </div>  
+            <% else %>
+           <div id="banner"> 
+                <div class="cycle-slideshow"
+                  data-cycle-fx='tileSlide' 
+                  data-cycle-speed="2000"
+                  data-cycle-delay="1500">
+                <img src="../images/slide1.jpg">
+                <img src="../images/slide2.jpg">
+                <img src="../images/slide3.jpg">
+                <img src="../images/slide4.jpg">
+                <img src="../images/slide5.jpg">
+              </div>
 
-      
-      
-<div id="lineorange"></div>
- <div id="rodape">Todos os Direitos Reservados <br> R2L Solutions  </div>
-  </body>
+           </div> 
+          <div id="col">
+            <%= yield %>
+          </div>
+            <% end %>  
+      </div>
+
+<div id="rodape">
+    <div id="lineorange"></div>
+    <div id="boxblue">Todos os Direitos Reservados <br> R2L Solutions </div>
+</div>    
+</div>
+</body>
 </html>
