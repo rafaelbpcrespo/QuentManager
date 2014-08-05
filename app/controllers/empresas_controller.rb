@@ -4,7 +4,7 @@ class EmpresasController < ApplicationController
   # GET /empresas
   # GET /empresas.json
   def index
-    @empresas = Empresa.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 15)
+    @empresas = Empresa.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /empresas/1

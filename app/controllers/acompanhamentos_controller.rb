@@ -4,7 +4,7 @@ class AcompanhamentosController < ApplicationController
   # GET /acompanhamentos
   # GET /acompanhamentos.json
   def index
-    @acompanhamentos = Acompanhamento.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 15)
+    @acompanhamentos = Acompanhamento.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /acompanhamentos/1

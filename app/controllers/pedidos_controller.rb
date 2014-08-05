@@ -7,9 +7,9 @@ class PedidosController < ApplicationController
   # GET /pedidos.json
   def index
     if current_usuario.admin?
-      @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).paginate(:page => params[:page], :per_page => 1)
+      @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).paginate(:page => params[:page], :per_page => 10)
     else
-      @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day, :cliente_id => current_usuario.cliente.id).paginate(:page => params[:page], :per_page => 1)
+      @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day, :cliente_id => current_usuario.cliente.id).paginate(:page => params[:page], :per_page => 10)
     end
   end
 

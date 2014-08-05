@@ -5,7 +5,7 @@ class CardapiosController < ApplicationController
   # GET /cardapios
   # GET /cardapios.json
   def index
-    @cardapios = Cardapio.all
+    @cardapios = Cardapio.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /cardapios/1

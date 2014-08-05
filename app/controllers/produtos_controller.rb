@@ -6,7 +6,7 @@ class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.json
   def index
-    @produtos = Produto.paginate(:page => params[:page], :per_page => 2)
+    @produtos = Produto.paginate(:page => params[:page], :per_page => 10)
     #Produto.paginate(:page => params[:page], :per_page => 30)
     #@produtos = Produto.all
   end
