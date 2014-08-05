@@ -4,7 +4,9 @@ class Pedido < ActiveRecord::Base
   has_many :acompanhamentos, through: :pedidos_acompanhamentos
   has_many :item_de_pedidos
   has_many :produtos, through: :item_de_pedidos
-  belongs_to :cardapio
+  has_many :pedidos_cardapios
+  has_many :cardapios, through: :pedidos_cardapios
+
   accepts_nested_attributes_for :item_de_pedidos,  :allow_destroy => true
 
   scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }

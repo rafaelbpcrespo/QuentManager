@@ -21,8 +21,10 @@
 
     <%= f.label :cardapio, :class => 'control-label' %>
     <% @carnes_disponiveis.each do |cardapio| %>
-      <%= radio_button_tag :cardapio, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
+      <%= check_box_tag :cardapio, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
       <%= "#{cardapio.nome}" %>
+      <%= text_field :quantidade, :class => 'text_field' %>
+
     <% end %>
   </p>
   <p>

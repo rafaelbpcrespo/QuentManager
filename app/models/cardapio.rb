@@ -1,6 +1,6 @@
 class Cardapio < ActiveRecord::Base
-  has_many :pedidos
-
+  has_many :pedidos_cardapios
+  has_many :pedidos, through: :pedidos_cardapios
 #  scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }
   scope :carne, -> { where(tipo: "Carne")}
 
