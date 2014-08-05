@@ -13,6 +13,10 @@ class Ability
         #can , Pedido, :usuario_id => usuario.id
         cannot :destroy, Pedido
       end
+
+      if usuario.cliente.bloqueado?
+        cannot [:create, :update, :read ], Pedido, :cliente_id => usuario.id
+      end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
