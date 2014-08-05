@@ -108,7 +108,6 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1.json
   def update
 #    descricao = ""
-debugger
     parametros = pedido_params
     itens = params[:pedido][:item_de_pedidos_attributes]
     vetor_itens = params[:pedido][:item_de_pedidos_attributes].to_a
@@ -150,7 +149,7 @@ debugger
     # descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     # @pedido.descricao = descricao
     #@pedido.calcular_valor
-    debugger
+    
     #parametros[:valor] = @pedido.valor
     respond_to do |format|
       if @pedido.update(parametros)

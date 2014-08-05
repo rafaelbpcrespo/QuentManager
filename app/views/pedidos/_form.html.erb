@@ -10,7 +10,7 @@
   <fieldset class="form-clientes pess">
   <legend>Acompanhamentos</legend>
     <%# @entradas_disponiveis.each do |entrada| %>
-    <%= collection_check_boxes(:pedido, :acompanhamento_ids, @acompanhamentos_disponiveis, :id, :nome, :inlinr => true) %>
+    <%= collection_check_boxes(:pedido, :acompanhamento_ids, @acompanhamentos_disponiveis, :id, :nome, :checked => false) %>
       <%#= check_box_tag 'pedido[entrada][]', "#{entrada.nome}", @pedido.entradas.includefalse, :value => "#{entrada.nome}" %>
       <%#= label :entrada, "#{entrada.nome}", :class =>"radio inline" %>
     <% #end %>
