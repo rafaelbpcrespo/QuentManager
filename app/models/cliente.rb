@@ -2,11 +2,17 @@ class Cliente < ActiveRecord::Base
   has_many :pedidos
   belongs_to :usuario
   belongs_to :empresa
+  before_save :corrigir_nome
 
   validates :nome, :empresa_id , presence: true
 
   def formatar_data
     data = I18n.l(self.data_de_nascimento)
+  end
+
+  def corrigir_nome
+    nome = self.nome.titleize
+    self.nome = nome
   end
 
   def nome_abreviado
