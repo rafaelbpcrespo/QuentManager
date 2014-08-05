@@ -12,10 +12,6 @@
            of using a Rails form helper -->
    <%= submit_tag "Buscar", :name => nil, :class => 'button gray-voltar' %></td>
 
-   <td><%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
-            new_cliente_path,
-            :class => 'button blue-cadastrar-top' %></td>
-
     <br><br><br><br>
   <% end %>
 <table class="table table-striped">
@@ -58,6 +54,3 @@
 </table>
 <%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
 
-<%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
-            new_cliente_path,
-            :class => 'button blue-cadastrar-bottom' %>
