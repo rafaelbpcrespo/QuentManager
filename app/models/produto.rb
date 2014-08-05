@@ -47,9 +47,11 @@ class Produto < ActiveRecord::Base
     produtos = []
     Produto.all.map { |p| produtos << p if p.abaixo_do_limite? && !(p.quantidade == 0)  }
     limite_exibicao = []
-    limite_exibicao << produtos[0]
-    limite_exibicao << produtos[1]
-    limite_exibicao << produtos[2]
+    for i in 0..2 do
+      if !produtos[i].blank?
+        limite_exibicao << produtos[i]
+      end
+    end
     return limite_exibicao
   end
 
