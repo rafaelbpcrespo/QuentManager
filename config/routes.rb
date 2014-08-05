@@ -10,7 +10,7 @@ QuentManager::Application.routes.draw do
   #match "/produtos/atualizar/:id" => "produtos#atualizar", via: [:get, :post]
   resources :produtos do
     member do
-      post :atualizar
+      get :atualizar
       post :atualizar_estoque
     end
   end

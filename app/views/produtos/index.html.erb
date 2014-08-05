@@ -31,9 +31,12 @@
           <%= link_to produto_path(produto), html_options = { :class => 'button gray', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
-          <%= link_to atualizar_produto_path(produto), method: :post, :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          
+          <%= link_to atualizar_produto_path(produto), :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          
                       <span class="operacoes"></span>
                       <% end %>
+          <%#= link_to atualizar_produto_path(produto), method: :post, :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          
+                      <!-- <span class="operacoes"></span> -->
+                      <%# end %>
           <%= link_to produto_path(produto), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta produto?')) },
                       :class => 'button red', :title => "Remover" do %>
                       <span class="remover"></span>
