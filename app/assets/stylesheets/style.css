@@ -1,12 +1,13 @@
 html, body { height: 100%;}
 
 body {
-	/*font: 13px Arial, Helvetica, sans-serif;*/
+	font: 13px Arial, Helvetica, sans-serif;
 	text-align: center;
 	padding: 0;
 	margin: 0; 
 	background-image:url('../images/bgall.jpg'); 
 	background-repeat: repeat left top; 
+
 }
 
 #all {
@@ -55,7 +56,7 @@ body {
 	box-shadow:         4px 4px 6px 0px rgba(52, 50, 50, 0.64);
 	color: #3f496a;
 	text-align: center;
-	font-family: sarial, helvetica, serif;
+	font-family: arial, helvetica, serif;
 	font-size: 14px;
 	font-weight: bold;
 	padding: 4px;
@@ -125,7 +126,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 #login {
 	float: right;
 	margin: 10px;
-	Arial; font-size:11px; font-weight: normal; color:#737373; 
+	font: Arial; 
+       font-size:11px; 
+       font-weight: normal; 
+       color:#737373; 
 	}
 
 #home{
