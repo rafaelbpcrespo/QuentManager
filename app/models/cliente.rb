@@ -26,6 +26,7 @@ class Cliente < ActiveRecord::Base
 
   def self.search(search,empresa)
     if search && !empresa.blank?
+    search = search.titleize
       find(:all, :conditions => ['nome LIKE ? AND empresa_id = ?', "%#{search}%", "#{empresa}"])
     elsif search
       find(:all, :conditions => ['nome LIKE ?', "%#{search}%"])
