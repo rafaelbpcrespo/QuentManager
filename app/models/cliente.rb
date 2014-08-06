@@ -31,7 +31,6 @@ class Cliente < ActiveRecord::Base
     if search && !empresa.blank?
       find(:all, :conditions => ['nome LIKE ? AND empresa_id = ?', "%#{search}%", "#{empresa}"])
     elsif search
-      debugger
       find(:all, :conditions => ['nome LIKE ?', "%#{search}%"])
     else
       find(:all)
