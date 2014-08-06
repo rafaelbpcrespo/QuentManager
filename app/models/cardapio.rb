@@ -11,8 +11,8 @@ class Cardapio < ActiveRecord::Base
     end
   end
 
-  def decrescer
-    self.quantidade = self.quantidade - 1
+  def decrescer(quantidade_vendida)
+    self.quantidade = self.quantidade - quantidade_vendida
     self.save
     self.verificar_quantidade
   end

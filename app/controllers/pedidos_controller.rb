@@ -20,16 +20,17 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/new
   def new
-    @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
+    @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
+    @pedido.pedidos_cardapios.build
     #@pedido.pedidos_entradas.build
   end
 
   # GET /pedidos/1/edit
   def edit
-    @carnes_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
+    @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
 
   end
@@ -37,7 +38,6 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
-    #debugger
     #descricao = ""
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
@@ -52,8 +52,17 @@ class PedidosController < ApplicationController
       end
     end
     ###### FINAL ENTRADAS ########
-    
-    @pedido.cardapio = Cardapio.where(:nome => params[:cardapio]).first
+    # debugger
+    cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
+    for i in 0...cardapios do
+      if !params["cardapio_#{i}"].blank?
+        @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_#{i}"])
+      end
+    end
+
+    #@pedido.cardapios << Cardapio.where(:nome => params[:cardapio]).first
+
+    # debugger
     #  if !params[:arroz].nil?
     #     descricao = "Arroz "+ params[:arroz] + ","
     #   end
@@ -90,11 +99,14 @@ class PedidosController < ApplicationController
 
     #parametros[:valor] = @pedido.valor
 
-
     respond_to do |format|
       if @pedido.save
-        cardapio = @pedido.cardapio
-        cardapio.decrescer
+        @pedido.pedidos_cardapios.each do |pedido_cardapio|
+          cardapio = pedido_cardapio.cardapio
+          cardapio.decrescer(pedido_cardapio.quantidade)
+        end
+        #cardapio = @pedido.cardapio
+        #cardapio.decrescer
         format.html { redirect_to @pedido, notice: 'Novo Pedido realizado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
@@ -182,6 +194,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :acompanhamentos, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :cardapios, :acompanhamentos, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end
