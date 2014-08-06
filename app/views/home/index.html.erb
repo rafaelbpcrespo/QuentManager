@@ -1,4 +1,5 @@
 <div class='quadro'>
+<% if current_usuario.admin? %>
   <fieldset class='quadros'>
     <legend>Clientes <span class="usuario"></span></legend>
       <h3> Informações de Clientes</h3>
@@ -51,4 +52,13 @@
       <p>Valor vendido hoje: R$ <%= exibir_decimal(Pedido.vendidos_hoje) %></p>
       <p>Vendas do mês: R$<%= exibir_decimal(Pedido.vendas_do_mes) %></p>    
   </fieldset>
+  <% else %>
+<fieldset class='quadros'>
+    <legend>Conta<span class="venda"></span></legend>
+      <h3> Informações da Conta</h3>
+      <p>Quantidade de pedidos:  current_usuario.pedidos.count %></p>
+      <p>Valor a pagar: R$150,00 %></p>    
+  </fieldset>
+
+<% end %>
 </div>

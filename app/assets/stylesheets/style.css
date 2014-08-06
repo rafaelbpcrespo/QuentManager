@@ -94,7 +94,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 	background: url("../images/faixa1.png") no-repeat;
 }
 
-
+.quadros {
+  float: left;
+  width: 40%;
+}
 #navbardir{
 	margin-right: -65px;
 	width: 80px;
@@ -148,6 +151,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 	font-size: 22px;
 	color: #3f496a; 
 	}	
+
+.botao-menor {
+  padding-top: 7px;
+  margin-left: 35px;
+  float: left;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Showcard Gothic";
+  font-size: 17px;
+  color: #3f496a; 
+  } 
 
 .botao-home {
 	padding-top: 5px;
