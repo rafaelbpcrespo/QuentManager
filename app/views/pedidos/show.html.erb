@@ -4,6 +4,14 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong>Acompanhamentos</strong></dt>
+  <% @pedido.acompanhamentos.each do |acompanhamento| %>
+  <dd><%= acompanhamento.nome %></dd>
+  <% end %>
+  <dt><strong>Proteinas</strong></dt>
+  <% @pedido.pedidos_cardapios.each do |pedido_cardapio| %>
+  <dd> <%= pedido_cardapio.quantidade %> <%= pedido_cardapio.cardapio.nome %></dd>
+  <% end %>
   <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
   <dd><%= @pedido.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
