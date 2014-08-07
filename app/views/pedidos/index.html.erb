@@ -17,10 +17,8 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:descricao) %></th>
-      <th><%= model_class.human_attribute_name(:valor) %></th>
       <th><%= model_class.human_attribute_name(:cliente_id) %></th>
-      <th><%= model_class.human_attribute_name(:forma_de_pagamento) %></th>
+      <th><%= model_class.human_attribute_name(:valor) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
@@ -29,10 +27,8 @@
     <% @pedidos.each do |pedido| %>
       <tr>
         <td><%= link_to pedido.id, pedido_path(pedido) %></td>
-        <td><%= pedido.descricao %></td>
-        <td><%= pedido.valor %></td>
         <td><%= pedido.cliente.nome %></td>
-        <td><%= pedido.forma_de_pagamento %></td>
+        <td><%= pedido.valor %></td>
         <td><%=l pedido.created_at %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
