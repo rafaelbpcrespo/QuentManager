@@ -1,4 +1,15 @@
 <%= form_for @produto, :html => { :class => 'validate' } do |f| %>
+  <% if @produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produto.errors.count, "error") %>:</h2>
+
+      <ul>
+      <% @produto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+
 <table >
   <td><p>
     <%= f.label :nome, :class => '' %>

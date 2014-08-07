@@ -1,4 +1,16 @@
 <%= nested_form_for @pedido, :html => { :class => 'validate' } do |f| %>
+
+  <% if @pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pedido.errors.count, "error") %>:</h2>
+
+      <ul>
+      <% @pedido.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+
   <table>
  <% if can? :manage, Cardapio %>
   <p>
