@@ -31,8 +31,11 @@ class PedidosController < ApplicationController
   # GET /pedidos/1/edit
   def edit
     @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
+    debugger
+    @pedido.cardapios.map { |cardapio| @cardapios_disponiveis << cardapio unless @cardapios_disponiveis.include? cardapio }
+    debugger
+    @cardapios_disponiveis.sort!
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
-
   end
 
   # POST /pedidos

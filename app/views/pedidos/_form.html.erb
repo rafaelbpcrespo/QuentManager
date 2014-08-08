@@ -64,10 +64,12 @@
       <%#= "#{cardapio.nome}" %>
       <% if !@pedido.cardapios.include? cardapio %>
       <%# if @pedido.pedidos_cardapios["#{i}".to_i].nil? %>
+      <% debugger %>
       <%= check_box_tag "cardapio_#{i}", "#{cardapio.nome}", false, :value => "#{cardapio.id}" %>
       <%= "#{cardapio.nome}" %>
       <%= select_tag "quantidade_cardapio_#{i}", options_for_select((1.."#{cardapio.quantidade}".to_i).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
       <% else %>
+      <% debugger %>
       <%= check_box_tag "cardapio_#{i}", "#{cardapio.nome}", true, :value => "#{cardapio.id}" %>
       <%= "#{cardapio.nome}" %>      
       <%= select_tag "quantidade_cardapio_#{i}", options_for_select((1.."#{cardapio.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_cardapios["#{i}".to_i].quantidade), :prompt => "Selecione" %>
