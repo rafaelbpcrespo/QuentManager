@@ -65,7 +65,7 @@ class PedidosController < ApplicationController
     cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
     for i in 0...cardapios do
       if !params["cardapio_#{i}"].blank?
-        @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_#{i}"])
+        @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
       end
     end
 
@@ -131,7 +131,49 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1.json
   def update
 #    descricao = ""
+    acompanhamentos = Acompanhamento.where(:disponibilidade => true).count
+    for i in 0...acompanhamentos do
+      acompanhamento=nil
+      if  !params["acompanhamento_#{i}"].blank?
+        acompanhamento = Acompanhamento.find(params["acompanhamento_#{i}"])
+      end
+      if @pedido.acompanhamentos.include? acompanhamento
+        atualiza_acompanhamento = @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(params["acompanhamento_#{i}"])
+        atualiza_acompanhamento.quantidade = params["quantidade_acompanhamento_#{i}"].to_i
+        atualiza_acompanhamento.save
+      elsif !params["acompanhamento_#{i}"].blank?
+#        @pedido.pedidos_acompanhamentos.
+        @pedido.pedidos_acompanhamentos.new(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
+      end
+    end
+
+    cardapios = Cardapio.where(:disponibilidade => true).count
+    for i in 0...cardapios do
+      cardapio=nil
+      if  !params["cardapio_#{i}"].blank?
+        cardapio = Cardapio.find(params["cardapio_#{i}"])
+      end
+      if @pedido.cardapios.include? cardapio
+        atualiza_cardapio = @pedido.pedidos_cardapios.find_by_cardapio_id(params["cardapio_#{i}"])
+        atualiza_cardapio.quantidade = params["quantidade_cardapio_#{i}"].to_i
+        atualiza_cardapio.save
+      elsif !params["cardapio_#{i}"].blank?
+#        @pedido.pedidos_cardapios.
+        @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
+      end
+    end
+
+
+    # cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
+    # for i in 0...cardapios do
+    #   if !params["cardapio_#{i}"].blank?
+    #     @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_#{i}"])
+    #   end
+    # end
+
     parametros = pedido_params
+
+
     itens = params[:pedido][:item_de_pedidos_attributes]
     vetor_itens = params[:pedido][:item_de_pedidos_attributes].to_a
     if !itens.nil?
@@ -176,7 +218,7 @@ class PedidosController < ApplicationController
     #parametros[:valor] = @pedido.valor
     respond_to do |format|
       if @pedido.update(parametros)
-        cardapio = @pedido.cardapio
+        #cardapio = @pedido.cardapio
         #carne.decrescer        
         format.html { redirect_to @pedido, notice: 'Pedido atualizado com sucesso.' }
         format.json { head :no_content }

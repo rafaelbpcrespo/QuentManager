@@ -36,16 +36,20 @@
     <% @acompanhamentos_disponiveis.each_with_index do |acompanhamento,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :cardapio_ids, @cardapios_disponiveis, :id, :nome %>
+      <%#= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", (@pedido.acompanhamentos.include? acompanhamento ? true : false), :value => "#{acompanhamento.id}" %>
+      <%#= "#{acompanhamento.nome}" %>
+      <% if !@pedido.acompanhamentos.include? acompanhamento %>
       <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", false, :value => "#{acompanhamento.id}" %>
       <%= "#{acompanhamento.nome}" %>
-      <% if @pedido.id.nil? %>
       <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
       <% else %>
+      <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", true, :value => "#{acompanhamento.id}" %>
+      <%= "#{acompanhamento.nome}" %>
       <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos["#{i}".to_i].quantidade), :prompt => "Selecione" %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
-</fieldset>
     <% end %>
+</fieldset>
   </p>
 
 
@@ -56,19 +60,46 @@
     <% @cardapios_disponiveis.each_with_index do |cardapio,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :cardapio_ids, @cardapios_disponiveis, :id, :nome %>
+      <%#= check_box_tag "cardapio_#{i}", "#{cardapio.nome}", false, :value => "#{cardapio.id}" %>
+      <%#= "#{cardapio.nome}" %>
+      <% if !@pedido.cardapios.include? cardapio %>
+      <%# if @pedido.pedidos_cardapios["#{i}".to_i].nil? %>
       <%= check_box_tag "cardapio_#{i}", "#{cardapio.nome}", false, :value => "#{cardapio.id}" %>
       <%= "#{cardapio.nome}" %>
-      <% if @pedido.id.nil? %>
-      <%= select_tag "quantidade_#{i}", options_for_select((1.."#{cardapio.quantidade}".to_i).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
+      <%= select_tag "quantidade_cardapio_#{i}", options_for_select((1.."#{cardapio.quantidade}".to_i).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
       <% else %>
-      <%= select_tag "quantidade_#{i}", options_for_select((1.."#{cardapio.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_cardapios["#{i}".to_i].quantidade), :prompt => "Selecione" %>
+      <%= check_box_tag "cardapio_#{i}", "#{cardapio.nome}", true, :value => "#{cardapio.id}" %>
+      <%= "#{cardapio.nome}" %>      
+      <%= select_tag "quantidade_cardapio_#{i}", options_for_select((1.."#{cardapio.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_cardapios["#{i}".to_i].quantidade), :prompt => "Selecione" %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
-</fieldset>
     <% end %>
+</fieldset>
   </p>
-  <p>
 
+<!--   <p>
+<fieldset>
+      <div class="control-group">
+      <%#= f.fields_for :pedidos_acompanhamentos do |pedido_acompanhamento| %>
+    <%# @acompanhamentos_disponiveis.each_with_index do |acompanhamento,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :cardapio_ids, @cardapios_disponiveis, :id, :nome %>
+      <%#= pedido_acompanhamento.check_box :acompanhamento_id, :value => "#{acompanhamento.id}" %>
+      <%#= "#{acompanhamento.nome}" %>
+      <%#= pedido_acompanhamento.select "quantidade", options_for_select((1..3).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
+      <%#= select_field_tag "quantidade_#{i}" %>
+    <%# end %>
+<%# end %>
+</fieldset>
+      <div class="controls">
+</div>
+</div>
+</p>
+ -->
+
+  <p>
+  <fieldset class="form-clientes pess">
+  <legend>Produtos</legend>
       <div class="control-group">
       <%= f.fields_for :item_de_pedidos do |item| %>
       <div class="controls">
@@ -79,6 +110,7 @@
 <p><%= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>
 </div>
 </div>
+</fieldset>
 </p>
   <p>
 
