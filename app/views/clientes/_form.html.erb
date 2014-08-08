@@ -4,11 +4,11 @@
       <h2><%= pluralize(@cliente.errors.count, "error") %>:</h2>
       <ul>
       <% @cliente.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li><%= msg %></li><br/>
       <% end %>
       </ul>
     </div>
-
+<% end %>
     <fieldset class="form-clientes pess">
       <legend>Dados Pessoais</legend>
         <%= f.label "Nome"%>

@@ -7,6 +7,8 @@ class Pedido < ActiveRecord::Base
   has_many :pedidos_cardapios
   has_many :cardapios, through: :pedidos_cardapios
 
+  validates :cliente_id, :forma_de_pagamento, presence: true
+
   accepts_nested_attributes_for :item_de_pedidos,  :allow_destroy => true
 
   scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }

@@ -6,11 +6,11 @@
 
       <ul>
       <% @pedido.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li><%= msg %></li><br/>
       <% end %>
       </ul>
     </div>
-
+<% end %>
   <table>
  <% if can? :manage, Cardapio %>
   <p>

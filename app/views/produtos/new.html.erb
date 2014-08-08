@@ -1,8 +1,5 @@
 <%- model_class = Produto -%>
 <div class="page-header">
  <h1>Novo Produto</h1>
-  <% if !@produto.errors.messages.blank? %>
-    <p class="error"><%= @produto.errors.full_messages.each do |message| %> <li><%= message %> <% end %></li></p>
-  <% end %>
 </div>
 <%= render :partial => 'form' %>

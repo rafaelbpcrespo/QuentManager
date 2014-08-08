@@ -8,6 +8,8 @@ class Usuario < ActiveRecord::Base
   has_one :cliente
   accepts_nested_attributes_for :cliente
 
+  validates :email, :password, :tipo, presence: true
+
   def admin?
     self.tipo == "Administrador"
   end

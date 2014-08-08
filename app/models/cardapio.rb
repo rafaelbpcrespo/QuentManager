@@ -4,6 +4,8 @@ class Cardapio < ActiveRecord::Base
 #  scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }
   scope :carne, -> { where(tipo: "Carne")}
 
+  validates :nome, :quantidade, :disponibilidade, :valor, presence: true
+
   def verificar_quantidade
     if self.quantidade == 0
       self.disponibilidade = false
