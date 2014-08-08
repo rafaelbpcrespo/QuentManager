@@ -11,18 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804225756) do
+ActiveRecord::Schema.define(version: 20140808015035) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
     t.string   "descricao"
-    t.boolean  "disponibilidade"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "arrozes", force: true do |t|
-    t.string   "nome"
     t.boolean  "disponibilidade"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -51,7 +44,6 @@ ActiveRecord::Schema.define(version: 20140804225756) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "usuario_id"
-    t.string   "setro"
     t.string   "cargo"
     t.string   "setor"
     t.string   "cpf"
@@ -76,13 +68,6 @@ ActiveRecord::Schema.define(version: 20140804225756) do
     t.string   "observacao"
   end
 
-  create_table "guarnicoes", force: true do |t|
-    t.string   "nome"
-    t.boolean  "disponibilidade"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "item_de_pedidos", force: true do |t|
     t.integer  "produto_id"
     t.integer  "pedido_id"
@@ -99,10 +84,6 @@ ActiveRecord::Schema.define(version: 20140804225756) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cardapio_id"
-    t.integer  "arroz_id"
-    t.boolean  "feijao"
-    t.integer  "guarnicao_id"
-    t.integer  "salada_id"
   end
 
   create_table "pedidos_acompanhamentos", force: true do |t|
@@ -110,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140804225756) do
     t.integer  "pedido_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "quantidade"
   end
 
   create_table "pedidos_cardapios", force: true do |t|
@@ -129,13 +111,6 @@ ActiveRecord::Schema.define(version: 20140804225756) do
     t.integer  "quantidade"
     t.integer  "limite_minimo"
     t.string   "categoria"
-  end
-
-  create_table "saladas", force: true do |t|
-    t.string   "nome"
-    t.boolean  "disponibilidade"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "usuarios", force: true do |t|

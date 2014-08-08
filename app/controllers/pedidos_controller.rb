@@ -46,15 +46,22 @@ class PedidosController < ApplicationController
       @pedido.cliente = Cliente.find(current_usuario.cliente.id)
     end
     # ENTRADAS #
-    acompanhamentos = params[:pedido][:acompanhamento_ids]
-    acompanhamentos.each do |id|
-      if !id.blank?
-        acompanhamento = Acompanhamento.find(id.to_i)
-        @pedido.pedidos_acompanhamentos.new(:acompanhamento_id => id)
-        #@pedido.acompanhamentos << acompanhamento
+    # acompanhamentos = params[:pedido][:acompanhamento_ids]
+    # acompanhamentos.each do |id|
+    #   if !id.blank?
+    #     acompanhamento = Acompanhamento.find(id.to_i)
+    #     @pedido.pedidos_acompanhamentos.new(:acompanhamento_id => id)
+    #     #@pedido.acompanhamentos << acompanhamento
+    #   end
+    # end
+    ###### FINAL ENTRADAS ########
+    acompanhamentos = Acompanhamento.where(:disponibilidade => true).count
+    for i in 0...acompanhamentos do
+      if !params["acompanhamento_#{i}"].blank?
+        @pedido.pedidos_acompanhamentos.new(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
       end
     end
-    ###### FINAL ENTRADAS ########
+
     cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
     for i in 0...cardapios do
       if !params["cardapio_#{i}"].blank?
