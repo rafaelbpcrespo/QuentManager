@@ -37,7 +37,7 @@
       <%#= collection_check_boxes :pedido, :cardapio_ids, @cardapios_disponiveis, :id, :nome %>
       <%= check_box_tag "cardapio_#{i}", "#{cardapio.nome}", false, :value => "#{cardapio.id}" %>
       <%= "#{cardapio.nome}" %>
-      <%= select_tag "quantidade_#{i}", options_for_select((1.."#{cardapio.quantidade}".to_i).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
+      <%= select_tag "quantidade_#{i}", options_for_select((1.."#{cardapio.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_cardapios["#{i}".to_i].quantidade), :prompt => "Selecione" %>
       <%#= select_field_tag "quantidade_#{i}" %>
 </fieldset>
     <% end %>

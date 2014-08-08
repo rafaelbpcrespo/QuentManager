@@ -25,7 +25,7 @@ class PedidosController < ApplicationController
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
     @pedido.pedidos_cardapios.build
-    #@pedido.pedidos_entradas.build
+    @pedido.pedidos_acompanhamentos.build
   end
 
   # GET /pedidos/1/edit
@@ -38,6 +38,8 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
+    @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
+    @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     #descricao = ""
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
@@ -48,11 +50,12 @@ class PedidosController < ApplicationController
     acompanhamentos.each do |id|
       if !id.blank?
         acompanhamento = Acompanhamento.find(id.to_i)
-        @pedido.acompanhamentos << acompanhamento
+        @pedido.pedidos_acompanhamentos.new(:acompanhamento_id => id)
+        #@pedido.acompanhamentos << acompanhamento
       end
     end
     ###### FINAL ENTRADAS ########
-    # debugger
+    debugger
     cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
     for i in 0...cardapios do
       if !params["cardapio_#{i}"].blank?
@@ -95,7 +98,9 @@ class PedidosController < ApplicationController
         @pedido.item_de_pedidos.destroy_all
         @pedido.valor = 0
       end
-      params[:pedido][:item_de_pedidos_attributes].replace(itens)
+      if !itens.nil?
+        params[:pedido][:item_de_pedidos_attributes].replace(itens)
+      end
 
     #parametros[:valor] = @pedido.valor
 

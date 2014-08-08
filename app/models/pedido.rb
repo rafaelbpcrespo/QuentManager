@@ -7,7 +7,7 @@ class Pedido < ActiveRecord::Base
   has_many :pedidos_cardapios
   has_many :cardapios, through: :pedidos_cardapios
 
-  validates :cliente_id, :forma_de_pagamento, presence: true
+  validates :cliente_id, presence: true
 
   accepts_nested_attributes_for :item_de_pedidos,  :allow_destroy => true
 
