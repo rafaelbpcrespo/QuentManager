@@ -55,7 +55,6 @@ class PedidosController < ApplicationController
       end
     end
     ###### FINAL ENTRADAS ########
-    debugger
     cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
     for i in 0...cardapios do
       if !params["cardapio_#{i}"].blank?
