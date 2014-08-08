@@ -31,9 +31,7 @@ class PedidosController < ApplicationController
   # GET /pedidos/1/edit
   def edit
     @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
-    debugger
     @pedido.cardapios.map { |cardapio| @cardapios_disponiveis << cardapio unless @cardapios_disponiveis.include? cardapio }
-    debugger
     @cardapios_disponiveis.sort!
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
   end
@@ -149,7 +147,9 @@ class PedidosController < ApplicationController
         @pedido.pedidos_acompanhamentos.new(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
       end
     end
-
+    cardapio_novo = []
+    pc = @pedido.pedidos_cardapios
+    cardapio_editado = []
     cardapios = Cardapio.where(:disponibilidade => true).count
     for i in 0...cardapios do
       cardapio=nil
@@ -159,13 +159,25 @@ class PedidosController < ApplicationController
       if @pedido.cardapios.include? cardapio
         atualiza_cardapio = @pedido.pedidos_cardapios.find_by_cardapio_id(params["cardapio_#{i}"])
         atualiza_cardapio.quantidade = params["quantidade_cardapio_#{i}"].to_i
+        cardapio_editado << atualiza_cardapio
         atualiza_cardapio.save
       elsif !params["cardapio_#{i}"].blank?
 #        @pedido.pedidos_cardapios.
-        @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
+        #debugger
+        cardapio_novo << @pedido.pedidos_cardapios.create!(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
       end
     end
-
+    #### Removendo cardapios após edição ####
+    cardapios_removidos = pc - cardapio_editado
+    cardapios_removidos = cardapios_removidos - cardapio_novo
+    cardapios_removidos.each do |cardapio_removido|
+      cardapio_removido.cardapio.quantidade = cardapio_removido.cardapio.quantidade + cardapio_removido.quantidade
+      cardapio = cardapio_removido.cardapio
+      cardapio.save
+      cardapio_removido.destroy
+    end
+    debugger
+    ##################### Fim cardapios removidos #####################
 
     # cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
     # for i in 0...cardapios do
