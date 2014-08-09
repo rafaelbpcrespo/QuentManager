@@ -10,7 +10,16 @@ class Cardapio < ActiveRecord::Base
     if self.quantidade == 0
       self.disponibilidade = false
       self.save
+    else
+      self.disponibilidade = true
+      self.save
     end
+  end
+
+  def acrescer(quantidade_retornada)
+    self.quantidade = self.quantidade + quantidade_retornada
+    self.save
+    self.verificar_quantidade
   end
 
   def decrescer(quantidade_vendida)

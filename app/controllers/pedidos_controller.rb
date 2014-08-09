@@ -151,7 +151,7 @@ class PedidosController < ApplicationController
     pc = @pedido.pedidos_cardapios
     cardapio_editado = []
     cardapios = Cardapio.where(:disponibilidade => true).count
-    for i in 0...cardapios do
+    for i in 0..cardapios do
       cardapio=nil
       if  !params["cardapio_#{i}"].blank?
         cardapio = Cardapio.find(params["cardapio_#{i}"])
@@ -163,17 +163,19 @@ class PedidosController < ApplicationController
         atualiza_cardapio.save
       elsif !params["cardapio_#{i}"].blank?
 #        @pedido.pedidos_cardapios.
-        #debugger
         cardapio_novo << @pedido.pedidos_cardapios.create!(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
+        debugger
+        cardapio_novo.last.cardapio.decrescer(cardapio_novo.last.quantidade)
       end
     end
     #### Removendo cardapios após edição ####
     cardapios_removidos = pc - cardapio_editado
     cardapios_removidos = cardapios_removidos - cardapio_novo
     cardapios_removidos.each do |cardapio_removido|
-      cardapio_removido.cardapio.quantidade = cardapio_removido.cardapio.quantidade + cardapio_removido.quantidade
-      cardapio = cardapio_removido.cardapio
-      cardapio.save
+      cardapio_removido.cardapio.acrescer(cardapio_removido.quantidade)
+      #cardapio_removido.cardapio.quantidade = cardapio_removido.cardapio.quantidade + cardapio_removido.quantidade
+      #cardapio = cardapio_removido.cardapio
+      #cardapio.save
       cardapio_removido.destroy
     end
     debugger
