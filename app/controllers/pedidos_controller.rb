@@ -132,6 +132,9 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1.json
   def update
 #    descricao = ""
+    pa = @pedido.pedidos_acompanhamentos
+    acompanhamento_editado = []
+    acompanhamento_novo = []
     acompanhamentos = Acompanhamento.where(:disponibilidade => true).count
     for i in 0...acompanhamentos do
       acompanhamento=nil
@@ -141,12 +144,19 @@ class PedidosController < ApplicationController
       if @pedido.acompanhamentos.include? acompanhamento
         atualiza_acompanhamento = @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(params["acompanhamento_#{i}"])
         atualiza_acompanhamento.quantidade = params["quantidade_acompanhamento_#{i}"].to_i
+        acompanhamento_editado << atualiza_acompanhamento
         atualiza_acompanhamento.save
       elsif !params["acompanhamento_#{i}"].blank?
 #        @pedido.pedidos_acompanhamentos.
-        @pedido.pedidos_acompanhamentos.new(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
+        acompanhamento_novo << @pedido.pedidos_acompanhamentos.create!(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
       end
     end
+      acompanhamentos_removidos = pa - acompanhamento_editado
+      acompanhamentos_removidos = acompanhamentos_removidos - acompanhamento_novo
+      acompanhamentos_removidos.each do |acompanhamento_removido|
+        acompanhamento_removido.destroy
+      end
+
     cardapio_novo = []
     pc = @pedido.pedidos_cardapios
     cardapio_editado = []

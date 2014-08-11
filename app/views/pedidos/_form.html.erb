@@ -45,7 +45,7 @@
       <% else %>
       <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", true, :value => "#{acompanhamento.id}" %>
       <%= "#{acompanhamento.nome}" %>
-      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos["#{i}".to_i].quantidade), :prompt => "Selecione" %>
+      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :prompt => "Selecione" %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
     <% end %>
