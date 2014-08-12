@@ -39,6 +39,9 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
+    valor = params[:pedido][:valor]
+    params[:pedido][:valor] = valor.split( ',').join('.')
+
     @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     #descricao = ""
@@ -131,6 +134,9 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1
   # PATCH/PUT /pedidos/1.json
   def update
+    valor = params[:pedido][:valor]
+    params[:pedido][:valor] = valor.split( ',').join('.')
+
 #    descricao = ""
     pa = @pedido.pedidos_acompanhamentos
     acompanhamento_editado = []
@@ -174,7 +180,6 @@ class PedidosController < ApplicationController
       elsif !params["cardapio_#{i}"].blank?
 #        @pedido.pedidos_cardapios.
         cardapio_novo << @pedido.pedidos_cardapios.create!(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
-        debugger
         cardapio_novo.last.cardapio.decrescer(cardapio_novo.last.quantidade)
       end
     end
@@ -188,7 +193,6 @@ class PedidosController < ApplicationController
       #cardapio.save
       cardapio_removido.destroy
     end
-    debugger
     ##################### Fim cardapios removidos #####################
 
     # cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
