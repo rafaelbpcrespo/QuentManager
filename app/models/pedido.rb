@@ -6,6 +6,8 @@ class Pedido < ActiveRecord::Base
   has_many :produtos, through: :item_de_pedidos
   has_many :pedidos_cardapios
   has_many :cardapios, through: :pedidos_cardapios
+  has_many :pedidos_guarnicoes
+  has_many :guarnicoes, through: :pedidos_guarnicoes
 
   validates :cliente_id, presence: true
 

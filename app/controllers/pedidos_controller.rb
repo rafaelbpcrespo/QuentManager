@@ -22,9 +22,11 @@ class PedidosController < ApplicationController
   def new
     @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
+    @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
     @pedido.pedidos_cardapios.build
+    @pedido.pedidos_guarnicoes.build
     @pedido.pedidos_acompanhamentos.build
   end
 
@@ -33,6 +35,9 @@ class PedidosController < ApplicationController
     @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
     @pedido.cardapios.map { |cardapio| @cardapios_disponiveis << cardapio unless @cardapios_disponiveis.include? cardapio }
     @cardapios_disponiveis.sort!
+    @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
+    @pedido.guarnicoes.map { |guarnicao| @guarnicoes_disponiveis << guarnicao unless @guarnicoes_disponiveis.include? guarnicao }
+    @guarnicoes_disponiveis.sort!
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
   end
 
@@ -44,6 +49,7 @@ class PedidosController < ApplicationController
 
     @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
+    @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     #descricao = ""
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
@@ -70,6 +76,13 @@ class PedidosController < ApplicationController
     for i in 0...cardapios do
       if !params["cardapio_#{i}"].blank?
         @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
+      end
+    end
+
+    guarnicoes = Guarnicao.where(:disponibilidade => true).count
+    for i in 0...guarnicoes do
+      if !params["guarnicao_#{i}"].blank?
+        @pedido.pedidos_guarnicoes.new(:guarnicao_id => params["guarnicao_#{i}"], :quantidade => params["quantidade_guarnicao_#{i}"])
       end
     end
 
@@ -119,6 +132,10 @@ class PedidosController < ApplicationController
         @pedido.pedidos_cardapios.each do |pedido_cardapio|
           cardapio = pedido_cardapio.cardapio
           cardapio.decrescer(pedido_cardapio.quantidade)
+        end
+        @pedido.pedidos_guarnicoes.each do |pedido_guarnicao|
+          guarnicao = pedido_guarnicao.guarnicao
+          guarnicao.decrescer(pedido_guarnicao.quantidade)
         end
         #cardapio = @pedido.cardapio
         #cardapio.decrescer
@@ -194,6 +211,39 @@ class PedidosController < ApplicationController
       cardapio_removido.destroy
     end
     ##################### Fim cardapios removidos #####################
+
+
+    guarnicao_novo = []
+    pc = @pedido.pedidos_guarnicoes
+    guarnicao_editado = []
+    guarnicoes = Guarnicao.where(:disponibilidade => true).count
+    for i in 0..guarnicoes do
+      guarnicao=nil
+      if  !params["guarnicao_#{i}"].blank?
+        guarnicao = Guarnicao.find(params["guarnicao_#{i}"])
+      end
+      if @pedido.guarnicoes.include? guarnicao
+        atualiza_guarnicao = @pedido.pedidos_guarnicoes.find_by_guarnicao_id(params["guarnicao_#{i}"])
+        atualiza_guarnicao.quantidade = params["quantidade_guarnicao_#{i}"].to_i
+        guarnicao_editado << atualiza_guarnicao
+        atualiza_guarnicao.save
+      elsif !params["guarnicao_#{i}"].blank?
+#        @pedido.pedidos_cardapios.
+        guarnicao_novo << @pedido.pedidos_guarnicoes.create!(:guarnicao_id => params["guarnicao_#{i}"], :quantidade => params["quantidade_guarnicao_#{i}"])
+        guarnicao_novo.last.guarnicao.decrescer(guarnicao_novo.last.quantidade)
+      end
+    end
+    #### Removendo cardapios após edição ####
+    guarnicoes_removidos = pc - guarnicao_editado
+    guarnicoes_removidos = guarnicoes_removidos - guarnicao_novo
+    guarnicoes_removidos.each do |guarnicao_removido|
+      guarnicao_removido.guarnicao.acrescer(guarnicao_removido.quantidade)
+      #cardapio_removido.cardapio.quantidade = cardapio_removido.cardapio.quantidade + cardapio_removido.quantidade
+      #cardapio = cardapio_removido.cardapio
+      #cardapio.save
+      guarnicao_removido.destroy
+    end
+    ##################### Fim guarnicoes removidos #####################
 
     # cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
     # for i in 0...cardapios do
@@ -278,6 +328,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :cardapios, :acompanhamentos, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :cardapios, :acompanhamentos, :guarnicoes, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end

@@ -77,6 +77,30 @@
 </fieldset>
   </p>
 
+<p>
+
+  <fieldset class="form-clientes pess">
+  <legend>Guarnições</legend>
+    <% @guarnicoes_disponiveis.each_with_index do |guarnicao,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :cardapio_ids, @cardapios_disponiveis, :id, :nome %>
+      <%#= check_box_tag "cardapio_#{i}", "#{cardapio.nome}", false, :value => "#{cardapio.id}" %>
+      <%#= "#{cardapio.nome}" %>
+      <% if !@pedido.guarnicoes.include? guarnicao %>
+      <%# if @pedido.pedidos_cardapios["#{i}".to_i].nil? %>
+      <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", false, :value => "#{guarnicao.id}" %>
+      <%= "#{guarnicao.nome}" %>
+      <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade}".to_i).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
+      <% else %>
+      <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", true, :value => "#{guarnicao.id}" %>
+      <%= "#{guarnicao.nome}" %>      
+      <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_guarnicoes.where(:guarnicao_id => guarnicao.id).first.quantidade), :prompt => "Selecione" %>
+      <% end %>
+      <%#= select_field_tag "quantidade_#{i}" %>
+    <% end %>
+</fieldset>
+  </p>
+
 <!--   <p>
 <fieldset>
       <div class="control-group">

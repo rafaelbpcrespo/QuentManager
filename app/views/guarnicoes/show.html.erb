@@ -1,0 +1,36 @@
+<%- model_class = Guarnicao -%>
+<h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<p id="notice"><%= notice %></p>
+
+<div class="show1">
+<fieldset class='form-clientes'>
+  <legend>Dados Cadastrais</legend>
+  <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+  <%= @guarnicao.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
+  <%= @guarnicao.quantidade %><br/>
+  <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
+  <%= @guarnicao.valor %><br/>
+  <strong><%= model_class.human_attribute_name(:descricao) %>:</strong>
+  <%= @guarnicao.descricao %><br/>
+  <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
+  <% if @guarnicao.disponibilidade? %> Ativado <% else %> Desativado <% end %>
+</fieldset>
+</div>
+<center>
+<div class="acoes">
+<%= link_to guarnicoes_path, :class => 'button gray' do  %>
+                      <span class="voltar"></span>          
+          <% end %>
+<%= link_to new_guarnicao_path, :class => 'button green', :title => "Novo Cardápio" do %>
+                    <span class="adicionar"></span> 
+         <% end %>
+  <%= link_to edit_guarnicao_path(@guarnicao), :class => 'button blue' do %>
+                      <span class="editar"></span>          
+          <% end %>
+
+  <%= link_to guarnicao_path(@guarnicao), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta guarnicao?')) }, :class => 'button red' do %>
+                        <span class="remover"></span>
+                      <% end %>
+</div>
+</center>
