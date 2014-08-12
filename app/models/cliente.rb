@@ -4,7 +4,7 @@ class Cliente < ActiveRecord::Base
   belongs_to :empresa
   before_save :corrigir_nome
 
-  validates :nome, :empresa_id , presence: true
+  validates :nome, :empresa_id, :celular, :data_de_pagamento, :cpf, :cargo, :setor, :sexo, :data_de_nascimento, :telefone_empresa, :usuario_id, presence: true
 
   def formatar_data
     data = I18n.l(self.data_de_nascimento)

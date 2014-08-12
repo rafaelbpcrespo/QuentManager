@@ -25,6 +25,9 @@ class CardapiosController < ApplicationController
   # POST /cardapios
   # POST /cardapios.json
   def create
+    valor = params[:cardapio][:valor]
+    params[:cardapio][:valor] = valor.split( ',').join('.')
+    
     @cardapio = Cardapio.new(cardapio_params)
 
     respond_to do |format|
@@ -41,6 +44,9 @@ class CardapiosController < ApplicationController
   # PATCH/PUT /cardapios/1
   # PATCH/PUT /cardapios/1.json
   def update
+    valor = params[:cardapio][:valor]
+    params[:cardapio][:valor] = valor.split( ',').join('.')
+
     respond_to do |format|
       if @cardapio.update(cardapio_params)
         format.html { redirect_to @cardapio, notice: 'Cardapio atualizado com sucesso.' }

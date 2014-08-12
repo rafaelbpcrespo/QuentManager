@@ -5,10 +5,10 @@
   <%#= stylesheet_link_tag    "bootstrap.css", media: "all", "data-turbolinks-track" => false %>
   <%= stylesheet_link_tag    "style.css", media: "all", "data-turbolinks-track" => false %>
   <%#= javascript_include_tag "bootstrap.js", "data-turbolinks-track" => false %>
-  <%#= javascript_include_tag "jquery.min.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "jquery.min.js", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "application.js", "data-turbolinks-track" => false %>
   <%#= javascript_include_tag "nested_form.js", "data-turbolinks-track" => false %>
-   <%#= javascript_include_tag "jquery.validate.js", "data-turbolinks-track" => false %>
+   <%= javascript_include_tag "jquery.validate.js", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "jquery.cycle2.js", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
 <!--          <p class="alert-success"><%= notice %></p>
@@ -28,14 +28,15 @@
   <div id="header">
       <% if usuario_signed_in? %>
           <ul class="menu">              
-          <li>
-            <a href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
-          <ul>
-          <li><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
-          <li><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
-          <li class="fonte_menu_dropdown"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
+          <li class="menu">
+            <a class="menu"href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
+          <ul class="menu">
+          <li class="menu"><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
+          <li class="menu"><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
+          <li class="menu"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
           </ul>
           </li>
+        </ul>
     <% else %>
       <div class='login'>
         <%= form_for(resource, :html => { :class => "validate"}, as: resource_name, url: session_path(resource_name))  do |f| %>
@@ -58,53 +59,61 @@
       <div id="faixa">    
         <div id="navbaresq"> </div> 
           <div id="navbar">
+            <ul class="dropdown">
                <div id="home"> <a class="botao" href="/home"> <img src="../images/home.png" width="40" height="40"></a></div>
-                  <a class="botao" href="/home"> Home </a>
-                  <% if !usuario_signed_in? %>
-                    <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a>
-                    <a class="botao" href="#"> Equipe </a>
-                    <a class="botao" href="#"> Sobre </a>
-                    <a class="botao" href="#"> Contato</a>
-                  <% else %>
-                  <% if can? :manage, Cardapio %>
-                    <a><%= link_to "Clientes", "/clientes", :class => 'botao-menor'  %></a>
-                    <a><%= link_to "Produtos", "/produtos", :class => 'botao-menor'  %></a>
-                    <a><%= link_to "Cardapios", "/cardapios", :class => 'botao-menor'  %></a>
-                    <a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao-menor'  %></a>
-                    <a><%= link_to "Empresas", "/empresas", :class => 'botao-menor'  %></a>
-                  <% end %>
-                    <a><%= link_to "Pedidos", "/pedidos", :class => 'botao-menor'  %></a>              
-                  <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
+                    <li class="dropdown"><a class="botao" href="/home"> Home </a></li>
+                    <% if !usuario_signed_in? %>
+                     <li class="dropdown"> <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a></li>
+                     <li class="dropdown"> <a class="botao" href="#"> Equipe </a></li>
+                     <li class="dropdown"> <a class="botao" href="#"> Sobre </a></li>
+                     <li class="dropdown"><a class="botao" href="#"> Contato</a></li>
+                    <% else %>
+                    <% if can? :manage, Cardapio %>
+                     <li class="dropdown">
+                       <span ><a class="botao" href="#"> Cadastros</a></span>
+                        <ol class="dropdown">
+                        <li class="dropdown" ><a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Produtos", "/produtos", :class => 'botao'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Cardapios", "/cardapios", :class => 'botao'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Empresas", "/empresas", :class => 'botao'  %></a></li>
+
+                      <% end %>
+                    </ol>
+                      </li>
+                       <li class="dropdown"><a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
+                    <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
               <% end %>
+            </ul>  
           </div>
         <div id="navbardir"></div> 
       </div>
       <div id="colcentral">
-         
-            <% if usuario_signed_in? %>
+        <% if usuario_signed_in? %>
           <div id="coldados">
             <%= yield %>
           </div>
-          <div id="colinfo">
-            <%= render :partial => 'barra_lateral' %>
-          </div>  
-            <% else %>
-           <div id="banner"> 
-                <div class="cycle-slideshow"
-                  data-cycle-fx='tileSlide' 
-                  data-cycle-speed="2000"
-                  data-cycle-delay="1500">
+          <% if request.env['PATH_INFO'] != new_usuario_registration_path %>
+            <div id="colinfo">
+              <%= render :partial => 'barra_lateral' %>
+            </div>  
+            <% end %>
+        <% else %>
+          <% if request.env['PATH_INFO'] == root_path %>
+            <div id="banner"> 
+              <div class="cycle-slideshow"
+                data-cycle-fx='tileSlide' 
+                data-cycle-speed="2000"
+                data-cycle-delay="1500">
                 <img src="../images/slide1.jpg">
                 <img src="../images/slide2.jpg">
                 <img src="../images/slide3.jpg">
-                <img src="../images/slide4.jpg">
-                <img src="../images/slide5.jpg">
               </div>
-
-           </div> 
-          <div id="col">
+            </div> 
+          <% end %>
+           
             <%= yield %>
-          </div>
+
             <% end %>  
       </div>
 

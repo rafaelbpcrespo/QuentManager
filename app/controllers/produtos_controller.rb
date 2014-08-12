@@ -30,7 +30,6 @@ class ProdutosController < ApplicationController
   def create
     valor = params[:produto][:valor_unitario]
     params[:produto][:valor_unitario] = valor.split( ',').join('.')
-
     @produto = Produto.new(produto_params)
 
     respond_to do |format|

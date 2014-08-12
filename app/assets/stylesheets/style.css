@@ -1,4 +1,4 @@
-html, body { height: 100%;}
+html, body { height: 100%;  }
 
 body {
 	font: 13px Arial, Helvetica, sans-serif;
@@ -15,7 +15,7 @@ body {
 	width: 960px;
 	min-height: 100%;
 	padding: 0;
-	margin:0 auto;         
+	margin:0 auto;       
 	text-align:left; 
 	background-color: #fff;
 	-webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
@@ -94,10 +94,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 	background: url("../images/faixa1.png") no-repeat;
 }
 
-.quadros {
-  float: left;
-  width: 40%;
-}
+
 #navbardir{
 	margin-right: -65px;
 	width: 80px;
@@ -142,32 +139,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 }
 	
 .botao {
-	padding-top: 7px;
-	margin-left: 35px;
-	float: left;
+	/*margin-left: 35px;*/
+/*	float: left;*/
 	text-decoration: none;
 	text-align: center;
 	font-family: "Showcard Gothic";
 	font-size: 22px;
 	color: #3f496a; 
+      margin: 5px;
 	}	
-
-.botao-menor {
-  padding-top: 7px;
-  margin-left: 35px;
-  float: left;
-  text-decoration: none;
-  text-align: center;
-  font-family: "Showcard Gothic";
-  font-size: 17px;
-  color: #3f496a; 
-  } 
 
 .botao-home {
 	padding-top: 5px;
 	height: 30px;
 	margin-left: 20px;
-	float: left;
+	/*float: left;*/
 	}	
 	
 .botao:hover {
@@ -184,7 +170,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 
 #banner {
 	margin-top: -15px;
-	border: solid 3px purple;
+	/*border: solid 3px purple;*/
 	height:300px;
 	}
 
@@ -199,6 +185,7 @@ h1{
 	width: 960px;
 	background-color: #fff;
 	display: table;
+	padding-bottom: 60px;
 }	
 
 #col {
@@ -611,10 +598,15 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
 	margin-right: 10px;
 }
 
+
+
+
 .menu {
 	list-style: none;
 	float: right;
-	margin: 5px 20px 0 0;
+	margin-top: 2px;
+	margin-right: 5px;
+	
 }
 
 .menu li {
@@ -628,17 +620,23 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
 
 .menu li a:hover {
 	color: #FFC335;
-	-moz-box-shadow:0 3px 10px 0 #ccc;
-	-webkit-box-shadow:0 3px 10px 0 #ccc;
+	/*-moz-box-shadow:0 3px 10px 0 #ccc;
+	-webkit-box-shadow:0 3px 10px 0 #ccc;*/
 	text-shadow:0px 0px 5px #fff;
 }
 
 .menu li ul{
 	position: absolute;
-	top: 25px;
+	top: 24px;
 	right: 0;
 	background-color: #3F496A;
 	display: none;
+	border-radius: 0px 0px 12px 12px;
+	box-shadow:0px 2px 5px #000;
+	/* implementação para o firefox */
+	-moz-box-shadow:0px 2px 5px #000;
+	/* implementação para safari */
+	-webkit-box-shadow:0px 2px 5px #000;
 }
 
 .menu li:hover ul, .menu li.over ul{display: block;}
@@ -911,3 +909,59 @@ color: #3f496a;
 .checkbox_container input {
     display: inline;
 }
+
+.dropdown ul, li, span, a{
+	/*display: block;*/
+	/*overflow: hidden;*/
+	list-style: none;
+	text-decoration: none;
+}
+
+ 
+ul > li{
+	float: left;
+}
+ 
+ 
+.dropdown li a,
+li span{
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+}
+ 
+.dropdown li:hover ol{
+	display: block;
+}
+ 
+.dropdown li ol{
+	margin-top: -1px;
+	padding-right: 25px;
+	padding-bottom: 20px;
+	display: none;
+	background: #F9D884;
+	/*border: solid 9px #ffc335;*/
+	border-radius: 0px 0px 30px 30px;
+	position: absolute;
+}
+ 
+/*ol a{
+	padding: 10px 5px;
+	width: 105px;
+	text-align: left;
+}*/
+ 
+/*ol a:hover{
+	background: #fff;
+	}
+*/
+#msg_erro {
+  margin: 0px 5px 0px -5px;
+  display: table;
+  text-align: center;
+  color: red;
+}
+
+#msg_erro ul, li{
+  /*list-style-type: disc;
+} 
