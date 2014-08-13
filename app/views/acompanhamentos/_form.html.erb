@@ -21,13 +21,18 @@
     <%= f.text_field :descricao %>
   </p>
   <p>
-    <%= f.label :disponibilidade %><br>
-    <%= f.check_box :disponibilidade %>
-  </p>
+    <%= f.label :disponibilidade, :class => 'control-label' %>
+    Ativar
+ 
+    <%= f.radio_button :disponibilidade, true , :checked => true, :value => true %>
+    Desativar
+    <%= f.radio_button :disponibilidade, 'f' , :value => 'f' %>
+</p>
+<br>
   <p>
 <br>
         <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
-    <%= link_to "Cancelar", empresas_path, :class => 'button gray-voltar' %>
+    <%= link_to "Cancelar", acompanhamentos_path, :class => 'button gray-voltar' %>
 </p>
 </td>
 </table>

@@ -51,4 +51,67 @@ class Pedido < ActiveRecord::Base
       self[:cancelado]
     end
 
+    def extra(dados,limite)
+      if !dados.empty? 
+        classe = dados.first.class
+        total=0
+        dados.each do |dado|
+          total = total + dado.quantidade
+        end
+        if total > limite
+          qtd=0
+          cont=0
+          valor=0
+          dados.each_with_index do |dado,i|
+            qtd = qtd + dado.quantidade
+            if qtd > limite
+              if cont == 0
+                if classe == PedidoGuarnicao
+                  valor = valor + ((qtd-limite)*dado.guarnicao.valor)
+                elsif classe == PedidoCardapio
+                  valor = valor + ((qtd-limite)*dado.cardapio.valor)
+                elsif classe == PedidoAcompanhamento
+                  valor = valor + ((qtd-limite)*dado.acompanhamento.valor)
+                end
+                cont = 1
+              else
+                if classe == PedidoGuarnicao
+                  valor = valor + (dado.quantidade * dado.guarnicao.valor)
+                elsif classe == PedidoCardapio
+                  valor = valor + (dado.quantidade * dado.cardapio.valor)
+                elsif classe == PedidoAcompanhamento
+                  valor = valor + (dado.quantidade * dado.acompanhamento.valor)
+                end
+              end
+            end
+          end
+        end
+        return valor.to_f
+      end
+    end
+
+    # def guarnicoes_extra
+    #   total_guarnicoes=0
+    #   self.pedidos_guarnicoes.each do |guarnicao|
+    #     total_guarnicoes = total_guarnicoes + guarnicao.quantidade
+    #   end
+    #   if total_guarnicoes > 2
+    #     qtd=0
+    #     cont=0
+    #     valor=0
+    #     self.pedidos_guarnicoes.each_with_index do |g,i|
+    #       qtd = qtd + g.quantidade
+    #       if qtd > 2
+    #         if cont == 0
+    #           valor = valor + ((qtd-2)*g.guarnicao.valor)
+    #           cont = 1
+    #         else
+    #           valor = valor + (g.quantidade * g.guarnicao.valor)
+    #         end
+    #       end
+    #     end
+    #   end
+    #   return valor
+    # end
+
 end

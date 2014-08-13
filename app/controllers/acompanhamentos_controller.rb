@@ -1,5 +1,5 @@
 class AcompanhamentosController < ApplicationController
-  before_action :set_entrada, only: [:show, :edit, :update, :destroy]
+  before_action :set_acompanhamento, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
   before_action :authenticate_usuario!
   # GET /acompanhamentos
@@ -25,7 +25,7 @@ class AcompanhamentosController < ApplicationController
   # POST /acompanhamentos
   # POST /acompanhamentos.json
   def create
-    @acompanhamento = Acompanhamento.new(entrada_params)
+    @acompanhamento = Acompanhamento.new(acompanhamento_params)
 
     respond_to do |format|
       if @acompanhamento.save
@@ -42,7 +42,7 @@ class AcompanhamentosController < ApplicationController
   # PATCH/PUT /acompanhamentos/1.json
   def update
     respond_to do |format|
-      if @acompanhamento.update(entrada_params)
+      if @acompanhamento.update(acompanhamento_params)
         format.html { redirect_to @acompanhamento, notice: 'Acompanhamento was successfully updated.' }
         format.json { head :no_content }
       else
@@ -57,19 +57,19 @@ class AcompanhamentosController < ApplicationController
   def destroy
     @acompanhamento.destroy
     respond_to do |format|
-      format.html { redirect_to entradas_url }
+      format.html { redirect_to acompanhamentos_url }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_entrada
+    def set_acompanhamento
       @acompanhamento = Acompanhamento.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def entrada_params
+    def acompanhamento_params
       params.require(:acompanhamento).permit(:nome, :descricao, :disponibilidade)
     end
 end

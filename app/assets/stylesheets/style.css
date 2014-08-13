@@ -134,33 +134,41 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 
 #home{
 	position: absolute;
-	margin-left: -40px;
-	margin-top: -2px;
+	margin-left: -44px;
+	margin-top: -8px;
 }
 	
 .botao {
-	/*margin-left: 35px;*/
-/*	float: left;*/
 	text-decoration: none;
 	text-align: center;
 	font-family: "Showcard Gothic";
-	font-size: 22px;
+	font-size: 25px;
 	color: #3f496a; 
-      margin: 5px;
+	}	
+
+.botao2 {
+	text-decoration: none;
+	text-align: center;
+	font-family: "Showcard Gothic";
+	font-size: 20px;
+	color: #3f496a; 
 	}	
 
 .botao-home {
 	padding-top: 5px;
 	height: 30px;
 	margin-left: 20px;
-	/*float: left;*/
 	}	
 	
 .botao:hover {
 	text-decoration: none;
-	height:50px;
 	color: #2ca1ca;
 	}		
+
+.botao2:hover {
+	text-decoration: none;
+	color: #2ca1ca;
+	}	
 
 	@font-face {
 	font-family: "Showcard Gothic"; 
@@ -221,6 +229,71 @@ h1{
 	float: left;
 	height: 300px;
 	width: 250px;
+}
+
+
+#cardapio_b {
+	padding: 30px;
+	background-color: #fad162;
+	margin-left: 30px;
+	/*border: solid 30px #fad162;*/
+	border-radius: 20px 20px 20px 20px;
+	float: left;
+	height: 300px;
+	width: 200px;
+}
+#cardapio {
+	padding: 20px;
+	background-color: #f3d783;
+	/*border: solid 30px #fad162;*/
+	border-radius: 15px 15px 15px 15px;	
+	height: 85%;
+	font-family: "Showcard Gothic";
+	font-size: 22px;
+	color: #3f496a; 
+}
+
+
+#cardapio_b1 {
+	padding: 30px;
+	background-color: #fad162;
+	margin-left: 30px;
+	/*border: solid 30px #fad162;*/
+	border-radius: 20px 20px 20px 20px;
+	float: left;
+	height: 300px;
+	width: 250px;
+}
+#cardapio1 {
+	padding: 20px;
+	background-color: #f3d783;
+	/*border: solid 30px #fad162;*/
+	border-radius: 15px 15px 15px 15px;	
+	height: 85%;
+	font-family: "Showcard Gothic";
+	font-size: 22px;
+	color: #3f496a; 
+}
+
+#cardapio_b2 {
+	padding: 30px;
+	background-color: #fad162;
+	margin-left: 30px;
+	/*border: solid 30px #fad162;*/
+	border-radius: 20px 20px 20px 20px;
+	float: left;
+	height: 300px;
+	width: 200px;
+}
+#cardapio2 {
+	padding: 20px;
+	background-color: #f3d783;
+	/*border: solid 30px #fad162;*/
+	border-radius: 15px 15px 15px 15px;	
+	height: 85%;
+	font-family: "Showcard Gothic";
+	font-size: 22px;
+	color: #3f496a; 
 }
 
 #boxblue {
@@ -388,6 +461,13 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', end
    background-image:url('../images/glyphicons_009_magic.png');
    background-repeat:no-repeat;
    padding: 4px 0px 5px 30px;
+}
+
+.pedido{
+   background-image:url('../images/glyphicons_276_cutlery.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+   background-position: center;
 }
 
 .voltar{
@@ -918,8 +998,10 @@ color: #3f496a;
 }
 
  
-ul > li{
+ ul.dropdown >   li.dropdown{
 	float: left;
+	padding-right: 42px;
+	margin-top: -7px;
 }
  
  
@@ -940,21 +1022,11 @@ li span{
 	padding-bottom: 20px;
 	display: none;
 	background: #F9D884;
-	/*border: solid 9px #ffc335;*/
 	border-radius: 0px 0px 30px 30px;
 	position: absolute;
 }
  
-/*ol a{
-	padding: 10px 5px;
-	width: 105px;
-	text-align: left;
-}*/
- 
-/*ol a:hover{
-	background: #fff;
-	}
-*/
+
 #msg_erro {
   margin: 0px 5px 0px -5px;
   display: table;
@@ -963,5 +1035,5 @@ li span{
 }
 
 #msg_erro ul, li{
-  /*list-style-type: disc;*/
+  /*list-style-type: disc;
 } 

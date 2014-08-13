@@ -72,12 +72,12 @@
                      <li class="dropdown">
                        <span ><a class="botao" href="#"> Cadastros</a></span>
                         <ol class="dropdown">
-                        <li class="dropdown" ><a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Produtos", "/produtos", :class => 'botao'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Cardapios", "/cardapios", :class => 'botao'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Guarnições", "/guarnicoes", :class => 'botao'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Empresas", "/empresas", :class => 'botao'  %></a></li>
+                        <li class="dropdown" ><a><%= link_to "Clientes", "/clientes", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Produtos", "/produtos", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Cardapios", "/cardapios", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Guarnições", "/guarnicoes", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Empresas", "/empresas", :class => 'botao2'  %></a></li>
 
                       <% end %>
                     </ol>
@@ -114,20 +114,28 @@
           <% end %>
            
             <%= yield %>
-            <br>/
-            <fieldset>
-              <legend>Cardápio de Hoje</legend>
+           <center><h1>Cardápio de Hoje</h1></center>
+            <div id="cardapio_b">
+             <div id="cardapio">
               <% Cardapio.all.where(:disponibilidade => true).each do |cardapio| %>
                 <%= cardapio.nome %><br/>
               <% end %>
               <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
                 <%= guarnicao.nome %><br/>
               <% end %>
-            </fieldset>
+            </div>
+              </div> 
+            <div id="cardapio_b1">
+              <div id="cardapio1"> peixe <br>arroz  <br>feijão <br>farofa <br> salada </div> 
+            </div> 
+            <div id="cardapio_b2">
+              <div id="cardapio2"> macarrão <br>arroz  <br>feijão <br>ovo <br> salada </div>
+            </div> 
+            <% end %>
 
-            <% end %>  
+      
       </div>
-
+      
 <div id="rodape">
     <div id="lineorange"></div>
     <div id="boxblue">Todos os Direitos Reservados <br> R2L Solutions </div>
