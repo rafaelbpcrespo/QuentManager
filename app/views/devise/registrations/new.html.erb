@@ -9,7 +9,7 @@
     <fieldset class="form-clientes pess">
     <legend>Dados de Sistema</legend>
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, :class => "input_default" %>
+    <%= f.text_field :email, autofocus: true, :class => "input_default" %>
 
     <div><%= f.label :password, "Senha" %>
       <%= f.password_field :password, autocomplete: "off", :class => "input_default" %></div>
