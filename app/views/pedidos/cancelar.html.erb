@@ -1,0 +1,28 @@
+<%- model_class = Pedido -%>
+  <h1>Cancelar Pedido</h1>
+  <%#= link_to '#', html_options = {:class => "btn btn-small btn-info informacoes", :id => "_informacoes", :'data-content' => "Administrador Operacional bloqueia o acesso de um Cliente ao sistema.", :rel => "popover"} do %>
+      <!-- <i class="icon-info-sign icon-white"></i> -->
+  <%# end %>
+<div class="show1">
+<fieldset class='form-clientes'>
+<legend>Dados do pedido a ser cancelado</legend>
+
+<!--   <div class="span2">
+    <%#= render "side_bar" %>
+  </div> -->
+  <!--end sidebar-->
+
+  <!--div class="span10"-->
+
+    <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+    <%= @pedido.cliente.nome %><br>
+    <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
+    <%= @pedido.valor %><br>
+    <strong>Data:</strong>
+    <%= @pedido.created_at.strftime("%d/%m/%Y") %><br>
+</fieldset>
+</div>
+
+   <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
+                pedidos_path, :class => 'button gray-voltar' %>
+    <%= link_to 'Confirmar Cancelamento', confirmar_cancelamento_pedido_path(@pedido), :class => "button purple" %>

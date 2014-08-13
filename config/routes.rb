@@ -17,7 +17,12 @@ QuentManager::Application.routes.draw do
     end
   end
 
-  resources :pedidos
+  resources :pedidos do
+    member do
+      get :cancelar
+      get :confirmar_cancelamento
+    end
+  end    
 
   resources :clientes do
     member do

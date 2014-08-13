@@ -38,4 +38,17 @@ class Pedido < ActiveRecord::Base
     valor
   end
 
+    def cancelar
+      self.cancelado = true
+    end
+
+    def cancelar!
+      self.cancelar
+      self.save!
+    end
+
+    def cancelado?
+      self[:cancelado]
+    end
+
 end

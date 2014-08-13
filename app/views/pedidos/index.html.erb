@@ -19,7 +19,8 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:cliente_id) %></th>
       <th><%= model_class.human_attribute_name(:valor) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Data</th>
+      <th><%= model_class.human_attribute_name(:cancelado) %></th>      
       <th><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
   </thead>
@@ -29,15 +30,14 @@
         <td><%= link_to pedido.id, pedido_path(pedido) %></td>
         <td><%= pedido.cliente.nome %></td>
         <td><%= pedido.valor %></td>
-        <td><%=l pedido.created_at %></td>
+        <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= pedido.cancelado? ? "Sim" : "Não" %></td>
         <td>
           <%= link_to t('.editar', :default => t("helpers.links.editar")),
                       edit_pedido_path(pedido), :class => 'btn btn-mini' %>
-          <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
-                      pedido_path(pedido),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este pedido?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+            <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "button red", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
+                      <span class="bloquear"></span>
+            <% end %>
         </td>
       </tr>
     <% end %>

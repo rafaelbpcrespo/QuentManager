@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812012406) do
+ActiveRecord::Schema.define(version: 20140813021433) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20140812012406) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cardapio_id"
+    t.boolean  "cancelado"
   end
 
   create_table "pedidos_acompanhamentos", force: true do |t|

@@ -18,6 +18,18 @@ class PedidosController < ApplicationController
   def show
   end
 
+  def cancelar
+    @pedido = Pedido.find(params[:id])
+  end
+
+  def confirmar_cancelamento
+    @pedido = Pedido.find(params[:id])
+    @pedido.cancelar!
+
+    redirect_to pedidos_path
+  end
+
+
   # GET /pedidos/new
   def new
     @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
