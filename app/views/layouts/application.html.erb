@@ -114,6 +114,16 @@
           <% end %>
            
             <%= yield %>
+            <br>/
+            <fieldset>
+              <legend>Cardápio de Hoje</legend>
+              <% Cardapio.all.where(:disponibilidade => true).each do |cardapio| %>
+                <%= cardapio.nome %><br/>
+              <% end %>
+              <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
+                <%= guarnicao.nome %><br/>
+              <% end %>
+            </fieldset>
 
             <% end %>  
       </div>
