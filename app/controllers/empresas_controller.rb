@@ -1,6 +1,7 @@
 class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
+  before_action :authenticate_usuario!
   # GET /empresas
   # GET /empresas.json
   def index
