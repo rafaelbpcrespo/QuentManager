@@ -65,6 +65,9 @@
             <%= link_to bloquear_cliente_path(@cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{@cliente.id}"} do %>
                       <span class="bloquear"></span>
             <% end %>
+            <%= link_to new_pedido_path(:cliente_id => @cliente.id), html_options = {:class => "button green", :title => "Pedido"} do %>
+                      <span class="listar"></span>
+            <% end %>                        
           <% end %>
     </div>
 </center>
