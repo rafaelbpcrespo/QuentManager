@@ -1,7 +1,7 @@
 <%= form_for @acompanhamento, :html => { :class => 'validate' } do |f| %>
   <% if @acompanhamento.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@acompanhamento.errors.count, "error") %> prohibited this acompanhamento from being saved:</h2>
+      <h2><%= pluralize(@acompanhamento.errors.count, "erro") %> impediram a criação deste acompanhamento:</h2>
 
       <ul>
       <% @acompanhamento.errors.full_messages.each do |msg| %>
