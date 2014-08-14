@@ -28,6 +28,10 @@
   <dd><%= @pedido.cliente.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:forma_de_pagamento) %>:</strong></dt>
   <dd><%= @pedido.forma_de_pagamento %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:observacoes) %>:</strong></dt>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,1) %> proteínas extra</dd>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,2) %> guarnições extra</dd>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_saladas,1) %> saladas extra</dd>
 </dl>
 
 <div class="form-actions">

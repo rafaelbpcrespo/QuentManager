@@ -53,13 +53,17 @@ class Pedido < ActiveRecord::Base
       self[:cancelado]
     end
 
-    def qtd_extras(dados,limite)
+    def qtd_extra(dados,limite)
       total=0
       dados.each do |dado|
         total = total + dado.quantidade
       end
       total = total - limite
-      return total
+      if total >0
+        return total
+      else
+        return 0
+      end
     end
 
     def extra(dados,limite)
