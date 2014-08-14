@@ -1,14 +1,14 @@
 <%- model_class = Pedido -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
   <% if Time.now.hour > 6 && Time.now.hour < 23 && !current_usuario.cliente.bloqueado? %>
-<%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
-            new_pedido_path,
-            :class => 'btn btn-primary' %>
+  <%= link_to "Novo Pedido",
+            new_guarnicao_path,
+            :class => 'button blue-cadastrar-top' %></h1>
             <% else %> 
 <%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
             "#",
-            :class => 'btn btn-default' %>
+            :class => 'button blue-cadastrar-top' %>
             <% end %>
 </h1>
 
@@ -16,7 +16,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:cliente_id) %></th>
       <th><%= model_class.human_attribute_name(:valor) %></th>
       <th>Data</th>
@@ -27,14 +26,17 @@
   <tbody>
     <% @pedidos.each do |pedido| %>
       <tr>
-        <td><%= link_to pedido.id, pedido_path(pedido) %></td>
         <td><%= pedido.cliente.nome %></td>
         <td><%= pedido.valor %></td>
         <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.cancelado? ? "Sim" : "Não" %></td>
         <td>
-          <%= link_to t('.editar', :default => t("helpers.links.editar")),
-                      edit_pedido_path(pedido), :class => 'btn btn-mini' %>
+          <%= link_to edit_pedido_path(pedido), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+                      <span class="editar"></span>
+                      <% end %>        
+          <%= link_to pedido_path(pedido), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
+                      <span class="listar"></span>          
+          <% end %>
             <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "button red", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
                       <span class="bloquear"></span>
             <% end %>
@@ -46,11 +48,11 @@
 <%= will_paginate @pedidos, renderer: BootstrapPagination::Rails %>
 
 <% if Time.now.hour > 6 && Time.now.hour < 23 && !current_usuario.cliente.bloqueado?%>
-<%= link_to t('.novo', :default => t("helpers.links.novo_pedido")),
-            new_pedido_path,
-            :class => 'btn btn-primary' %>
-            <% else %> 
-<%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
+  <%= link_to "Novo Pedido",
+            new_guarnicao_path,
+            :class => 'button blue-cadastrar-bottom' %>
+<% else %> 
+  <%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
             "#",
-            :class => 'btn btn-default' %>
-            <% end %>
+            :class => 'button blue-cadastrar-bottom' %>
+<% end %>
