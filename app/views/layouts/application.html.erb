@@ -68,13 +68,13 @@
                      <li class="dropdown"> <a class="botao" href="#"> Sobre </a></li>
                      <li class="dropdown"><a class="botao" href="#"> Contato</a></li>
                     <% else %>
-                    <% if can? :manage, Cardapio %>
+                    <% if can? :manage, Proteina %>
                      <li class="dropdown">
                        <span ><a class="botao" href="#"> Cadastros</a></span>
                         <ol class="dropdown">
                         <li class="dropdown" ><a><%= link_to "Clientes", "/clientes", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Produtos", "/produtos", :class => 'botao2'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Cardapios", "/cardapios", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Proteínas", "/proteinas", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Guarnições", "/guarnicoes", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Empresas", "/empresas", :class => 'botao2'  %></a></li>
@@ -117,8 +117,8 @@
            <center><h1>Cardápio de Hoje</h1></center>
             <div id="cardapio_b">
              <div id="cardapio">
-              <% Cardapio.all.where(:disponibilidade => true).each do |cardapio| %>
-                <%= cardapio.nome %><br/>
+              <% Proteina.all.where(:disponibilidade => true).each do |proteina| %>
+                <%= proteina.nome %><br/>
               <% end %>
               <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
                 <%= guarnicao.nome %><br/>

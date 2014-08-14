@@ -9,8 +9,8 @@
   <dd><%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %></dd>
   <% end %>
   <dt><strong>Proteinas</strong></dt>
-  <% @pedido.pedidos_cardapios.each do |pedido_cardapio| %>
-  <dd> <%= pedido_cardapio.quantidade %> <%= pedido_cardapio.cardapio.nome %></dd>
+  <% @pedido.pedidos_proteinas.each do |pedido_proteina| %>
+  <dd> <%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %></dd>
   <% end %>
   <dt><strong>Guarnições</strong></dt>
   <% @pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>

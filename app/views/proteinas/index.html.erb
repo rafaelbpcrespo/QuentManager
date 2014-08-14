@@ -1,8 +1,8 @@
-<%- model_class = Cardapio -%>
+<%- model_class = Proteina -%>
 <div class="page-header">
   <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
-  <%= link_to "Novo Cardapio",
-            new_cardapio_path,
+  <%= link_to "Novo Proteina",
+            new_proteina_path,
             :class => 'button blue-cadastrar-top' %></h1>
 </div>
 <table class="table table-striped">
@@ -16,20 +16,20 @@
     </tr>
   </thead>
   <tbody>
-    <% @cardapios.each do |cardapio| %>
+    <% @proteinas.each do |proteina| %>
       <tr>
-        <td><%= cardapio.nome %></td>
-        <td><%= cardapio.quantidade %></td>
-        <td>R$<%= exibir_decimal(cardapio.valor) %></td>
-        <td><% if cardapio.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+        <td><%= proteina.nome %></td>
+        <td><%= proteina.quantidade %></td>
+        <td>R$<%= exibir_decimal(proteina.valor) %></td>
+        <td><% if proteina.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
         <td>
-          <%= link_to edit_cardapio_path(cardapio), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+          <%= link_to edit_proteina_path(proteina), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
                       <span class="editar"></span>
                       <% end %>
-          <%= link_to cardapio_path(cardapio), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
+          <%= link_to proteina_path(proteina), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
-          <%= link_to cardapio_path(cardapio), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta cardapio?')) },
+          <%= link_to proteina_path(proteina), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta proteina?')) },
                       :class => 'button red', :title => "Remover" do %>
                       <span class="remover"></span>
                       <% end %>
@@ -40,5 +40,5 @@
 </table>
 
 <%= link_to "Novo Cardapio",
-            new_cardapio_path,
+            new_proteina_path,
             :class => 'button blue-cadastrar-bottom' %>

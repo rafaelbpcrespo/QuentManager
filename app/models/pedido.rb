@@ -4,8 +4,8 @@ class Pedido < ActiveRecord::Base
   has_many :acompanhamentos, through: :pedidos_acompanhamentos
   has_many :item_de_pedidos
   has_many :produtos, through: :item_de_pedidos
-  has_many :pedidos_cardapios
-  has_many :cardapios, through: :pedidos_cardapios
+  has_many :pedidos_proteinas
+  has_many :proteinas, through: :pedidos_proteinas
   has_many :pedidos_guarnicoes
   has_many :guarnicoes, through: :pedidos_guarnicoes
 
@@ -77,8 +77,8 @@ class Pedido < ActiveRecord::Base
               if cont == 0
                 if classe == PedidoGuarnicao
                   valor = valor + ((qtd-limite)*dado.guarnicao.valor)
-                elsif classe == PedidoCardapio
-                  valor = valor + ((qtd-limite)*dado.cardapio.valor)
+                elsif classe == PedidoProteina
+                  valor = valor + ((qtd-limite)*dado.proteina.valor)
                 elsif classe == PedidoAcompanhamento
                   valor = valor + ((qtd-limite)*dado.acompanhamento.valor)
                 end
@@ -86,8 +86,8 @@ class Pedido < ActiveRecord::Base
               else
                 if classe == PedidoGuarnicao
                   valor = valor + (dado.quantidade * dado.guarnicao.valor)
-                elsif classe == PedidoCardapio
-                  valor = valor + (dado.quantidade * dado.cardapio.valor)
+                elsif classe == PedidoProteina
+                  valor = valor + (dado.quantidade * dado.proteina.valor)
                 elsif classe == PedidoAcompanhamento
                   valor = valor + (dado.quantidade * dado.acompanhamento.valor)
                 end

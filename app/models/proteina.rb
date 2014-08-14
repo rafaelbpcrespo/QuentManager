@@ -1,6 +1,6 @@
-class Cardapio < ActiveRecord::Base
-  has_many :pedidos_cardapios
-  has_many :pedidos, through: :pedidos_cardapios
+class Proteina < ActiveRecord::Base
+  has_many :pedidos_proteinas
+  has_many :pedidos, through: :pedidos_proteinas
 #  scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }
   before_save :ver_disponibilidade
 

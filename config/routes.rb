@@ -5,7 +5,7 @@ QuentManager::Application.routes.draw do
 
   resources :empresas
 
-  resources :cardapios
+  resources :proteinas
 
   devise_for :usuarios, :controllers => { :registrations => "registrations"}
   

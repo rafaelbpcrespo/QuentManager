@@ -1,10 +1,10 @@
-<%= form_for @cardapio, :html => { :class => 'validate' } do |f| %>
-  <% if @cardapio.errors.any? %>
+<%= form_for @proteina, :html => { :class => 'validate' } do |f| %>
+  <% if @proteina.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@cardapio.errors.count, "erro") %>:</h2>
+      <h2><%= pluralize(@proteina.errors.count, "erro") %>:</h2>
 
       <ul>
-      <% @cardapio.errors.full_messages.each do |msg| %>
+      <% @proteina.errors.full_messages.each do |msg| %>
         <li><%= msg %></li><br/>
       <% end %>
       </ul>
@@ -44,7 +44,7 @@
 <br>
 <p>
     <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
-    <%= link_to "Cancelar", cardapios_path, :class => 'button gray-voltar' %>
+    <%= link_to "Cancelar", proteinas_path, :class => 'button gray-voltar' %>
 </p>
 </td>
 </table>

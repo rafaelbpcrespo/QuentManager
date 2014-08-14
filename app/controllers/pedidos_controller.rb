@@ -32,21 +32,21 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/new
   def new
-    @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
+    @proteinas_disponiveis = Proteina.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
-    @pedido.pedidos_cardapios.build
+    @pedido.pedidos_proteinas.build
     @pedido.pedidos_guarnicoes.build
     @pedido.pedidos_acompanhamentos.build
   end
 
   # GET /pedidos/1/edit
   def edit
-    @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
-    @pedido.cardapios.map { |cardapio| @cardapios_disponiveis << cardapio unless @cardapios_disponiveis.include? cardapio }
-    @cardapios_disponiveis.sort!
+    @proteinas_disponiveis = Proteina.where(:disponibilidade => true, :tipo => "Carne")
+    @pedido.proteinas.map { |proteina| @proteinas_disponiveis << proteina unless @proteinas_disponiveis.include? proteina }
+    @proteinas_disponiveis.sort!
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @pedido.guarnicoes.map { |guarnicao| @guarnicoes_disponiveis << guarnicao unless @guarnicoes_disponiveis.include? guarnicao }
     @guarnicoes_disponiveis.sort!
@@ -59,7 +59,7 @@ class PedidosController < ApplicationController
     valor = params[:pedido][:valor]
     params[:pedido][:valor] = valor.split( ',').join('.')
 
-    @cardapios_disponiveis = Cardapio.where(:disponibilidade => true, :tipo => "Carne")
+    @proteinas_disponiveis = Proteina.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     #descricao = ""
@@ -84,10 +84,10 @@ class PedidosController < ApplicationController
       end
     end
 
-    cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
-    for i in 0...cardapios do
-      if !params["cardapio_#{i}"].blank?
-        @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
+    proteinas = Proteina.where(:disponibilidade => true, :tipo => "Carne").count
+    for i in 0...proteinas do
+      if !params["proteina_#{i}"].blank?
+        @pedido.pedidos_proteinas.new(:proteina_id => params["proteina_#{i}"], :quantidade => params["quantidade_proteina_#{i}"])
       end
     end
 
@@ -98,7 +98,7 @@ class PedidosController < ApplicationController
       end
     end
 
-    #@pedido.cardapios << Cardapio.where(:nome => params[:cardapio]).first
+    #@pedido.proteinas << Proteina.where(:nome => params[:proteina]).first
 
     # debugger
     #  if !params[:arroz].nil?
@@ -112,7 +112,7 @@ class PedidosController < ApplicationController
     #     descricao = descricao + " Farofa,"
     #   end
 
-    # descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+    # descricao = descricao + params[:proteina] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     # @pedido.descricao = descricao
     itens = params[:pedido][:item_de_pedidos_attributes]
 
@@ -141,16 +141,16 @@ class PedidosController < ApplicationController
 
     respond_to do |format|
       if @pedido.save
-        @pedido.pedidos_cardapios.each do |pedido_cardapio|
-          cardapio = pedido_cardapio.cardapio
-          cardapio.decrescer(pedido_cardapio.quantidade)
+        @pedido.pedidos_proteinas.each do |pedido_proteina|
+          proteina = pedido_proteina.proteina
+          proteina.decrescer(pedido_proteina.quantidade)
         end
         @pedido.pedidos_guarnicoes.each do |pedido_guarnicao|
           guarnicao = pedido_guarnicao.guarnicao
           guarnicao.decrescer(pedido_guarnicao.quantidade)
         end
-        #cardapio = @pedido.cardapio
-        #cardapio.decrescer
+        #proteina = @pedido.proteina
+        #proteina.decrescer
         format.html { redirect_to @pedido, notice: 'Novo Pedido realizado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
@@ -192,37 +192,37 @@ class PedidosController < ApplicationController
         acompanhamento_removido.destroy
       end
 
-    cardapio_novo = []
-    pc = @pedido.pedidos_cardapios
-    cardapio_editado = []
-    cardapios = Cardapio.where(:disponibilidade => true).count
-    for i in 0..cardapios do
-      cardapio=nil
-      if  !params["cardapio_#{i}"].blank?
-        cardapio = Cardapio.find(params["cardapio_#{i}"])
+    proteina_novo = []
+    pc = @pedido.pedidos_proteinas
+    proteina_editado = []
+    proteinas = Proteina.where(:disponibilidade => true).count
+    for i in 0..proteinas do
+      proteina=nil
+      if  !params["proteina_#{i}"].blank?
+        proteina = Proteina.find(params["proteina_#{i}"])
       end
-      if @pedido.cardapios.include? cardapio
-        atualiza_cardapio = @pedido.pedidos_cardapios.find_by_cardapio_id(params["cardapio_#{i}"])
-        atualiza_cardapio.quantidade = params["quantidade_cardapio_#{i}"].to_i
-        cardapio_editado << atualiza_cardapio
-        atualiza_cardapio.save
-      elsif !params["cardapio_#{i}"].blank?
-#        @pedido.pedidos_cardapios.
-        cardapio_novo << @pedido.pedidos_cardapios.create!(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_cardapio_#{i}"])
-        cardapio_novo.last.cardapio.decrescer(cardapio_novo.last.quantidade)
+      if @pedido.proteinas.include? proteina
+        atualiza_proteina = @pedido.pedidos_proteinas.find_by_proteina_id(params["proteina_#{i}"])
+        atualiza_proteina.quantidade = params["quantidade_proteina_#{i}"].to_i
+        proteina_editado << atualiza_proteina
+        atualiza_proteina.save
+      elsif !params["proteina_#{i}"].blank?
+#        @pedido.pedidos_proteinas.
+        proteina_novo << @pedido.pedidos_proteinas.create!(:proteina_id => params["proteina_#{i}"], :quantidade => params["quantidade_proteina_#{i}"])
+        proteina_novo.last.proteina.decrescer(proteina_novo.last.quantidade)
       end
     end
-    #### Removendo cardapios após edição ####
-    cardapios_removidos = pc - cardapio_editado
-    cardapios_removidos = cardapios_removidos - cardapio_novo
-    cardapios_removidos.each do |cardapio_removido|
-      cardapio_removido.cardapio.acrescer(cardapio_removido.quantidade)
-      #cardapio_removido.cardapio.quantidade = cardapio_removido.cardapio.quantidade + cardapio_removido.quantidade
-      #cardapio = cardapio_removido.cardapio
-      #cardapio.save
-      cardapio_removido.destroy
+    #### Removendo proteinas após edição ####
+    proteinas_removidos = pc - proteina_editado
+    proteinas_removidos = proteinas_removidos - proteina_novo
+    proteinas_removidos.each do |proteina_removido|
+      proteina_removido.proteina.acrescer(proteina_removido.quantidade)
+      #proteina_removido.proteina.quantidade = proteina_removido.proteina.quantidade + proteina_removido.quantidade
+      #proteina = proteina_removido.proteina
+      #proteina.save
+      proteina_removido.destroy
     end
-    ##################### Fim cardapios removidos #####################
+    ##################### Fim proteinas removidos #####################
 
 
     guarnicao_novo = []
@@ -240,27 +240,27 @@ class PedidosController < ApplicationController
         guarnicao_editado << atualiza_guarnicao
         atualiza_guarnicao.save
       elsif !params["guarnicao_#{i}"].blank?
-#        @pedido.pedidos_cardapios.
+#        @pedido.pedidos_proteinas.
         guarnicao_novo << @pedido.pedidos_guarnicoes.create!(:guarnicao_id => params["guarnicao_#{i}"], :quantidade => params["quantidade_guarnicao_#{i}"])
         guarnicao_novo.last.guarnicao.decrescer(guarnicao_novo.last.quantidade)
       end
     end
-    #### Removendo cardapios após edição ####
+    #### Removendo proteinas após edição ####
     guarnicoes_removidos = pc - guarnicao_editado
     guarnicoes_removidos = guarnicoes_removidos - guarnicao_novo
     guarnicoes_removidos.each do |guarnicao_removido|
       guarnicao_removido.guarnicao.acrescer(guarnicao_removido.quantidade)
-      #cardapio_removido.cardapio.quantidade = cardapio_removido.cardapio.quantidade + cardapio_removido.quantidade
-      #cardapio = cardapio_removido.cardapio
-      #cardapio.save
+      #proteina_removido.proteina.quantidade = proteina_removido.proteina.quantidade + proteina_removido.quantidade
+      #proteina = proteina_removido.proteina
+      #proteina.save
       guarnicao_removido.destroy
     end
     ##################### Fim guarnicoes removidos #####################
 
-    # cardapios = Cardapio.where(:disponibilidade => true, :tipo => "Carne").count
-    # for i in 0...cardapios do
-    #   if !params["cardapio_#{i}"].blank?
-    #     @pedido.pedidos_cardapios.new(:cardapio_id => params["cardapio_#{i}"], :quantidade => params["quantidade_#{i}"])
+    # proteinas = Proteina.where(:disponibilidade => true, :tipo => "Carne").count
+    # for i in 0...proteinas do
+    #   if !params["proteina_#{i}"].blank?
+    #     @pedido.pedidos_proteinas.new(:proteina_id => params["proteina_#{i}"], :quantidade => params["quantidade_#{i}"])
     #   end
     # end
 
@@ -304,14 +304,14 @@ class PedidosController < ApplicationController
     #     descricao = descricao + " Farofa,"
     #   end
 
-    # descricao = descricao + params[:cardapio] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
+    # descricao = descricao + params[:proteina] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     # @pedido.descricao = descricao
     #@pedido.calcular_valor
     
     #parametros[:valor] = @pedido.valor
     respond_to do |format|
       if @pedido.update(parametros)
-        #cardapio = @pedido.cardapio
+        #proteina = @pedido.proteina
         #carne.decrescer        
         format.html { redirect_to @pedido, notice: 'Pedido atualizado com sucesso.' }
         format.json { head :no_content }
@@ -340,6 +340,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :cardapios, :acompanhamentos, :guarnicoes, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :proteinas, :acompanhamentos, :guarnicoes, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end

@@ -1,34 +1,34 @@
-<%- model_class = Cardapio -%>
+<%- model_class = Proteina -%>
 <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 
 <div class="show1">
 <fieldset class='form-clientes'>
   <legend>Dados Cadastrais</legend>
   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
-  <%= @cardapio.nome %><br/>
+  <%= @proteina.nome %><br/>
   <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
-  <%= @cardapio.quantidade %><br/>
+  <%= @proteina.quantidade %><br/>
   <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
-  <%= @cardapio.valor %><br/>
+  <%= @proteina.valor %><br/>
   <strong><%= model_class.human_attribute_name(:observacao) %>:</strong>
-  <%= @cardapio.observacao %><br/>
+  <%= @proteina.observacao %><br/>
   <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
-  <% if @cardapio.disponibilidade? %> Ativado <% else %> Desativado <% end %>
+  <% if @proteina.disponibilidade? %> Ativado <% else %> Desativado <% end %>
 </fieldset>
 </div>
 <center>
 <div class="acoes">
-<%= link_to cardapios_path, :class => 'button gray' do  %>
+<%= link_to proteinas_path, :class => 'button gray' do  %>
                       <span class="voltar"></span>          
           <% end %>
-<%= link_to new_cardapio_path, :class => 'button green', :title => "Novo Cardápio" do %>
+<%= link_to new_proteina_path, :class => 'button green', :title => "Novo Cardápio" do %>
                     <span class="adicionar"></span> 
          <% end %>
-  <%= link_to edit_cardapio_path(@cardapio), :class => 'button blue' do %>
+  <%= link_to edit_proteina_path(@proteina), :class => 'button blue' do %>
                       <span class="editar"></span>          
           <% end %>
 
-  <%= link_to cardapio_path(@cardapio), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta cardapio?')) }, :class => 'button red' do %>
+  <%= link_to proteina_path(@proteina), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta proteina?')) }, :class => 'button red' do %>
                         <span class="remover"></span>
                       <% end %>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813021433) do
+ActiveRecord::Schema.define(version: 20140814000445) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -19,17 +19,6 @@ ActiveRecord::Schema.define(version: 20140813021433) do
     t.boolean  "disponibilidade"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "cardapios", force: true do |t|
-    t.string   "nome"
-    t.integer  "quantidade"
-    t.boolean  "disponibilidade"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "tipo"
-    t.decimal  "valor",           precision: 12, scale: 2
-    t.string   "observacao"
   end
 
   create_table "clientes", force: true do |t|
@@ -105,17 +94,17 @@ ActiveRecord::Schema.define(version: 20140813021433) do
     t.integer  "quantidade"
   end
 
-  create_table "pedidos_cardapios", force: true do |t|
+  create_table "pedidos_guarnicoes", force: true do |t|
     t.integer  "pedido_id"
-    t.integer  "cardapio_id"
+    t.integer  "guarnicao_id"
     t.integer  "quantidade"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pedidos_guarnicoes", force: true do |t|
+  create_table "pedidos_proteinas", force: true do |t|
     t.integer  "pedido_id"
-    t.integer  "guarnicao_id"
+    t.integer  "proteina_id"
     t.integer  "quantidade"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -130,6 +119,17 @@ ActiveRecord::Schema.define(version: 20140813021433) do
     t.integer  "quantidade"
     t.integer  "limite_minimo"
     t.string   "categoria"
+  end
+
+  create_table "proteinas", force: true do |t|
+    t.string   "nome"
+    t.integer  "quantidade"
+    t.boolean  "disponibilidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "tipo"
+    t.decimal  "valor",           precision: 12, scale: 2
+    t.string   "observacao"
   end
 
   create_table "usuarios", force: true do |t|
