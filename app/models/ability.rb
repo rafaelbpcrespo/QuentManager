@@ -11,8 +11,8 @@ class Ability
         else
           can [:create, :update, :read ], [Cliente], :usuario_id => usuario.id
           can [:create, :update, :read ], Pedido, :cliente_id => usuario.id
-          #can , Pedido, :usuario_id => usuario.id
           cannot :destroy, Pedido
+          #can , Pedido, :usuario_id => usuario.id
         if usuario.cliente.bloqueado?
           cannot [:create, :update, :read ], Pedido, :cliente_id => usuario.id
         end
