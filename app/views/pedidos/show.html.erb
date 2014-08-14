@@ -16,6 +16,10 @@
   <% @pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
   <dd> <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %></dd>
   <% end %>
+  <dt><strong>Saladas</strong></dt>
+  <% @pedido.pedidos_saladas.each do |pedido_salada| %>
+  <dd> <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %></dd>
+  <% end %>
   <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
   <dd><%= @pedido.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>

@@ -1,35 +1,35 @@
-<%- model_class = Guarnicao -%>
+<%- model_class = Salada -%>
 <div class="page-header">
   <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
-  <%= link_to "Nova Guarnicao",
-            new_guarnicao_path,
+  <%= link_to "Nova Salada",
+            new_salada_path,
             :class => 'button blue-cadastrar-top' %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:nome) %></th>
-      <th><%= model_class.human_attribute_name(:quantidade) %></th>
+      <th><%= model_class.human_attribute_name(:qtd) %></th>
       <th><%= model_class.human_attribute_name(:valor) %></th>
       <th><%= model_class.human_attribute_name(:disponibilidade) %></th>
       <th><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @guarnicoes.each do |guarnicao| %>
+    <% @saladas.each do |salada| %>
       <tr>
-        <td><%= guarnicao.nome %></td>
-        <td><%= guarnicao.quantidade %></td>
-        <td>R$<%= exibir_decimal(guarnicao.valor) %></td>
-        <td><% if guarnicao.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+        <td><%= salada.nome %></td>
+        <td><%= salada.quantidade %></td>
+        <td>R$<%= exibir_decimal(salada.valor) %></td>
+        <td><% if salada.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
         <td>
-          <%= link_to edit_guarnicao_path(guarnicao), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+          <%= link_to edit_salada_path(salada), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
                       <span class="editar"></span>
                       <% end %>
-          <%= link_to guarnicao_path(guarnicao), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
+          <%= link_to salada_path(salada), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
-          <%= link_to guarnicao_path(guarnicao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta guarnição?')) },
+          <%= link_to salada_path(salada), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta salada?')) },
                       :class => 'button red', :title => "Remover" do %>
                       <span class="remover"></span>
                       <% end %>
@@ -39,6 +39,6 @@
   </tbody>
 </table>
 
-<%= link_to "Nova Guarnicao",
-            new_guarnicao_path,
+<%= link_to "Nova Salada",
+            new_salada_path,
             :class => 'button blue-cadastrar-bottom' %>

@@ -35,10 +35,12 @@ class PedidosController < ApplicationController
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
+    @saladas_disponiveis = Salada.where(:disponibilidade => true)
     @pedido = Pedido.new
     @pedido.item_de_pedidos.build
     @pedido.pedidos_proteinas.build
     @pedido.pedidos_guarnicoes.build
+    @pedido.pedidos_saladas.build
     @pedido.pedidos_acompanhamentos.build
   end
 
@@ -50,6 +52,9 @@ class PedidosController < ApplicationController
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @pedido.guarnicoes.map { |guarnicao| @guarnicoes_disponiveis << guarnicao unless @guarnicoes_disponiveis.include? guarnicao }
     @guarnicoes_disponiveis.sort!
+    @saladas_disponiveis = Salada.where(:disponibilidade => true)
+    @pedido.saladas.map { |salada| @saladas_disponiveis << salada unless @saladas_disponiveis.include? salada }
+    @saladas_disponiveis.sort!
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
   end
 
@@ -62,6 +67,7 @@ class PedidosController < ApplicationController
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true, :tipo => "Carne")
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
+    @saladas_disponiveis = Salada.where(:disponibilidade => true)
     #descricao = ""
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
@@ -95,6 +101,13 @@ class PedidosController < ApplicationController
     for i in 0...guarnicoes do
       if !params["guarnicao_#{i}"].blank?
         @pedido.pedidos_guarnicoes.new(:guarnicao_id => params["guarnicao_#{i}"], :quantidade => params["quantidade_guarnicao_#{i}"])
+      end
+    end
+
+    saladas = Salada.where(:disponibilidade => true).count
+    for i in 0...saladas do
+      if !params["salada_#{i}"].blank?
+        @pedido.pedidos_saladas.new(:salada_id => params["salada_#{i}"], :quantidade => params["quantidade_salada_#{i}"])
       end
     end
 
@@ -148,6 +161,11 @@ class PedidosController < ApplicationController
         @pedido.pedidos_guarnicoes.each do |pedido_guarnicao|
           guarnicao = pedido_guarnicao.guarnicao
           guarnicao.decrescer(pedido_guarnicao.quantidade)
+        end
+
+        @pedido.pedidos_saladas.each do |pedido_salada|
+          salada = pedido_salada.salada
+          salada.decrescer(pedido_salada.quantidade)
         end
         #proteina = @pedido.proteina
         #proteina.decrescer
@@ -257,6 +275,39 @@ class PedidosController < ApplicationController
     end
     ##################### Fim guarnicoes removidos #####################
 
+
+    salada_novo = []
+    pc = @pedido.pedidos_saladas
+    salada_editado = []
+    saladas = Salada.where(:disponibilidade => true).count
+    for i in 0..saladas do
+      salada=nil
+      if  !params["salada_#{i}"].blank?
+        salada = Salada.find(params["salada_#{i}"])
+      end
+      if @pedido.saladas.include? salada
+        atualiza_salada = @pedido.pedidos_saladas.find_by_salada_id(params["salada_#{i}"])
+        atualiza_salada.quantidade = params["quantidade_salada_#{i}"].to_i
+        salada_editado << atualiza_salada
+        atualiza_salada.save
+      elsif !params["salada_#{i}"].blank?
+#        @pedido.pedidos_proteinas.
+        salada_novo << @pedido.pedidos_saladas.create!(:salada_id => params["salada_#{i}"], :quantidade => params["quantidade_salada_#{i}"])
+        salada_novo.last.salada.decrescer(salada_novo.last.quantidade)
+      end
+    end
+    #### Removendo proteinas após edição ####
+    saladas_removidos = pc - salada_editado
+    saladas_removidos = saladas_removidos - salada_novo
+    saladas_removidos.each do |salada_removido|
+      salada_removido.salada.acrescer(salada_removido.quantidade)
+      #proteina_removido.proteina.quantidade = proteina_removido.proteina.quantidade + proteina_removido.quantidade
+      #proteina = proteina_removido.proteina
+      #proteina.save
+      salada_removido.destroy
+    end
+    ##################### Fim saladas removidos #####################
+
     # proteinas = Proteina.where(:disponibilidade => true, :tipo => "Carne").count
     # for i in 0...proteinas do
     #   if !params["proteina_#{i}"].blank?
@@ -340,6 +391,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :proteinas, :acompanhamentos, :guarnicoes, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :proteinas, :acompanhamentos, :guarnicoes, :saladas, :valor, :id, :cliente_id, :forma_de_pagamento, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end

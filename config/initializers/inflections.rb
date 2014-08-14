@@ -65,4 +65,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'pedido_proteina', 'pedidos_proteinas'
   inflect.irregular 'PedidoGuarnicao', 'PedidosGuarnicoes'
   inflect.irregular 'pedido_guarnicao', 'pedidos_guarnicoes'
+  inflect.irregular 'PedidoSalada', 'PedidosSaladas'
+  inflect.irregular 'pedido_salada', 'pedidos_saladas'
 end

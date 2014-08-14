@@ -8,6 +8,8 @@ class Pedido < ActiveRecord::Base
   has_many :proteinas, through: :pedidos_proteinas
   has_many :pedidos_guarnicoes
   has_many :guarnicoes, through: :pedidos_guarnicoes
+  has_many :pedidos_saladas
+  has_many :saladas, through: :pedidos_saladas
 
   validates :cliente_id, presence: true
 
