@@ -11,13 +11,13 @@
   <% end %>
 
   <div><%= f.label :password, "Senha" %> <i>(Deixe em branco caso não queira alterar a senha)</i><br />
-    <%= f.text_field :password, autocomplete: "off", :class => "input_default" %></div>
+    <%= f.password_field :password, autocomplete: "off", :class => "input_default" %></div>
 
   <div><%= f.label :password_confirmation, "Confirmação de senha" %><br />
-    <%= f.text_field :password_confirmation, autocomplete: "off", :class => "input_default" %></div>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "input_default" %></div>
 
   <div><%= f.label :current_password, "Senha atual" %> <i>(É necessário digitar a senha atual para confirmar as alterações)</i><br />
-    <%= f.text_field :current_password, autocomplete: "off", :class => "input_default" %></div>
+    <%= f.password_field :current_password, autocomplete: "off", :class => "input_default" %></div>
 
   <div><%= f.submit "Atualizar Senha", :class => 'button blue-cadastrar-top' %></div>
 <% end %>

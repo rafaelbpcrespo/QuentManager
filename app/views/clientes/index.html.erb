@@ -52,5 +52,6 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
-
+<% if current_usuario.admin? %>
+  <%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
+<% end %>
