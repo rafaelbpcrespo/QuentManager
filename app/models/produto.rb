@@ -5,6 +5,8 @@ class Produto < ActiveRecord::Base
   validates :tipo, :nome, :quantidade, :valor_unitario, :limite_minimo, presence: true
 
   scope :bebidas, -> { where(categoria: "Bebida") }
+  scope :selecionaveis, -> { where(categoria: "Bebida" || "Sobremesa") }
+
 
   def atualizar(quantidade)
     self.quantidade = self.quantidade + quantidade

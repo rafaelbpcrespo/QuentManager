@@ -32,7 +32,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/new
   def new
-    @proteinas_disponiveis = Proteina.where(:disponibilidade => true, :tipo => "Carne")
+    @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @saladas_disponiveis = Salada.where(:disponibilidade => true)
@@ -46,7 +46,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1/edit
   def edit
-    @proteinas_disponiveis = Proteina.where(:disponibilidade => true, :tipo => "Carne")
+    @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @pedido.proteinas.map { |proteina| @proteinas_disponiveis << proteina unless @proteinas_disponiveis.include? proteina }
     @proteinas_disponiveis.sort!
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
@@ -64,7 +64,7 @@ class PedidosController < ApplicationController
     valor = params[:pedido][:valor]
     params[:pedido][:valor] = valor.split( ',').join('.')
 
-    @proteinas_disponiveis = Proteina.where(:disponibilidade => true, :tipo => "Carne")
+    @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @saladas_disponiveis = Salada.where(:disponibilidade => true)
@@ -90,7 +90,7 @@ class PedidosController < ApplicationController
       end
     end
 
-    proteinas = Proteina.where(:disponibilidade => true, :tipo => "Carne").count
+    proteinas = Proteina.where(:disponibilidade => true).count
     for i in 0...proteinas do
       if !params["proteina_#{i}"].blank?
         @pedido.pedidos_proteinas.new(:proteina_id => params["proteina_#{i}"], :quantidade => params["quantidade_proteina_#{i}"])
