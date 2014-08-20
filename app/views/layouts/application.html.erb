@@ -95,7 +95,7 @@
           <div id="coldados">
             <%= yield %>
           </div>
-          <% if request.env['PATH_INFO'] != new_usuario_registration_path %>
+            <% if request.env['PATH_INFO'] != new_usuario_registration_path %> 
             <div id="colinfo">
               <%= render :partial => 'barra_lateral' %>
             </div>  
@@ -130,8 +130,9 @@
               <div id="cardapio2"> macarrão <br>arroz  <br>feijão <br>ovo <br> salada </div>
             </div> 
           <% end %>
-           
+           <div id="colcad">
             <%= yield %>
+            </div>
             <% end %>
 
       

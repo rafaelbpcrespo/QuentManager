@@ -231,6 +231,9 @@ h1{
 	width: 250px;
 }
 
+#colcad{
+	padding-left: 30px;
+}
 
 #cardapio_b {
 	padding: 30px;
@@ -886,6 +889,31 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
   	/*height: 300px;*/
 }
 
+  .form-princ {
+	width:250px;
+	border:4px double #3f496a;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 2px 2px 6px 2px rgba(52, 50, 50, 0.64);
+	-moz-box-shadow:    2px 2px 6px 2px rgba(52, 50, 50, 0.64);
+	box-shadow:         2px 2px 6px 2px rgba(52, 50, 50, 0.64);
+	background-color: #fcfcf2;
+	padding: 10px;
+	font-family: Verdana, Geneva, sans-serif;
+	color: #0B173B;
+	
+}
+
+.legend1{
+	font-family: "Showcard Gothic";
+	text-align:center;
+	font-weight:bold;
+	font-size:18pt;
+	color:#3f496a;
+	text-shadow: 0px 0px 10px #fbfe02;
+}
+
   .form-clientes {
   border: solid 1px;
   border-radius: 12px 12px 12px 12px;
@@ -968,12 +996,16 @@ color: #3f496a;
     box-shadow: 0 0 3px red;  
     border-radius:4px; 
     -moz-border-radius:4px;
-    background: url(../img/error.png) no-repeat right;
+    background-image:url('../images/error.png');
+    background-position: right;
+    background-repeat: no-repeat;
 
 }
 .validate .valid
 {
-    background: url(../img/success.png) no-repeat right;  
+    background-image:url('../images/success.png');
+    background-position: right;
+    background-repeat: no-repeat; 
 }
 
 .validate p span

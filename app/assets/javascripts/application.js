@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery.min
+//= require jquery.validate
 //= require jquery.maskedinput
 //= require jquery_ujs
 //= require_tree .
