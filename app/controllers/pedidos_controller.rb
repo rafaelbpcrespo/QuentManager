@@ -18,11 +18,14 @@ class PedidosController < ApplicationController
   def show
   end
 
-  def cancelar
+  def confirmar
     @pedido = Pedido.find(params[:id])
+    @pedido.confirmar!
+
+    redirect_to pedidos_path
   end
 
-  def confirmar_cancelamento
+  def cancelar
     @pedido = Pedido.find(params[:id])
     @pedido.cancelar!
 
@@ -150,23 +153,12 @@ class PedidosController < ApplicationController
         params[:pedido][:item_de_pedidos_attributes].replace(itens)
       end
 
+      @pedido.situacao = "Em processamento"
     #parametros[:valor] = @pedido.valor
 
     respond_to do |format|
       if @pedido.save
-        @pedido.pedidos_proteinas.each do |pedido_proteina|
-          proteina = pedido_proteina.proteina
-          proteina.decrescer(pedido_proteina.quantidade)
-        end
-        @pedido.pedidos_guarnicoes.each do |pedido_guarnicao|
-          guarnicao = pedido_guarnicao.guarnicao
-          guarnicao.decrescer(pedido_guarnicao.quantidade)
-        end
-
-        @pedido.pedidos_saladas.each do |pedido_salada|
-          salada = pedido_salada.salada
-          salada.decrescer(pedido_salada.quantidade)
-        end
+        @pedido.calcular_valor
         #proteina = @pedido.proteina
         #proteina.decrescer
         format.html { redirect_to @pedido, notice: 'Novo Pedido realizado com sucesso.' }
@@ -362,6 +354,7 @@ class PedidosController < ApplicationController
     #parametros[:valor] = @pedido.valor
     respond_to do |format|
       if @pedido.update(parametros)
+        @pedido.calcular_valor
         #proteina = @pedido.proteina
         #carne.decrescer        
         format.html { redirect_to @pedido, notice: 'Pedido atualizado com sucesso.' }
@@ -391,6 +384,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :proteinas, :acompanhamentos, :guarnicoes, :saladas, :valor, :id, :cliente_id, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :proteinas, :acompanhamentos, :guarnicoes, :saladas, :valor, :id, :cliente_id, :situacao, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end

@@ -19,7 +19,7 @@
       <th><%= model_class.human_attribute_name(:cliente_id) %></th>
       <th><%= model_class.human_attribute_name(:valor) %></th>
       <th>Data</th>
-      <th><%= model_class.human_attribute_name(:cancelado) %></th>      
+      <th><%= model_class.human_attribute_name(:situação) %></th>      
       <th><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
   </thead>
@@ -29,7 +29,7 @@
         <td><%= pedido.cliente.nome %></td>
         <td><%= pedido.valor %></td>
         <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
-        <td><%= pedido.cancelado? ? "Sim" : "Não" %></td>
+        <td><%= pedido.situacao %></td>
         <td>
           <%= link_to edit_pedido_path(pedido), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
                       <span class="editar"></span>
@@ -39,6 +39,9 @@
           <% end %>
             <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "button red", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
                       <span class="bloquear"></span>
+            <% end %>
+            <%= link_to confirmar_pedido_path(pedido), html_options = {:class => "button green", :title => "Confirmar Pedido", :id => "confirmar_#{pedido.id}"} do %>
+                      <span class="desbloquear"></span>
             <% end %>
         </td>
       </tr>

@@ -26,6 +26,12 @@ class Salada < ActiveRecord::Base
     self.verificar_quantidade
   end
 
+  def acrescer_pos_cancelamento(quantidade_retornada)
+    self.quantidade = self.quantidade + quantidade_retornada
+    self.save
+    self.verificar_quantidade
+  end
+
   def decrescer(quantidade_vendida)
     self.quantidade = self.quantidade - quantidade_vendida
     self.save

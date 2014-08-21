@@ -10,11 +10,11 @@ class Ability
           can :manage, :all
         else
           can [:create, :update, :read ], [Cliente], :usuario_id => usuario.id
-          can [:create, :update, :read ], Pedido, :cliente_id => usuario.id
+          can [:create, :update, :read, :cancelar, :confirmar ], Pedido, :cliente_id => usuario.id
           cannot :destroy, Pedido
           #can , Pedido, :usuario_id => usuario.id
         if (usuario.cliente.bloqueado? || (Time.now.hour < 6 || Time.now.hour > 22))
-          cannot [:create, :update, :read ], Pedido
+          cannot [:create, :update, :read, :confirmar ], Pedido
         end
         end
       else

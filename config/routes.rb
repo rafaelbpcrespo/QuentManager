@@ -21,8 +21,9 @@ QuentManager::Application.routes.draw do
 
   resources :pedidos do
     member do
+      get :confirmar
       get :cancelar
-      get :confirmar_cancelamento
+      #get :confirmar_cancelamento
     end
   end    
 

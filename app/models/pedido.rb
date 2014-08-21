@@ -17,6 +17,10 @@ class Pedido < ActiveRecord::Base
 
   scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }
 
+  LIMITE_GUARNICOES = 2
+  LIMITE_PROTEINAS = 1
+  LIMITE_SALADAS = 1
+
   def self.vendidos_hoje
     valor_total = 0
     pedidos = Pedido.where(created_at: (Time.now.midnight)..(Time.now.midnight + 1.day))
@@ -27,11 +31,25 @@ class Pedido < ActiveRecord::Base
   end
 
   def calcular_valor
-    valor_pedido = 0
+    valor_produtos = 0
+    valor_guarnicoes = 0
+    valor_proteinas = 0
+    valor_saladas = 0
+
     self.item_de_pedidos.each do |item|
-      valor_pedido = valor_pedido + (item.produto.valor_unitario * item.quantidade)
+      valor_produtos = valor_produtos + (item.produto.valor_unitario * item.quantidade)
     end
-    self.valor = valor_pedido
+    if self.qtd_extra(self.pedidos_guarnicoes,LIMITE_GUARNICOES) != 0
+      valor_guarnicoes = self.extra(self.pedidos_guarnicoes,LIMITE_GUARNICOES)
+    end
+    if self.qtd_extra(self.pedidos_proteinas,LIMITE_PROTEINAS) != 0
+      valor_proteinas = self.extra(self.pedidos_proteinas,LIMITE_PROTEINAS)
+    end
+    if self.qtd_extra(self.pedidos_saladas,LIMITE_SALADAS) != 0
+      valor_saladas = self.extra(self.pedidos_saladas,LIMITE_SALADAS)
+    end
+    self.valor = valor_produtos + valor_saladas + valor_proteinas + valor_guarnicoes
+    self.save!
   end
 
   def self.vendas_do_mes
@@ -41,17 +59,47 @@ class Pedido < ActiveRecord::Base
   end
 
     def cancelar
-      self.cancelado = true
+      self.situacao = "Cancelado"
     end
 
     def cancelar!
       self.cancelar
+      self.pedidos_proteinas.each do |pedido_proteina|
+        proteina = pedido_proteina.proteina
+        proteina.acrescer(pedido_proteina.quantidade)
+      end
+      self.pedidos_guarnicoes.each do |pedido_guarnicao|
+        guarnicao = pedido_guarnicao.guarnicao
+        guarnicao.acrescer(pedido_guarnicao.quantidade)
+      end
+      self.pedidos_saladas.each do |pedido_salada|
+        salada = pedido_salada.salada
+        salada.acrescer(pedido_salada.quantidade)
+      end      
       self.save!
     end
 
-    def cancelado?
-      self[:cancelado]
+    def confirmar
+      self.situacao = "Confirmado"
     end
+
+    def confirmar!
+      self.confirmar
+      self.save!
+      self.pedidos_proteinas.each do |pedido_proteina|
+        proteina = pedido_proteina.proteina
+        proteina.decrescer(pedido_proteina.quantidade)
+      end
+      self.pedidos_guarnicoes.each do |pedido_guarnicao|
+        guarnicao = pedido_guarnicao.guarnicao
+        guarnicao.decrescer(pedido_guarnicao.quantidade)
+      end
+      self.pedidos_saladas.each do |pedido_salada|
+        salada = pedido_salada.salada
+        salada.decrescer(pedido_salada.quantidade)
+      end      
+    end
+
 
     def qtd_extra(dados,limite)
       total=0
@@ -87,6 +135,8 @@ class Pedido < ActiveRecord::Base
                   valor = valor + ((qtd-limite)*dado.proteina.valor)
                 elsif classe == PedidoAcompanhamento
                   valor = valor + ((qtd-limite)*dado.acompanhamento.valor)
+                elsif classe == PedidoSalada
+                  valor = valor + ((qtd-limite)*dado.salada.valor)
                 end
                 cont = 1
               else
@@ -96,6 +146,8 @@ class Pedido < ActiveRecord::Base
                   valor = valor + (dado.quantidade * dado.proteina.valor)
                 elsif classe == PedidoAcompanhamento
                   valor = valor + (dado.quantidade * dado.acompanhamento.valor)
+                elsif classe == PedidoSalada
+                  valor = valor + (dado.quantidade * dado.salada.valor)
                 end
               end
             end
