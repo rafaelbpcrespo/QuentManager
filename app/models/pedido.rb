@@ -31,6 +31,7 @@ class Pedido < ActiveRecord::Base
   end
 
   def calcular_valor
+    valor_minimo = 10
     valor_produtos = 0
     valor_guarnicoes = 0
     valor_proteinas = 0
@@ -48,7 +49,7 @@ class Pedido < ActiveRecord::Base
     if self.qtd_extra(self.pedidos_saladas,LIMITE_SALADAS) != 0
       valor_saladas = self.extra(self.pedidos_saladas,LIMITE_SALADAS)
     end
-    self.valor = valor_produtos + valor_saladas + valor_proteinas + valor_guarnicoes
+    self.valor = valor_minimo + valor_produtos + valor_saladas + valor_proteinas + valor_guarnicoes
     self.save!
   end
 

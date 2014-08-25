@@ -64,8 +64,8 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
-    valor = params[:pedido][:valor]
-    params[:pedido][:valor] = valor.split( ',').join('.')
+    # valor = params[:pedido][:valor]
+    # params[:pedido][:valor] = valor.split( ',').join('.')
 
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
@@ -173,8 +173,8 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1
   # PATCH/PUT /pedidos/1.json
   def update
-    valor = params[:pedido][:valor]
-    params[:pedido][:valor] = valor.split( ',').join('.')
+    # valor = params[:pedido][:valor]
+    # params[:pedido][:valor] = valor.split( ',').join('.')
 
 #    descricao = ""
     pa = @pedido.pedidos_acompanhamentos
