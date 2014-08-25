@@ -1,4 +1,3 @@
-<div class='quadro'>
 <% if current_usuario.admin? %>
   <fieldset class='form-princ'>
     <legend class='legend1'>Clientes <span class="usuario"></span></legend>
@@ -7,7 +6,7 @@
       <p>Clientes Bloqueados: <%= Cliente.where(bloqueado: true).count %></p>
       <p>Clientes Cadastrados hoje: <%= Cliente.where(created_at: Time.now.beginning_of_day).count %></p>
   </fieldset>
-<br><br>
+
 
 <fieldset class='form-princ'>
     <legend class='legend1'>Vendas<span class="venda"></span></legend>
@@ -16,12 +15,12 @@
       <p>Vendas do mês: R$<%= exibir_decimal(Pedido.vendas_do_mes) %></p>    
   </fieldset>
 
-<br><br>
+
 <fieldset class='form-princ'>
     <legend class='legend1'>Pedidos<span class="pedido"></span></legend>
     
   </fieldset>
-<br><br>
+
 <fieldset class='form-princ'>
     <legend class='legend1'>Estoque<span class="estoque"></span></legend>
       <h3> Informações de Estoque <%= link_to 'Ver tudo', home_relatorio_produtos_path %></h3>
@@ -65,4 +64,3 @@
   </fieldset>
 
 <% end %>
-</div>

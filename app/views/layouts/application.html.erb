@@ -91,7 +91,7 @@
         <div id="navbardir"></div> 
       </div>
       <div id="colcentral">
-        <% if usuario_signed_in? %>
+        <% if usuario_signed_in? && (request.env['PATH_INFO'] != root_path && request.env['PATH_INFO'] != home_index_path) %>
           <div id="coldados">
             <%= yield %>
           </div>
@@ -113,22 +113,24 @@
               </div>
             </div> 
            <center><h1>Cardápio de Hoje</h1></center>
-            <div id="cardapio_b">
-             <div id="cardapio">
+          <fieldset class='cardapio'>
+            <legend class='legend1'>Proteínas<span class="usuario"></span></legend>
+             
               <% Proteina.all.where(:disponibilidade => true).each do |proteina| %>
                 <%= proteina.nome %><br/>
               <% end %>
               <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
                 <%= guarnicao.nome %><br/>
               <% end %>
-            </div>
-              </div> 
-            <div id="cardapio_b1">
-              <div id="cardapio1"> peixe <br>arroz  <br>feijão <br>farofa <br> salada </div> 
-            </div> 
-            <div id="cardapio_b2">
-              <div id="cardapio2"> macarrão <br>arroz  <br>feijão <br>ovo <br> salada </div>
-            </div> 
+          </fieldset>
+         
+           <fieldset class='cardapio'>
+            <legend class='legend1'>Guarnições<span class="usuario"></span></legend> peixe <br>arroz  <br>feijão <br>farofa <br> salada 
+            </fieldset>
+           
+             <fieldset class='cardapio'>
+             <legend class='legend1'>Acompanhamentos<span class="usuario"></span></legend> macarrão <br>arroz  <br>feijão <br>ovo <br> salada 
+            </fieldset>
           <% end %>
            <div id="colcad">
             <%= yield %>

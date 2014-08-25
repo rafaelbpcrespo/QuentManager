@@ -12,7 +12,7 @@
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:telefone) %></th>
       <th><%= model_class.human_attribute_name(:endereco) %></th>
-      <th><%=t '.ações', :default => t("helpers.ações") %></th>
+      <th><center><%=t '.ações', :default => t("helpers.ações") %></center></th>
     
     </tr>
   </thead>
@@ -23,7 +23,7 @@
         <td><%= empresa.nome %></td>
         <td><%= empresa.telefone %></td>
         <td><%= empresa.endereco %></td>
-        <td>
+        <td width="146px">
           <%= link_to edit_empresa_path(empresa), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
                       <span class="editar"></span>
                       <% end %>
