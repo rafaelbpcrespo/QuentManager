@@ -33,7 +33,8 @@ class SaladasController < ApplicationController
 
     respond_to do |format|
       if @salada.save
-        format.html { redirect_to @salada, notice: 'Salada was successfully created.' }
+        flash[:notice] = 'Salada criada com sucesso.'
+        format.html { redirect_to @salada }
         format.json { render action: 'show', status: :created, location: @salada }
       else
         format.html { render action: 'new' }
@@ -50,7 +51,7 @@ class SaladasController < ApplicationController
 
     respond_to do |format|
       if @salada.update(salada_params)
-        format.html { redirect_to @salada, notice: 'Salada was successfully updated.' }
+        format.html { redirect_to @salada, notice: 'Salada atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
