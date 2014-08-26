@@ -1,103 +1,103 @@
 <%= form_for @cliente, :html => { :class => 'validate' } do |f| %>
-  <% if @cliente.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cliente.errors.count, "error") %>:</h2>
-      <ul>
-      <% @cliente.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li><br/>
-      <% end %>
-      </ul>
-    </div>
-<% end %>
+  
     <fieldset class="form-clientes pess">
-      <legend>Dados Pessoais</legend>
-        <%= f.label "Nome"%>
-        <%= f.text_field :nome%>
-   
-        <%= f.label :cpf, "CPF", :class => 'control-label' %>
-        <%= f.text_field :cpf, :class => 'text_field' %>
-     
-        <%= f.label :rg, "RG", :class => 'control-label' %>
-        <%= f.text_field :rg, :class => 'text_field' %>
-     
-        <%= f.label :sexo, :class => 'control-label' %>
-        M
-        <%= f.radio_button :sexo, "M" , :checked => true, :value => "Masculino" %>
-        F
-        <%= f.radio_button :sexo, "F" , :checked => false, :value => "Feminino" %>
-      
-        <%= f.label :data_de_nascimento, :class => 'control-label' %>
-
-      <%= f.text_field :data_de_nascimento, :class => 'text_field' %>
-
+     <legend class="legend1">Dados Pessoais</legend>
+    <p>  
+      <%= f.label "Nome"%>
+      <%= f.text_field :nome, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= f.label :cpf, "CPF", :class => 'control-label' %>
+      <%= f.text_field :cpf, :class => 'required cpf' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= f.label :rg, "RG", :class => 'control-label' %>
+      <%= f.text_field :rg, :class => 'required numeric' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= f.label :sexo, :class => 'control-label' %>
+      M
+      <%= f.radio_button :sexo, "M" , :checked => true, :value => "Masculino" %>
+      F
+      <%= f.radio_button :sexo, "F" , :checked => false, :value => "Feminino" %>
+    </p>
+    <p>
+      <%= f.label :data_de_nascimento, :class => 'control-label' %>
+      <%= f.text_field :data_de_nascimento, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
       <%= f.label :endereco, :class => 'control-label' %>
-
-        <%= f.text_field :endereco, :class => 'text_field' %>
-
+      <%= f.text_field :endereco, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
       <%= f.label :numero, :class => 'control-label' %>
-
-        <%= f.text_field :numero, :class => 'text_field' %>
-
+      <%= f.text_field :numero, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
       <%= f.label :bairro, :class => 'control-label' %>
-
-        <%= f.text_field :bairro, :class => 'text_field' %>
-
+      <%= f.text_field :bairro, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
       <%= f.label :cidade, :class => 'control-label' %>
-
-        <%= f.text_field :cidade, :class => 'text_field' %>
-
-    
+      <%= f.text_field :cidade, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
       <%= f.label :complemento, :class => 'control-label' %>
-
-        <%= f.text_field :complemento, :class => 'text_field' %>
-
+      <%= f.text_field :complemento, :class => 'text_field' %>
+    </p>
+    <p>
       <%= f.label :telefone, :class => 'control-label' %>
-
-        <%= f.text_field :telefone, :class => 'text_field' %>
-
+      <%= f.text_field :telefone, :class => 'text_field' %>
+    </p>
+    <p>
       <%= f.label :celular, :class => 'control-label' %>
-
-        <%= f.text_field :celular, :class => 'text_field' %>
-
+      <%= f.text_field :celular, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
 
         </fieldset>
         <fieldset class="form-clientes prof">
-          <legend>Dados Profissionais</legend>
-      <%= f.label :empresa, :class => 'control-label' %>
-        
-          <%= f.collection_select :empresa_id, Empresa.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
-      
-
-
-  
-    <%= f.label :cargo, :class => 'control-label' %>
-  
-      <%= f.text_field :cargo, :class => 'text_field' %>
-   
-
-    <%= f.label :setor, :class => 'control-label' %>
-  
-      <%= f.text_field :setor, :class => 'text_field' %>
- 
-    <%= f.label :telefone_empresa, "Telefone Fixo", :class => 'control-label' %>
-
-      <%= f.text_field :telefone_empresa, :class => 'text_field' %>
-  
-    <%= f.label :ramal, :class => 'control-label' %>
-
-      <%= f.text_field :ramal, :class => 'text_field' %>
-
-    <%= f.label :celular_empresa, "Celular", :class => 'control-label' %>
-  
-      <%= f.text_field :celular_empresa, :class => 'text_field' %>
-  
-    <%= f.label :email_empresa, "Email", :class => 'control-label' %>
-
-      <%= f.text_field :email_empresa, :class => 'text_field' %>
-  
-    <%= f.label :data_de_pagamento, :class => 'control-label' %>
-   
-      <%= f.text_field :data_de_pagamento, :class => 'text_field' %>
+        <legend class="legend1">Dados Profissionais</legend>
+          <p>
+            <%= f.label :empresa, :class => 'control-label' %>
+            <%= f.collection_select :empresa_id, Empresa.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
+            <span class="validate">Selecione um item</span>
+          </p>
+          <p>
+            <%= f.label :cargo, :class => 'control-label' %>
+            <%= f.text_field :cargo, :class => 'required' %>
+            <span class="validate">Campo requerido</span>
+          </p>
+          <p>
+            <%= f.label :setor, :class => 'control-label' %>
+            <%= f.text_field :setor, :class => 'required' %>
+            <span class="validate">Campo requerido</span>
+          </p>
+          <p>
+            <%= f.label :telefone_empresa, "Telefone Fixo", :class => 'control-label' %>
+            <%= f.text_field :telefone_empresa, :class => 'required' %>
+            <span class="validate">Campo requerido</span>
+          </p>
+          <p>
+            <%= f.label :ramal, :class => 'control-label' %>
+            <%= f.text_field :ramal, :class => 'text_field' %>
+          </p>
+          <p>
+            <%= f.label :celular_empresa, "Celular", :class => 'control-label' %>
+            <%= f.text_field :celular_empresa, :class => 'text_field' %>
+          </p>
+          <p>
+            <%= f.label :email_empresa, "Email", :class => 'control-label' %>
+            <%= f.text_field :email_empresa, :class => 'text_field' %>
+          </p>
 
    </fieldset>
 

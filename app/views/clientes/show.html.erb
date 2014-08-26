@@ -5,7 +5,7 @@
 
 <div class="show1">
 <fieldset class='form-clientes'>
-<legend>Dados Pessoais</legend>
+<legend class="legend1">Dados Pessoais</legend>
     <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
     <%= @cliente.nome %><br/>
     <strong>CPF:</strong>
@@ -32,7 +32,7 @@
     <%= @cliente.celular %>
 </fieldset>
 <fieldset class='form-clientes'>
-<legend>Dados Profissionais</legend>
+<legend class="legend1">Dados Profissionais</legend>
     <strong><%= model_class.human_attribute_name(:empresa) %>:</strong>
     <%= @cliente.empresa.nome %><br/>
     <strong><%= model_class.human_attribute_name(:cargo) %>:</strong>
@@ -48,10 +48,10 @@
     <strong><%= model_class.human_attribute_name(:email_empresa) %>:</strong>
     <%= @cliente.email_empresa %><br/>
     </fieldset>
-<fieldset class='form-clientes'>
-<legend>Dados de Conta</legend>
-    <strong><%= model_class.human_attribute_name(:saldo) %>:</strong>
-    R$ <%= @cliente.conta.saldo %><br/>
+   <fieldset class='form-clientes'>
+     <legend>Dados de Conta</legend>
+      <strong><%= model_class.human_attribute_name(:saldo) %>:</strong>
+      R$ <%= @cliente.conta.saldo %><br/>
     </fieldset>
 </div>
 <center>

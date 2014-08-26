@@ -2,7 +2,7 @@
 <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 <div class="show1">
 <fieldset class='form-clientes'>
-  <legend>Dados Cadastrais</legend>
+  <legend class="legend1">Dados Cadastrais</legend>
   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
   <%= @produto.nome %><br/>
   <strong><%= model_class.human_attribute_name(:valor_unitario) %>:</strong>

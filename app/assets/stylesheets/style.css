@@ -869,7 +869,7 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
 	font-family: "Showcard Gothic";
 	text-align:center;
 	font-weight:bold;
-	font-size:18pt;
+	font-size:16pt;
 	color:#3f496a;
 	text-shadow: 0px 0px 10px orange;
 }
@@ -877,11 +877,12 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
   .form-clientes {
   border: solid 1px;
   border-radius: 12px 12px 12px 12px;
+  box-shadow: 0px 0px 10px #3f496a;
   float: left;
   border-color: #3f496a;
   color:#666;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
   .pess {
@@ -889,7 +890,8 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
 
 }
 
-  .prof {
+  .ped {
+  
   	
 }
 
@@ -1033,19 +1035,3 @@ li span{
 #msg_erro ul, li{
   /*list-style-type: disc;*/
 } 
- .alert-success {
-  display: block;
-  margin: 5px;
-  /*background-color: #99FF99;*/
-  color: green;
-  text-align: center;
-}
-
-.alert-error {
-  display: block;
-  margin: 5px;
-  /*background-color: #f2dede;*/
-  border-color: #eed3d7;
-  color: #b94a48;
-  text-align: center;
-   }

@@ -6,7 +6,7 @@
 <table>
   <td>  
   <fieldset class="form-clientes pess">
-  <legend>Dados de Sistema</legend>
+  <legend class="legend1">Dados de Sistema</legend>
     <p>
       <%= f.label :email %>
       <%= f.text_field :email, autofocus: true, :class => "required email" %>
@@ -29,7 +29,7 @@
     </p>
   </fieldset>
   <fieldset class="form-clientes pess">
-  <legend>Dados Pessoais</legend>
+  <legend class="legend1">Dados Pessoais</legend>
     <p>  
       <%= cliente_form.label "Nome"%>
       <%= cliente_form.text_field :nome, :class => 'required' %>
@@ -93,7 +93,7 @@
 
     </fieldset>
     <fieldset class="form-clientes prof">
-    <legend>Dados Profissionais</legend>
+    <legend class="legend1">Dados Profissionais</legend>
       <p>
         <%= cliente_form.label :empresa, :class => 'control-label' %>
         <%= cliente_form.collection_select :empresa_id, Empresa.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
