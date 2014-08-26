@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820223221) do
+ActiveRecord::Schema.define(version: 20140826001904) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
     t.string   "descricao"
     t.boolean  "disponibilidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bebidas", force: true do |t|
+    t.string   "nome"
+    t.integer  "quantidade"
+    t.decimal  "valor"
+    t.boolean  "disponibilidade"
+    t.string   "tipo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -91,6 +101,14 @@ ActiveRecord::Schema.define(version: 20140820223221) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quantidade"
+  end
+
+  create_table "pedidos_bebidas", force: true do |t|
+    t.integer  "pedido_id"
+    t.integer  "bebida_id"
+    t.integer  "quantidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pedidos_guarnicoes", force: true do |t|

@@ -36,6 +36,7 @@ class PedidosController < ApplicationController
   # GET /pedidos/new
   def new
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
+    @bebidas_disponiveis = Bebida.where(:disponibilidade => true)
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @saladas_disponiveis = Salada.where(:disponibilidade => true)
@@ -44,6 +45,7 @@ class PedidosController < ApplicationController
     @pedido.pedidos_proteinas.build
     @pedido.pedidos_guarnicoes.build
     @pedido.pedidos_saladas.build
+    @pedido.pedidos_bebidas.build
     @pedido.pedidos_acompanhamentos.build
   end
 
@@ -59,6 +61,10 @@ class PedidosController < ApplicationController
     @pedido.saladas.map { |salada| @saladas_disponiveis << salada unless @saladas_disponiveis.include? salada }
     @saladas_disponiveis.sort!
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
+    @bebidas_disponiveis = Bebida.where(:disponibilidade => true)
+    @pedido.bebidas.map { |bebida| @bebidas_disponiveis << bebida unless @bebidas_disponiveis.include? bebida }
+    @bebidas_disponiveis.sort!
+
   end
 
   # POST /pedidos
@@ -71,6 +77,7 @@ class PedidosController < ApplicationController
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @saladas_disponiveis = Salada.where(:disponibilidade => true)
+    @bebidas_disponiveis = Bebida.where(:disponibilidade => true)
     #descricao = ""
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
@@ -111,6 +118,13 @@ class PedidosController < ApplicationController
     for i in 0...saladas do
       if !params["salada_#{i}"].blank?
         @pedido.pedidos_saladas.new(:salada_id => params["salada_#{i}"], :quantidade => params["quantidade_salada_#{i}"])
+      end
+    end
+
+    bebidas = Bebida.where(:disponibilidade => true).count
+    for i in 0...bebidas do
+      if !params["bebida_#{i}"].blank?
+        @pedido.pedidos_bebidas.new(:bebida_id => params["bebida_#{i}"], :quantidade => params["quantidade_bebida_#{i}"])
       end
     end
 
@@ -300,6 +314,39 @@ class PedidosController < ApplicationController
     end
     ##################### Fim saladas removidos #####################
 
+
+    bebida_novo = []
+    pc = @pedido.pedidos_bebidas
+    bebida_editado = []
+    bebidas = Bebida.where(:disponibilidade => true).count
+    for i in 0..bebidas do
+      bebida=nil
+      if  !params["salada_#{i}"].blank?
+        bebida = Bebida.find(params["bebida_#{i}"])
+      end
+      if @pedido.bebidas.include? bebida
+        atualiza_bebida = @pedido.pedidos_bebidas.find_by_bebida_id(params["bebida_#{i}"])
+        atualiza_bebida.quantidade = params["quantidade_bebida_#{i}"].to_i
+        bebida_editado << atualiza_bebida
+        atualiza_bebida.save
+      elsif !params["bebida_#{i}"].blank?
+#        @pedido.pedidos_proteinas.
+        bebida_novo << @pedido.pedidos_bebidas.create!(:bebida_id => params["bebida_#{i}"], :quantidade => params["quantidade_bebida_#{i}"])
+        bebida_novo.last.bebida.decrescer(bebida_novo.last.quantidade)
+      end
+    end
+    #### Removendo proteinas após edição ####
+    bebidas_removidos = pc - bebida_editado
+    bebidas_removidos = bebidas_removidos - bebida_novo
+    bebidas_removidos.each do |bebida_removido|
+      bebida_removido.bebida.acrescer(bebida_removido.quantidade)
+      #proteina_removido.proteina.quantidade = proteina_removido.proteina.quantidade + proteina_removido.quantidade
+      #proteina = proteina_removido.proteina
+      #proteina.save
+      bebida_removido.destroy
+    end
+    ##################### Fim bebidas removidos #####################
+
     # proteinas = Proteina.where(:disponibilidade => true, :tipo => "Carne").count
     # for i in 0...proteinas do
     #   if !params["proteina_#{i}"].blank?
@@ -384,6 +431,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:descricao, :proteinas, :acompanhamentos, :guarnicoes, :saladas, :valor, :id, :cliente_id, :situacao, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
+      params.require(:pedido).permit(:descricao, :proteinas, :bebidas, :acompanhamentos, :guarnicoes, :saladas, :valor, :id, :cliente_id, :situacao, item_de_pedidos_attributes: [ :produto_id, :pedido_id, :quantidade, :_destroy, :id])
     end
 end

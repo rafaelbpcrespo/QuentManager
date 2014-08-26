@@ -20,6 +20,7 @@ class Pedido < ActiveRecord::Base
   LIMITE_GUARNICOES = 2
   LIMITE_PROTEINAS = 1
   LIMITE_SALADAS = 1
+  LIMITE_BEBIDAS = 0
 
   def self.vendidos_hoje
     valor_total = 0
