@@ -72,6 +72,8 @@ class PedidosController < ApplicationController
   def create
     # valor = params[:pedido][:valor]
     # params[:pedido][:valor] = valor.split( ',').join('.')
+    conta = Conta.find_by_cliente_id(params[:pedido][:cliente_id])
+    params[:pedido][:conta_id] = conta.id.to_i
 
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
@@ -82,6 +84,7 @@ class PedidosController < ApplicationController
     @pedido = Pedido.new(pedido_params)
     if @pedido.cliente.nil?
       @pedido.cliente = Cliente.find(current_usuario.cliente.id)
+      @pedido.conta = Conta.find_by_cliente_id(current_usuario.id)
     end
     # ENTRADAS #
     # acompanhamentos = params[:pedido][:acompanhamento_ids]
@@ -173,6 +176,8 @@ class PedidosController < ApplicationController
     respond_to do |format|
       if @pedido.save
         @pedido.calcular_valor
+        @pedido.conta.calcular_saldo
+        #@pedido.adicionar_conta
         #proteina = @pedido.proteina
         #proteina.decrescer
         format.html { redirect_to @pedido, notice: 'Novo Pedido realizado com sucesso.' }
@@ -402,6 +407,7 @@ class PedidosController < ApplicationController
     respond_to do |format|
       if @pedido.update(parametros)
         @pedido.calcular_valor
+        @pedido.conta.calcular_saldo
         #proteina = @pedido.proteina
         #carne.decrescer        
         format.html { redirect_to @pedido, notice: 'Pedido atualizado com sucesso.' }

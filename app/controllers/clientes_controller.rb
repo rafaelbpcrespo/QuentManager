@@ -67,6 +67,7 @@ class ClientesController < ApplicationController
   # POST /clientes.json
   def create
     @cliente = Cliente.new(cliente_params)
+    @cliente.conta = Conta.new(:saldo => 0)
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'Novo Cliente cadastrado com sucesso.' }

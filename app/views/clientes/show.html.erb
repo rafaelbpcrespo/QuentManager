@@ -48,6 +48,11 @@
     <strong><%= model_class.human_attribute_name(:email_empresa) %>:</strong>
     <%= @cliente.email_empresa %><br/>
     </fieldset>
+<fieldset class='form-clientes'>
+<legend>Dados de Conta</legend>
+    <strong><%= model_class.human_attribute_name(:saldo) %>:</strong>
+    R$ <%= @cliente.conta.saldo %><br/>
+    </fieldset>
 </div>
 <center>
 <div class="acoes">

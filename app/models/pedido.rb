@@ -1,5 +1,6 @@
 class Pedido < ActiveRecord::Base
   belongs_to :cliente
+  belongs_to :conta
   has_many :pedidos_acompanhamentos
   has_many :acompanhamentos, through: :pedidos_acompanhamentos
   has_many :item_de_pedidos
@@ -55,6 +56,10 @@ class Pedido < ActiveRecord::Base
     self.valor = valor_minimo + valor_produtos + valor_saladas + valor_proteinas + valor_guarnicoes
     self.save!
   end
+
+  # def adicionar_pedido_conta
+  #   self.cliente.conta.pedidos << self
+  # end
 
   def self.vendas_do_mes
     valor = 0;

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Conta:</strong>
+  <%= @pagamento.conta_id %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @pagamento.valor %>
+</p>
+
+<%= link_to 'Edit', edit_pagamento_path(@pagamento) %> |
+<%= link_to 'Back', pagamentos_path %>

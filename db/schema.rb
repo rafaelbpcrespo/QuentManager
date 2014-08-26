@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826001904) do
+ActiveRecord::Schema.define(version: 20140826013120) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20140826001904) do
     t.boolean  "bloqueado"
   end
 
+  create_table "contas", force: true do |t|
+    t.integer  "cliente_id"
+    t.decimal  "saldo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "empresas", force: true do |t|
     t.string   "nome"
     t.string   "telefone"
@@ -85,6 +92,13 @@ ActiveRecord::Schema.define(version: 20140826001904) do
     t.datetime "updated_at"
   end
 
+  create_table "pagamentos", force: true do |t|
+    t.integer  "conta_id"
+    t.decimal  "valor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pedidos", force: true do |t|
     t.text     "descricao"
     t.float    "valor"
@@ -93,6 +107,7 @@ ActiveRecord::Schema.define(version: 20140826001904) do
     t.datetime "updated_at"
     t.integer  "cardapio_id"
     t.string   "situacao"
+    t.integer  "conta_id"
   end
 
   create_table "pedidos_acompanhamentos", force: true do |t|

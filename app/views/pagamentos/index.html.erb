@@ -1,0 +1,29 @@
+<h1>Listing pagamentos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Conta</th>
+      <th>Valor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pagamentos.each do |pagamento| %>
+      <tr>
+        <td><%= pagamento.conta_id %></td>
+        <td><%= pagamento.valor %></td>
+        <td><%= link_to 'Show', pagamento %></td>
+        <td><%= link_to 'Edit', edit_pagamento_path(pagamento) %></td>
+        <td><%= link_to 'Destroy', pagamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pagamento', new_pagamento_path %>
