@@ -3,7 +3,7 @@
 pt-BR:
   devise:
     confirmations:
-      confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
+      confirmed: 'Sua conta foi confirmada com sucesso.'
       send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a confirmação da sua conta.'
       send_paranoid_instructions: 'Se o seu endereço de e-mail estiver cadastrado, você receberá uma mensagem com instruções para confirmação da sua conta.'
     failure:
@@ -14,7 +14,7 @@ pt-BR:
       locked: 'Sua conta está bloqueada.'
       not_found_in_database: 'E-mail ou senha inválidos.'
       timeout: 'Sua sessão expirou, por favor, efetue login novamente para continuar.'
-      unauthenticated: 'Para continuar, efetue login ou registre-se.'
+      unauthenticated: 'Para acessar o sistema, faça o login ou cadastre-se.'
       unconfirmed: 'Antes de continuar, confirme a sua conta.'
     mailer:
       confirmation_instructions:
