@@ -145,21 +145,22 @@
 </p>
  -->
 
-  <p>
+  <!-- <p>
   <fieldset class="form-clientes pess">
   <legend>Produtos</legend>
       <div class="control-group">
-      <%= f.fields_for :item_de_pedidos do |item| %>
+      <%#= f.fields_for :item_de_pedidos do |item| %>
       <div class="controls">
-      <%= item.collection_select :produto_id, Produto.bebidas, :id, :exibicao_select, :prompt => "Nenhuma", :class => 'text_field' %>
-      <%= item.select :quantidade, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10',10]], :selected => item.object.quantidade), :prompt => 0, :class => 'select_field' %>
-      <%= item.link_to_remove "Remover este item" %>
-    <% end %>
-<p><%= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>
+      <%#= item.collection_select :produto_id, Produto.bebidas, :id, :exibicao_select, :prompt => "Nenhuma", :class => 'text_field' %>
+      <%#= item.select :quantidade, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10',10]], :selected => item.object.quantidade), :prompt => 0, :class => 'select_field' %>
+      <%#= item.link_to_remove "Remover este item" %>
+    <%# end %>
+<p><%#= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>
 </div>
 </div>
 </fieldset>
-</p>
+</p> -->
+  
   <p>
 <br>
     <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
