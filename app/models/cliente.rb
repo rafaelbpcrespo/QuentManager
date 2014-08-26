@@ -1,5 +1,6 @@
 class Cliente < ActiveRecord::Base
   has_many :pedidos
+  has_one :conta
   belongs_to :usuario
   belongs_to :empresa
   before_save :corrigir_nome
