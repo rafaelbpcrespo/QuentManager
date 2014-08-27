@@ -3,6 +3,7 @@
   <h1 class='titulo'>
     <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
     <%#= link_to 'Cadastrar Empresa', new_empresa_path, :class=>"button blue-cadastrar-top" %>
+    Cliente: <%= Cliente.find_by_id(params[:id].to_i).nome %>
   </h1>
         
 </div>

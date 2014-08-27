@@ -1,5 +1,6 @@
 <%- model_class = Produto -%>
-<h1><%=t '.title', :default => [:'helpers.titles.edit', 'Editar %{model}'], :model => model_class.model_name.human.titleize %></h1>
+<h1><%=t '.title', :default => [:'helpers.titles.edit', 'Editar %{model}'], :model => model_class.model_name.human.titleize %>
+<br><%= Produto.find_by_id(params[:id].to_i).nome %> </h1>
 
 <%= form_for "produto", :url => atualizar_estoque_produto_path, :html => { :class => 'validate' } do  %>
  <table>

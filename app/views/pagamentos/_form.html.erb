@@ -1,5 +1,5 @@
 <%= form_for @pagamento, :html => { :class => 'validate' } do |f| %>
-
+      <h1>Cliente: <%= Conta.find_by_id(params[:conta_id].to_i).cliente.nome %></h1>
   <%= f.hidden_field :conta_id, :value => params[:conta_id].to_i %>
   <table>
   <td>
