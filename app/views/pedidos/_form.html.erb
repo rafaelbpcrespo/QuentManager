@@ -130,9 +130,9 @@
       <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
       <%= check_box_tag "bebida_#{i}", "#{bebida.nome}", false, :value => "#{bebida.id}" %>
       <%= "#{bebida.nome}" %>
-      <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
+      <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
-      <%= check_box_tag "bebi_#{i}", "#{bebida.nome}", true, :value => "#{bebida.id}" %>
+      <%= check_box_tag "bebida_#{i}", "#{bebida.nome}", true, :value => "#{bebida.id}" %>
       <%= "#{bebida.nome}" %>      
       <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_bebidas.where(:bebida_id => bebida.id).first.quantidade) %>
       <% end %>
@@ -180,7 +180,7 @@
   <legend class="legend1">Pedido</legend>
 
     <%#= f.label :valor, :class => 'control-label' %>
-      <%#= f.text_field :valor, :class => 'text_field' %>
+      <%= f.hidden_field :valor, :value => 0 %>
 
 
     <%= f.submit nil, :class => 'button blue-cadastrar-top' %>

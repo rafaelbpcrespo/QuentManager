@@ -40,10 +40,11 @@ class Pedido < ActiveRecord::Base
     valor_guarnicoes = 0
     valor_proteinas = 0
     valor_saladas = 0
+    valor_bebidas = 0
 
-    self.item_de_pedidos.each do |item|
-      valor_produtos = valor_produtos + (item.produto.valor_unitario * item.quantidade)
-    end
+    # self.item_de_pedidos.each do |item|
+    #   valor_produtos = valor_produtos + (item.produto.valor_unitario * item.quantidade)
+    # end
     if self.qtd_extra(self.pedidos_guarnicoes,LIMITE_GUARNICOES) != 0
       valor_guarnicoes = self.extra(self.pedidos_guarnicoes,LIMITE_GUARNICOES)
     end
@@ -53,7 +54,11 @@ class Pedido < ActiveRecord::Base
     if self.qtd_extra(self.pedidos_saladas,LIMITE_SALADAS) != 0
       valor_saladas = self.extra(self.pedidos_saladas,LIMITE_SALADAS)
     end
-    self.valor = valor_minimo + valor_produtos + valor_saladas + valor_proteinas + valor_guarnicoes
+    if self.qtd_extra(self.pedidos_bebidas,LIMITE_BEBIDAS) != 0
+      valor_bebidas = self.extra(self.pedidos_bebidas,LIMITE_BEBIDAS)
+    end
+    debugger
+    self.valor = valor_minimo + valor_saladas + valor_proteinas + valor_guarnicoes + valor_bebidas
     self.save!
   end
 
@@ -146,6 +151,8 @@ class Pedido < ActiveRecord::Base
                   valor = valor + ((qtd-limite)*dado.acompanhamento.valor)
                 elsif classe == PedidoSalada
                   valor = valor + ((qtd-limite)*dado.salada.valor)
+                elsif classe == PedidoBebida
+                  valor = valor + ((qtd-limite)*dado.bebida.valor)
                 end
                 cont = 1
               else
@@ -157,6 +164,8 @@ class Pedido < ActiveRecord::Base
                   valor = valor + (dado.quantidade * dado.acompanhamento.valor)
                 elsif classe == PedidoSalada
                   valor = valor + (dado.quantidade * dado.salada.valor)
+                elsif classe == PedidoBebida
+                  valor = valor + (dado.quantidade * dado.bebida.valor)
                 end
               end
             end

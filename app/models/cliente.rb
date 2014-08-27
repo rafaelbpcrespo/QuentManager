@@ -3,7 +3,7 @@ class Cliente < ActiveRecord::Base
   has_one :conta
   belongs_to :usuario
   belongs_to :empresa
-  before_save :corrigir_nome
+  before_save :corrigir_nome, :criar_conta
 
   validates :nome, :empresa_id, :celular, :data_de_pagamento, :cpf, :cargo, :setor, :sexo, :data_de_nascimento, :telefone_empresa, presence: true
 
@@ -22,6 +22,12 @@ class Cliente < ActiveRecord::Base
       return nomes[0] + " " + nomes[1]
     else
       return self.nome
+    end
+  end
+
+  def criar_conta
+    if self.conta.nil?
+      self.conta = Conta.new(:saldo => 0)
     end
   end
 
