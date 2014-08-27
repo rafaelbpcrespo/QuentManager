@@ -19,7 +19,6 @@
 <fieldset class='form-princ'>
     <legend class='legend1'>Pedidos<span class="pedido"></span></legend>
       <h3> Informações de Vendas</h3>
-      <p>Quantidade de pedidos hoje: <%= Pedido.where('STRFTIME("%d/%m/%Y", created_at) == ? ', DateTime.now.strftime("%d/%m/%Y")).count %></p>
       <p>Valor vendido hoje: R$<%= exibir_decimal(Pedido.vendidos_hoje) %></p>
   </fieldset>
 
