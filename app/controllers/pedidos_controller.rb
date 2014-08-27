@@ -19,16 +19,19 @@ class PedidosController < ApplicationController
   end
 
   def confirmar
-    @pedido = Pedido.find(params[:id])
-    @pedido.confirmar!
-
+    if @pedido.situacao == "Cancelado"
+      flash[:alert] = "Você não pode confirmar um pedido já cancelado."
+    else
+      flash[:notice] = "Pedido confirmado com sucesso."
+      @pedido.confirmar!
+    end
     redirect_to pedidos_path
   end
 
   def cancelar
     @pedido = Pedido.find(params[:id])
     @pedido.cancelar!
-
+    flash[:notice] = "Pedido cancelado com sucesso."
     redirect_to pedidos_path
   end
 
