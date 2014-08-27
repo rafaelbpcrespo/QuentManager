@@ -20,7 +20,6 @@
     <meta name="keywords" content="Siquitutes, almoço, macaé, quentinha, quentinha macaé, entrega, comida, food" />
     <meta name="author" content="R2L Solutions">
     <title>Si Quitutes</title>
-    <!-- <link href="css/style.css" rel="stylesheet"> -->
   </head>
     
 <body>
@@ -47,14 +46,15 @@
       </div>
     <% end %>
   </div>
-
   <div id="lineorange">
-    <div id="boxorange"> Envie-nos sua sugestão <p> contato@siquitutes.com.br </div>
+    <% if (usuario_signed_in? && !current_usuario.admin?) || !usuario_signed_in? %>
+      <div id="boxorange"> Envie-nos sua sugestão <p> contato@siquitutes.com.br </div>
+    <% end %>
   </div>
 
       <div id="navtop">
           <div id="logo"> </div>
-          <div id="garfos"> </div>
+          <!-- <div id="estatistica"> <#%= render :partial => 'barra_lateral' %> </div> -->
       </div>
       <div id="faixa">    
         <div id="navbaresq"> </div> 
@@ -64,27 +64,26 @@
                     <li class="dropdown"><a class="botao" href="/home"> Home </a></li>
                     <% if !usuario_signed_in? %>
                      <li class="dropdown"> <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a></li>
-                     <li class="dropdown"> <a class="botao" href="#"> Equipe </a></li>
                      <li class="dropdown"> <a class="botao" href="#"> Sobre </a></li>
-                     <li class="dropdown"><a class="botao" href="#"> Contato</a></li>
+                     <li class="dropdown"> <a class="botao" href="#"> Equipe </a></li>
                     <% else %>
                     <% if can? :manage, Proteina %>
                      <li class="dropdown">
                        <span ><a class="botao" href="#"> Cadastros</a></span>
-                        <ol class="dropdown">
-                        <li class="dropdown" ><a><%= link_to "Clientes", "/clientes", :class => 'botao2'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Produtos", "/produtos", :class => 'botao2'  %></a></li>
+                        <ol class="dropdown">                                          
                         <li class="dropdown"><a><%= link_to "Proteínas", "/proteinas", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Guarnições", "/guarnicoes", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Saladas", "/saladas", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Bebidas", "/bebidas", :class => 'botao2'  %></a></li>
                         <li class="dropdown"><a><%= link_to "Empresas", "/empresas", :class => 'botao2'  %></a></li>
-
-                      <% end %>
                     </ol>
                       </li>
+                       <li class="dropdown"><a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a></li> 
+                       <li class="dropdown"><a><%= link_to "Estoque", "/produtos", :class => 'botao'  %></a></li> 
+                      <% end %>
                        <li class="dropdown"><a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
+                       <li class="dropdown"> <a class="botao" href="#"> Sobre </a></li>
                     <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
               <% end %>
             </ul>  
@@ -97,9 +96,9 @@
             <%= yield %>
           </div>
             <% if request.env['PATH_INFO'] != new_usuario_registration_path %> 
-            <div id="colinfo">
-              <%= render :partial => 'barra_lateral' %>
-            </div>  
+            <!-- <div id="colinfo">
+              <%#= render :partial => 'barra_lateral' %>
+            </div>   -->
             <% end %>
         <% else %>
           <% if request.env['PATH_INFO'] == new_usuario_session_path %>

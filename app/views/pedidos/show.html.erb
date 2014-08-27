@@ -38,7 +38,7 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to "Corrigir Pedido", edit_pedido_path(@pedido), html_options = { :class => 'button blue', :title => "Corrigir Pedido"} %>
-  <%= link_to "Cancelar Pedido", cancelar_pedido_path(@pedido), html_options = {:class => "button red", :title => "Cancelar Pedido", :id => "cancelar_#{@pedido.id}"} %>
-  <%= link_to "Confirmar Pedido", confirmar_pedido_path(@pedido), html_options = {:class => "button green", :title => "Confirmar Pedido", :id => "confirmar_#{@pedido.id}"} %>
+  <%= link_to "Corrigir Pedido", edit_pedido_path(@pedido), html_options = { :class => 'button blue-cadastrar-top', :title => "Corrigir Pedido"} %>
+  <%= link_to "Cancelar Pedido", cancelar_pedido_path(@pedido), html_options = {:class => "button purple", :title => "Cancelar Pedido", :id => "cancelar_#{@pedido.id}"} %>
+  <%= link_to "Confirmar Pedido", confirmar_pedido_path(@pedido), html_options = {:class => "button green2", :title => "Confirmar Pedido", :id => "confirmar_#{@pedido.id}"} %>
 </div>

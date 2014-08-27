@@ -22,8 +22,11 @@ class PedidosController < ApplicationController
     if @pedido.situacao == "Cancelado"
       flash[:alert] = "Você não pode confirmar um pedido já cancelado."
     else
-      flash[:notice] = "Pedido confirmado com sucesso."
-      @pedido.confirmar!
+      if @pedido.confirmar! == 0
+        flash[:alert] = "Você não pode confirmar este pedido pois existem itens indisponíveis no estoque."
+      else
+        flash[:notice] = "Pedido confimado com sucesso."
+      end
     end
     redirect_to pedidos_path
   end
@@ -57,6 +60,7 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1/edit
   def edit
+    debugger
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @pedido.proteinas.map { |proteina| @proteinas_disponiveis << proteina unless @proteinas_disponiveis.include? proteina }
     @proteinas_disponiveis.sort!
@@ -199,10 +203,13 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1
   # PATCH/PUT /pedidos/1.json
   def update
+    debugger
     # valor = params[:pedido][:valor]
     # params[:pedido][:valor] = valor.split( ',').join('.')
 
 #    descricao = ""
+    @pedido.cliente = Cliente.find_by_id(params[:cliente_id].to_i)
+
     pa = @pedido.pedidos_acompanhamentos
     acompanhamento_editado = []
     acompanhamento_novo = []
@@ -217,7 +224,10 @@ class PedidosController < ApplicationController
         atualiza_acompanhamento.quantidade = params["quantidade_acompanhamento_#{i}"].to_i
         acompanhamento_editado << atualiza_acompanhamento
         atualiza_acompanhamento.save
-      elsif !params["acompanhamento_#{i}"].blank?
+      elsif (@pedido.acompanhamentos.include? acompanhamento && params["quantidade_acompanhamento_#{i}"] == 0)
+        atualiza_acompanhamento = @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(params["acompanhamento_#{i}"])
+        atualiza_acompanhamento.destroy
+      elsif (!params["acompanhamento_#{i}"].blank? && !params["quantidade_acompanhamento_#{i}"].nil?)
 #        @pedido.pedidos_acompanhamentos.
         acompanhamento_novo << @pedido.pedidos_acompanhamentos.create!(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
       end
@@ -237,12 +247,15 @@ class PedidosController < ApplicationController
       if  !params["proteina_#{i}"].blank?
         proteina = Proteina.find(params["proteina_#{i}"])
       end
-      if @pedido.proteinas.include? proteina
+      if (@pedido.proteinas.include? proteina && params["quantidade_proteina_#{i}"] != 0)
         atualiza_proteina = @pedido.pedidos_proteinas.find_by_proteina_id(params["proteina_#{i}"])
         atualiza_proteina.quantidade = params["quantidade_proteina_#{i}"].to_i
         proteina_editado << atualiza_proteina
         atualiza_proteina.save
-      elsif !params["proteina_#{i}"].blank?
+      elsif (@pedido.proteinas.include? proteina && params["quantidade_proteina_#{i}"] == 0)
+        atualiza_proteina = @pedido.pedidos_proteinas.find_by_proteina_id(params["proteina_#{i}"])
+        atualiza_proteina.destroy
+      elsif (!params["proteina_#{i}"].blank? && !params["quantidade_proteina_#{i}"].nil?)
 #        @pedido.pedidos_proteinas.
         proteina_novo << @pedido.pedidos_proteinas.create!(:proteina_id => params["proteina_#{i}"], :quantidade => params["quantidade_proteina_#{i}"])
         proteina_novo.last.proteina.decrescer(proteina_novo.last.quantidade)
@@ -275,7 +288,10 @@ class PedidosController < ApplicationController
         atualiza_guarnicao.quantidade = params["quantidade_guarnicao_#{i}"].to_i
         guarnicao_editado << atualiza_guarnicao
         atualiza_guarnicao.save
-      elsif !params["guarnicao_#{i}"].blank?
+      elsif (@pedido.guarnicoes.include? guarnicao && params["quantidade_guarnicao_#{i}"] == 0)
+        atualiza_guarnicao = @pedido.pedidos_guarnicoes.find_by_guarnicao_id(params["guarnicao_#{i}"])
+        atualiza_guarnicao.destroy
+      elsif (!params["guarnicao_#{i}"].blank? && !params["quantidade_guarnicao_#{i}"].nil?)
 #        @pedido.pedidos_proteinas.
         guarnicao_novo << @pedido.pedidos_guarnicoes.create!(:guarnicao_id => params["guarnicao_#{i}"], :quantidade => params["quantidade_guarnicao_#{i}"])
         guarnicao_novo.last.guarnicao.decrescer(guarnicao_novo.last.quantidade)
@@ -308,7 +324,10 @@ class PedidosController < ApplicationController
         atualiza_salada.quantidade = params["quantidade_salada_#{i}"].to_i
         salada_editado << atualiza_salada
         atualiza_salada.save
-      elsif !params["salada_#{i}"].blank?
+      elsif (@pedido.saladas.include? salada && params["quantidade_salada_#{i}"] == 0)
+        atualiza_salada = @pedido.pedidos_saladas.find_by_salada_id(params["salada_#{i}"])
+        atualiza_salada.destroy
+      elsif (!params["salada_#{i}"].blank? && !params["quantidade_salada_#{i}"].nil?)
 #        @pedido.pedidos_proteinas.
         salada_novo << @pedido.pedidos_saladas.create!(:salada_id => params["salada_#{i}"], :quantidade => params["quantidade_salada_#{i}"])
         salada_novo.last.salada.decrescer(salada_novo.last.quantidade)
@@ -333,7 +352,7 @@ class PedidosController < ApplicationController
     bebidas = Bebida.where(:disponibilidade => true).count
     for i in 0..bebidas do
       bebida=nil
-      if  !params["salada_#{i}"].blank?
+      if  !params["bebida_#{i}"].blank?
         bebida = Bebida.find(params["bebida_#{i}"])
       end
       if @pedido.bebidas.include? bebida
@@ -341,7 +360,10 @@ class PedidosController < ApplicationController
         atualiza_bebida.quantidade = params["quantidade_bebida_#{i}"].to_i
         bebida_editado << atualiza_bebida
         atualiza_bebida.save
-      elsif !params["bebida_#{i}"].blank?
+      elsif (@pedido.bebidas.include? bebida && params["quantidade_bebida_#{i}"] == 0)
+        atualiza_bebida = @pedido.pedidos_bebidas.find_by_bebida_id(params["bebida_#{i}"])
+        atualiza_bebida.destroy
+      elsif (!params["bebida_#{i}"].blank? && !params["quantidade_bebida_#{i}"].nil?)
 #        @pedido.pedidos_proteinas.
         bebida_novo << @pedido.pedidos_bebidas.create!(:bebida_id => params["bebida_#{i}"], :quantidade => params["quantidade_bebida_#{i}"])
         bebida_novo.last.bebida.decrescer(bebida_novo.last.quantidade)
@@ -365,8 +387,8 @@ class PedidosController < ApplicationController
     #     @pedido.pedidos_proteinas.new(:proteina_id => params["proteina_#{i}"], :quantidade => params["quantidade_#{i}"])
     #   end
     # end
-
-    parametros = pedido_params
+debugger
+#    parametros = pedido_params
 
 
     # itens = params[:pedido][:item_de_pedidos_attributes]
@@ -412,7 +434,7 @@ class PedidosController < ApplicationController
     
     #parametros[:valor] = @pedido.valor
     respond_to do |format|
-      if @pedido.update(parametros)
+      if @pedido.update(pedido_params)
         @pedido.calcular_valor
         @pedido.conta.calcular_saldo
         #proteina = @pedido.proteina

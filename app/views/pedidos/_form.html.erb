@@ -181,8 +181,10 @@
 
     <%#= f.label :valor, :class => 'control-label' %>
       <%= f.hidden_field :valor, :value => 0 %>
-      <% if current_usuario.admin? %>
+      <% if (current_usuario.admin? && params[:action] != "edit") %>
         <%= f.hidden_field :cliente_id, :value => params[:cliente_id].to_i %>
+      <% elsif (current_usuario.admin? && params[:action] == "edit") %>
+        <%= f.hidden_field :cliente_id, :value => Pedido.find_by_id(params[:id].to_i).cliente.id %>
       <% else %>
         <%= f.hidden_field :cliente_id, :value => current_usuario.id %>
       <% end %>

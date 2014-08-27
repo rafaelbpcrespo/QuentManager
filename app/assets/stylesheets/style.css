@@ -35,6 +35,7 @@ body {
 	-moz-box-shadow:0px 2px 5px #000;
 	/* implementação para safari */
 	-webkit-box-shadow:0px 2px 5px #000;
+	z-index: 1;
 	}
 
 
@@ -111,17 +112,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 	width:470px;
 	margin-left: 10px;
 	margin-top: -25px;
+	z-index: 2;
 	}
 
-/*#garfos{
-	float: right;
-	margin-right: 20px;
+#estatistica {
+	position: absolute;
+	margin-left: 610px;
+	background-color: white;
+	-webkit-box-shadow: -3px 0px 2px 0px rgba(54, 54, 52, 0.2);
+	-moz-box-shadow:    -3px 0px 2px 0px rgba(54, 54, 52, 0.2);
+	box-shadow:         -3px 0px 2px 0px rgba(54, 54, 52, 0.2);
 	height:148px;
 	width:350px;
-	background: url("../images/garfos.png") no-repeat;
-	background-size: 77%;
-	background-position: bottom right;	
-}*/
+	font-size: 16px;
+	color: #3f496a;
+	text-align: center;
+	z-index: 0;
+	}
 	
 #login {
 	float: right;
@@ -211,7 +218,7 @@ h1{
 	margin-right: 15px;
 	padding-left: 60px;
 	float: left;
-	width: 600px;
+	/*width: 600px;*/
 
 }
 
@@ -221,16 +228,6 @@ h1{
 	float: left;
 	height: 300px;
 	width: 370px;
-}
-
-#colinfo {
-	font-size: 18px;
-	color: #3f496a;
-	text-align: center;
-	border-radius: 12px 12px 12px 12px;
-	float: left;
-	height: 300px;
-	width: 250px;
 }
 
 #colcad{
@@ -365,15 +362,6 @@ h1{
 }
 
 
-/*.:hover{
-color: #faddde;
-border: solid 1px #980c10;
-background: #d81b21;
-background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
-background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
-filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
-}*/
-
 .sair{
    background-image:url('../images/glyphicons_388_exit.png');
    background-repeat:no-repeat;
@@ -412,7 +400,14 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', end
 }
 
 .pagamento{
-   background-image:url('../images/glyphicons_458_money.png');
+   background-image:url('../images/glyphicons_227_usd.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+   background-position: center;
+}
+
+.conta{
+   background-image:url('../images/glyphicons_039_notes.png');
    background-repeat:no-repeat;
    padding: 4px 0px 5px 30px;
    background-position: center;
@@ -530,6 +525,25 @@ color: #afafaf;
 background: -webkit-gradient(linear, left top, left bottom, from(#575757), to(#888));
 background: -moz-linear-gradient(top,  #575757,  #888);
 filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#888888');
+}
+
+.green2 {
+	color: rgb(219, 247, 217);
+    background: rgb(0, 173, 0);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(41, 204, 0)), to(rgb(0, 142, 23)));
+    background: -moz-linear-gradient(top,rgb(0, 204, 16),rgb(0, 142, 11));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e');
+}
+
+.green2:hover {
+
+   color: rgb(219, 247, 217);
+    border: solid 1px rgb(0, 163, 20);
+    background: rgb(41, 205, 0);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(114, 238, 0)), to(rgb(0, 165, 7)));
+    [Invalid property value.] background: -moz-linear-gradient(top,rgb(143, 238, 0),rgb(0, 165, 33));
+    [Invalid property value.] filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+
 }
 
 .green {
@@ -806,12 +820,6 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
   background-color: #fff;
 }
 
-.info {
-	font-size: 16px;
-
-	margin-top: 0px;
-	
-}
 
 .show-clientes {
   	float: left;
