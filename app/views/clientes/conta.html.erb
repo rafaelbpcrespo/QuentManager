@@ -6,6 +6,9 @@
   </h1>
         
 </div>
+<% if @transacoes.empty? %>
+    Este cliente não possui transações na conta.
+<% else %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -26,3 +29,4 @@
   </tbody>
 </table>
 Saldo Atual: R$ <%= @conta.saldo.to_f %>
+<% end %>
