@@ -1,25 +1,18 @@
-<%= form_for(@pagamento) do |f| %>
-  <% if @pagamento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pagamento.errors.count, "error") %> prohibited this pagamento from being saved:</h2>
+<%= form_for @pagamento, :html => { :class => 'validate' } do |f| %>
 
-      <ul>
-      <% @pagamento.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.hidden_field :conta_id, :value => params[:conta_id].to_i %>
+  <table>
+  <td>
   <p>
-    <%= f.label :conta_id, :class => 'control-label' %>
-    <%= f.collection_select :conta_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
-    </p>
-
-  <div class="field">
-    <%= f.label :valor %><br>
-    <%= f.text_field :valor %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.label :valor %>
+    <%= f.text_field :valor, :class => 'required' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+<br>
+    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", empresas_path, :class => 'button gray-voltar' %>
+</p>
+</td>
+</table>
+  
 <% end %>

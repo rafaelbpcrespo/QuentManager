@@ -24,10 +24,10 @@ class PagamentosController < ApplicationController
   # POST /pagamentos
   # POST /pagamentos.json
   def create
-    conta = Conta.find_by_cliente_id(params[:pagamento][:conta_id])
-    params[:pagamento][:conta_id] = conta.id.to_i
+    #conta = Conta.find_by_cliente_id(params[:conta_id].to_i)
+    # params[:pagamento][:conta_id] = conta.id.to_i
     @pagamento = Pagamento.new(pagamento_params)
-
+    #@pagamento.conta = conta
     respond_to do |format|
       if @pagamento.save
         @pagamento.conta.calcular_saldo

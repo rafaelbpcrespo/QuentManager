@@ -411,6 +411,13 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', end
    background-position: center;
 }
 
+.pagamento{
+   background-image:url('../images/glyphicons_458_money.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+   background-position: center;
+}
+
 .voltar{
    background-image:url('../images/glyphicons_435_undo.png');
    background-repeat:no-repeat;

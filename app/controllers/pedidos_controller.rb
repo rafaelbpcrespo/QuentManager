@@ -41,7 +41,10 @@ class PedidosController < ApplicationController
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @saladas_disponiveis = Salada.where(:disponibilidade => true)
     @pedido = Pedido.new
-    @pedido.item_de_pedidos.build
+    # if !params[:cliente_id].nil?
+    #   @pedido.cliente = Cliente.find(params[:cliente_id].to_i)
+    # end
+    #@pedido.item_de_pedidos.build
     @pedido.pedidos_proteinas.build
     @pedido.pedidos_guarnicoes.build
     @pedido.pedidos_saladas.build
@@ -73,8 +76,8 @@ class PedidosController < ApplicationController
     debugger
     # valor = params[:pedido][:valor]
     # params[:pedido][:valor] = valor.split( ',').join('.')
-    # conta = Conta.find_by_cliente_id(params[:pedido][:cliente_id])
-    # params[:pedido][:conta_id] = conta.id.to_i
+    conta = Conta.find_by_cliente_id(params[:pedido][:cliente_id])
+    debugger
 
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
@@ -83,10 +86,11 @@ class PedidosController < ApplicationController
     @bebidas_disponiveis = Bebida.where(:disponibilidade => true)
     #descricao = ""
     @pedido = Pedido.new(pedido_params)
-    if @pedido.cliente.nil?
-      @pedido.cliente = Cliente.find(current_usuario.cliente.id)
-      @pedido.conta = Conta.find_by_cliente_id(current_usuario.id)
-    end
+    @pedido.conta_id = conta.id.to_i
+    # if @pedido.cliente.nil?
+    #   @pedido.cliente = Cliente.find(current_usuario.cliente.id)
+    #   @pedido.conta = Conta.find_by_cliente_id(current_usuario.id)
+    # end
     # ENTRADAS #
     # acompanhamentos = params[:pedido][:acompanhamento_ids]
     # acompanhamentos.each do |id|

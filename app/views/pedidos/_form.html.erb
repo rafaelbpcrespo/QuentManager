@@ -12,12 +12,12 @@
     </div>
 <% end %>
   <table>
- <% if can? :manage, Proteina %>
+ <%# if can? :manage, Proteina %>
   
-    <%= f.label :cliente_id, :class => 'control-label' %>
-    <%= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
+    <%#= f.label :cliente_id, :class => 'control-label' %>
+    <%#= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
   <br>
-  <% end %>
+  <%# end %>
 <!--   <p>
   <fieldset class="form-clientes pess">
   <legend>Acompanhamentos</legend>
@@ -181,6 +181,7 @@
 
     <%#= f.label :valor, :class => 'control-label' %>
       <%= f.hidden_field :valor, :value => 0 %>
+      <%= f.hidden_field :cliente_id, :value => params[:cliente_id].to_i %>
 
 
     <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
