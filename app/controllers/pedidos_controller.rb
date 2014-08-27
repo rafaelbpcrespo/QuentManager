@@ -73,6 +73,7 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
+    debugger
     # valor = params[:pedido][:valor]
     # params[:pedido][:valor] = valor.split( ',').join('.')
     conta = Conta.find_by_cliente_id(params[:pedido][:cliente_id])
