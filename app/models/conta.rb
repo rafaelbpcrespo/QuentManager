@@ -6,7 +6,9 @@ class Conta < ActiveRecord::Base
   def calcular_saldo
     total = 0
     self.pedidos.each  do |pedido|
-      total = total - pedido.valor
+      if pedido.situacao == "Confirmado"
+        total = total - pedido.valor
+      end
     end
 
     self.pagamentos.each do |pagamento|

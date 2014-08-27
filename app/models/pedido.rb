@@ -19,6 +19,8 @@ class Pedido < ActiveRecord::Base
   accepts_nested_attributes_for :item_de_pedidos,  :allow_destroy => true
 
   scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }
+  before_save :atualizar_conta
+
 
   LIMITE_GUARNICOES = 2
   LIMITE_PROTEINAS = 1
@@ -180,6 +182,10 @@ class Pedido < ActiveRecord::Base
         end
         return valor.to_f
       end
+    end
+
+    def atualizar_conta
+      self.conta.calcular_saldo
     end
 
     # def guarnicoes_extra
