@@ -73,12 +73,9 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
-    debugger
     # valor = params[:pedido][:valor]
     # params[:pedido][:valor] = valor.split( ',').join('.')
     conta = Conta.find_by_cliente_id(params[:pedido][:cliente_id])
-    debugger
-
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
@@ -135,7 +132,7 @@ class PedidosController < ApplicationController
         @pedido.pedidos_bebidas.new(:bebida_id => params["bebida_#{i}"], :quantidade => params["quantidade_bebida_#{i}"])
       end
     end
-    debugger
+    
 
     #@pedido.proteinas << Proteina.where(:nome => params[:proteina]).first
 

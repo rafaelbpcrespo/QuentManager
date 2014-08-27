@@ -33,6 +33,7 @@ QuentManager::Application.routes.draw do
 
   resources :clientes do
     member do
+      get :conta
       get :bloquear
       get :confirmar_bloqueio
       get :desbloquear

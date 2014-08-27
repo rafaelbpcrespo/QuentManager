@@ -57,7 +57,6 @@ class Pedido < ActiveRecord::Base
     if self.qtd_extra(self.pedidos_bebidas,LIMITE_BEBIDAS) != 0
       valor_bebidas = self.extra(self.pedidos_bebidas,LIMITE_BEBIDAS)
     end
-    debugger
     self.valor = valor_minimo + valor_saladas + valor_proteinas + valor_guarnicoes + valor_bebidas
     self.save!
   end

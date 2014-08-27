@@ -29,6 +29,17 @@ class ClientesController < ApplicationController
     @cliente.data_de_nascimento = @cliente.data_de_nascimento.to_s.split(/\-/).reverse.join('/')
   end
 
+  def conta
+    @cliente = Cliente.find(params[:id])
+    transacoes = []
+    pagamentos = @cliente.conta.pagamentos
+    pedidos = @cliente.conta.pedidos.where(:situacao => "Confirmado")
+    pedidos.map { |pedido| transacoes << pedido }
+    pagamentos.map { |pagamento| transacoes << pagamento }
+    @transacoes = transacoes.sort_by { |t| t.created_at }
+    @conta = @cliente.conta
+  end
+
   def bloquear
     @cliente = Cliente.find(params[:id])
   end
