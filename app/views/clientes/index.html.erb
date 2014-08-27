@@ -52,6 +52,9 @@
             <%= link_to new_pagamento_path(:conta_id => cliente.conta.id), html_options = {:class => "button green", :title => "Pagamento"} do %>
                       <span class="pagamento"></span>
             <% end %>                        
+            <%= link_to conta_cliente_path(cliente), html_options = {:class => "button green", :title => "Conta"} do %>
+                      <span class="pagamento"></span>
+            <% end %>                        
           <% end %>
         </td>
       </tr>
