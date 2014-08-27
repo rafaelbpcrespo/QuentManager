@@ -89,6 +89,10 @@ class Pedido < ActiveRecord::Base
         salada = pedido_salada.salada
         salada.acrescer(pedido_salada.quantidade)
       end      
+      self.pedidos_bebidas.each do |pedido_bebida|
+        bebida = pedido_bebida.bebida
+        bebida.acrescer(pedido_bebida.quantidade)
+      end
       self.save!
     end
 
@@ -110,7 +114,11 @@ class Pedido < ActiveRecord::Base
       self.pedidos_saladas.each do |pedido_salada|
         salada = pedido_salada.salada
         salada.decrescer(pedido_salada.quantidade)
-      end      
+      end
+      self.pedidos_bebidas.each do |pedido_bebida|
+        bebida = pedido_bebida.bebida
+        bebida.decrescer(pedido_bebida.quantidade)
+      end
     end
 
 
