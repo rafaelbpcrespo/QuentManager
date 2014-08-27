@@ -34,9 +34,15 @@ class ClientesController < ApplicationController
     transacoes = []
     pagamentos = @cliente.conta.pagamentos
     pedidos = @cliente.conta.pedidos.where(:situacao => "Confirmado")
-    pedidos.map { |pedido| transacoes << pedido }
-    pagamentos.map { |pagamento| transacoes << pagamento }
-    @transacoes = transacoes.sort_by { |t| t.created_at }
+    if !pedidos.empty?
+      pedidos.map { |pedido| transacoes << pedido }
+    end
+    if !pagamentos.empty?
+      pagamentos.map { |pagamento| transacoes << pagamento }
+    end
+    if !transacoes.empty?
+      @transacoes = transacoes.sort_by { |t| t.created_at }
+    end
     @conta = @cliente.conta
   end
 
