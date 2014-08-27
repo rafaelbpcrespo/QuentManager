@@ -38,20 +38,22 @@
           <%= link_to cliente_path(cliente), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
-          <% if cliente.bloqueado? %>
-            <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
-                      <span class="desbloquear"></span>
+          <% if current_usuario.admin? %>
+            <% if cliente.bloqueado? %>
+              <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
+                        <span class="desbloquear"></span>
+              <% end %>
+            <% else %>
+              <%= link_to bloquear_cliente_path(cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} do %>
+                        <span class="bloquear"></span>
+              <% end %>
+              <%= link_to new_pedido_path(:cliente_id => cliente.id), html_options = {:class => "button green", :title => "Pedido"} do %>
+                        <span class="pedido"></span>
+              <% end %>                        
+              <%= link_to new_pagamento_path(:conta_id => cliente.conta.id), html_options = {:class => "button green", :title => "Pagamento"} do %>
+                        <span class="pagamento"></span>
+              <% end %>                        
             <% end %>
-          <% else %>
-            <%= link_to bloquear_cliente_path(cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} do %>
-                      <span class="bloquear"></span>
-            <% end %>
-            <%= link_to new_pedido_path(:cliente_id => cliente.id), html_options = {:class => "button green", :title => "Pedido"} do %>
-                      <span class="pedido"></span>
-            <% end %>                        
-            <%= link_to new_pagamento_path(:conta_id => cliente.conta.id), html_options = {:class => "button green", :title => "Pagamento"} do %>
-                      <span class="pagamento"></span>
-            <% end %>                        
             <%= link_to conta_cliente_path(cliente), html_options = {:class => "button green", :title => "Conta"} do %>
                       <span class="pagamento"></span>
             <% end %>                        

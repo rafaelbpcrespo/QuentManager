@@ -56,23 +56,25 @@
 </div>
 <center>
 <div class="acoes">
-  <%= link_to clientes_path, :class => 'button gray' do %>
+          <%= link_to clientes_path, :class => 'button gray' do %>
               <span class="voltar"></span> 
               <% end %>
-  <%= link_to edit_cliente_path(@cliente), :class => 'button blue' do %>
+          <%= link_to edit_cliente_path(@cliente), :class => 'button blue' do %>
                       <span class="editar"></span>          
-          <% end %>          
-          <% if @cliente.bloqueado? %>
-            <%= link_to desbloquear_cliente_path(@cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{@cliente.id}"} do %>
-                      <span class="desbloquear"></span>
+          <% end %>
+          <% if can? :bloquear, Cliente %>          
+            <% if @cliente.bloqueado? %>
+              <%= link_to desbloquear_cliente_path(@cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{@cliente.id}"} do %>
+                        <span class="desbloquear"></span>
+              <% end %>
+            <% else %>
+              <%= link_to bloquear_cliente_path(@cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{@cliente.id}"} do %>
+                        <span class="bloquear"></span>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to bloquear_cliente_path(@cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{@cliente.id}"} do %>
-                      <span class="bloquear"></span>
-            <% end %>
+          <% end %>
             <%= link_to new_pedido_path(:cliente_id => @cliente.id), html_options = {:class => "button green", :title => "Pedido"} do %>
                       <span class="pedido"></span>
             <% end %>                        
-          <% end %>
     </div>
 </center>
