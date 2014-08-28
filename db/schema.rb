@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826013120) do
+ActiveRecord::Schema.define(version: 20140828001427) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -150,6 +150,14 @@ ActiveRecord::Schema.define(version: 20140826013120) do
     t.datetime "updated_at"
   end
 
+  create_table "pedidos_sobremesas", force: true do |t|
+    t.integer  "pedido_id"
+    t.integer  "sobremesa_id"
+    t.integer  "quantidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "produtos", force: true do |t|
     t.string   "nome"
     t.float    "valor_unitario"
@@ -176,6 +184,16 @@ ActiveRecord::Schema.define(version: 20140826013120) do
     t.integer  "quantidade"
     t.boolean  "disponibilidade"
     t.decimal  "valor"
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sobremesas", force: true do |t|
+    t.string   "nome"
+    t.integer  "quantidade"
+    t.decimal  "valor"
+    t.boolean  "disponibilidade"
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"

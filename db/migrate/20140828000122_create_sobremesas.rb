@@ -2,7 +2,7 @@ class CreateSobremesas < ActiveRecord::Migration
   def change
     create_table :sobremesas do |t|
       t.string :nome
-      t.integet :quantidade
+      t.integer :quantidade
       t.decimal :valor
       t.boolean :disponibilidade
       t.string :descricao
