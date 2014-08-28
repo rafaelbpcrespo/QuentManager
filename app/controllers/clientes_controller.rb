@@ -46,6 +46,11 @@ class ClientesController < ApplicationController
     @conta = @cliente.conta
   end
 
+  def lista_pedidos
+    @cliente = Cliente.find(params[:id])
+    @pedidos = @cliente.pedidos.paginate(:page => params[:page], :per_page => 10)
+  end
+
   def bloquear
     @cliente = Cliente.find(params[:id])
   end

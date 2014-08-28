@@ -55,6 +55,9 @@
             <%= link_to conta_cliente_path(cliente), html_options = {:class => "button blue", :title => "Conta"} do %>
                       <span class="conta"></span>
             <% end %>                        
+            <%= link_to lista_pedidos_cliente_path(cliente), html_options = {:class => "button blue", :title => "Histórico de Pedidos"} do %>
+                      <span class="conta"></span>
+            <% end %>                        
           <% end %>
         </td>
       </tr>

@@ -1,0 +1,47 @@
+<div class="page-header">
+  <h1>Pedidos de <%= @cliente.nome %> <br/></h1>
+
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Valor</th>
+      <th>Data</th>
+      <th>Situação</th>      
+      <th>Descrição</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <% @pedidos.each do |pedido| %>
+      <tr>
+        <td>R$ <%= pedido.valor %></td>
+        <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= pedido.situacao %></td>
+        <td>  <% pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
+                    <%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %>, 
+                   <% end %>
+                  <% pedido.pedidos_proteinas.each do |pedido_proteina| %>
+                    <%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %>, 
+                  <% end %>
+
+                  <% pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
+                    <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %>, 
+                  <% end %>
+
+                  <% pedido.pedidos_saladas.each do |pedido_salada| %>
+                    <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %>, 
+                  <% end %>
+                 
+                  <% pedido.pedidos_bebidas.each do |pedido_bebida| %>
+                    <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %>, 
+                  <% end %>
+                 
+                  <% pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
+                    <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %>, 
+                  <% end %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @pedidos, renderer: BootstrapPagination::Rails %>
