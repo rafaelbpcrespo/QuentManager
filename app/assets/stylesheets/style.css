@@ -541,8 +541,8 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', end
     border: solid 1px rgb(0, 163, 20);
     background: rgb(41, 205, 0);
     background: -webkit-gradient(linear, left top, left bottom, from(rgb(114, 238, 0)), to(rgb(0, 165, 7)));
-    [Invalid property value.] background: -moz-linear-gradient(top,rgb(143, 238, 0),rgb(0, 165, 33));
-    [Invalid property value.] filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+    background: -moz-linear-gradient(top,rgb(143, 238, 0),rgb(0, 165, 33));
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
 
 }
 
