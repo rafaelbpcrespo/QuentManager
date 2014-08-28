@@ -62,7 +62,6 @@ class PedidosController < ApplicationController
 
   # GET /pedidos/1/edit
   def edit
-    debugger
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @pedido.proteinas.map { |proteina| @proteinas_disponiveis << proteina unless @proteinas_disponiveis.include? proteina }
     @proteinas_disponiveis.sort!
