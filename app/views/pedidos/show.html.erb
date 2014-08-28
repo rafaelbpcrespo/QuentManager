@@ -24,6 +24,10 @@
   <% @pedido.pedidos_bebidas.each do |pedido_bebida| %>
   <dd> <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %></dd>
   <% end %>
+  <dt><strong>Sobremesas</strong></dt>
+  <% @pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
+  <dd> <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %></dd>
+  <% end %>
   <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
   <dd><%= @pedido.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
