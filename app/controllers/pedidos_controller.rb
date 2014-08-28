@@ -9,7 +9,7 @@ class PedidosController < ApplicationController
     if current_usuario.admin?
       @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).paginate(:page => params[:page], :per_page => 10)
     else
-      @pedidos = Pedido.where(:cliente_id => current_usuario.cliente.id).order(:nome => :asc).paginate(:page => params[:page], :per_page => 10)
+      @pedidos = Pedido.where(:cliente_id => current_usuario.cliente.id).paginate(:page => params[:page], :per_page => 10)
     end
   end
 
