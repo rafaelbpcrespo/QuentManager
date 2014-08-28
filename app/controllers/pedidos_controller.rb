@@ -43,6 +43,7 @@ class PedidosController < ApplicationController
   def new
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @bebidas_disponiveis = Bebida.where(:disponibilidade => true)
+    @sobremesas_disponiveis = Sobremesa.where(:disponibilidade => true)
     @acompanhamentos_disponiveis = Acompanhamento.where(:disponibilidade => true)
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @saladas_disponiveis = Salada.where(:disponibilidade => true)
@@ -55,6 +56,7 @@ class PedidosController < ApplicationController
     @pedido.pedidos_guarnicoes.build
     @pedido.pedidos_saladas.build
     @pedido.pedidos_bebidas.build
+    @pedido.pedidos_sobremesas.build
     @pedido.pedidos_acompanhamentos.build
   end
 
@@ -74,13 +76,14 @@ class PedidosController < ApplicationController
     @bebidas_disponiveis = Bebida.where(:disponibilidade => true)
     @pedido.bebidas.map { |bebida| @bebidas_disponiveis << bebida unless @bebidas_disponiveis.include? bebida }
     @bebidas_disponiveis.sort!
+    @pedido.sobremesas.map { |sobremesa| @sobremesas_disponiveis << sobremesa unless @sobremesas_disponiveis.include? sobremesa }
+    @sobremesas_disponiveis.sort!
 
   end
 
   # POST /pedidos
   # POST /pedidos.json
   def create
-    debugger
     # valor = params[:pedido][:valor]
     # params[:pedido][:valor] = valor.split( ',').join('.')
     conta = Conta.find_by_cliente_id(params[:pedido][:cliente_id])
@@ -89,6 +92,7 @@ class PedidosController < ApplicationController
     @guarnicoes_disponiveis = Guarnicao.where(:disponibilidade => true)
     @saladas_disponiveis = Salada.where(:disponibilidade => true)
     @bebidas_disponiveis = Bebida.where(:disponibilidade => true)
+    @sobremesas_disponiveis = Sobremesa.where(:disponibilidade => true)
     #descricao = ""
     @pedido = Pedido.new(pedido_params)
     @pedido.conta_id = conta.id.to_i
@@ -141,6 +145,13 @@ class PedidosController < ApplicationController
       end
     end
     
+    sobremesas = Sobremesa.where(:disponibilidade => true).count
+    for i in 0...sobremesas do
+      if !params["sobremesa_#{i}"].blank?
+        @pedido.pedidos_sobremesas.new(:sobremesa_id => params["sobremesa_#{i}"], :quantidade => params["quantidade_sobremesa_#{i}"])
+      end
+    end
+
 
     #@pedido.proteinas << Proteina.where(:nome => params[:proteina]).first
 
@@ -203,7 +214,6 @@ class PedidosController < ApplicationController
   # PATCH/PUT /pedidos/1
   # PATCH/PUT /pedidos/1.json
   def update
-    debugger
     # valor = params[:pedido][:valor]
     # params[:pedido][:valor] = valor.split( ',').join('.')
 
@@ -381,13 +391,47 @@ class PedidosController < ApplicationController
     end
     ##################### Fim bebidas removidos #####################
 
+
+    sobremesa_novo = []
+    pc = @pedido.pedidos_sobremesas
+    sobremesa_editado = []
+    sobremesas = Sobremesa.where(:disponibilidade => true).count
+    for i in 0..sobremesas do
+      sobremesa=nil
+      if  !params["sobremesa_#{i}"].blank?
+        sobremesa = Sobremesa.find(params["sobremesa_#{i}"])
+      end
+      if @pedido.sobremesas.include? sobremesa
+        atualiza_sobremesa = @pedido.pedidos_sobremesas.find_by_sobremesa_id(params["sobremesa_#{i}"])
+        atualiza_sobremesa.quantidade = params["quantidade_sobremesa_#{i}"].to_i
+        sobremesa_editado << atualiza_sobremesa
+        atualiza_sobremesa.save
+      elsif (@pedido.sobremesas.include? sobremesa && params["quantidade_sobremesa_#{i}"] == 0)
+        atualiza_sobremesa = @pedido.pedidos_sobremesas.find_by_sobremesa_id(params["sobremesa_#{i}"])
+        atualiza_sobremesa.destroy
+      elsif (!params["sobremesa_#{i}"].blank? && !params["quantidade_sobremesa_#{i}"].nil?)
+        sobremesa_novo << @pedido.pedidos_sobremesas.create!(:sobremesa_id => params["sobremesa_#{i}"], :quantidade => params["quantidade_sobremesa_#{i}"])
+        sobremesa_novo.last.sobremesa.decrescer(sobremesa_novo.last.quantidade)
+      end
+    end
+    #### Removendo sobremesas após edição ####
+    sobremesas_removidos = pc - sobremesa_editado
+    sobremesas_removidos = sobremesas_removidos - sobremesa_novo
+    sobremesas_removidos.each do |sobremesa_removido|
+      sobremesa_removido.sobremesa.acrescer(sobremesa_removido.quantidade)
+      #proteina_removido.proteina.quantidade = proteina_removido.proteina.quantidade + proteina_removido.quantidade
+      #proteina = proteina_removido.proteina
+      #proteina.save
+      sobremesa_removido.destroy
+    end
+    ##################### Fim sobremesas removidos #####################
+
     # proteinas = Proteina.where(:disponibilidade => true, :tipo => "Carne").count
     # for i in 0...proteinas do
     #   if !params["proteina_#{i}"].blank?
     #     @pedido.pedidos_proteinas.new(:proteina_id => params["proteina_#{i}"], :quantidade => params["quantidade_#{i}"])
     #   end
     # end
-debugger
 #    parametros = pedido_params
 
 
@@ -467,6 +511,6 @@ debugger
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
       #debugger
-      params.require(:pedido).permit(:proteinas, :bebidas, :acompanhamentos, :guarnicoes, :saladas,:valor, :id, :cliente_id, :situacao, :conta)
+      params.require(:pedido).permit(:proteinas, :bebidas, :sobremesas, :acompanhamentos, :guarnicoes, :saladas,:valor, :id, :cliente_id, :situacao, :conta)
     end
 end
