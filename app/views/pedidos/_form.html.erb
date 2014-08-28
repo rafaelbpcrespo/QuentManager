@@ -11,7 +11,11 @@
       <!-- </ul> -->
     <!-- </div> -->
 <%# end %>
+  <% if current_usuario.admin? %>
   <h1> Cliente: <%= Cliente.find_by_id(params[:cliente_id].to_i).nome %> </h1>
+  <% else %>
+    <h1> Cliente: <%= current_usuario.cliente.nome %> </h1>
+  <% end %>
   <table>
  <%# if can? :manage, Proteina %>
     <%#= f.label :cliente_id, :class => 'control-label' %>
