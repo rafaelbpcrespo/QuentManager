@@ -11,8 +11,6 @@
    <%= javascript_include_tag "jquery.validate.js", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "jquery.cycle2.js", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
-          <div class="alert-success"><%= notice %></div>
-        <div class="alert-error"><%= alert %></div>
 
     <!-- <meta charset="utf-8"> -->
      <link rel="shortcut icon" href="favicon.ico">
@@ -92,6 +90,11 @@
         <div id="navbardir"></div> 
       </div>
       <div id="colcentral">
+                <% if !notice.nil? %>
+            <div class="alert-success"><%= notice %></div>
+          <% elsif !alert.nil? %>
+            <div class="alert-error"><%= alert %></div>
+          <% end %>
         <% if usuario_signed_in? && (request.env['PATH_INFO'] != root_path && request.env['PATH_INFO'] != home_index_path) %>
           <div id="coldados">
             <%= yield %>
