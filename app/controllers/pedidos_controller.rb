@@ -21,6 +21,8 @@ class PedidosController < ApplicationController
   def confirmar
     if @pedido.situacao == "Cancelado"
       flash[:alert] = "Você não pode confirmar um pedido já cancelado."
+    elsif @pedido.situacao == "Confirmado"
+      flash[:alert] = "Este pedido já foi confirmado."
     else
       if @pedido.confirmar! == 0
         flash[:alert] = "Você não pode confirmar este pedido pois existem itens indisponíveis no estoque."
