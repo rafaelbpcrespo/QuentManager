@@ -134,9 +134,8 @@ class ClientesController < ApplicationController
     def set_cliente
       @cliente = Cliente.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def cliente_params
-      params.require(:cliente).permit(:nome, :celular, :telefone, :ramal, :endereco, :complemento, :empresa_id, :sexo, :data_de_nascimento, :data_de_pagamento, :setor, :cargo, :cpf)
+      params.require(:cliente).permit(:nome, :celular, :rg, :telefone_empresa, :numero, :bairro, :cidade, :celular_empresa, :email_empresa, :bloqueado, :telefone, :ramal, :endereco, :complemento, :empresa_id, :sexo, :data_de_nascimento, :data_de_pagamento, :setor, :cargo, :cpf)
     end
 end
