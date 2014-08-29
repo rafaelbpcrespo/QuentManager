@@ -61,7 +61,7 @@
     <legend class='legend1'>Conta<span class="venda"></span></legend>
       <h3> Informações da Conta</h3>
       <p>Quantidade de pedidos:  <%= current_usuario.cliente.pedidos.count %></p>
-      <p>Valor a pagar: R$150,00 %></p>    
+      <p>Saldo atual: R$<%= current_usuario.cliente.conta.saldo.to_f %></p>    
   </fieldset>
 
 <% end %>
