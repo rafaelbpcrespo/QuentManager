@@ -22,6 +22,9 @@ jQuery(function($){
   $("#usuario_cliente_attributes_data_de_nascimento").mask("99/99/9999");
   $("#cliente_data_de_nascimento").mask("99/99/9999");
   $("#empresa_telefone").mask("(99)9999-9999");
+
+  $(".alert-succes").fadeOut(8000);
+  $(".alert-error").fadeOut(8000);
 });
 
 
