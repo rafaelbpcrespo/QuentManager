@@ -75,6 +75,7 @@ class PedidosController < ApplicationController
     @bebidas_disponiveis = Bebida.where(:disponibilidade => true)
     @pedido.bebidas.map { |bebida| @bebidas_disponiveis << bebida unless @bebidas_disponiveis.include? bebida }
     @bebidas_disponiveis.sort!
+    @sobremesas_disponiveis = Sobremesa.where(:disponibilidade => true)
     @pedido.sobremesas.map { |sobremesa| @sobremesas_disponiveis << sobremesa unless @sobremesas_disponiveis.include? sobremesa }
     @sobremesas_disponiveis.sort!
 
