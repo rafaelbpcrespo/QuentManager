@@ -13,9 +13,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Tipo </th>
-      <th>Valor</th>
-      <th>Data</th>
+      <th><center>Tipo</center> </th>
+      <th><center>Valor</center></th>
+      <th><center>Data</center></th>
     </tr>
   </thead>
   <tbody>
@@ -23,11 +23,11 @@
 
       <tr>
         <td><%= transacao.class %></td>
-        <td><%= transacao.valor.to_f %></td>
+        <td>R$ <%= transacao.valor.to_f %></td>
         <td><%= transacao.created_at.strftime("%d/%m/%Y") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-Saldo Atual: R$ <%= @conta.saldo.to_f %>
+<div class='saldo_conta'>Saldo Atual: R$ <%= @conta.saldo.to_f %></div>
 <% end %>

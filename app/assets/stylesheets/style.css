@@ -1076,3 +1076,8 @@ li span{
   color: #b94a48;
   text-align: center;
    }
+
+   .saldo_conta {
+    text-align: center;
+    border: 2px solid;
+   }
