@@ -1081,3 +1081,7 @@ li span{
     text-align: center;
     border: 2px solid;
    }
+
+   .descricao {
+    font-size: 11px;
+   }

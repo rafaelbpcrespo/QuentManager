@@ -8,6 +8,7 @@ class Ability
       if usuario
         if usuario.admin?
           can :manage, :all
+          cannot :destroy, :all
         else
           cannot :manage, :all
           can [:create, :update, :read, :conta ], [Cliente], :usuario_id => usuario.id

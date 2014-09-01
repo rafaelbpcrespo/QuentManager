@@ -44,13 +44,15 @@
       <%#= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", (@pedido.acompanhamentos.include? acompanhamento ? true : false), :value => "#{acompanhamento.id}" %>
       <%#= "#{acompanhamento.nome}" %>
       <% if !@pedido.acompanhamentos.include? acompanhamento %>
-      <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", false, :value => "#{acompanhamento.id}" %>
-      <%= "#{acompanhamento.nome}" %>
+      <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", false, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
+      <%= "#{acompanhamento.nome}" %><br>
+      <div class='descricao'><%= "#{acompanhamento.descricao}" %></div>
       <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}) %>
       <% else %>
-      <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", true, :value => "#{acompanhamento.id}" %>
-      <%= "#{acompanhamento.nome}" %>
-      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :prompt => "Selecione" %>
+      <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", true, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
+      <%= "#{acompanhamento.nome}" %><br>
+      <div class='descricao'><%= "#{acompanhamento.descricao}" %></div>
+<%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :prompt => "Selecione" %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
     <% end %>
@@ -67,12 +69,14 @@
       <%#= "#{proteina.nome}" %>
       <% if !@pedido.proteinas.include? proteina %>
       <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
-      <%= check_box_tag "proteina_#{i}", "#{proteina.nome}", false, :value => "#{proteina.id}" %>
-      <%= "#{proteina.nome}" %>
+      <%= check_box_tag "proteina_#{i}", "#{proteina.nome}", false, :value => "#{proteina.id}", :title => "#{proteina.descricao}" %>
+      <%= "#{proteina.nome}" %><br>
+      <div class='descricao'><%= "#{proteina.descricao}" %></div>
       <%= select_tag "quantidade_proteina_#{i}", options_for_select((1.."#{proteina.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
-      <%= check_box_tag "proteina_#{i}", "#{proteina.nome}", true, :value => "#{proteina.id}" %>
-      <%= "#{proteina.nome}" %>      
+      <%= check_box_tag "proteina_#{i}", "#{proteina.nome}", true, :value => "#{proteina.id}",:title => "#{proteina.descricao}" %>
+      <%= "#{proteina.nome}" %><br>
+      <div class='descricao'><%= "#{proteina.descricao}" %></div>      
       <%= select_tag "quantidade_proteina_#{i}", options_for_select((1.."#{proteina.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_proteinas.where(:proteina_id => proteina.id).first.quantidade) %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
@@ -91,12 +95,14 @@
       <%#= "#{proteina.nome}" %>
       <% if !@pedido.guarnicoes.include? guarnicao %>
       <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
-      <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", false, :value => "#{guarnicao.id}" %>
-      <%= "#{guarnicao.nome}" %>
+      <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", false, :value => "#{guarnicao.id}", :title => "#{guarnicao.descricao}" %>
+      <%= "#{guarnicao.nome}" %><br>
+      <div class='descricao'><%= "#{guarnicao.descricao}" %></div>
       <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
-      <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", true, :value => "#{guarnicao.id}" %>
-      <%= "#{guarnicao.nome}" %>      
+      <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", true, :value => "#{guarnicao.id}", :title => "#{guarnicao.descricao}"  %>
+      <%= "#{guarnicao.nome}" %><br>
+      <div class='descricao'><%= "#{guarnicao.descricao}" %></div>      
       <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_guarnicoes.where(:guarnicao_id => guarnicao.id).first.quantidade) %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
@@ -113,12 +119,14 @@
       <%#= "#{proteina.nome}" %>
       <% if !@pedido.saladas.include? salada %>
       <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
-      <%= check_box_tag "salada_#{i}", "#{salada.nome}", false, :value => "#{salada.id}" %>
+      <%= check_box_tag "salada_#{i}", "#{salada.nome}", false, :value => "#{salada.id}", :title => "#{salada.descricao}"  %>
       <%= "#{salada.nome}" %>
+      <div class='descricao'>(<%= "#{salada.descricao}" %>)</div>
       <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
-      <%= check_box_tag "salada_#{i}", "#{salada.nome}", true, :value => "#{salada.id}" %>
-      <%= "#{salada.nome}" %>      
+      <%= check_box_tag "salada_#{i}", "#{salada.nome}", true, :value => "#{salada.id}", :title => "#{salada.descricao}" %>
+      <%= "#{salada.nome}" %>
+      <div class='descricao'>(<%= "#{salada.descricao}" %>)</div>      
       <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade) %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
@@ -156,12 +164,14 @@
       <%#= "#{proteina.nome}" %>
       <% if !@pedido.sobremesas.include? sobremesa %>
       <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
-      <%= check_box_tag "sobremesa_#{i}", "#{sobremesa.nome}", false, :value => "#{sobremesa.id}" %>
-      <%= "#{sobremesa.nome}" %>
+      <%= check_box_tag "sobremesa_#{i}", "#{sobremesa.nome}", false, :value => "#{sobremesa.id}", :title => "#{sobremesa.descricao}" %>
+      <%= "#{sobremesa.nome}" %><br>
+      <div class='descricao'><%= "#{sobremesa.descricao}" %></div>
       <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
-      <%= check_box_tag "sobremesa_#{i}", "#{sobremesa.nome}", true, :value => "#{sobremesa.id}" %>
-      <%= "#{sobremesa.nome}" %>      
+      <%= check_box_tag "sobremesa_#{i}", "#{sobremesa.nome}", true, :value => "#{sobremesa.id}", :title => "#{sobremesa.descricao}" %>
+      <%= "#{sobremesa.nome}" %><br>
+      <div class='descricao'><%= "#{sobremesa.descricao}" %></div>   
       <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_sobremesas.where(:sobremesa_id => sobremesa.id).first.quantidade) %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>

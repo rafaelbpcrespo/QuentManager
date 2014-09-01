@@ -51,7 +51,7 @@ class GuarnicoesController < ApplicationController
   # PATCH/PUT /guarnicoes/1
   # PATCH/PUT /guarnicoes/1.json
   def update
-    valor = params[:guranicao][:valor]
+    valor = params[:guarnicao][:valor]
     params[:guarnicao][:valor] = valor.split( ',').join('.')
 
     respond_to do |format|
