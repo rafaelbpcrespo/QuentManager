@@ -29,7 +29,7 @@ class AcompanhamentosController < ApplicationController
 
     respond_to do |format|
       if @acompanhamento.save
-        format.html { redirect_to @acompanhamento, notice: 'Acompanhamento was successfully created.' }
+        format.html { redirect_to @acompanhamento, notice: 'Acompanhamento cadastrado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @acompanhamento }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class AcompanhamentosController < ApplicationController
   def update
     respond_to do |format|
       if @acompanhamento.update(acompanhamento_params)
-        format.html { redirect_to @acompanhamento, notice: 'Acompanhamento was successfully updated.' }
+        format.html { redirect_to @acompanhamento, notice: 'Acompanhamento atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

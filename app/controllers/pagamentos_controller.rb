@@ -31,7 +31,7 @@ class PagamentosController < ApplicationController
     respond_to do |format|
       if @pagamento.save
         @pagamento.conta.calcular_saldo
-        format.html { redirect_to @pagamento, notice: 'Pagamento was successfully created.' }
+        format.html { redirect_to @pagamento, notice: 'Pagamento cadastrado com sucesso.' }
         format.json { render action: 'show', status: :created, location: @pagamento }
       else
         format.html { render action: 'new' }
@@ -45,7 +45,7 @@ class PagamentosController < ApplicationController
   def update
     respond_to do |format|
       if @pagamento.update(pagamento_params)
-        format.html { redirect_to @pagamento, notice: 'Pagamento was successfully updated.' }
+        format.html { redirect_to @pagamento, notice: 'Pagamento atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -23,6 +23,13 @@ class SaladasController < ApplicationController
   def edit
   end
 
+  def desativar
+    @salada = Salada.find(params[:id])
+    @salada.desativar!
+    flash[:notice] = "Salada desativada com sucesso."
+    redirect_to saladas_path
+  end
+
   # POST /saladas
   # POST /saladas.json
   def create

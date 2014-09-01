@@ -1,19 +1,39 @@
 QuentManager::Application.routes.draw do
-  resources :sobremesas
+  resources :sobremesas do
+    member do
+      get :desativar
+    end
+  end
 
   resources :pagamentos
 
-  resources :bebidas
+  resources :bebidas do
+    member do
+      get :desativar
+    end
+  end
 
-  resources :saladas
+  resources :saladas do
+    member do
+      get :desativar
+    end
+  end
 
-  resources :guarnicoes
+  resources :guarnicoes do
+    member do
+      get :desativar
+    end
+  end
 
   resources :acompanhamentos
 
   resources :empresas
 
-  resources :proteinas
+  resources :proteinas do
+    member do
+      get :desativar
+    end
+  end
 
   devise_for :usuarios, :controllers => { :registrations => "registrations"}
   

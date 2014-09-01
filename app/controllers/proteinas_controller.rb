@@ -22,6 +22,13 @@ class ProteinasController < ApplicationController
   def edit
   end
 
+  def desativar
+    @proteina = Proteina.find(params[:id])
+    @proteina.desativar!
+    flash[:notice] = "Proteína desativada com sucesso."
+    redirect_to proteinas_path
+  end
+
   # POST /proteinas
   # POST /proteinas.json
   def create
@@ -32,7 +39,7 @@ class ProteinasController < ApplicationController
 
     respond_to do |format|
       if @proteina.save
-        format.html { redirect_to @proteina, notice: 'Nova Proteina cadastrada com sucesso.' }
+        format.html { redirect_to @proteina, notice: 'Proteína cadastrada com sucesso.' }
         format.json { render action: 'show', status: :created, location: @proteina }
       else
         format.html { render action: 'new' }
@@ -49,7 +56,7 @@ class ProteinasController < ApplicationController
 
     respond_to do |format|
       if @proteina.update(proteina_params)
-        format.html { redirect_to @proteina, notice: 'Proteina atualizado com sucesso.' }
+        format.html { redirect_to @proteina, notice: 'Proteína atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

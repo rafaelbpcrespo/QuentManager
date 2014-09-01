@@ -34,7 +34,7 @@ class ProdutosController < ApplicationController
 
     respond_to do |format|
       if @produto.save
-        format.html { flash[:notice] = 'Novo Produto cadastrado com sucesso.'
+        format.html { flash[:notice] = 'Produto cadastrado com sucesso.'
                                 redirect_to @produto }
         format.json { render action: 'show', status: :created, location: @produto }
       else

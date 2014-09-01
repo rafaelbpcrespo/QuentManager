@@ -21,6 +21,13 @@ class SobremesasController < ApplicationController
   def edit
   end
 
+  def desativar
+    @sobremesa = Sobremesa.find(params[:id])
+    @sobremesa.desativar!
+    flash[:notice] = "Sobremesa desativada com sucesso."
+    redirect_to sobremesas_path
+  end
+
   # POST /sobremesas
   # POST /sobremesas.json
   def create
@@ -31,7 +38,7 @@ class SobremesasController < ApplicationController
 
     respond_to do |format|
       if @sobremesa.save
-        format.html { redirect_to @sobremesa, notice: 'Sobremesa was successfully created.' }
+        format.html { redirect_to @sobremesa, notice: 'Sobremesa cadastrada com sucesso.' }
         format.json { render action: 'show', status: :created, location: @sobremesa }
       else
         format.html { render action: 'new' }
@@ -48,7 +55,7 @@ class SobremesasController < ApplicationController
     
     respond_to do |format|
       if @sobremesa.update(sobremesa_params)
-        format.html { redirect_to @sobremesa, notice: 'Sobremesa was successfully updated.' }
+        format.html { redirect_to @sobremesa, notice: 'Sobremesa atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

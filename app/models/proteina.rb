@@ -4,8 +4,6 @@ class Proteina < ActiveRecord::Base
 #  scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }
   before_save :ver_disponibilidade
 
-  scope :carne, -> { where(tipo: "Carne")}
-
   validates :nome, :quantidade, :valor, presence: true
 
   def ver_disponibilidade
@@ -33,4 +31,15 @@ class Proteina < ActiveRecord::Base
     self.save
     self.verificar_quantidade
   end
+
+    def desativar
+      self.disponibilidade = false
+      self.quantidade = 0
+    end
+
+    def desativar!
+      self.desativar
+      self.save!
+    end
+  
 end

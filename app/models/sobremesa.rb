@@ -31,4 +31,15 @@ class Sobremesa < ActiveRecord::Base
     self.save
     self.verificar_quantidade
   end  
+
+  def desativar
+    self.disponibilidade = false
+    self.quantidade = 0
+  end
+
+  def desativar!
+    self.desativar
+    self.save!
+  end
+
 end

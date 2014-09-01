@@ -21,6 +21,14 @@ class BebidasController < ApplicationController
   def edit
   end
 
+  def desativar
+    @bebida = Bebida.find(params[:id])
+    @bebida.desativar!
+    flash[:notice] = "Bebida desativada com sucesso."
+    redirect_to bebidas_path
+  end
+
+
   # POST /bebidas
   # POST /bebidas.json
   def create
@@ -31,7 +39,7 @@ class BebidasController < ApplicationController
 
     respond_to do |format|
       if @bebida.save
-        format.html { redirect_to @bebida, notice: 'Bebida was successfully created.' }
+        format.html { redirect_to @bebida, notice: 'Bebida cadastrada com sucesso.' }
         format.json { render action: 'show', status: :created, location: @bebida }
       else
         format.html { render action: 'new' }
@@ -48,7 +56,7 @@ class BebidasController < ApplicationController
     
     respond_to do |format|
       if @bebida.update(bebida_params)
-        format.html { redirect_to @bebida, notice: 'Bebida was successfully updated.' }
+        format.html { redirect_to @bebida, notice: 'Bebida atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

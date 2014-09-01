@@ -29,10 +29,9 @@
           <%= link_to sobremesa_path(sobremesa), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
-          <%= link_to sobremesa_path(sobremesa), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta sobremesa?')) },
-                      :class => 'button red', :title => "Remover" do %>
-                      <span class="remover"></span>
-                      <% end %>
+          <%= link_to desativar_sobremesa_path(sobremesa), html_options = { :class => 'button red', :title => "Desativar"} do %>
+                      <span class="remover"></span>          
+          <% end %>
         </td>
       </tr>
     <% end %>

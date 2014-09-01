@@ -22,6 +22,13 @@ class GuarnicoesController < ApplicationController
   def edit
   end
 
+  def desativar
+    @guarnicao = Guarnicao.find(params[:id])
+    @guarnicao.desativar!
+    flash[:notice] = "Guarnição desativada com sucesso."
+    redirect_to guarnicoes_path
+  end
+
   # POST /guarnicoes
   # POST /guarnicoes.json
   def create
@@ -32,7 +39,7 @@ class GuarnicoesController < ApplicationController
 
     respond_to do |format|
       if @guarnicao.save
-        format.html { redirect_to @guarnicao, notice: 'Guarnicao was successfully created.' }
+        format.html { redirect_to @guarnicao, notice: 'Guarnição cadastrada com sucesso.' }
         format.json { render action: 'show', status: :created, location: @guarnicao }
       else
         format.html { render action: 'new' }
@@ -49,7 +56,7 @@ class GuarnicoesController < ApplicationController
 
     respond_to do |format|
       if @guarnicao.update(guarnicao_params)
-        format.html { redirect_to @guarnicao, notice: 'Guarnicao was successfully updated.' }
+        format.html { redirect_to @guarnicao, notice: 'Guarnição atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
