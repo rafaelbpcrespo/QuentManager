@@ -10,8 +10,8 @@
   <%= @proteina.quantidade %><br/>
   <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
   <%= @proteina.valor %><br/>
-  <strong><%= model_class.human_attribute_name(:observacao) %>:</strong>
-  <%= @proteina.observacao %><br/>
+  <strong><%= model_class.human_attribute_name(:descricao) %>:</strong>
+  <%= @proteina.descricao %><br/>
   <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
   <% if @proteina.disponibilidade? %> Ativado <% else %> Desativado <% end %>
 </fieldset>

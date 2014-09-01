@@ -83,6 +83,6 @@ class ProteinasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def proteina_params
-      params.require(:proteina).permit(:nome, :quantidade, :disponibilidade, :observacao, :valor)
+      params.require(:proteina).permit(:nome, :quantidade, :disponibilidade, :descricao, :valor)
     end
 end
