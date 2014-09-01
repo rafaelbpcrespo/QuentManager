@@ -1054,8 +1054,9 @@ li span{
 
 .alert-success {
   width: 100%;
-  margin-top: 25%;
+  margin-top: -15px;
   /*margin-left: 25%;*/
+  padding-top: 10px;
   position: absolute;
   height: 30px;
   background-color: #99FF99;
@@ -1065,8 +1066,9 @@ li span{
 
 .alert-error {
   width: 100%;
-  margin-top: 25%;
+  margin-top: -15px;
   /*margin-left: 25%;*/
+  padding-top: 10px;
   position: absolute;
   height: 30px;
   background-color: #f2dede;
