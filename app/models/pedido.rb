@@ -39,7 +39,7 @@ class Pedido < ActiveRecord::Base
     valor_total
   end
 
-  def timeout
+  def self.timeout
     pedidos = Pedido.where(:situacao => "Em processamento")
     pedidos.each do |pedido|
       if DateTime.now > pedido.created_at + 30.minutes

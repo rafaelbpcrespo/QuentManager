@@ -12,7 +12,7 @@
 #   runner "MyModel.some_method"
 #   rake "some:great:rake:task"
 # end
-every :hour  do
+every 2.minutes  do
   runner "Pedido.timeout"
 end
 # every 4.days do
