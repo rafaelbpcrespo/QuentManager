@@ -39,6 +39,16 @@ class Pedido < ActiveRecord::Base
     valor_total
   end
 
+  def timeout
+    pedidos = Pedido.where(:situacao => "Em processamento")
+    pedidos.each do |pedido|
+      if DateTime.now > pedido.created_at + 30.minutes
+        pedido.situacao = "Cancelado"
+        pedido.save
+      end
+    end
+  end
+
   def calcular_valor
     valor_minimo = 10
     valor_produtos = 0

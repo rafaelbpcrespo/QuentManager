@@ -204,7 +204,7 @@ class PedidosController < ApplicationController
         #@pedido.adicionar_conta
         #proteina = @pedido.proteina
         #proteina.decrescer
-        format.html { redirect_to @pedido, notice: 'Pedido realizado com sucesso.' }
+        format.html { redirect_to @pedido }
         format.json { render action: 'show', status: :created, location: @pedido }
       else
         format.html { render action: 'new' }
