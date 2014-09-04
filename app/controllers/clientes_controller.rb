@@ -16,6 +16,7 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
+    @pedidos = @cliente.pedidos.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /clientes/new
@@ -44,11 +45,6 @@ class ClientesController < ApplicationController
       @transacoes = transacoes.sort_by { |t| t.created_at }
     end
     @conta = @cliente.conta
-  end
-
-  def lista_pedidos
-    @cliente = Cliente.find(params[:id])
-    @pedidos = @cliente.pedidos.paginate(:page => params[:page], :per_page => 10)
   end
 
   def bloquear

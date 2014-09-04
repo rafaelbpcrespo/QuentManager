@@ -932,6 +932,19 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
 
 }
 
+.show {
+  width: 400px;
+  min-height: 225px;
+  margin-bottom: 30px;
+}
+.coluna_esquerda {
+  margin-right: 40px;
+}
+
+.lista_pedidos {
+  margin-bottom: 30px;
+}
+
   .ped {
   margin-right: 30px;
   width: 240px;
@@ -1106,7 +1119,6 @@ li span{
 
    .saldo_conta {
     text-align: center;
-    border: 2px solid;
    }
 
    .descricao {

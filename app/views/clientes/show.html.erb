@@ -4,7 +4,7 @@
             new_cliente_path, :class => 'button blue-cadastrar-top' %> -->
 
 <div class="show1">
-<fieldset class='form-clientes'>
+<fieldset class='form-clientes show coluna_esquerda'>
 <legend class="legend1">Dados Pessoais</legend>
     <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
     <%= @cliente.nome %><br/>
@@ -31,7 +31,7 @@
     <strong><%= model_class.human_attribute_name(:celular) %>:</strong>
     <%= @cliente.celular %>
 </fieldset>
-<fieldset class='form-clientes'>
+<fieldset class='form-clientes show'>
 <legend class="legend1">Dados Profissionais</legend>
     <strong><%= model_class.human_attribute_name(:empresa) %>:</strong>
     <%= @cliente.empresa.nome %><br/>
@@ -48,12 +48,56 @@
     <strong><%= model_class.human_attribute_name(:email_empresa) %>:</strong>
     <%= @cliente.email_empresa %><br/>
     </fieldset>
-   <fieldset class='form-clientes'>
-     <legend class="legend1">Dados de Conta</legend>
-      <strong><%= model_class.human_attribute_name(:saldo) %>:</strong>
-      R$ <%= @cliente.conta.saldo %><br/>
+    <br>
+    <fieldset class='form-clientes lista_pedidos'>
+      <legend class="legend1">Dados Pedidos</legend>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Valor</th>
+              <th>Data</th>
+              <th>Situação</th>      
+              <th>Descrição</th>      
+            </tr>
+          </thead>
+          <tbody>
+            <% @pedidos.each do |pedido| %>
+              <tr>
+                <td>R$ <%= pedido.valor %></td>
+                <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
+                <td><%= pedido.situacao %></td>
+                <td>  <% pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
+                            <%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %>, 
+                           <% end %>
+                          <% pedido.pedidos_proteinas.each do |pedido_proteina| %>
+                            <%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %>, 
+                          <% end %>
+
+                          <% pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
+                            <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %>, 
+                          <% end %>
+
+                          <% pedido.pedidos_saladas.each do |pedido_salada| %>
+                            <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %>, 
+                          <% end %>
+                         
+                          <% pedido.pedidos_bebidas.each do |pedido_bebida| %>
+                            <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %>, 
+                          <% end %>
+                         
+                          <% pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
+                            <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %>, 
+                          <% end %>
+              </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class='saldo_conta'>Saldo Atual: R$ <%= @cliente.conta.saldo.to_f %></div>
     </fieldset>
-</div>
+  </div>
+  <br/>
+  <br/>
 <center>
 <div class="acoes">
           <%= link_to clientes_path, :class => 'button gray' do %>
