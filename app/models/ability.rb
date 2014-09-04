@@ -16,7 +16,7 @@ class Ability
           cannot :destroy, Pedido
           #can , Pedido, :usuario_id => usuario.id
         if (usuario.cliente.bloqueado? || (Time.now.hour < 6 || Time.now.hour > 22))
-          cannot [:create, :update, :read, :confirmar ], Pedido
+          cannot [:create, :update, :read, :confirmar, :cancelar ], Pedido
         end
         end
       else
