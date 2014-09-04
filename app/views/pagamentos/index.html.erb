@@ -1,29 +1,29 @@
-<h1>Listing pagamentos</h1>
-
-<table>
+<%- model_class = Pagamento -%>
+<div class="page-header">
+  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Conta</th>
-      <th>Valor</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:conta) %></th>
+      <th><%= model_class.human_attribute_name(:valor) %></th>
+      <th width="164px"><center><%=t '.ações', :default => t("helpers.ações") %></center></th>
     </tr>
   </thead>
-
   <tbody>
     <% @pagamentos.each do |pagamento| %>
       <tr>
-        <td><%= pagamento.conta_id %></td>
-        <td><%= pagamento.valor %></td>
-        <td><%= link_to 'Show', pagamento %></td>
-        <td><%= link_to 'Edit', edit_pagamento_path(pagamento) %></td>
-        <td><%= link_to 'Destroy', pagamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= pagamento.conta.cliente %></td>
+        <td>R$<%= exibir_decimal(pagamento.valor) %></td>
+        <td>
+          <%= link_to edit_pagamento_path(pagamento), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+                      <span class="editar"></span>
+                      <% end %>
+          <%= link_to pagamento_path(pagamento), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
+                      <span class="listar"></span>          
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Pagamento', new_pagamento_path %>

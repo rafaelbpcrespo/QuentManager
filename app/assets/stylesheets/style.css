@@ -198,6 +198,13 @@ h1{
 	
 }
 
+h2{
+	font-family: "Showcard Gothic";
+	font-size: 18px;
+	color: #3f496a;
+	
+}
+
 #colcentral{
 	width: 960px;
 	background-color: #fff;
@@ -897,17 +904,37 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
   float: left;
   border-color: #3f496a;
   color:#666;
-  padding-left: 30px;
-  padding-right: 30px;
+  
+}
+
+#pedidosup{
+	margin-bottom: 50px;
+	min-height: 300px;
+ 	display: table;
+}
+
+
+#pedidoinf{
+	margin-bottom: 50px;
+	min-height: 300px;
+	display: table;
+}
+
+#pedidobot{
+	height: 100px;
+	margin-left: 300px;
 }
 
   .pess {
-  	margin-right: 50px;
+  	margin-right: 40px;
+	padding-left: 30px;
+  	padding-right: 30px;
 
 }
 
   .ped {
-  
+  margin-right: 30px;
+  width: 240px;
   	
 }
 

@@ -12,17 +12,17 @@
     <!-- </div> -->
 <%# end %>
   <% if current_usuario.admin? && params[:action] == "new" %>
-  <h1> Cliente: <%= Cliente.find_by_id(params[:cliente_id].to_i).nome %> </h1>
+  <h2> Cliente: <%= Cliente.find_by_id(params[:cliente_id].to_i).nome %> </h2>
   <% elsif current_usuario.admin? && params[:action] == "edit" %>
-    <h1> Cliente: <%= Pedido.find_by_id(params[:id].to_i).cliente.nome %> </h1>
+    <h2> Cliente: <%= Pedido.find_by_id(params[:id].to_i).cliente.nome %> </h2>
   <% else %>
-    <h1> Cliente: <%= current_usuario.cliente.nome %> </h1>
+    <h2> Cliente: <%= current_usuario.cliente.nome %> </h2>
   <% end %>
-  <table>
+ 
  <%# if can? :manage, Proteina %>
     <%#= f.label :cliente_id, :class => 'control-label' %>
     <%#= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
-  <br>
+<br>
   <%# end %>
 <!--   <p>
   <fieldset class="form-clientes pess">
@@ -35,7 +35,7 @@
 <!-- </fieldset>
     </p>
  -->
-  
+ <div id="pedidosup">  
   <fieldset class="form-clientes ped">
   <legend class="legend1">Acompanhamentos</legend>
     <% @acompanhamentos_disponiveis.each_with_index do |acompanhamento,i| %>
@@ -108,7 +108,9 @@
       <%#= select_field_tag "quantidade_#{i}" %>
     <% end %>
 </fieldset>
- 
+
+</div> 
+<div id="pedidoinf">
 
   <fieldset class="form-clientes ped">
   <legend class="legend1">Saladas</legend>
@@ -133,7 +135,7 @@
     <% end %>
 </fieldset>
  
-  <fieldset class="form-clientes pess">
+  <fieldset class="form-clientes ped">
   <legend class="legend1">Bebidas</legend>
     <% @bebidas_disponiveis.each_with_index do |bebida,i| %>
     <%# debugger %>
@@ -155,7 +157,7 @@
 </fieldset>
 
 
-  <fieldset class="form-clientes pess">
+  <fieldset class="form-clientes ped">
   <legend class="legend1">Sobremesas</legend>
     <% @sobremesas_disponiveis.each_with_index do |sobremesa,i| %>
     <%# debugger %>
@@ -214,8 +216,10 @@
 </div>
 </fieldset>
  -->
-<fieldset class="form-clientes ped">
-  <legend class="legend1">Pedido</legend>
+</div>
+<div id="pedidobot">
+<!-- <fieldset class="form-clientes ped">
+  <legend class="legend1">Pedido</legend> -->
 
     <%#= f.label :valor, :class => 'control-label' %>
       <%= f.hidden_field :valor, :value => 0 %>
@@ -230,10 +234,10 @@
 
     <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
     <%= link_to "Cancelar", pedidos_path, :class => 'button gray-voltar' %>
-</fieldset>
-</table>
+<!-- </fieldset>
+ -->
 
 
 <% end %>
-
+</div>
 

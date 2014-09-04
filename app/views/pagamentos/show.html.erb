@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Pagamento -%>
+<h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 
-<p>
-  <strong>Conta:</strong>
-  <%= @pagamento.conta_id %>
-</p>
-
-<p>
-  <strong>Valor:</strong>
-  <%= @pagamento.valor %>
-</p>
-
-<%= link_to 'Edit', edit_pagamento_path(@pagamento) %> |
-<%= link_to 'Back', pagamentos_path %>
+<div class="show1">
+<fieldset class='form-clientes'>
+  <legend class="legend1">Dados Cadastrais</legend>
+  <strong><%= model_class.human_attribute_name(:cliente) %>:</strong>
+  <%= @pagamento.conta.cliente.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
+  <%= @pagamento.valor %><br/>
+</fieldset>
+</div>
+<center>
+<div class="acoes">
+  <%= link_to edit_pagamento_path(@pagamento), :class => 'button blue' do %>
+                      <span class="editar"></span>          
+          <% end %>
+</div>
+</center>
