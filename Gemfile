@@ -10,6 +10,8 @@ gem 'therubyracer'
 #gem 'pg'
 gem 'mysql2'
 
+gem 'wicked'
+gem 'whenever', :require => false
 gem 'devise'
 gem 'cancancan', '~> 1.7'
 gem 'will_paginate-bootstrap'

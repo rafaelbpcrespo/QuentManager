@@ -1,0 +1,2 @@
+module SaladasHelper
+end

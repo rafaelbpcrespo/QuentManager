@@ -1,0 +1,31 @@
+<%- model_class = Acompanhamento -%>
+<h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+
+<div class="show1">
+<fieldset class='form-clientes'>
+  <legend class="legend1">Dados Cadastrais</legend>
+  <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+  <%= @acompanhamento.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:descricao) %>:</strong>
+  <%= @acompanhamento.descricao %><br/>
+  <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
+  <% if @acompanhamento.disponibilidade? %> Ativado <% else %> Desativado <% end %>
+</fieldset>
+</div>
+<center>
+<div class="acoes">
+<%= link_to acompanhamentos_path, :class => 'button gray' do  %>
+                      <span class="voltar"></span>          
+          <% end %>
+<%= link_to new_acompanhamento_path, :class => 'button green', :title => "Novo Cardápio" do %>
+                    <span class="adicionar"></span> 
+         <% end %>
+  <%= link_to edit_acompanhamento_path(@acompanhamento), :class => 'button blue' do %>
+                      <span class="editar"></span>          
+          <% end %>
+
+  <%= link_to acompanhamento_path(@acompanhamento), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta acompanhamento?')) }, :class => 'button red' do %>
+                        <span class="remover"></span>
+                      <% end %>
+</div>
+</center>

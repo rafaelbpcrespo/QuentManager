@@ -1,12 +1,19 @@
 class Cliente < ActiveRecord::Base
   has_many :pedidos
+  has_one :conta
   belongs_to :usuario
   belongs_to :empresa
+  before_save :corrigir_nome, :criar_conta
 
-  validates :nome, :empresa_id , presence: true
+  validates :nome, :empresa_id, :celular, :data_de_pagamento, :cpf, :cargo, :setor, :sexo, :data_de_nascimento, :telefone_empresa, presence: true
 
   def formatar_data
     data = I18n.l(self.data_de_nascimento)
+  end
+
+  def corrigir_nome
+    nome = self.nome.titleize
+    self.nome = nome
   end
 
   def nome_abreviado
@@ -18,7 +25,16 @@ class Cliente < ActiveRecord::Base
     end
   end
 
+  def criar_conta
+    if self.conta.nil?
+      self.conta = Conta.new(:saldo => 0)
+    end
+  end
+
   def self.search(search,empresa)
+    if search
+      search = search.titleize
+    end
     if search && !empresa.blank?
       find(:all, :conditions => ['nome LIKE ? AND empresa_id = ?', "%#{search}%", "#{empresa}"])
     elsif search

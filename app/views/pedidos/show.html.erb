@@ -4,24 +4,45 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong>Acompanhamentos</strong></dt>
+  <% @pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
+  <dd><%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %></dd>
+  <% end %>
+  <dt><strong>Proteinas</strong></dt>
+  <% @pedido.pedidos_proteinas.each do |pedido_proteina| %>
+  <dd> <%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %></dd>
+  <% end %>
+  <dt><strong>Guarnições</strong></dt>
+  <% @pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
+  <dd> <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %></dd>
+  <% end %>
+  <dt><strong>Saladas</strong></dt>
+  <% @pedido.pedidos_saladas.each do |pedido_salada| %>
+  <dd> <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %></dd>
+  <% end %>
+  <dt><strong>Bebidas</strong></dt>
+  <% @pedido.pedidos_bebidas.each do |pedido_bebida| %>
+  <dd> <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %></dd>
+  <% end %>
+  <dt><strong>Sobremesas</strong></dt>
+  <% @pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
+  <dd> <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %></dd>
+  <% end %>
   <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
   <dd><%= @pedido.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
   <dd><%= @pedido.valor %></dd>
   <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
   <dd><%= @pedido.cliente.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:forma_de_pagamento) %>:</strong></dt>
-  <dd><%= @pedido.forma_de_pagamento %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:observacoes) %>:</strong></dt>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteínas extra</dd>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnições extra</dd>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> saladas extra</dd>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebidas extra</dd>
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.voltar', :default => t("helpers.links.voltar")),
-              pedidos_path, :class => 'btn'  %>
-  <%= link_to t('.editar', :default => t("helpers.links.editar")),
-              edit_pedido_path(@pedido), :class => 'btn-primary' %>
-  <%= link_to t('.excluir', :default => t("helpers.links.exlcuir")),
-              pedido_path(@pedido),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este cliente?')) },
-              :class => 'btn btn-danger' %>
+  <%= link_to "Corrigir Pedido", edit_pedido_path(@pedido), html_options = { :class => 'button blue-cadastrar-top', :title => "Corrigir Pedido"} %>
+  <%= link_to "Cancelar Pedido", cancelar_pedido_path(@pedido), html_options = {:class => "button purple", :title => "Cancelar Pedido", :id => "cancelar_#{@pedido.id}"} %>
+  <%= link_to "Confirmar Pedido", confirmar_pedido_path(@pedido), html_options = {:class => "button green2", :title => "Confirmar Pedido", :id => "confirmar_#{@pedido.id}"} %>
 </div>

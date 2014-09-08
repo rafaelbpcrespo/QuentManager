@@ -1,51 +1,41 @@
 <%- model_class = Produto -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Editar %{model}'], :model => model_class.model_name.human.titleize %></h1>
-</div>
-<%= form_tag atualizar_estoque_produto_path, :html => { :class => 'form-horizontal' } do  %>
-  <div class="control-group">
+<h1><%=t '.title', :default => [:'helpers.titles.edit', 'Editar %{model}'], :model => model_class.model_name.human.titleize %>
+<br><%= Produto.find_by_id(params[:id].to_i).nome %> </h1>
+
+<%= form_for "produto", :url => atualizar_estoque_produto_path, :html => { :class => 'validate' } do  %>
+ <table>
+  <td><p>
     <%#= f.label :nome, :class => 'control-label' %>
-    <div class="controls">
+    
       <%#= f.text_field :nome, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
+
     <%= label_tag :qtd, "Quantidade", :class => 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :qtd %>
-    </div>
-    </div>
-  <div class="control-group">
+    <%= text_field_tag :qtd %>
+  </p>
+  <p>
     <%= label_tag :tipo, "Tipo de Operação", :class => 'control-label' %>
-    <div class="controls">
-      <%= select_tag :tipo, options_for_select(["Adicionar", "Subtrair"]), :prompt => "Selecione" %>
-    </div>
-    </div>
-    <div class="control-group">
+    <%= select_tag :tipo, options_for_select(["Adicionar", "Subtrair"]), :prompt => "Selecione" %>
+
     <%#= f.label :tipo, :class => 'control-label' %>
-    <div class="controls">
+
       <%#= f.select :tipo, ["Bebida", "Carne", "Mantimento", "Tempero"], :prompt => "Selecione", :class => 'text_field' %>
       <%#= f.text_field :tipo, :class => 'text_field' %>
-    </div>
-    </div>
-  <div class="control-group">
-    <%#= f.label :quantidade, :class => 'control-label' %>
-    <div class="controls">
-      <%#= f.text_field :quantidade, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%#= f.label :limite_minimo, :class => 'control-label' %>
-    <div class="controls">
-      <%#= f.text_field :limite_minimo, :class => 'text_field' %>
-    </div>
-  </div>
 
-  <div class="form-actions">
-    <%= submit_tag "Confirmar", :class => 'btn btn-primary' %>
+    <%#= f.label :quantidade, :class => 'control-label' %>
+
+      <%#= f.text_field :quantidade, :class => 'text_field' %>
+
+    <%#= f.label :limite_minimo, :class => 'control-label' %>
+
+      <%#= f.text_field :limite_minimo, :class => 'text_field' %>
+  </p>
+  <br>
+  <p>
+    <%= submit_tag "Confirmar", :class => 'button blue-cadastrar-top' %>
     <%#= link_to t('.atualizar_estoque', :default => t("helpers.links.atualizar_estoque")),
                       atualizar_estoque_produto_path, method: :post, :class => 'btn btn-mini' %>
-    <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
-                produtos_path, :class => 'btn' %>
-  </div>
+    <%= link_to 'Cancelar', produtos_path, :class => 'button gray-voltar' %>
+  </p>
+</td>
+  </table>
 <% end %>

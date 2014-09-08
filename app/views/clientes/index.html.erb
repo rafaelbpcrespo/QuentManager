@@ -1,66 +1,66 @@
 <%- model_class = Cliente -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
-  <%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
-            new_cliente_path,
-            :class => 'btn btn-primary' %></h1>
+  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h1>
 </div>
-<%= form_tag(clientes_path, :method => "get", :class => "navbar-form", id: "search-form") do %>
-    <div>
-      <%= text_field_tag :search, params[:search], :class => "form-control input-search", placeholder: "Buscar Clientes" %>
+<%= form_tag(clientes_path, :method => "get", :class => "validate", id: "search-form") do %>
+   <td>
+      <%= text_field_tag :search, params[:search], :class => "form-control input-search", placeholder: "Buscar Clientes" %><br>
       <%#= f.collection_select :empresa_id, Empresa.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
       <%#= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
-      <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas", :class => "form-control input-search" %>
+      <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas as Empresas", :class => "form-control input-search" %><br>
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
            of using a Rails form helper -->
-    <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-default btn-search' %>
-    </div>
+   <%= submit_tag "Buscar", :name => nil, :class => 'button gray-voltar' %></td>
+
+    <br><br><br><br>
   <% end %>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nome) %></th>
-      <th><%= model_class.human_attribute_name(:cpf) %></th>
       <th><%= model_class.human_attribute_name(:celular) %></th>
-      <th><%= model_class.human_attribute_name(:ramal) %></th>
       <th><%= model_class.human_attribute_name(:empresa) %></th>
-      <th><%= model_class.human_attribute_name(:sexo) %></th>
       <th><%= model_class.human_attribute_name(:bloqueado) %></th>
-      <th>Ações</th>
+      <th width="314px"><center>Ações</center></th>
     </tr>
   </thead>
   <tbody>
         <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= link_to cliente.id, cliente_path(cliente) %></td>
         <td><%= cliente.nome_abreviado %></td>
-        <td><%= cliente.cpf %></td>
         <td><%= cliente.celular %></td>
-        <td><%= cliente.ramal %></td>
         <td><%= cliente.empresa.nome %></td>
-        <td><%= cliente.sexo %></td>
         <td><%= cliente.bloqueado? ? "Sim" : "Não" %></td>
         <td>
-          <%= link_to t('.editar', :default => t("helpers.links.editar")),
-                      edit_cliente_path(cliente), :class => 'btn btn-primary' %>
-          <% if cliente.bloqueado? %>
-            <%= link_to 'Desbloquear', desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-small btn-success", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} %>
-          <% else %>
-            <%= link_to 'Bloquear', bloquear_cliente_path(cliente), html_options = {:class => "btn btn-small btn-danger", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} %>
+          <%= link_to edit_cliente_path(cliente), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+                      <span class="editar"></span>
+                      <% end %>
+          <%= link_to cliente_path(cliente), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
+                      <span class="listar"></span>          
           <% end %>
-          <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
-                      cliente_path(cliente),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este cliente?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <% if cliente.bloqueado? %>
+            <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
+                      <span class="desbloquear"></span>
+            <% end %>
+          <% else %>
+            <%= link_to bloquear_cliente_path(cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} do %>
+                      <span class="bloquear"></span>
+            <% end %>
+            <%= link_to new_pedido_path(:cliente_id => cliente.id), html_options = {:class => "button green", :title => "Pedido"} do %>
+                      <span class="pedido"></span>
+            <% end %>                        
+            <%= link_to new_pagamento_path(:conta_id => cliente.conta.id), html_options = {:class => "button green", :title => "Pagamento"} do %>
+                      <span class="pagamento"></span>
+            <% end %>                        
+            <%= link_to conta_cliente_path(cliente), html_options = {:class => "button blue", :title => "Conta"} do %>
+                      <span class="conta"></span>
+            <% end %>                        
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
-
-<%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
-            new_cliente_path,
-            :class => 'btn btn-primary' %>
+<% if current_usuario.admin? %>
+  <%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
+<% end %>

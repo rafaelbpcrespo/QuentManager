@@ -6,7 +6,7 @@ class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.json
   def index
-    @produtos = Produto.paginate(:page => params[:page], :per_page => 2)
+    @produtos = Produto.paginate(:page => params[:page], :per_page => 10)
     #Produto.paginate(:page => params[:page], :per_page => 30)
     #@produtos = Produto.all
   end
@@ -28,11 +28,13 @@ class ProdutosController < ApplicationController
   # POST /produtos
   # POST /produtos.json
   def create
+    valor = params[:produto][:valor_unitario]
+    params[:produto][:valor_unitario] = valor.split( ',').join('.')
     @produto = Produto.new(produto_params)
 
     respond_to do |format|
       if @produto.save
-        format.html { flash[:notice] = 'Novo Produto cadastrado com sucesso.'
+        format.html { flash[:notice] = 'Produto cadastrado com sucesso.'
                                 redirect_to @produto }
         format.json { render action: 'show', status: :created, location: @produto }
       else
@@ -45,6 +47,9 @@ class ProdutosController < ApplicationController
   # PATCH/PUT /produtos/1
   # PATCH/PUT /produtos/1.json
   def update
+    valor = params[:produto][:valor_unitario]
+    params[:produto][:valor_unitario] = valor.split( ',').join('.')
+
     respond_to do |format|
       if @produto.update(produto_params)
         format.html { redirect_to @produto, notice: 'Produto atualizado com sucesso.' }

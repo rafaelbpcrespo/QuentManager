@@ -1,0 +1,33 @@
+<%- model_class = Conta -%>
+<div class="page-header">
+  <h1 class='titulo'>
+    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
+    <%#= link_to 'Cadastrar Empresa', new_empresa_path, :class=>"button blue-cadastrar-top" %>
+    Cliente: <%= Cliente.find_by_id(params[:id].to_i).nome %>
+  </h1>
+        
+</div>
+<% if @transacoes.nil? %>
+    Este cliente não possui transações na conta.
+<% else %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><center>Tipo</center> </th>
+      <th><center>Valor</center></th>
+      <th><center>Data</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transacoes.each do |transacao| %>
+
+      <tr>
+        <td><%= transacao.class %></td>
+        <td>R$ <%= transacao.valor.to_f %></td>
+        <td><%= transacao.created_at.strftime("%d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class='saldo_conta'>Saldo Atual: R$ <%= @conta.saldo.to_f %></div>
+<% end %>

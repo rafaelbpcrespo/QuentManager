@@ -1,0 +1,39 @@
+<!-- <fieldset> -->
+    <h1>Estoque<span class="estoque"></span></h1>
+  
+      <h2> Acabando</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Produto.acabando_completo.each do |produto| %>
+            <tr>
+              <td><%= produto.nome %></td>
+              <td><font color="red"><%= produto.quantidade %></font></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+   
+   
+      <h2> Em falta</h2>    
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Produto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Produto.zerados.each do |produto| %>
+            <tr>
+              <td> <font color="red"><%= produto.nome %></font></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+ 
+  <!-- </fieldset> -->

@@ -1,29 +1,32 @@
 <%- model_class = Produto -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="show1">
+<fieldset class='form-clientes'>
+  <legend class="legend1">Dados Cadastrais</legend>
+  <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+  <%= @produto.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:valor_unitario) %>:</strong>
+  <%= @produto.valor_unitario %><br/>
+  <strong><%= model_class.human_attribute_name(:tipo) %>:</strong>
+  <%= @produto.tipo %><br/>
+  <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
+  <%= @produto.quantidade %><br/>
+  <strong><%= model_class.human_attribute_name(:limite_minimo) %>:</strong>
+  <%= @produto.limite_minimo %>
+</fieldset>
 </div>
+ <center><div class="acoes"> 
+<%= link_to produtos_path, :class => 'button gray', :title => "Voltar" do %>
+              <span class="voltar"></span> 
+              <% end %>
+<%= link_to new_produto_path, :class => 'button green', :title => "Novo Produto" do %>
+              <span class="adicionar"></span> 
+              <% end %>
+  <%= link_to edit_produto_path(@produto), :class => 'button blue', :title => "Editar Produto" do %>
+                      <span class="editar"></span>          
+          <% end %>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
-  <dd><%= @produto.nome %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:valor_unitario) %>:</strong></dt>
-  <dd><%= @produto.valor_unitario %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:tipo) %>:</strong></dt>
-  <dd><%= @produto.tipo %></dd>  
-  <dt><strong><%= model_class.human_attribute_name(:quantidade) %>:</strong></dt>
-  <dd><%= @produto.quantidade %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:limite_minimo) %>:</strong></dt>
-  <dd><%= @produto.limite_minimo %></dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to t('.voltar', :default => t("helpers.links.voltar")),
-              produtos_path, :class => 'btn'  %>
-  <%= link_to t('.editar', :default => t("helpers.links.editar")),
-              edit_produto_path(@produto), :class => 'btn' %>
-  <%= link_to t('.excluir', :default => t("helpers.links.excluir")),
-              produto_path(@produto),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir este cliente?')) },
-              :class => 'btn btn-danger' %>
-</div>
+  <%= link_to produto_path(@produto), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta produto?')) }, :class => 'button red', :title => "Remover Produto" do %>
+                        <span class="remover"></span>
+                      <% end %>
+</div></center>

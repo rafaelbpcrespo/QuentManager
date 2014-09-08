@@ -8,4 +8,7 @@ class HomeController < ApplicationController
     
   end
 
+  def relatorio_produtos
+    
+  end
 end

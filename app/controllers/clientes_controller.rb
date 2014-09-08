@@ -9,13 +9,14 @@ class ClientesController < ApplicationController
     if current_usuario.admin?
       @clientes = Cliente.paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
     else
-      @clientes = Cliente.find_all_by_id(current_usuario.cliente.id).paginate(:page => params[:page], :per_page => 10)
+      @clientes = Cliente.find_all_by_id(current_usuario.cliente.id)
     end
   end
 
   # GET /clientes/1
   # GET /clientes/1.json
   def show
+    @pedidos = @cliente.pedidos.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /clientes/new
@@ -27,6 +28,23 @@ class ClientesController < ApplicationController
   def edit
     #Tratando retorno de data do Banco de Dados
     @cliente.data_de_nascimento = @cliente.data_de_nascimento.to_s.split(/\-/).reverse.join('/')
+  end
+
+  def conta
+    @cliente = Cliente.find(params[:id])
+    transacoes = []
+    pagamentos = @cliente.conta.pagamentos
+    pedidos = @cliente.conta.pedidos.where(:situacao => "Confirmado")
+    if !pedidos.empty?
+      pedidos.map { |pedido| transacoes << pedido }
+    end
+    if !pagamentos.empty?
+      pagamentos.map { |pagamento| transacoes << pagamento }
+    end
+    if !transacoes.empty?
+      @transacoes = transacoes.sort_by { |t| t.created_at }
+    end
+    @conta = @cliente.conta
   end
 
   def bloquear
@@ -67,6 +85,7 @@ class ClientesController < ApplicationController
   # POST /clientes.json
   def create
     @cliente = Cliente.new(cliente_params)
+    @cliente.conta = Conta.new(:saldo => 0)
     respond_to do |format|
       if @cliente.save
         format.html { redirect_to @cliente, notice: 'Novo Cliente cadastrado com sucesso.' }
@@ -111,9 +130,8 @@ class ClientesController < ApplicationController
     def set_cliente
       @cliente = Cliente.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def cliente_params
-      params.require(:cliente).permit(:nome, :celular, :telefone, :ramal, :endereco, :complemento, :empresa_id, :sexo, :data_de_nascimento, :data_de_pagamento, :setor, :cargo, :cpf)
+      params.require(:cliente).permit(:nome, :celular, :rg, :telefone_empresa, :numero, :bairro, :cidade, :celular_empresa, :email_empresa, :bloqueado, :telefone, :ramal, :endereco, :complemento, :empresa_id, :sexo, :data_de_nascimento, :data_de_pagamento, :setor, :cargo, :cpf)
     end
 end

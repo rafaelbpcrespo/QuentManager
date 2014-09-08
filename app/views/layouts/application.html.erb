@@ -1,98 +1,153 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <title>QuentManager</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
-  <%= stylesheet_link_tag    "bootstrap.min.css", media: "all", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "bootstrap.min.js", "data-turbolinks-track" => false %>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <%#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%#= stylesheet_link_tag    "bootstrap.css", media: "all", "data-turbolinks-track" => false %>
+  <%= stylesheet_link_tag    "style.css", media: "all", "data-turbolinks-track" => false %>
+  <%#= javascript_include_tag "bootstrap.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "jquery.min.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "application.js", "data-turbolinks-track" => false %>
+  <%#= javascript_include_tag "nested_form.js", "data-turbolinks-track" => false %>
+   <%= javascript_include_tag "jquery.validate.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "jquery.cycle2.js", "data-turbolinks-track" => false %>
   <%= csrf_meta_tags %>
-         <p class="alert-success"><%= notice %></p>
-        <p class="alert-error"><%= alert %></p>
-</head>
+
+    <!-- <meta charset="utf-8"> -->
+     <link rel="shortcut icon" href="favicon.ico">
+    <meta name="description" content="Siquitutes">
+    <meta name="keywords" content="Siquitutes, almoço, macaé, quentinha, quentinha macaé, entrega, comida, food" />
+    <meta name="author" content="R2L Solutions">
+    <title>Si Quitutes</title>
+  </head>
+    
 <body>
- 
-
-
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar navbar-inner" role="navigation">
-        <div class="container">
-          <!-- <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"> -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="/">SiQuitutes</a>
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><%= link_to "Clientes", "/clientes"  %></li>
-              <li><%= link_to "Pedidos", "/pedidos"  %></li>
-              <% if can? :manage, Cardapio %>
-              <li><%= link_to "Produtos", "/produtos"  %></li>
-              <li><%= link_to "Cardapios", "/cardapios"  %></li>
-              <li><%= link_to "Empresas", "/empresas"  %></li>
-              <% end %>
-              <% if !usuario_signed_in? %>
-              <li><%= link_to "Cadastre-se", new_usuario_registration_path%></li>
-              <% end %>
-              </ul>
-              <% if usuario_signed_in? %>
-              <ul class="nav navbar-nav navbar-right">              
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
-                  <li><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
-                  <li><%= link_to "Sair", destroy_usuario_session_path, :method => :delete %></li>
-                </ul>
-              </li>
-             <% else %>
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "navbar-form navbar-right" , :id => ""})  do |f| %>
-               <div class="form-group"><%= f.email_field :email, autofocus: true, placeholder: "Email", :class => "input_default" %></div>
-               <div class="form-group">
-                <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "input_default" %> </div>
-               <%= f.submit "Entrar", :class => "btn btn-primary" %>
-             <% end %>
-            <% end %>
-            </ul>
-          </div><!--/.nav-collapse -->          
-        </div>
-        </nav>
-      </div>
-
-
-<div class="container">
-  <div class="row">
+<div id="all">
+  <div id="header">
       <% if usuario_signed_in? %>
-      <div class="span3">
-        <h2>Resumo</h2>
-          <p> Quantidade de clientes: <%= Cliente.all.count %> </p>
-          <p> Total de pedidos hoje: <%= Pedido.de_hoje %> </p>
-          <p> Valor total vendido hoje: R$ <%= Pedido.vendidos_hoje %> </p>
-          <% Cardapio.carne.each do |cardapio| %>
-            <% if cardapio.disponibilidade? %>
-          <p> <%= cardapio.nome %>: <%= cardapio.quantidade %> disponíveis </p>
-            <% end %>
+          <ul class="menu">              
+          <li class="menu">
+            <a class="menu"href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
+          <ul class="menu">
+          <li class="menu"><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
+          <li class="menu"><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
+          <li class="menu"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
+          </ul>
+          </li>
+        </ul>
+    <% else %>
+      <div class='login'>
+        <%= form_for(resource, :html => { :class => "validate"}, as: resource_name, url: session_path(resource_name))  do |f| %>
+          <div class='login_fields'><%= f.text_field :email, autofocus: true, placeholder: "Email", :class => "validate" %></div>
+          <div class='login_fields'><%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "validate"%></div>
+          <%= f.submit "Entrar", :class => "login_button blue-login"%>
         <% end %>
-        <h4> Produtos abaixo do limite </h4>
-        <% Produto.all.each do |produto| %>
-            <% if produto.abaixo_do_limite? %>
-          <p> <%= produto.nome %> </p>
-            <% end %>
-        <% end %>
-
-        </div>
-      <div class="span8"><%= yield %>
       </div>
-      <% else %>
-        <%= yield %>
-      <% end %>
+    <% end %>
   </div>
-</div>
+  <div id="lineorange">
+    <% if (usuario_signed_in? && !current_usuario.admin?) || !usuario_signed_in? %>
+      <div id="boxorange"> Envie-nos sua sugestão <p> contato@siquitutes.com.br </div>
+    <% end %>
+  </div>
 
+      <div id="navtop">
+          <div id="logo"> </div>
+          <!-- <div id="estatistica"> <#%= render :partial => 'barra_lateral' %> </div> -->
+      </div>
+      <div id="faixa">    
+        <div id="navbaresq"> </div> 
+          <div id="navbar">
+            <ul class="dropdown">
+               <div id="home"> <a class="botao" href="/home"> <img src="../images/home.png" width="40" height="40"></a></div>
+                    <li class="dropdown"><a class="botao" href="/home"> Home </a></li>
+                    <% if !usuario_signed_in? %>
+                     <li class="dropdown"> <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a></li>
+                     <li class="dropdown"> <a class="botao" href="#"> Sobre </a></li>
+                     <li class="dropdown"> <a class="botao" href="#"> Equipe </a></li>
+                    <% else %>
+                    <% if can? :manage, Proteina %>
+                     <li class="dropdown">
+                       <span ><a class="botao" href="#"> Cadastros</a></span>
+                        <ol class="dropdown">                                          
+                        <li class="dropdown"><a><%= link_to "Proteínas", "/proteinas", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Guarnições", "/guarnicoes", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Saladas", "/saladas", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Bebidas", "/bebidas", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Sobremesas", "/sobremesas", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Empresas", "/empresas", :class => 'botao2'  %></a></li>
+                    </ol>
+                      </li>
+                       <li class="dropdown"><a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a></li> 
+                       <li class="dropdown"><a><%= link_to "Estoque", "/produtos", :class => 'botao'  %></a></li> 
+                      <% end %>
+                       <li class="dropdown"><a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
+                       <li class="dropdown"> <a class="botao" href="/home/sobre"> Sobre </a></li>
+                    <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
+              <% end %>
+            </ul>  
+          </div>
+        <div id="navbardir"></div> 
+      </div>
+      <div id="colcentral">
+                <% if !notice.nil? %>
+            <div class="alert-success"><%= notice %></div>
+          <% elsif !alert.nil? %>
+            <div class="alert-error"><%= alert %></div>
+          <% end %>
+        <% if usuario_signed_in? && (request.env['PATH_INFO'] != root_path && request.env['PATH_INFO'] != home_index_path) %>
+          <div id="coldados">
+            <%= yield %>
+          </div>
+            <% if request.env['PATH_INFO'] != new_usuario_registration_path %> 
+            <!-- <div id="colinfo">
+              <%#= render :partial => 'barra_lateral' %>
+            </div>   -->
+            <% end %>
+        <% else %>
+          <% if request.env['PATH_INFO'] == new_usuario_session_path %>
+            <div id="banner"> 
+              <div class="cycle-slideshow"
+                data-cycle-fx='tileSlide' 
+                data-cycle-speed="2000"
+                data-cycle-delay="1500">
+                <img src="../images/slide1.jpg">
+                <img src="../images/slide2.jpg">
+                <img src="../images/slide3.jpg">
+              </div>
+            </div> 
+           <center><h1>Cardápio de Hoje</h1></center>
+          <fieldset class='cardapio'>
+            <legend class='legend1'>Proteínas<span class="usuario"></span></legend>
+             
+              <% Proteina.all.where(:disponibilidade => true).each do |proteina| %>
+                <%= proteina.nome %><br/>
+              <% end %>
+              <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
+                <%= guarnicao.nome %><br/>
+              <% end %>
+          </fieldset>
+         
+           <fieldset class='cardapio'>
+            <legend class='legend1'>Guarnições<span class="usuario"></span></legend> peixe <br>arroz  <br>feijão <br>farofa <br> salada 
+            </fieldset>
+           
+             <fieldset class='cardapio'>
+             <legend class='legend1'>Acompanhamentos<span class="usuario"></span></legend> macarrão <br>arroz  <br>feijão <br>ovo <br> salada 
+            </fieldset>
+          <% end %>
+           <div id="colcad">
+            <%= yield %>
+            </div>
+            <% end %>
+
+      
+      </div>
+      
+<div id="rodape">
+    <div id="lineorange"></div>
+    <div id="boxblue">Todos os Direitos Reservados <br> R2L Solutions </div>
+</div>    
+</div>
 </body>
 </html>
-

@@ -1,100 +1,243 @@
-<%= nested_form_for @pedido, :html => { :class => 'form-horizontal' } do |f| %>
- <% if can? :manage, Cardapio %>
-  <div class="control-group">
-    <%= f.label :cliente_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
-    </div>
-  </div>
+<%= nested_form_for @pedido, :html => { :class => 'validate' } do |f| %>
+
+  <%# if @pedido.errors.any? %>
+    <!-- <div id="error_explanation"> -->
+      <!-- <h2><%#= pluralize(@pedido.errors.count, "error") %>:</h2> -->
+
+      <!-- <ul> -->
+      <%# @pedido.errors.full_messages.each do |msg| %>
+        <!-- <li><%#= msg %></li><br/> -->
+      <%# end %>
+      <!-- </ul> -->
+    <!-- </div> -->
+<%# end %>
+  <% if current_usuario.admin? && params[:action] == "new" %>
+  <h2> Cliente: <%= Cliente.find_by_id(params[:cliente_id].to_i).nome %> </h2>
+  <% elsif current_usuario.admin? && params[:action] == "edit" %>
+    <h2> Cliente: <%= Pedido.find_by_id(params[:id].to_i).cliente.nome %> </h2>
+  <% else %>
+    <h2> Cliente: <%= current_usuario.cliente.nome %> </h2>
   <% end %>
-  <div class="control-group">
-    <%= f.label :arroz, :class => 'control-label' %>
-    <div class="controls">
-      <%= label :arroz, "Branco", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Branco", false, :value => "Branco"%>
-      <%= label :arroz, "Integral", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Integral", false, :value => "Integral" %>
-      <%= label :arroz, "A la Grega", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "A la Grega", false, :value => "A la Grega" %>
-      <%= label :arroz, "Brócolis", :class =>"checkbox inline" %>
-      <%= check_box_tag :arroz, "Brócolis", false, :value => "Brócolis" %>
-    </div>
-  </div>
-
-<div class="control-group">
-    <%= f.label :feijao, :class => 'control-label' %>
-    <div class="controls">
-      <%= label :feijao, "Sim", :class =>"checkbox inline" %>
-      <%= check_box_tag :feijao, "Sim", false, :value => "Sim" %>
-      <%= label :feijao, "Não", :class =>"checkbox inline" %>
-      <%= check_box_tag :feijao, "Não", false, :value => "Não" %>
-    </div>
-  </div>
-
-<div class="control-group">
-    <%= f.label :farofa, :class => 'control-label' %>
-    <div class="controls">
-      <%= label :farofa, "Sim", :class =>"checkbox inline" %>
-      <%= check_box_tag :farofa, "Sim", false, :value => "Sim" %>
-      <%= label :farofa, "Não", :class =>"checkbox inline" %>
-      <%= check_box_tag :farofa, "Não", false, :value => "Não" %>
-    </div>
-  </div>
-
-<div class="control-group">
-    <%= f.label :cardapio, :class => 'control-label' %>
-    <% @carnes_disponiveis.each do |cardapio| %>
-    <div class="controls">
-      <%= radio_button_tag :cardapio, "#{cardapio.nome}", :value => "#{cardapio.nome}" %>
-      <%= label :cardapio, "#{cardapio.nome}", :class =>"radio inline" %>
-    </div>
+ 
+ <%# if can? :manage, Proteina %>
+    <%#= f.label :cliente_id, :class => 'control-label' %>
+    <%#= f.collection_select :cliente_id, Cliente.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
+<br>
+  <%# end %>
+<!--   <p>
+  <fieldset class="form-clientes pess">
+  <legend>Acompanhamentos</legend>
+ -->    <%# @entradas_disponiveis.each do |entrada| %>
+    <%#= collection_check_boxes(:pedido, :acompanhamento_ids, @acompanhamentos_disponiveis, :id, :nome) %>
+      <%#= check_box_tag 'pedido[entrada][]', "#{entrada.nome}", @pedido.entradas.includefalse, :value => "#{entrada.nome}" %>
+      <%#= label :entrada, "#{entrada.nome}", :class =>"radio inline" %>
+    <%# end %>
+<!-- </fieldset>
+    </p>
+ -->
+ <div id="pedidosup">  
+  <fieldset class="form-clientes ped">
+  <legend class="legend1">Acompanhamentos</legend>
+    <% @acompanhamentos_disponiveis.each_with_index do |acompanhamento,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
+      <%#= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", (@pedido.acompanhamentos.include? acompanhamento ? true : false), :value => "#{acompanhamento.id}" %>
+      <%#= "#{acompanhamento.nome}" %>
+      <% if !@pedido.acompanhamentos.include? acompanhamento %>
+      <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", false, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
+      <%= "#{acompanhamento.nome}" %><br>
+      <div class='descricao'><%= "#{acompanhamento.descricao}" %></div>
+      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}) %>
+      <% else %>
+      <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", true, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
+      <%= "#{acompanhamento.nome}" %><br>
+      <div class='descricao'><%= "#{acompanhamento.descricao}" %></div>
+<%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :prompt => "Selecione" %>
+      <% end %>
+      <%#= select_field_tag "quantidade_#{i}" %>
     <% end %>
-  </div>
+</fieldset>
 
-<div class="control-group">
-    <%= f.label :acompanhamento, :class => 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :acompanhamento %>
-    </div>
-  </div>
 
-<div class="control-group">
-    <%= f.label :salada, :class => 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :salada %>
-    </div>
-  </div>
 
-  <div class="control-group">
-  <%= f.label :produto, :class => 'control-label' %> 
-   <div class="controls">
-    <%= f.fields_for :item_de_pedidos do |item| %>
-    <% debugger %>
-      <%= item.collection_select :produto_id, Produto.bebidas, :id, :exibicao_select, :prompt => "Nenhuma", :class => 'text_field' %>
-      <%= item.select :quantidade, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10',10]], :selected => item.object.quantidade), :prompt => 0, :class => 'select_field' %>
-      <%= item.link_to_remove "Remover este item" %>
+<fieldset class="form-clientes ped">
+  <legend class="legend1">Proteínas</legend>
+    <% @proteinas_disponiveis.each_with_index do |proteina,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
+      <%#= check_box_tag "proteina_#{i}", "#{proteina.nome}", false, :value => "#{proteina.id}" %>
+      <%#= "#{proteina.nome}" %>
+      <% if !@pedido.proteinas.include? proteina %>
+      <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
+      <%= check_box_tag "proteina_#{i}", "#{proteina.nome}", false, :value => "#{proteina.id}", :title => "#{proteina.descricao}" %>
+      <%= "#{proteina.nome}" %><br>
+      <div class='descricao'><%= "#{proteina.descricao}" %></div>
+      <%= select_tag "quantidade_proteina_#{i}", options_for_select((1.."#{proteina.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
+      <% else %>
+      <%= check_box_tag "proteina_#{i}", "#{proteina.nome}", true, :value => "#{proteina.id}",:title => "#{proteina.descricao}" %>
+      <%= "#{proteina.nome}" %><br>
+      <div class='descricao'><%= "#{proteina.descricao}" %></div>      
+      <%= select_tag "quantidade_proteina_#{i}", options_for_select((1.."#{proteina.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_proteinas.where(:proteina_id => proteina.id).first.quantidade) %>
+      <% end %>
+      <%#= select_field_tag "quantidade_#{i}" %>
     <% end %>
-<p><%= f.link_to_add "Adicionar Item", :item_de_pedidos %></p>
-    </div>
-  </div>
+</fieldset>
+  
 
 
-  <div class="control-group">
-    <%= f.label :valor, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :valor, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :forma_de_pagamento, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :forma_de_pagamento, :class => 'text_field' %>
-    </div>
-  </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
-                pedidos_path, :class => 'btn' %>
-  </div>
+  <fieldset class="form-clientes ped">
+  <legend class="legend1">Guarnições</legend>
+    <% @guarnicoes_disponiveis.each_with_index do |guarnicao,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
+      <%#= check_box_tag "proteina_#{i}", "#{proteina.nome}", false, :value => "#{proteina.id}" %>
+      <%#= "#{proteina.nome}" %>
+      <% if !@pedido.guarnicoes.include? guarnicao %>
+      <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
+      <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", false, :value => "#{guarnicao.id}", :title => "#{guarnicao.descricao}" %>
+      <%= "#{guarnicao.nome}" %><br>
+      <div class='descricao'><%= "#{guarnicao.descricao}" %></div>
+      <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
+      <% else %>
+      <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", true, :value => "#{guarnicao.id}", :title => "#{guarnicao.descricao}"  %>
+      <%= "#{guarnicao.nome}" %><br>
+      <div class='descricao'><%= "#{guarnicao.descricao}" %></div>      
+      <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_guarnicoes.where(:guarnicao_id => guarnicao.id).first.quantidade) %>
+      <% end %>
+      <%#= select_field_tag "quantidade_#{i}" %>
+    <% end %>
+</fieldset>
+
+</div> 
+<div id="pedidoinf">
+
+  <fieldset class="form-clientes ped">
+  <legend class="legend1">Saladas</legend>
+    <% @saladas_disponiveis.each_with_index do |salada,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
+      <%#= check_box_tag "proteina_#{i}", "#{proteina.nome}", false, :value => "#{proteina.id}" %>
+      <%#= "#{proteina.nome}" %>
+      <% if !@pedido.saladas.include? salada %>
+      <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
+      <%= check_box_tag "salada_#{i}", "#{salada.nome}", false, :value => "#{salada.id}", :title => "#{salada.descricao}"  %>
+      <%= "#{salada.nome}" %>
+      <div class='descricao'>(<%= "#{salada.descricao}" %>)</div>
+      <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
+      <% else %>
+      <%= check_box_tag "salada_#{i}", "#{salada.nome}", true, :value => "#{salada.id}", :title => "#{salada.descricao}" %>
+      <%= "#{salada.nome}" %>
+      <div class='descricao'>(<%= "#{salada.descricao}" %>)</div>      
+      <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade) %>
+      <% end %>
+      <%#= select_field_tag "quantidade_#{i}" %>
+    <% end %>
+</fieldset>
+ 
+  <fieldset class="form-clientes ped">
+  <legend class="legend1">Bebidas</legend>
+    <% @bebidas_disponiveis.each_with_index do |bebida,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
+      <%#= check_box_tag "proteina_#{i}", "#{proteina.nome}", false, :value => "#{proteina.id}" %>
+      <%#= "#{proteina.nome}" %>
+      <% if !@pedido.bebidas.include? bebida %>
+      <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
+      <%= check_box_tag "bebida_#{i}", "#{bebida.nome}", false, :value => "#{bebida.id}" %>
+      <%= "#{bebida.nome}" %>
+      <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
+      <% else %>
+      <%= check_box_tag "bebida_#{i}", "#{bebida.nome}", true, :value => "#{bebida.id}" %>
+      <%= "#{bebida.nome}" %>      
+      <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_bebidas.where(:bebida_id => bebida.id).first.quantidade) %>
+      <% end %>
+      <%#= select_field_tag "quantidade_#{i}" %>
+    <% end %>
+</fieldset>
+
+
+  <fieldset class="form-clientes ped">
+  <legend class="legend1">Sobremesas</legend>
+    <% @sobremesas_disponiveis.each_with_index do |sobremesa,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
+      <%#= check_box_tag "proteina_#{i}", "#{proteina.nome}", false, :value => "#{proteina.id}" %>
+      <%#= "#{proteina.nome}" %>
+      <% if !@pedido.sobremesas.include? sobremesa %>
+      <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
+      <%= check_box_tag "sobremesa_#{i}", "#{sobremesa.nome}", false, :value => "#{sobremesa.id}", :title => "#{sobremesa.descricao}" %>
+      <%= "#{sobremesa.nome}" %><br>
+      <div class='descricao'><%= "#{sobremesa.descricao}" %></div>
+      <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
+      <% else %>
+      <%= check_box_tag "sobremesa_#{i}", "#{sobremesa.nome}", true, :value => "#{sobremesa.id}", :title => "#{sobremesa.descricao}" %>
+      <%= "#{sobremesa.nome}" %><br>
+      <div class='descricao'><%= "#{sobremesa.descricao}" %></div>   
+      <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_sobremesas.where(:sobremesa_id => sobremesa.id).first.quantidade) %>
+      <% end %>
+      <%#= select_field_tag "quantidade_#{i}" %>
+    <% end %>
+</fieldset>
+
+
+<!--   <p>
+<fieldset>
+      <div class="control-group">
+      <%#= f.fields_for :pedidos_acompanhamentos do |pedido_acompanhamento| %>
+    <%# @acompanhamentos_disponiveis.each_with_index do |acompanhamento,i| %>
+    <%# debugger %>
+      <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
+      <%#= pedido_acompanhamento.check_box :acompanhamento_id, :value => "#{acompanhamento.id}" %>
+      <%#= "#{acompanhamento.nome}" %>
+      <%#= pedido_acompanhamento.select "quantidade", options_for_select((1..3).map{|s| ["#{s}", s]}), :prompt => "Selecione" %>
+      <%#= select_field_tag "quantidade_#{i}" %>
+    <%# end %>
+<%# end %>
+</fieldset>
+      <div class="controls">
+</div>
+</div>
+</p>
+ -->
+
+
+  <!-- <fieldset class="form-clientes ped">
+  <legend class="legend1">Produtos</legend>
+      <div class="control-group">
+      <%#= f.fields_for :item_de_pedidos do |item| %>
+      <div class="controls">
+      <%#= item.collection_select :produto_id, Produto.bebidas, :id, :exibicao_select, :prompt => "Nenhum", :class => 'text_field' %>
+      <%#= item.select :quantidade, options_for_select([['0', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9], ['10',10]], :selected => item.object.quantidade), :prompt => 0, :class => 'select_field' %>
+      <%#= item.link_to_remove "Remover este item", :class => 'button purple' %>
+    <%# end %>
+<%#= f.link_to_add "Adicionar Item", :item_de_pedidos, :class => 'button blue-cadastrar-top' %></p>
+</div>
+</div>
+</fieldset>
+ -->
+</div>
+<div id="pedidobot">
+<!-- <fieldset class="form-clientes ped">
+  <legend class="legend1">Pedido</legend> -->
+
+    <%#= f.label :valor, :class => 'control-label' %>
+      <%= f.hidden_field :valor, :value => 0 %>
+      <% if (current_usuario.admin? && params[:action] != "edit") %>
+        <%= f.hidden_field :cliente_id, :value => params[:cliente_id].to_i %>
+      <% elsif (current_usuario.admin? && params[:action] == "edit") %>
+        <%= f.hidden_field :cliente_id, :value => Pedido.find_by_id(params[:id].to_i).cliente.id %>
+      <% else %>
+        <%= f.hidden_field :cliente_id, :value => current_usuario.id %>
+      <% end %>
+
+
+    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", pedidos_path, :class => 'button gray-voltar' %>
+<!-- </fieldset>
+ -->
+
+
 <% end %>
+</div>
+

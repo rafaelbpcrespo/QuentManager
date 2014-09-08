@@ -1,0 +1,38 @@
+<%= form_for @bebida, :html => { :class => 'validate' } do |f| %>
+ <table>
+  <td>
+  <p>
+    <%= f.label :nome %>
+    <%= f.text_field :nome, :class => 'required' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+  <p>
+    <%= f.label :quantidade %>
+    <%= f.text_field :quantidade, :class => 'required numeric' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+  <p>
+    <%= f.label :valor %>
+    <%= f.text_field :valor, :class => 'required numeric' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+  <p>
+    <%= f.label :tipo %>
+    <%= f.select :tipo, ["Lata", "Pet 600ml", "Copo", "Garrafa"], {:prompt => "Selecione"} , { :class => 'required' } %>
+    <span class="validate">Selecione um item</span>  </p>
+  <p>
+    <%= f.label :disponibilidade %>
+    Ativar
+    <%= f.radio_button :disponibilidade, true , :checked => true, :value => true %>
+    Desativar
+    <%= f.radio_button :disponibilidade, 'f' , :value => 'f' %>
+</p>
+<br>
+<p>
+    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", bebidas_path, :class => 'button gray-voltar' %>
+</p>
+</td>
+</table>
+
+<% end %>

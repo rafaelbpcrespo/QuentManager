@@ -1,0 +1,38 @@
+<%= form_for @salada, :html => { :class => 'validate' } do |f| %>
+ <table>
+  <td>
+  <p>
+    <%= f.label :nome %>
+    <%= f.text_field :nome, :class => 'required' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+  <p>
+    <%= f.label :quantidade %>
+    <%= f.text_field :quantidade, :class => 'required numeric' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+  <p>
+    <%= f.label :valor %>
+    <%= f.text_field :valor, :class => 'required numeric' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+  <p>
+    <%= f.label :descricao %>
+    <%= f.text_field :descricao, :class => 'text_field' %>
+  </p>
+  <p>
+    <%= f.label :disponibilidade %>
+    Ativar
+    <%= f.radio_button :disponibilidade, true , :checked => true, :value => true %>
+    Desativar
+    <%= f.radio_button :disponibilidade, 'f' , :value => 'f' %>
+</p>
+<br>
+<p>
+    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", saladas_path, :class => 'button gray-voltar' %>
+</p>
+</td>
+</table>
+
+<% end %>

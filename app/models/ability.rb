@@ -5,13 +5,24 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
       usuario ||= Usuario.new # guest user (not logged in)
-      if usuario.admin?
-        can :manage, :all
+      if usuario
+        if usuario.admin?
+          can :manage, :all
+          cannot :destroy, :all
+        else
+          cannot :manage, :all
+          can [:create, :update, :read, :conta ], [Cliente], :usuario_id => usuario.id
+          can [:create, :update, :read, :cancelar, :confirmar ], Pedido, :cliente_id => usuario.id
+          cannot :destroy, Pedido
+          #can , Pedido, :usuario_id => usuario.id
+        if (usuario.cliente.bloqueado? || (Time.now.hour < 6 || Time.now.hour > 22))
+          cannot [:create, :update, :read, :confirmar, :cancelar ], Pedido
+        end
+        end
       else
-        can [:create, :update, :read ], [Cliente], :usuario_id => usuario.id
-        can [:create, :update, :read ], Pedido, :cliente_id => usuario.id
-        #can , Pedido, :usuario_id => usuario.id
-        cannot :destroy, Pedido
+
+      cannot [:destroy], Pedido
+
       end
     #
     # The first argument to `can` is the action you are giving the user

@@ -1,0 +1,35 @@
+<%- model_class = Bebida -%>
+<h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+
+<div class="show1">
+<fieldset class='form-clientes'>
+  <legend class="legend1">Dados Cadastrais</legend>
+  <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+  <%= @bebida.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
+  <%= @bebida.quantidade %><br/>
+  <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
+  <%= @bebida.valor %><br/>
+  <strong><%= model_class.human_attribute_name(:tipo) %>:</strong>
+  <%= @bebida.tipo %><br/>
+  <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
+  <% if @bebida.disponibilidade? %> Ativado <% else %> Desativado <% end %>
+</fieldset>
+</div>
+<center>
+<div class="acoes">
+<%= link_to bebidas_path, :class => 'button gray' do  %>
+                      <span class="voltar"></span>          
+          <% end %>
+<%= link_to new_bebida_path, :class => 'button green', :title => "Nova Bebida" do %>
+                    <span class="adicionar"></span> 
+         <% end %>
+  <%= link_to edit_bebida_path(@bebida), :class => 'button blue' do %>
+                      <span class="editar"></span>          
+          <% end %>
+
+  <%= link_to bebida_path(@bebida), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta bebida?')) }, :class => 'button red' do %>
+                        <span class="remover"></span>
+                      <% end %>
+</div>
+</center>

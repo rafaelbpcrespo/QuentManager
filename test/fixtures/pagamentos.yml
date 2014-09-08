@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conta_id: 1
+  valor: 9.99
+
+two:
+  conta_id: 1
+  valor: 9.99

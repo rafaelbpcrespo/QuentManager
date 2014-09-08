@@ -1,0 +1,43 @@
+<%- model_class = Sobremesa -%>
+<div class="page-header">
+  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
+  <%= link_to "Nova Sobremesa",
+            new_sobremesa_path,
+            :class => 'button blue-cadastrar-top' %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:quantidade) %></th>
+      <th><%= model_class.human_attribute_name(:valor) %></th>
+      <th><%= model_class.human_attribute_name(:disponibilidade) %></th>
+      <th width="164px"><center><%=t '.ações', :default => t("helpers.ações") %></center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sobremesas.each do |sobremesa| %>
+      <tr>
+        <td><%= sobremesa.nome %></td>
+        <td><%= sobremesa.quantidade %></td>
+        <td>R$<%= exibir_decimal(sobremesa.valor) %></td>
+        <td><% if sobremesa.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+        <td>
+          <%= link_to edit_sobremesa_path(sobremesa), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+                      <span class="editar"></span>
+                      <% end %>
+          <%= link_to sobremesa_path(sobremesa), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
+                      <span class="listar"></span>          
+          <% end %>
+          <%= link_to desativar_sobremesa_path(sobremesa), html_options = { :class => 'button red', :title => "Desativar"} do %>
+                      <span class="remover"></span>          
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Nova Sobremesa",
+            new_sobremesa_path,
+            :class => 'button blue-cadastrar-bottom' %>

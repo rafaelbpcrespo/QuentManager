@@ -1,156 +1,139 @@
-<h2>Cadastrar</h2>
+<center><h1>cadastro de novo cliente.</h1></center><br>
 
 <% resource.build_cliente %>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <%= f.fields_for :cliente do |cliente_form| %>
-  
-  <fieldset class="teste">
-    <legend>Dados de Sistema</legend>
-    <div><%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, :class => "input_default" %></div>
-
-    <div><%= f.label :password, "Senha" %><br />
-      <%= f.password_field :password, autocomplete: "off", :class => "input_default" %></div>
-
-    <div><%= f.label :password_confirmation, "Confirmação de senha" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "input_default"%></div>
-    <div class="control-group">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'validate' }) do |f| %>
+<%= f.fields_for :cliente do |cliente_form| %>
+<table>
+  <td>  
+  <fieldset class="form-clientes pess">
+  <legend class="legend1">Dados de Sistema</legend>
+    <p>
+      <%= f.label :email %>
+      <%= f.text_field :email, autofocus: true, :class => "required email" %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= f.label :password, "Senha" %>
+      <%= f.password_field :password, autocomplete: "off", :class => "required password" %>
+       <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= f.label :password_confirmation, "Confirmação de senha" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "required password"%>
+       <span class="validate">Campo requerido</span>
+    </p>
+    <p>
       <%= cliente_form.label :data_de_pagamento, :class => 'control-label' %>
-      <div class="controls">
-        <%= cliente_form.text_field :data_de_pagamento, :class => 'text_field' %>
-      </div>
-    </div>
+      <%= cliente_form.text_field :data_de_pagamento, :class => 'required numeric' %>
+      <span class="validate">Campo requerido</span>
+    </p>
   </fieldset>
+  <fieldset class="form-clientes pess">
+  <legend class="legend1">Dados Pessoais</legend>
+    <p>  
+      <%= cliente_form.label "Nome"%>
+      <%= cliente_form.text_field :nome, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= cliente_form.label :cpf, "CPF", :class => 'control-label' %>
+      <%= cliente_form.text_field :cpf, :class => 'required cpf' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= cliente_form.label :rg, "RG", :class => 'control-label' %>
+      <%= cliente_form.text_field :rg, :class => 'required numeric' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= cliente_form.label :sexo, :class => 'control-label' %>
+      M
+      <%= cliente_form.radio_button :sexo, "M" , :checked => true, :value => "Masculino" %>
+      F
+      <%= cliente_form.radio_button :sexo, "F" , :checked => false, :value => "Feminino" %>
+    </p>
+    <p>
+      <%= cliente_form.label :data_de_nascimento, :class => 'control-label' %>
+      <%= cliente_form.text_field :data_de_nascimento, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= cliente_form.label :endereco, :class => 'control-label' %>
+      <%= cliente_form.text_field :endereco, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= cliente_form.label :numero, :class => 'control-label' %>
+      <%= cliente_form.text_field :numero, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= cliente_form.label :bairro, :class => 'control-label' %>
+      <%= cliente_form.text_field :bairro, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= cliente_form.label :cidade, :class => 'control-label' %>
+      <%= cliente_form.text_field :cidade, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
+    <p>
+      <%= cliente_form.label :complemento, :class => 'control-label' %>
+      <%= cliente_form.text_field :complemento, :class => 'text_field' %>
+    </p>
+    <p>
+      <%= cliente_form.label :telefone, :class => 'control-label' %>
+      <%= cliente_form.text_field :telefone, :class => 'text_field' %>
+    </p>
+    <p>
+      <%= cliente_form.label :celular, :class => 'control-label' %>
+      <%= cliente_form.text_field :celular, :class => 'required' %>
+      <span class="validate">Campo requerido</span>
+    </p>
 
-      <fieldset class="teste">
-        <legend>Dados Pessoais</legend>
-        <div class="control-group">
-          <%= cliente_form.label :nome, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :nome, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :cpf, "CPF", :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :cpf, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :rg, "RG", :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :rg, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :sexo, :class => 'control-label' %>
-          <%= label :sexo, "M", :class =>"radio-inline" %>
-          <%= cliente_form.radio_button :sexo, "M" , :checked => true, :value => "Masculino" %>
-          <%= label :sexo, "F", :class =>"radio-inline" %>
-          <%= cliente_form.radio_button :sexo, "F" , :checked => false, :value => "Feminino" %>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :data_de_nascimento, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :data_de_nascimento, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :endereco, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :endereco, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :numero, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :numero, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :bairro, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :bairro, :class => 'text_field' %>
-          </div>
-        </div>        
-        <div class="control-group">
-          <%= cliente_form.label :cidade, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :cidade, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :complemento, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :complemento, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :telefone, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :telefone, :class => 'text_field' %>
-          </div>
-        </div>
-        <div class="control-group">
-          <%= cliente_form.label :celular, :class => 'control-label' %>
-          <div class="controls">
-            <%= cliente_form.text_field :celular, :class => 'text_field' %>
-          </div>
-        </div>
-      </fieldset>
-  <div class='cadastro'>
-    <fieldset class="teste">
-      <legend>Dados Profissionais</legend>
-      <div class="control-group">
-        <%= cliente_form.label :empresa_id, "Empresa", :class => 'control-label' %>
-        <div class="controls">
-          <%= cliente_form.collection_select :empresa_id, Empresa.all, :id, :nome, :prompt => "Selecione", :class => 'text_field' %>
-          <%#= cliente_form.select :empresa, options_for_select([["Ventura","Ventura"], ["Halliburton","Halliburton"], ["Aker","Aker"]]), :prompt => "Selecione", :class => 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= cliente_form.label :cargo, :class => 'control-label' %>
-        <div class="controls">
-          <%= cliente_form.text_field :cargo, :class => 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= cliente_form.label :setor, :class => 'control-label' %>
-        <div class="controls">
-          <%= cliente_form.text_field :setor, :class => 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= cliente_form.label :telefone_empresa, "Telefone Fixo", :class => 'control-label' %>
-        <div class="controls">
-          <%= cliente_form.text_field :telefone_empresa, :class => 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= cliente_form.label :ramal, :class => 'control-label' %>
-        <div class="controls">
-          <%= cliente_form.text_field :ramal, :class => 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= cliente_form.label :celular_empresa, "Celular", :class => 'control-label' %>
-        <div class="controls">
-          <%= cliente_form.text_field :celular_empresa, :class => 'text_field' %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= cliente_form.label :email_empresa, "Email", :class => 'control-label' %>
-        <div class="controls">
-          <%= cliente_form.text_field :email_empresa, :class => 'text_field' %>
-        </div>
-      </div>
     </fieldset>
-    
-        <% end %>
-    </div>
-        <div class='criar'><%= f.submit nil, :class => 'btn btn-primary' %></div>
-
-        <%#= render "devise/shared/links" %>
+    <fieldset class="form-clientes pess">
+    <legend class="legend1">Dados Profissionais</legend>
+      <p>
+        <%= cliente_form.label :empresa, :class => 'control-label' %>
+        <%= cliente_form.collection_select :empresa_id, Empresa.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
+        <span class="validate">Selecione um item</span>
+      </p>
+      <p>
+        <%= cliente_form.label :cargo, :class => 'control-label' %>
+        <%= cliente_form.text_field :cargo, :class => 'required' %>
+        <span class="validate">Campo requerido</span>
+      </p>
+      <p>
+        <%= cliente_form.label :setor, :class => 'control-label' %>
+        <%= cliente_form.text_field :setor, :class => 'required' %>
+        <span class="validate">Campo requerido</span>
+      </p>
+      <p>
+        <%= cliente_form.label :telefone_empresa, "Telefone Fixo", :class => 'control-label' %>
+        <%= cliente_form.text_field :telefone_empresa, :class => 'required' %>
+        <span class="validate">Campo requerido</span>
+      </p>
+      <p>
+        <%= cliente_form.label :ramal, :class => 'control-label' %>
+        <%= cliente_form.text_field :ramal, :class => 'text_field' %>
+      </p>
+      <p>
+        <%= cliente_form.label :celular_empresa, "Celular", :class => 'control-label' %>
+        <%= cliente_form.text_field :celular_empresa, :class => 'text_field' %>
+      </p>
+      <p>
+        <%= cliente_form.label :email_empresa, "Email", :class => 'control-label' %>
+        <%= cliente_form.text_field :email_empresa, :class => 'text_field' %>
+      </p>
+   </fieldset>
+   <fieldset class="bot">
+    <p>
+      <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+      <%= link_to "Cancelar", root_path, :class => 'button gray-voltar' %>
+    </p>
+  </fieldset>
+</td>
+</table>
+<% end %>
 <% end %>

@@ -1,28 +1,71 @@
 QuentManager::Application.routes.draw do
+  resources :sobremesas do
+    member do
+      get :desativar
+    end
+  end
+
+  resources :pagamentos
+
+  resources :bebidas do
+    member do
+      get :desativar
+    end
+  end
+
+  resources :saladas do
+    member do
+      get :desativar
+    end
+  end
+
+  resources :guarnicoes do
+    member do
+      get :desativar
+    end
+  end
+
+  resources :acompanhamentos
+
   resources :empresas
 
-  resources :cardapios
+  resources :proteinas do
+    member do
+      get :desativar
+    end
+  end
 
   devise_for :usuarios, :controllers => { :registrations => "registrations"}
   
   #match "/produtos/atualizar/:id" => "produtos#atualizar", via: [:get, :post]
   resources :produtos do
     member do
-      post :atualizar
+      get :atualizar
       post :atualizar_estoque
     end
   end
 
-  resources :pedidos
+  resources :pedidos do
+    member do
+      get :confirmar
+      get :cancelar
+      #get :confirmar_cancelamento
+    end
+  end    
 
   resources :clientes do
     member do
+      get :conta
+      get :lista_pedidos
       get :bloquear
       get :confirmar_bloqueio
       get :desbloquear
       get :confirmar_desbloqueio
     end
   end
+
+    get "home/relatorio_produtos"
+    get "home/sobre"
 
   resources :home
 
