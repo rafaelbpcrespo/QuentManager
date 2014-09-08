@@ -1,0 +1,85 @@
+    <center><h1>Estatísticas  de  Pedidos<span class="estoque"></span></h1></center>
+    <fieldset class='form-clientes lista_pedidos'>
+      <legend class="legend1">Confirmados de Hoje </legend>
+      <center> Quantidade de Pedidos: <%= @pedidos_confirmados_do_dia.count %></center><br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+                <th><center>Cliente</center></th>
+                <th><center>Valor</center></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pedidos_confirmados_do_dia.each do |pedido| %>
+            <tr>
+              <td><%= pedido.cliente.nome %></td>
+              <td><%= pedido.valor %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table> 
+  </fieldset>
+
+    <fieldset class='form-clientes lista_pedidos'>
+      <legend class="legend1">Cancelados de Hoje </legend>
+      <center> Quantidade de Pedidos: <%= @pedidos_cancelados_do_dia.count %></center><br>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                <th><center>Cliente</center></th>
+                <th><center>Valor</center></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @pedidos_cancelados_do_dia.each do |pedido| %>
+              <tr>
+                <td><%= pedido.cliente.nome %></td>
+                <td><%= pedido.valor %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table> 
+    </fieldset>
+
+    <fieldset class='form-clientes lista_pedidos'>
+      <legend class="legend1">Confirmados do Mês </legend>
+      <center> Quantidade de Pedidos: <%= @pedidos_confirmados_do_mes.count %></center><br>      
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><center>Cliente</center></th>
+                <th><center>Valor</center></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @pedidos_confirmados_do_mes.each do |pedido| %>
+                <tr>
+                  <td><%= pedido.cliente.nome %></td>
+                  <td><%= pedido.valor %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table> 
+      </fieldset>
+
+
+    <fieldset class='form-clientes lista_pedidos'>
+      <legend class="legend1">Cancelados do Mês </legend>
+      <center> Quantidade de Pedidos: <%= @pedidos_cancelados_do_mes.count %></center><br>      
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><center>Cliente</center></th>
+                <th><center>Valor</center></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @pedidos_cancelados_do_mes.each do |pedido| %>
+                <tr>
+                  <td><%= pedido.cliente.nome %></td>
+                  <td><%= pedido.valor %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table> 
+      </fieldset>

@@ -21,6 +21,11 @@ class Pedido < ActiveRecord::Base
   accepts_nested_attributes_for :item_de_pedidos,  :allow_destroy => true
 
   scope :de_hoje, -> { where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).count }
+  scope :do_dia, -> { where(created_at: (DateTime.now.beginning_of_day)..DateTime.now.end_of_day) }
+  scope :confirmados_do_mes, -> { where(created_at: (DateTime.now.beginning_of_month)..DateTime.now.end_of_month, :situacao => "Confirmado") }
+  scope :confirmados_do_dia, -> { where(created_at: (DateTime.now.beginning_of_day)..DateTime.now.end_of_day, :situacao => "Confirmado") }
+  scope :cancelados_do_dia, -> { where(created_at: (DateTime.now.beginning_of_day)..DateTime.now.end_of_day, :situacao => "Cancelado") }
+  scope :cancelados_do_mes, -> { where(created_at: (DateTime.now.beginning_of_month)..DateTime.now.end_of_month, :situacao => "Cancelado") }
   before_save :atualizar_conta
 
 

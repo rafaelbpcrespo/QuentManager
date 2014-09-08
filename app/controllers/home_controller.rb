@@ -11,4 +11,11 @@ class HomeController < ApplicationController
   def relatorio_produtos
     
   end
+
+  def relatorio_pedidos
+    @pedidos_confirmados_do_mes = Pedido.confirmados_do_mes
+    @pedidos_cancelados_do_mes = Pedido.cancelados_do_mes
+    @pedidos_confirmados_do_dia = Pedido.confirmados_do_dia
+    @pedidos_cancelados_do_dia = Pedido.cancelados_do_dia
+  end
 end
