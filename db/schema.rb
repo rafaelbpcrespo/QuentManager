@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140901223439) do
   create_table "bebidas", force: true do |t|
     t.string   "nome"
     t.integer  "quantidade"
-    t.decimal  "valor",           precision: 10, scale: 0
+    t.decimal  "valor"
     t.boolean  "disponibilidade"
     t.string   "tipo"
     t.datetime "created_at"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140901223439) do
 
   create_table "contas", force: true do |t|
     t.integer  "cliente_id"
-    t.decimal  "saldo",      precision: 10, scale: 0
+    t.decimal  "saldo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20140901223439) do
     t.string   "nome"
     t.integer  "quantidade"
     t.boolean  "disponibilidade"
-    t.decimal  "valor",           precision: 10, scale: 0
+    t.decimal  "valor"
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20140901223439) do
 
   create_table "pagamentos", force: true do |t|
     t.integer  "conta_id"
-    t.decimal  "valor",      precision: 10, scale: 0
+    t.decimal  "valor"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -183,7 +183,7 @@ ActiveRecord::Schema.define(version: 20140901223439) do
     t.string   "nome"
     t.integer  "quantidade"
     t.boolean  "disponibilidade"
-    t.decimal  "valor",           precision: 10, scale: 0
+    t.decimal  "valor"
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 20140901223439) do
   create_table "sobremesas", force: true do |t|
     t.string   "nome"
     t.integer  "quantidade"
-    t.decimal  "valor",           precision: 10, scale: 0
+    t.decimal  "valor"
     t.boolean  "disponibilidade"
     t.string   "descricao"
     t.datetime "created_at"
@@ -218,8 +218,8 @@ ActiveRecord::Schema.define(version: 20140901223439) do
     t.string   "tipo"
   end
 
-  add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true, using: :btree
-  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
-  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
+  add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
+  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
+  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
 
 end
