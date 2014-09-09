@@ -57,11 +57,47 @@
 
 
   <% else %>
-<fieldset class='form-princ'>
+   <div class='cardapio_h1'><h1>Cardápio de Hoje</h1></div>
+          <fieldset class='cardapio'>
+            <legend class='legend1'>Proteínas<span class="usuario"></span></legend>
+             
+              <% Proteina.all.where(:disponibilidade => true).each do |proteina| %>
+                <%= proteina.nome %> /
+              <% end %>
+          </fieldset>
+         
+           <fieldset class='cardapio'>
+            <legend class='legend1'>Guarnições<span class="usuario"></span></legend>
+              <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
+                <%= guarnicao.nome %> /
+              <% end %>            
+            </fieldset>
+           
+             <fieldset class='cardapio'>
+             <legend class='legend1'>Acompanhamentos<span class="usuario"></span></legend>
+              <% Acompanhamento.all.where(:disponibilidade => true).each do |acompanhamento| %>
+                <%= acompanhamento.nome %> /
+              <% end %>              
+            </fieldset>
+
+             <fieldset class='cardapio'>
+             <legend class='legend1'>Saladas<span class="usuario"></span></legend>
+              <% Salada.all.where(:disponibilidade => true).each do |salada| %>
+                <%= salada.nome %> /
+              <% end %>              
+            </fieldset>
+
+             <fieldset class='cardapio'>
+             <legend class='legend1'>Sobremesas<span class="usuario"></span></legend>
+              <% Sobremesa.all.where(:disponibilidade => true).each do |sobremesa| %>
+                <%= sobremesa.nome %> /
+              <% end %>              
+            </fieldset>
+
+<fieldset class='fieldset_conta'>
     <legend class='legend1'>Conta<span class="venda"></span></legend>
-      <h3> Informações da Conta</h3>
-      <p>Quantidade de pedidos:  <%= current_usuario.cliente.pedidos.count %></p>
-      <p>Saldo atual: R$<%= current_usuario.cliente.conta.saldo.to_f %></p>    
+      <center><p>Quantidade de pedidos:  <%= current_usuario.cliente.pedidos.count %></p>
+      <p>Saldo atual: R$<%= current_usuario.cliente.conta.saldo.to_f %></p></center>
   </fieldset>
 
 <% end %>
