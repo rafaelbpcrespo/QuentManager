@@ -14,6 +14,7 @@ log/**/*
 log/*
 config/database.yml
 Gemfile
+*.sqlite3
 
 ## Specific to RubyMotion:
 .dat*
