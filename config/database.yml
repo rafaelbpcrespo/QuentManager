@@ -66,3 +66,24 @@ production:
   username: root
   password: step-bc 
   host: localhost
+
+#development:
+#  adapter: mysql2
+#  database: rails_development
+#  username: rails
+#  password: step-bc
+#  host: localhost
+
+#test:
+#  adapter: mysql2
+#  database: rails_test
+#  username: rails
+#  password: step-bc  
+#  host: localhost
+
+#production:
+#  adapter: mysql2
+#  database: rails
+#  username: rails
+#  password: step-bc 
+#  host: localhost

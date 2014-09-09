@@ -1124,3 +1124,10 @@ li span{
    .descricao {
     font-size: 11px;
    }
+
+   .cardapio_do_dia {
+      font-family: "Showcard Gothic";
+      text-align:center;
+      font-size:13pt;
+      color:#3f496a;
+   }

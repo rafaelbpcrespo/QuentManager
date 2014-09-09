@@ -121,19 +121,22 @@
             <legend class='legend1'>Proteínas<span class="usuario"></span></legend>
              
               <% Proteina.all.where(:disponibilidade => true).each do |proteina| %>
-                <%= proteina.nome %><br/>
-              <% end %>
-              <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
-                <%= guarnicao.nome %><br/>
+                <div class='cardapio_do_dia'><%= proteina.nome %></div>
               <% end %>
           </fieldset>
          
            <fieldset class='cardapio'>
-            <legend class='legend1'>Guarnições<span class="usuario"></span></legend> peixe <br>arroz  <br>feijão <br>farofa <br> salada 
+            <legend class='legend1'>Guarnições<span class="usuario"></span></legend>               
+              <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
+                <div class='cardapio_do_dia'><%= guarnicao.nome %></div>
+              <% end %>
             </fieldset>
            
              <fieldset class='cardapio'>
-             <legend class='legend1'>Acompanhamentos<span class="usuario"></span></legend> macarrão <br>arroz  <br>feijão <br>ovo <br> salada 
+             <legend class='legend1'>Acompanhamentos<span class="usuario"></span></legend> 
+              <% Acompanhamento.all.where(:disponibilidade => true).each do |acompanhamento| %>
+                <div class='cardapio_do_dia'><%= acompanhamento.nome %></div>
+              <% end %>             
             </fieldset>
           <% end %>
            <div id="colcad">
