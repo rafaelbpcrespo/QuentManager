@@ -6,6 +6,7 @@ class Cliente < ActiveRecord::Base
   before_save :corrigir_nome, :criar_conta
 
   validates :nome, :empresa_id, :celular, :data_de_pagamento, :cpf, :cargo, :setor, :sexo, :data_de_nascimento, :telefone_empresa, presence: true
+  validates :rg, numericality: true
 
   def formatar_data
     data = I18n.l(self.data_de_nascimento)

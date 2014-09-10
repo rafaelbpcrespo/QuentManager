@@ -5,6 +5,7 @@ class Proteina < ActiveRecord::Base
   before_save :ver_disponibilidade
 
   validates :nome, :quantidade, :valor, presence: true
+  validates :quantidade, :nome, numericality: true
 
   def ver_disponibilidade
     if self.quantidade != 0

@@ -1,8 +1,13 @@
-<center><h1>cadastro de novo cliente.</h1></center><br>
+<center><h1>cadastro de novo cliente</h1></center><br>
+                <% if !notice.nil? %>
+            <div class="alert-success"><%= notice %></div>
+          <% elsif !alert.nil? %>
+            <div class="alert-error"><%= alert %></div>
+          <% end %>
 
 <% resource.build_cliente %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'validate' }) do |f| %>
-<%= f.fields_for :cliente do |cliente_form| %>
+  <%= devise_error_messages! %>
 <table>
   <td>  
   <fieldset class="form-clientes pess">
@@ -22,6 +27,7 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", :class => "required password"%>
        <span class="validate">Campo requerido</span>
     </p>
+<%= f.fields_for :cliente do |cliente_form| %>
     <p>
       <%= cliente_form.label :data_de_pagamento, :class => 'control-label' %>
       <%= cliente_form.text_field :data_de_pagamento, :class => 'required numeric' %>
@@ -42,7 +48,7 @@
     </p>
     <p>
       <%= cliente_form.label :rg, "RG", :class => 'control-label' %>
-      <%= cliente_form.text_field :rg, :class => 'required numeric' %>
+      <%= cliente_form.text_field :rg, :class => 'required' %>
       <span class="validate">Campo requerido</span>
     </p>
     <p>
