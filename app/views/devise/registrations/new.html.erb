@@ -1,8 +1,13 @@
-<center><h1>cadastro de novo cliente.</h1></center><br>
+<center><h1>cadastro de novo cliente</h1></center><br>
 
 <% resource.build_cliente %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'validate' }) do |f| %>
 <%= f.fields_for :cliente do |cliente_form| %>
+
+<% resource.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li><br/>
+<% end %>
+
 <table>
   <td>  
   <fieldset class="form-clientes pess">
