@@ -68,12 +68,16 @@
         <div id="navbaresq"> </div> 
           <div id="navbar">
             <ul class="dropdown">
+            <% if usuario_signed_in? %>
                <div id="home"> <a class="botao" href="/home/inicial"> <img src="../images/home.png" width="40" height="40"></a></div>
                     <li class="dropdown"><a class="botao" href="/home/inicial"> Home </a></li>
+                    <% else %>
+               <div id="home"> <a class="botao" href="/"> <img src="../images/home.png" width="40" height="40"></a></div>
+                    <li class="dropdown"><a class="botao" href="/"> Home </a></li>
+                    <% end %>
                     <% if !usuario_signed_in? %>
                      <li class="dropdown"> <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a></li>
-                     <li class="dropdown"> <a class="botao" href="#"> Sobre </a></li>
-                     <li class="dropdown"> <a class="botao" href="#"> Equipe </a></li>
+                     <li class="dropdown"> <a class="botao" href="/home/sobre"> Sobre </a></li>
                     <% else %>
                     <% if can? :manage, Proteina %>
                      <li class="dropdown">
