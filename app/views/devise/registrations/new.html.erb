@@ -28,8 +28,8 @@
        <span class="validate">Campo requerido</span>
     </p>
     <p>
-      <%= cliente_form.label :data_de_pagamento, :class => 'control-label' %>
-      <%= cliente_form.text_field :data_de_pagamento, :class => 'required numeric' %>
+      <%= cliente_form.label :data_de_pagamento, "Dia de Pagamento", :class => 'control-label' %>
+      <%= cliente_form.select :data_de_pagamento, options_for_select(1..31),:class => 'required numeric' %>
       <span class="validate">Campo requerido</span>
     </p>
   </fieldset>
