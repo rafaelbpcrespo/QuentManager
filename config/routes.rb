@@ -67,6 +67,7 @@ QuentManager::Application.routes.draw do
     get "home/relatorio_produtos"
     get "home/relatorio_pedidos"
     get "home/sobre"
+    get "home/inicial"
 
   resources :home
 
