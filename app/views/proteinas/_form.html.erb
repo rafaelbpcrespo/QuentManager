@@ -1,4 +1,9 @@
 <%= form_for @proteina, :html => { :class => 'validate' } do |f| %>
+
+  <% @proteina.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li><br/>
+  <% end %>
+
  <table>
   <td>
   <p>
