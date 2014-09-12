@@ -1164,3 +1164,7 @@ li span{
        font-size:13pt;
        color:#3f496a;
 } 
+
+.mensagem_login {
+        margin-bottom: 20px;
+}
