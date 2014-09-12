@@ -1,4 +1,9 @@
 <%= form_for @produto, :html => { :class => 'validate' } do |f| %>
+
+  <% @produto.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li><br/>
+  <% end %>
+
 <table>
   <td> 
     <p>

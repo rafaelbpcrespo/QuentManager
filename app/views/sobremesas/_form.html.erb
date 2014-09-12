@@ -1,4 +1,9 @@
 <%= form_for @sobremesa, :html => { :class => 'validate' } do |f| %>
+
+  <% @sobremesa.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li><br/>
+  <% end %>
+
  <table>
   <td>
   <p>

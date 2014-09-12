@@ -5,6 +5,7 @@ class Sobremesa < ActiveRecord::Base
   before_save :ver_disponibilidade
 
   validates :nome, :quantidade, :valor, presence: true
+  validates :nome, uniqueness: true
 
   def ver_disponibilidade
     if self.quantidade != 0

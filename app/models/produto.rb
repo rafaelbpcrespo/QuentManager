@@ -3,6 +3,7 @@ class Produto < ActiveRecord::Base
   has_many :pedidos, through: :item_de_pedidos
 
   validates :tipo, :nome, :quantidade, :valor_unitario, :limite_minimo, presence: true
+  validates :nome, uniqueness: true  
 
   scope :bebidas, -> { where(categoria: "Bebida") }
   scope :selecionaveis, -> { where(categoria: "Bebida" || "Sobremesa") }
