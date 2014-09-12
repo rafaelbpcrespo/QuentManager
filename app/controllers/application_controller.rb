@@ -4,8 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   alias_method :current_user, :current_usuario
 
-  def index
+  def home
+    render 'layouts/application'
+  end
 
+  def after_sign_in_path_for(resource)
+    home_inicial_path
+  end
+
+  def after_sign_out_path_for(resource)
+    new_usuario_session_path
   end
 
   rescue_from CanCan::AccessDenied do |exception|
