@@ -389,6 +389,12 @@ h2{
    padding: 4px 0px 5px 30px;
 }
 
+.senha{
+   background-image:url('../images/glyphicons_044_keys.png');
+   background-repeat:no-repeat;
+   padding: 4px 0px 5px 30px;
+}
+
 .listar{
    background-image:url('../images/glyphicons_113_justify.png');
    background-repeat:no-repeat;
