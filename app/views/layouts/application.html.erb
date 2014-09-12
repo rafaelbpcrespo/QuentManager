@@ -40,7 +40,7 @@
           <div class='login_fields'><%= f.text_field :email, autofocus: true, placeholder: "Email", :class => "validate" %></div>
           <div class='login_fields'><%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "validate"%></div>
           <%= f.submit "Entrar", :class => "login_button blue-login"%>
-          <%= link_to "Senha?", new_password_path(:usuario), html_options = { :class => 'login_button  blue-login', :title => "Esqueceu sua senha?"} %>
+          <%= link_to "Senha?", new_password_path(:usuario), html_options = { :class => 'link_button  blue-login', :title => "Esqueceu sua senha?"} %>
         <% end %>
       </div>
     <% end %>
