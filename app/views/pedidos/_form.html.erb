@@ -128,12 +128,12 @@
       <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
       <%= check_box_tag "salada_#{i}", "#{salada.nome}", false, :value => "#{salada.id}", :title => "#{salada.descricao}"  %>
       <%= "#{salada.nome}" %>
-      <div class='descricao'>(<%= "#{salada.descricao}" %>)</div>
+      <div class='descricao'><%= "#{salada.descricao}" %></div>
       <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
       <%= check_box_tag "salada_#{i}", "#{salada.nome}", true, :value => "#{salada.id}", :title => "#{salada.descricao}" %>
       <%= "#{salada.nome}" %>
-      <div class='descricao'>(<%= "#{salada.descricao}" %>)</div>      
+      <div class='descricao'><%= "#{salada.descricao}" %></div>      
       <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade) %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>

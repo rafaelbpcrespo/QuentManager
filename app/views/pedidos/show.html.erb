@@ -39,6 +39,7 @@
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnições extra</dd>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> saladas extra</dd>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebidas extra</dd>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> sobremesas extra</dd>
 </dl>
 
 <div class="form-actions">

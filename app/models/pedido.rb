@@ -26,7 +26,7 @@ class Pedido < ActiveRecord::Base
   scope :confirmados_do_dia, -> { where(created_at: (DateTime.now.beginning_of_day)..DateTime.now.end_of_day, :situacao => "Confirmado") }
   scope :cancelados_do_dia, -> { where(created_at: (DateTime.now.beginning_of_day)..DateTime.now.end_of_day, :situacao => "Cancelado") }
   scope :cancelados_do_mes, -> { where(created_at: (DateTime.now.beginning_of_month)..DateTime.now.end_of_month, :situacao => "Cancelado") }
-  before_save :atualizar_conta
+  after_save :atualizar_conta
 
 
   LIMITE_GUARNICOES = 2
