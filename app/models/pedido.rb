@@ -28,7 +28,7 @@ class Pedido < ActiveRecord::Base
   scope :cancelados_do_mes, -> { where(created_at: (DateTime.now.beginning_of_month)..DateTime.now.end_of_month, :situacao => "Cancelado") }
   after_save :atualizar_conta
 
-
+  LIMITE_ACOMPANHAMENTOS = 3
   LIMITE_GUARNICOES = 2
   LIMITE_PROTEINAS = 1
   LIMITE_SALADAS = 1

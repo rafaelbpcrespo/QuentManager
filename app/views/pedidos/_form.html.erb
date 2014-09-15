@@ -43,6 +43,7 @@
  <div id="pedidosup">  
   <fieldset class="form-clientes ped">
   <legend class="legend1">Acompanhamentos</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_ACOMPANHAMENTOS %><br/><br/>
     <% @acompanhamentos_disponiveis.each_with_index do |acompanhamento,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -67,6 +68,7 @@
 
 <fieldset class="form-clientes ped">
   <legend class="legend1">Proteínas</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_PROTEINAS %><br/><br/>
     <% @proteinas_disponiveis.each_with_index do |proteina,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -93,6 +95,7 @@
 
   <fieldset class="form-clientes ped">
   <legend class="legend1">Guarnições</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_GUARNICOES %>  <br/><br/>
     <% @guarnicoes_disponiveis.each_with_index do |guarnicao,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -119,6 +122,7 @@
 
   <fieldset class="form-clientes ped">
   <legend class="legend1">Saladas</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_SALADAS %>  <br/><br/>
     <% @saladas_disponiveis.each_with_index do |salada,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -142,6 +146,7 @@
  
   <fieldset class="form-clientes ped">
   <legend class="legend1">Bebidas</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_BEBIDAS %>  <br/><br/>
     <% @bebidas_disponiveis.each_with_index do |bebida,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -164,6 +169,7 @@
 
   <fieldset class="form-clientes ped">
   <legend class="legend1">Sobremesas</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_SOBREMESAS %>  <br/><br/>
     <% @sobremesas_disponiveis.each_with_index do |sobremesa,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
