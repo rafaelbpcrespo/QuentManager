@@ -93,10 +93,16 @@
                     </ol>
                       </li>
                        <li class="dropdown"><a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a></li> 
-                       <li class="dropdown"><a><%= link_to "Estoque", "/produtos", :class => 'botao'  %></a></li> 
+                       <li class="dropdown"><a><%= link_to "Estoque", "/produtos", :class => 'botao'  %></a></li>
+                     <li class="dropdown">
+                       <span ><a class="botao" href="#">Relatórios</a></span>
+                        <ol class="dropdown">                                          
+                          <li class="dropdown"><a><%= link_to "Estoque", "/home/relatorio_produtos", :class => 'botao2'  %></a></li>
+                          <li class="dropdown"><a><%= link_to "Pedidos", "/home/relatorio_pedidos", :class => 'botao2'  %></a></li>
+                        </ol>
+                     </li>                       
                       <% end %>
                        <li class="dropdown"><a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
-                       <li class="dropdown"> <a class="botao" href="/home/sobre"> Sobre </a></li>
                     <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
               <% end %>
             </ul>  
