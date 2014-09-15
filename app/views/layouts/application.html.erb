@@ -104,7 +104,10 @@
                      <% else %>
                        <li class="dropdown"><a><%= link_to "Conta", conta_cliente_path(current_usuario.cliente), html_options = { :class => 'botao', :title => "Conta"} %></a></li>
                        <li class="dropdown"><a><%= link_to "Meus Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
-                       <li class="dropdown"><a><%= link_to "Fazer Pedido", new_pedido_path(:cliente_id => current_usuario.cliente.id), :class => 'botao'  %></a></li> 
+                       <% if Time.now.hour > 6 && Time.now.hour < 10 && !current_usuario.cliente.bloqueado? %>                       
+                        <li class="dropdown"><a><%= link_to "Fazer Pedido", new_pedido_path(:cliente_id => current_usuario.cliente.id), :class => 'botao'  %></a></li> 
+                       <% end %>
+                     
                      <% end %>
                     <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
               <% end %>
