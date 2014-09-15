@@ -7,9 +7,8 @@
               new_pedido_path,
               :class => 'button blue-cadastrar-top' %></h1>
               <% else %> 
-  <%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
-              "#",
-              :class => 'button blue-cadastrar-top' %>
+              </h1>
+              <h2><font color="red">Horário para realização de pedidos finalizado</font></h2>
               <% end %>
   <% end %>              
 </h1>
@@ -56,9 +55,5 @@
     <%= link_to "Novo Pedido",
               new_pedido_path,
               :class => 'button blue-cadastrar-bottom' %>
-  <% else %> 
-    <%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
-              "#",
-              :class => 'button blue-cadastrar-bottom' %>
-  <% end %>
+  <% end %> 
 <% end %>

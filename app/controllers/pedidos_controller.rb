@@ -35,8 +35,12 @@ class PedidosController < ApplicationController
 
   def cancelar
     @pedido = Pedido.find(params[:id])
-    @pedido.cancelar!
-    flash[:notice] = "Pedido cancelado com sucesso."
+    if DateTime.now > DateTime.now.change(hour: 10)
+      flash[:alert] = "Horário limite para cancelamento ultrapassado."
+    else
+      @pedido.cancelar!
+      flash[:notice] = "Pedido cancelado com sucesso."
+  end
     redirect_to pedidos_path
   end
 
