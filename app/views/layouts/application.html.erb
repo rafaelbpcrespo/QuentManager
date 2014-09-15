@@ -100,9 +100,12 @@
                           <li class="dropdown"><a><%= link_to "Estoque", "/home/relatorio_produtos", :class => 'botao2'  %></a></li>
                           <li class="dropdown"><a><%= link_to "Pedidos", "/home/relatorio_pedidos", :class => 'botao2'  %></a></li>
                         </ol>
-                     </li>                       
-                      <% end %>
-                       <li class="dropdown"><a><%= link_to "Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
+                     </li>
+                     <% else %>
+                       <li class="dropdown"><a><%= link_to "Conta", conta_cliente_path(current_usuario.cliente), html_options = { :class => 'botao', :title => "Conta"} %></a></li>
+                       <li class="dropdown"><a><%= link_to "Meus Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
+                       <li class="dropdown"><a><%= link_to "Fazer Pedido", new_pedido_path(:cliente_id => current_usuario.cliente.id), :class => 'botao'  %></a></li> 
+                     <% end %>
                     <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
               <% end %>
             </ul>  
