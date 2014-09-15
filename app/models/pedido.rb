@@ -37,7 +37,7 @@ class Pedido < ActiveRecord::Base
 
   def self.vendidos_hoje
     valor_total = 0
-    pedidos = Pedido.where(created_at: (Time.now.midnight)..(Time.now.midnight + 1.day))
+    pedidos = Pedido.where(created_at: (Time.now.midnight)..(Time.now.midnight + 1.day), :situacao => "Confirmado")
     pedidos.each do |pedido|
       valor_total = valor_total + pedido.valor
     end
@@ -91,7 +91,7 @@ class Pedido < ActiveRecord::Base
 
   def self.vendas_do_mes
     valor = 0;
-    Pedido.find(:all, :conditions => ['created_at > ?', Time.now.beginning_of_month]).map { |p| valor = valor + p.valor}
+    Pedido.find(:all, :conditions => ['(created_at > ?) & (situacao == "Confirmado") ', Time.now.beginning_of_month]).map { |p| valor = valor + p.valor}
     valor
   end
 
