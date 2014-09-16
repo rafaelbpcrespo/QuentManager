@@ -1,0 +1,33 @@
+<%= form_for @transacao, :html => { :class => 'validate' } do |f| %>
+  <% if @transacao.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @transacao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.hidden_field :produto_id, :value => params[:produto_id].to_i %>
+<table>
+  <td>
+  <p>
+    <%= f.label :quantidade %>
+    <%= f.text_field :quantidade, :class => 'required numeric' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+  <p>
+    <%= f.label :tipo %><br>
+    <%= f.select :tipo, options_for_select([["Entrada",1] , ["Saída",2]]), :class => 'required' %>
+    <span class="validate">Campo requerido</span>
+  </p>
+ <br>
+<p>
+    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
+    <%= link_to "Cancelar", produtos_path, :class => 'button gray-voltar' %>
+</p>
+</td>
+</table>
+
+<% end %>

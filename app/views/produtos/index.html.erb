@@ -9,7 +9,6 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:nome) %></th>
-      <th>Valor</th>
       <th><%= model_class.human_attribute_name(:tipo) %></th>
       <th>Qtd</th>
       <th>Limite Min</th>
@@ -20,7 +19,6 @@
     <% @produtos.each do |produto| %>
       <tr>
         <td><%= produto.nome %></td>
-        <td><%= produto.valor_unitario %></td>
         <td><%= produto.tipo %></td>
         <td><%= produto.quantidade %></td>
         <td><%= produto.limite_minimo %></td>
@@ -31,7 +29,7 @@
           <%= link_to produto_path(produto), html_options = { :class => 'button gray', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
-          <%= link_to atualizar_produto_path(produto), :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          
+          <%= link_to new_transacao_path(:produto_id => produto.id), :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          
                       <span class="operacoes"></span>
                       <% end %>
           <%#= link_to atualizar_produto_path(produto), method: :post, :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          

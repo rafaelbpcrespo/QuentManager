@@ -30,6 +30,10 @@ class ProdutosController < ApplicationController
   def create
     valor = params[:produto][:valor_unitario]
     params[:produto][:valor_unitario] = valor.split( ',').join('.')
+
+    valor = params[:produto][:quantidade]
+    params[:produto][:quantidade] = valor.split( ',').join('.')  
+
     @produto = Produto.new(produto_params)
 
     respond_to do |format|
@@ -49,6 +53,9 @@ class ProdutosController < ApplicationController
   def update
     valor = params[:produto][:valor_unitario]
     params[:produto][:valor_unitario] = valor.split( ',').join('.')
+
+    valor = params[:produto][:quantidade]
+    params[:produto][:quantidade] = valor.split( ',').join('.')  
 
     respond_to do |format|
       if @produto.update(produto_params)

@@ -1,4 +1,6 @@
 QuentManager::Application.routes.draw do
+  resources :transacoes
+
   resources :sobremesas do
     member do
       get :desativar

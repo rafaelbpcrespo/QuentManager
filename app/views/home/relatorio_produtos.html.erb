@@ -6,13 +6,15 @@
           <tr>
                 <th><center>Produto</center></th>
                 <th><center>Quantidade</center></th>
+                <th><center>Limite Mínimo</center></th>
           </tr>
         </thead>
         <tbody>
           <% @produtos_acabando.each do |produto| %>
             <tr>
               <td><%= produto.nome %></td>
-              <td><font color="red"><%= produto.quantidade %></font></td>
+              <td><center><font color="red"><%= produto.quantidade %></font></center></td>
+              <td><center><%= produto.limite_minimo %></center></td>
             </tr>
           <% end %>
         </tbody>

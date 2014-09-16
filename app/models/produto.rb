@@ -1,6 +1,7 @@
 class Produto < ActiveRecord::Base
   has_many :item_de_pedidos
   has_many :pedidos, through: :item_de_pedidos
+  has_many :transacoes
 
   validates :tipo, :nome, :quantidade, :valor_unitario, :limite_minimo, presence: true
   validates :nome, uniqueness: true  
@@ -71,7 +72,4 @@ class Produto < ActiveRecord::Base
     return produtos
   end
 
-  # def fix_rate 
-  #   self[:valor_unitario = valor_unitario_before_type_cast. tr(' $, ' , ' ' )
-  # end
 end

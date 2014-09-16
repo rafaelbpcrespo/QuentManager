@@ -3,10 +3,9 @@
 <div class="show1">
 <fieldset class='form-clientes'>
   <legend class="legend1">Dados Cadastrais</legend>
+
   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
   <%= @produto.nome %><br/>
-  <strong><%= model_class.human_attribute_name(:valor_unitario) %>:</strong>
-  <%= @produto.valor_unitario %><br/>
   <strong><%= model_class.human_attribute_name(:tipo) %>:</strong>
   <%= @produto.tipo %><br/>
   <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
@@ -14,6 +13,38 @@
   <strong><%= model_class.human_attribute_name(:limite_minimo) %>:</strong>
   <%= @produto.limite_minimo %>
 </fieldset>
+    <fieldset class='form-clientes lista_pedidos'>
+      <legend class="legend1">Dados das Transações</legend>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Quantidade</th>      
+              <th>Tipo</th>      
+              <th>Ações</th>      
+            </tr>
+          </thead>
+          <tbody>
+            <% @produto.transacoes.each do |transacao| %>
+              <tr>
+                <td><%= transacao.created_at.strftime("%d/%m/%Y") %></td>
+                <td><%= transacao.quantidade %></td>
+                <td><%= transacao.tipo_exibicao %></td>
+                <td>
+                    <%= link_to edit_transacao_path(transacao), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+                      <span class="editar"></span>
+                    <% end %>
+                    <%= link_to transacao_path(transacao), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta transação?')) },
+                                :class => 'button red', :title => "Remover" do %>
+                                <span class="remover"></span>
+                                <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </fieldset>
+
 </div>
  <center><div class="acoes"> 
 <%= link_to produtos_path, :class => 'button gray', :title => "Voltar" do %>
