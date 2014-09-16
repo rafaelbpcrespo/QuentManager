@@ -54,7 +54,7 @@
       <div id="navtop">
           <div id="logo"> </div>
       </div>
-      <% if (request.env['PATH_INFO'] == new_usuario_session_path) || (!current_usuario.admin?) %>
+      <% if (request.env['PATH_INFO'] == new_usuario_session_path) || (usuario_signed_in? && !current_usuario.admin?) %>
       <div class='mensagem_login'>
         <% if !notice.nil? %>
           <div class="alert-success"><%= notice %></div>
@@ -104,7 +104,7 @@
                      <% else %>
                        <li class="dropdown"><a><%= link_to "Conta", conta_cliente_path(current_usuario.cliente), html_options = { :class => 'botao', :title => "Conta"} %></a></li>
                        <li class="dropdown"><a><%= link_to "Meus Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
-                       <% if Time.now.hour > 6 && Time.now.hour < 9 && !current_usuario.cliente.bloqueado? %>                       
+                       <% if Time.now.hour > 6 && Time.now.hour < 22 && !current_usuario.cliente.bloqueado? %>                       
                         <li class="dropdown"><a><%= link_to "Fazer Pedido", new_pedido_path(:cliente_id => current_usuario.cliente.id), :class => 'botao'  %></a></li> 
                        <% end %>
                      
