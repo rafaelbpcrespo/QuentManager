@@ -7,7 +7,9 @@
   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
   <%= @produto.nome %><br/>
   <strong><%= model_class.human_attribute_name(:tipo) %>:</strong>
-  <%= @produto.tipo %><br/>
+  <%= @produto.produto_tipo.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:categoria) %>:</strong>
+  <%= @produto.produto_categoria.nome %><br/>
   <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
   <%= @produto.quantidade %><br/>
   <strong><%= model_class.human_attribute_name(:limite_minimo) %>:</strong>

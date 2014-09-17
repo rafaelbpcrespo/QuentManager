@@ -28,11 +28,9 @@ class ProdutosController < ApplicationController
   # POST /produtos
   # POST /produtos.json
   def create
-    valor = params[:produto][:valor_unitario]
-    params[:produto][:valor_unitario] = valor.split( ',').join('.')
-
-    valor = params[:produto][:quantidade]
-    params[:produto][:quantidade] = valor.split( ',').join('.')  
+    debugger
+    quantidade = params[:produto][:quantidade]
+    params[:produto][:quantidade] = quantidade.split( ',').join('.')  
 
     @produto = Produto.new(produto_params)
 
@@ -51,11 +49,8 @@ class ProdutosController < ApplicationController
   # PATCH/PUT /produtos/1
   # PATCH/PUT /produtos/1.json
   def update
-    valor = params[:produto][:valor_unitario]
-    params[:produto][:valor_unitario] = valor.split( ',').join('.')
-
-    valor = params[:produto][:quantidade]
-    params[:produto][:quantidade] = valor.split( ',').join('.')  
+    quantidade = params[:produto][:quantidade]
+    params[:produto][:quantidade] = quantidade.split( ',').join('.')  
 
     respond_to do |format|
       if @produto.update(produto_params)
@@ -102,6 +97,6 @@ class ProdutosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def produto_params
-      params.require(:produto).permit(:nome, :valor_unitario, :tipo, :quantidade, :limite_minimo, :categoria)
+      params.require(:produto).permit(:nome, :produto_categoria_id, :produto_tipo_id, :quantidade, :limite_minimo, :categoria)
     end
 end

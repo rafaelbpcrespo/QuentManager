@@ -2,8 +2,10 @@ class Produto < ActiveRecord::Base
   has_many :item_de_pedidos
   has_many :pedidos, through: :item_de_pedidos
   has_many :transacoes
+  belongs_to :produto_tipo
+  belongs_to :produto_categoria
 
-  validates :tipo, :nome, :quantidade, :valor_unitario, :limite_minimo, presence: true
+  validates :produto_categoria_id, :produto_tipo_id, :nome, :quantidade, :limite_minimo, presence: true
   validates :nome, uniqueness: true  
 
   scope :bebidas, -> { where(categoria: "Bebida") }

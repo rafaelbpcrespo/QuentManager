@@ -12,21 +12,17 @@
     <span class="validate">Campo requerido</span>
   </p>
   <p>
-    <%= f.label :valor_unitario %>
-    <%= f.text_field :valor_unitario, :class => 'required numeric' %>
-    <span class="validate">Campo requerido</span>
-  </p>
-  <p>
    <%= f.label :categoria %>
-   <%= f.select :categoria, ["Bebida", "Carne", "Mantimento", "Tempero", "Sobremesa"], {:prompt => "Selecione"} ,{ :class => 'required' } %>
+   <%= f.collection_select :produto_categoria_id, ProdutoCategoria.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
   <span class="validate">Selecione um item</span>
   
   </p>
   <p>
-    <%= f.label :tipo %>
-    <%= f.select :tipo, ["Lata", "Pet 600ml", "Copo", "Garrafa","Sobremesa"], {:prompt => "Selecione"} , { :class => 'required' } %>
-    <span class="validate">Selecione um item</span>
-   </p>
+   <%= f.label :tipo %>
+   <%= f.collection_select :produto_tipo_id, ProdutoTipo.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
+  <span class="validate">Selecione um item</span>
+  
+  </p>
   <p>
     <%= f.label :quantidade %>
     <%= f.text_field :quantidade, :class => 'required numeric' %>

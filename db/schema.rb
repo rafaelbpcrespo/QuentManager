@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916203514) do
+ActiveRecord::Schema.define(version: 20140917001350) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -163,9 +163,23 @@ ActiveRecord::Schema.define(version: 20140916203514) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "tipo"
-    t.decimal  "quantidade",    precision: 5, scale: 2
+    t.decimal  "quantidade",           precision: 5, scale: 2
     t.integer  "limite_minimo"
     t.string   "categoria"
+    t.integer  "produto_categoria_id"
+    t.integer  "produto_tipo_id"
+  end
+
+  create_table "produtos_categorias", force: true do |t|
+    t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "produtos_tipos", force: true do |t|
+    t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "proteinas", force: true do |t|
