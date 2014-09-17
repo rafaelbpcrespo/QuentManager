@@ -24,11 +24,9 @@ class TransacoesController < ApplicationController
   # POST /transacoes
   # POST /transacoes.json
   def create
-    valor = params[:transacao][:valor]
-    params[:transacao][:valor] = valor.split( ',').join('.')  
 
-    valor = params[:transacao][:quantidade]
-    params[:transacao][:quantidade] = valor.split( ',').join('.')  
+    quantidade = params[:transacao][:quantidade]
+    params[:transacao][:quantidade] = quantidade.split( ',').join('.')  
 
     @transacao = Transacao.new(transacao_params)
 
@@ -46,11 +44,8 @@ class TransacoesController < ApplicationController
   # PATCH/PUT /transacoes/1
   # PATCH/PUT /transacoes/1.json
   def update
-    valor = params[:transacao][:valor]
-    params[:transacao][:valor] = valor.split( ',').join('.')  
-
-    valor = params[:transacao][:quantidade]
-    params[:transacao][:quantidade] = valor.split( ',').join('.')  
+    quantidade = params[:transacao][:quantidade]
+    params[:transacao][:quantidade] = quantidade.split( ',').join('.')  
     
     respond_to do |format|
       if @transacao.update(transacao_params)

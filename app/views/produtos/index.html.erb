@@ -19,7 +19,7 @@
     <% @produtos.each do |produto| %>
       <tr>
         <td><%= produto.nome %></td>
-        <td><%= produto.tipo %></td>
+        <td><%= produto.produto_tipo.nome %></td>
         <td><%= produto.quantidade %></td>
         <td><%= produto.limite_minimo %></td>
         <td>
