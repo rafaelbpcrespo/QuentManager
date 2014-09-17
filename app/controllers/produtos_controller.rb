@@ -28,7 +28,6 @@ class ProdutosController < ApplicationController
   # POST /produtos
   # POST /produtos.json
   def create
-    debugger
     quantidade = params[:produto][:quantidade]
     params[:produto][:quantidade] = quantidade.split( ',').join('.')  
 

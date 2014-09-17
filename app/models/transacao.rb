@@ -8,7 +8,6 @@ class Transacao < ActiveRecord::Base
     elsif self.tipo == 2
       quantidade = (self.quantidade * (-1))
     end 
-    debugger
     self.produto.atualizar(quantidade)
   end
 
