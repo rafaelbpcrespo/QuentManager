@@ -4,6 +4,8 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
+  <dd><font size="5pt"><%= @pedido.cliente.nome %> - <%= @pedido.cliente.empresa.nome %> - <%= @pedido.cliente.setor %></font></dd>
   <dt><strong>Acompanhamentos</strong></dt>
   <% @pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
   <dd><%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %></dd>
@@ -32,8 +34,6 @@
   <dd><%= @pedido.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
   <dd><%= @pedido.valor %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
-  <dd><%= @pedido.cliente.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:observacoes) %>:</strong></dt>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteínas extra</dd>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnições extra</dd>
