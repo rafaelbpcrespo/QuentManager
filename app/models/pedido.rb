@@ -62,7 +62,6 @@ class Pedido < ActiveRecord::Base
     valor_saladas = 0
     valor_bebidas = 0
     valor_sobremesas = 0
-
     # self.item_de_pedidos.each do |item|
     #   valor_produtos = valor_produtos + (item.produto.valor_unitario * item.quantidade)
     # end
@@ -77,6 +76,8 @@ class Pedido < ActiveRecord::Base
     end
     if self.qtd_extra(self.pedidos_bebidas,LIMITE_BEBIDAS) != 0
       valor_bebidas = self.extra(self.pedidos_bebidas,LIMITE_BEBIDAS)
+    else
+      valor_bebidas = 0
     end
     if self.qtd_extra(self.pedidos_sobremesas,LIMITE_SOBREMESAS) != 0
       valor_sobremesas = self.extra(self.pedidos_sobremesas,LIMITE_SOBREMESAS)
