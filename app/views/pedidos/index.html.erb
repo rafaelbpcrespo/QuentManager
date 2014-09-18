@@ -2,14 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
   <% if !current_usuario.admin? %>
-    <% if Time.now.hour > 6 && Time.now.hour < 23 && !current_usuario.cliente.bloqueado? %>
+    <% if Time.now.hour > 6 && Time.now.hour < 10 && !current_usuario.cliente.bloqueado? %>
     <%= link_to "Novo Pedido",
               new_pedido_path,
               :class => 'button blue-cadastrar-top' %></h1>
               <% else %> 
-  <%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
-              "#",
-              :class => 'button blue-cadastrar-top' %>
+              </h1>
+              <h2><font color="red">Horário para realização de pedidos finalizado</font></h2>
               <% end %>
   <% end %>              
 </h1>
@@ -52,13 +51,9 @@
 </table>
 <%= will_paginate @pedidos, renderer: BootstrapPagination::Rails %>
 <% if !current_usuario.admin? %>
-  <% if Time.now.hour > 6 && Time.now.hour < 23 && !current_usuario.cliente.bloqueado?%>
+  <% if Time.now.hour > 6 && Time.now.hour < 10 && !current_usuario.cliente.bloqueado?%>
     <%= link_to "Novo Pedido",
               new_pedido_path,
               :class => 'button blue-cadastrar-bottom' %>
-  <% else %> 
-    <%= link_to t('.novo', :default => t("helpers.links.restaurante_fechado")),
-              "#",
-              :class => 'button blue-cadastrar-bottom' %>
-  <% end %>
+  <% end %> 
 <% end %>

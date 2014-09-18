@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901223439) do
+ActiveRecord::Schema.define(version: 20140918164203) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20140901223439) do
     t.boolean  "disponibilidade"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "quantidade"
+    t.decimal  "valor",           precision: 5, scale: 2
   end
 
   create_table "bebidas", force: true do |t|
@@ -160,13 +162,26 @@ ActiveRecord::Schema.define(version: 20140901223439) do
 
   create_table "produtos", force: true do |t|
     t.string   "nome"
-    t.float    "valor_unitario"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "tipo"
-    t.integer  "quantidade"
+    t.decimal  "quantidade",           precision: 5, scale: 2
     t.integer  "limite_minimo"
     t.string   "categoria"
+    t.integer  "produto_categoria_id"
+    t.integer  "produto_tipo_id"
+  end
+
+  create_table "produtos_categorias", force: true do |t|
+    t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "produtos_tipos", force: true do |t|
+    t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "proteinas", force: true do |t|
@@ -195,6 +210,14 @@ ActiveRecord::Schema.define(version: 20140901223439) do
     t.decimal  "valor"
     t.boolean  "disponibilidade"
     t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transacoes", force: true do |t|
+    t.integer  "produto_id"
+    t.decimal  "quantidade"
+    t.integer  "tipo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

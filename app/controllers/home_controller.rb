@@ -13,7 +13,8 @@ class HomeController < ApplicationController
   end
 
   def relatorio_produtos
-    
+    @produtos_acabando = Produto.acabando_completo
+    @produtos_em_falta = Produto.zerados
   end
 
   def relatorio_pedidos

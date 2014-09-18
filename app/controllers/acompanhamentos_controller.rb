@@ -25,6 +25,9 @@ class AcompanhamentosController < ApplicationController
   # POST /acompanhamentos
   # POST /acompanhamentos.json
   def create
+    valor = params[:acompanhamento][:valor]
+    params[:acompanhamento][:valor] = valor.split( ',').join('.')  
+
     @acompanhamento = Acompanhamento.new(acompanhamento_params)
 
     respond_to do |format|
@@ -41,6 +44,9 @@ class AcompanhamentosController < ApplicationController
   # PATCH/PUT /acompanhamentos/1
   # PATCH/PUT /acompanhamentos/1.json
   def update
+    valor = params[:acompanhamento][:valor]
+    params[:acompanhamento][:valor] = valor.split( ',').join('.')  
+
     respond_to do |format|
       if @acompanhamento.update(acompanhamento_params)
         format.html { redirect_to @acompanhamento, notice: 'Acompanhamento atualizado com sucesso.' }
@@ -70,6 +76,6 @@ class AcompanhamentosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def acompanhamento_params
-      params.require(:acompanhamento).permit(:nome, :descricao, :disponibilidade)
+      params.require(:acompanhamento).permit(:nome, :descricao, :quantidade, :valor, :disponibilidade)
     end
 end

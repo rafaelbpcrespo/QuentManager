@@ -26,9 +26,9 @@ class Pedido < ActiveRecord::Base
   scope :confirmados_do_dia, -> { where(created_at: (DateTime.now.beginning_of_day)..DateTime.now.end_of_day, :situacao => "Confirmado") }
   scope :cancelados_do_dia, -> { where(created_at: (DateTime.now.beginning_of_day)..DateTime.now.end_of_day, :situacao => "Cancelado") }
   scope :cancelados_do_mes, -> { where(created_at: (DateTime.now.beginning_of_month)..DateTime.now.end_of_month, :situacao => "Cancelado") }
-  before_save :atualizar_conta
+  after_save :atualizar_conta
 
-
+  LIMITE_ACOMPANHAMENTOS = 3
   LIMITE_GUARNICOES = 2
   LIMITE_PROTEINAS = 1
   LIMITE_SALADAS = 1
@@ -37,7 +37,7 @@ class Pedido < ActiveRecord::Base
 
   def self.vendidos_hoje
     valor_total = 0
-    pedidos = Pedido.where(created_at: (Time.now.midnight)..(Time.now.midnight + 1.day))
+    pedidos = Pedido.where(created_at: (Time.now.midnight)..(Time.now.midnight + 1.day), :situacao => "Confirmado")
     pedidos.each do |pedido|
       valor_total = valor_total + pedido.valor
     end
@@ -56,16 +56,19 @@ class Pedido < ActiveRecord::Base
 
   def calcular_valor
     valor_minimo = 10
+    valor_acompanhamentos = 0
     valor_produtos = 0
     valor_guarnicoes = 0
     valor_proteinas = 0
     valor_saladas = 0
     valor_bebidas = 0
     valor_sobremesas = 0
-
     # self.item_de_pedidos.each do |item|
     #   valor_produtos = valor_produtos + (item.produto.valor_unitario * item.quantidade)
     # end
+    if self.qtd_extra(self.pedidos_acompanhamentos,LIMITE_ACOMPANHAMENTOS) != 0
+      valor_acompanhamentos = self.extra(self.pedidos_acompanhamentos,LIMITE_ACOMPANHAMENTOS)
+    end
     if self.qtd_extra(self.pedidos_guarnicoes,LIMITE_GUARNICOES) != 0
       valor_guarnicoes = self.extra(self.pedidos_guarnicoes,LIMITE_GUARNICOES)
     end
@@ -81,7 +84,7 @@ class Pedido < ActiveRecord::Base
     if self.qtd_extra(self.pedidos_sobremesas,LIMITE_SOBREMESAS) != 0
       valor_sobremesas = self.extra(self.pedidos_sobremesas,LIMITE_SOBREMESAS)
     end
-    self.valor = valor_minimo + valor_saladas + valor_proteinas + valor_guarnicoes + valor_bebidas + valor_sobremesas
+    self.valor = valor_minimo + valor_saladas + valor_proteinas + valor_guarnicoes + valor_bebidas + valor_sobremesas +valor_acompanhamentos
     self.save!
   end
 
@@ -91,7 +94,7 @@ class Pedido < ActiveRecord::Base
 
   def self.vendas_do_mes
     valor = 0;
-    Pedido.find(:all, :conditions => ['created_at > ?', Time.now.beginning_of_month]).map { |p| valor = valor + p.valor}
+    Pedido.find(:all, :conditions => ['(created_at > ?) & (situacao == "Confirmado") ', Time.now.beginning_of_month]).map { |p| valor = valor + p.valor}
     valor
   end
 
@@ -101,6 +104,10 @@ class Pedido < ActiveRecord::Base
 
     def cancelar!
       self.cancelar
+      self.pedidos_acompanhamentos.each do |pedido_acompanhamento|
+        acompanhamento = pedido_acompanhamento.acompanhamento
+        acompanhamento.acrescer(pedido_acompanhamento.quantidade)
+      end
       self.pedidos_proteinas.each do |pedido_proteina|
         proteina = pedido_proteina.proteina
         proteina.acrescer(pedido_proteina.quantidade)
@@ -129,6 +136,14 @@ class Pedido < ActiveRecord::Base
     end
 
     def confirmar!
+      self.pedidos_acompanhamentos.each do |pedido_acompanhamento|
+        acompanhamento = pedido_acompanhamento.acompanhamento
+        if acompanhamento.quantidade < pedido_acompanhamento.quantidade
+          return 0
+        else
+        acompanhamento.decrescer(pedido_acompanhamento.quantidade)
+      end
+      end
       self.pedidos_proteinas.each do |pedido_proteina|
         proteina = pedido_proteina.proteina
         if proteina.quantidade < pedido_proteina.quantidade

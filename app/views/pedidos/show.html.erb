@@ -4,6 +4,8 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
+  <dd><font size="5pt"><%= @pedido.cliente.nome %> - <%= @pedido.cliente.empresa.nome %> - <%= @pedido.cliente.setor %></font></dd>
   <dt><strong>Acompanhamentos</strong></dt>
   <% @pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
   <dd><%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %></dd>
@@ -32,13 +34,13 @@
   <dd><%= @pedido.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
   <dd><%= @pedido.valor %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
-  <dd><%= @pedido.cliente.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:observacoes) %>:</strong></dt>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamentos extra</dd>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteínas extra</dd>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnições extra</dd>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> saladas extra</dd>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebidas extra</dd>
+  <dd><%= @pedido.qtd_extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> sobremesas extra</dd>
 </dl>
 
 <div class="form-actions">

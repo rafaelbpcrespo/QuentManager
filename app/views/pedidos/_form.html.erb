@@ -43,6 +43,7 @@
  <div id="pedidosup">  
   <fieldset class="form-clientes ped">
   <legend class="legend1">Acompanhamentos</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_ACOMPANHAMENTOS %><br/><br/>
     <% @acompanhamentos_disponiveis.each_with_index do |acompanhamento,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -52,12 +53,12 @@
       <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", false, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
       <%= "#{acompanhamento.nome}" %><br>
       <div class='descricao'><%= "#{acompanhamento.descricao}" %></div>
-      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}) %>
+      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
       <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", true, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
       <%= "#{acompanhamento.nome}" %><br>
       <div class='descricao'><%= "#{acompanhamento.descricao}" %></div>
-<%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :prompt => "Selecione" %>
+      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade) %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
     <% end %>
@@ -67,6 +68,7 @@
 
 <fieldset class="form-clientes ped">
   <legend class="legend1">Proteínas</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_PROTEINAS %><br/><br/>
     <% @proteinas_disponiveis.each_with_index do |proteina,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -93,6 +95,7 @@
 
   <fieldset class="form-clientes ped">
   <legend class="legend1">Guarnições</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_GUARNICOES %>  <br/><br/>
     <% @guarnicoes_disponiveis.each_with_index do |guarnicao,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -119,6 +122,7 @@
 
   <fieldset class="form-clientes ped">
   <legend class="legend1">Saladas</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_SALADAS %>  <br/><br/>
     <% @saladas_disponiveis.each_with_index do |salada,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -128,12 +132,12 @@
       <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
       <%= check_box_tag "salada_#{i}", "#{salada.nome}", false, :value => "#{salada.id}", :title => "#{salada.descricao}"  %>
       <%= "#{salada.nome}" %>
-      <div class='descricao'>(<%= "#{salada.descricao}" %>)</div>
+      <div class='descricao'><%= "#{salada.descricao}" %></div>
       <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
       <%= check_box_tag "salada_#{i}", "#{salada.nome}", true, :value => "#{salada.id}", :title => "#{salada.descricao}" %>
       <%= "#{salada.nome}" %>
-      <div class='descricao'>(<%= "#{salada.descricao}" %>)</div>      
+      <div class='descricao'><%= "#{salada.descricao}" %></div>      
       <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade) %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
@@ -142,6 +146,7 @@
  
   <fieldset class="form-clientes ped">
   <legend class="legend1">Bebidas</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_BEBIDAS %>  <br/><br/>
     <% @bebidas_disponiveis.each_with_index do |bebida,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>
@@ -164,6 +169,7 @@
 
   <fieldset class="form-clientes ped">
   <legend class="legend1">Sobremesas</legend>
+  Quantidade sem acréscimo: <%= Pedido::LIMITE_SOBREMESAS %>  <br/><br/>
     <% @sobremesas_disponiveis.each_with_index do |sobremesa,i| %>
     <%# debugger %>
       <%#= collection_check_boxes :pedido, :proteina_ids, @proteinas_disponiveis, :id, :nome %>

@@ -71,4 +71,8 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'pedido_bebida', 'pedidos_bebidas'
   inflect.irregular 'PedidoSobremesa', 'PedidosSobremesas'
   inflect.irregular 'pedido_sobremesa', 'pedidos_sobremesas'
+  inflect.irregular 'ProdutoCategoria', 'ProdutosCategorias'
+  inflect.irregular 'produto_categoria', 'produtos_categorias'
+  inflect.irregular 'ProdutoTipo', 'ProdutosTipos'
+  inflect.irregular 'produto_tipo', 'produtos_tipos'
 end
