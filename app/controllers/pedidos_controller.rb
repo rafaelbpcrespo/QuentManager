@@ -237,23 +237,27 @@ class PedidosController < ApplicationController
       if  !params["acompanhamento_#{i}"].blank?
         acompanhamento = Acompanhamento.find(params["acompanhamento_#{i}"])
       end
-      if @pedido.acompanhamentos.include? acompanhamento
+      if (( @pedido.acompanhamentos.include? acompanhamento) && ( !params["acompanhamento_#{i}"].blank?) && (params["quantidade_acompanhamento_#{i}"].to_i != @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(acompanhamento.id).quantidade))
         atualiza_acompanhamento = @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(params["acompanhamento_#{i}"])
         atualiza_acompanhamento.quantidade = params["quantidade_acompanhamento_#{i}"].to_i
         acompanhamento_editado << atualiza_acompanhamento
         atualiza_acompanhamento.save
-      elsif (@pedido.acompanhamentos.include? acompanhamento && params["quantidade_acompanhamento_#{i}"] == 0)
+      elsif (( @pedido.acompanhamentos.include? acompanhamento) && ( !params["acompanhamento_#{i}"].blank?) && (params["quantidade_acompanhamento_#{i}"].to_i == @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(acompanhamento.id).quantidade))
         atualiza_acompanhamento = @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(params["acompanhamento_#{i}"])
-        atualiza_acompanhamento.destroy
-      elsif (!params["acompanhamento_#{i}"].blank? && !params["quantidade_acompanhamento_#{i}"].nil?)
-#        @pedido.pedidos_acompanhamentos.
+        acompanhamento_editado << atualiza_acompanhamento
+      elsif (( !params["acompanhamento_#{i}"].blank?) && ( !params["quantidade_acompanhamento_#{i}"].nil?))
         acompanhamento_novo << @pedido.pedidos_acompanhamentos.create!(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
+        acompanhamento_novo.last.acompanhamento.decrescer(acompanhamento_novo.last.quantidade)        
       end
     end
       acompanhamentos_removidos = pa - acompanhamento_editado
       acompanhamentos_removidos = acompanhamentos_removidos - acompanhamento_novo
       acompanhamentos_removidos.each do |acompanhamento_removido|
-        acompanhamento_removido.destroy
+      acompanhamento_removido.acompanhamento.acrescer(acompanhamento_removido.quantidade)
+      acomp = Acompanhamento.find_by_id(acompanhamento_removido.acompanhamento_id)
+      @pedido.pedidos_acompanhamentos.delete(acompanhamento_removido)
+      @pedido.acompanhamentos.delete(acomp)
+      acompanhamento_removido.destroy
       end
 
     proteina_novo = []

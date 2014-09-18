@@ -53,12 +53,12 @@
       <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", false, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
       <%= "#{acompanhamento.nome}" %><br>
       <div class='descricao'><%= "#{acompanhamento.descricao}" %></div>
-      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}) %>
+      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade}".to_i).map{|s| ["#{s}", s]}) %>
       <% else %>
       <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", true, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
       <%= "#{acompanhamento.nome}" %><br>
       <div class='descricao'><%= "#{acompanhamento.descricao}" %></div>
-<%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1..3).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :prompt => "Selecione" %>
+      <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade) %>
       <% end %>
       <%#= select_field_tag "quantidade_#{i}" %>
     <% end %>

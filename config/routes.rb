@@ -27,7 +27,11 @@ QuentManager::Application.routes.draw do
     end
   end
 
-  resources :acompanhamentos
+  resources :acompanhamentos do
+    member do
+      get :desativar
+    end
+  end    
 
   resources :empresas
 

@@ -56,6 +56,7 @@ class Pedido < ActiveRecord::Base
 
   def calcular_valor
     valor_minimo = 10
+    valor_acompanhamentos = 0
     valor_produtos = 0
     valor_guarnicoes = 0
     valor_proteinas = 0
@@ -65,6 +66,9 @@ class Pedido < ActiveRecord::Base
     # self.item_de_pedidos.each do |item|
     #   valor_produtos = valor_produtos + (item.produto.valor_unitario * item.quantidade)
     # end
+    if self.qtd_extra(self.pedidos_acompanhamentos,LIMITE_ACOMPANHAMENTOS) != 0
+      valor_acompanhamentos = self.extra(self.pedidos_acompanhamentos,LIMITE_ACOMPANHAMENTOS)
+    end
     if self.qtd_extra(self.pedidos_guarnicoes,LIMITE_GUARNICOES) != 0
       valor_guarnicoes = self.extra(self.pedidos_guarnicoes,LIMITE_GUARNICOES)
     end
@@ -76,13 +80,11 @@ class Pedido < ActiveRecord::Base
     end
     if self.qtd_extra(self.pedidos_bebidas,LIMITE_BEBIDAS) != 0
       valor_bebidas = self.extra(self.pedidos_bebidas,LIMITE_BEBIDAS)
-    else
-      valor_bebidas = 0
     end
     if self.qtd_extra(self.pedidos_sobremesas,LIMITE_SOBREMESAS) != 0
       valor_sobremesas = self.extra(self.pedidos_sobremesas,LIMITE_SOBREMESAS)
     end
-    self.valor = valor_minimo + valor_saladas + valor_proteinas + valor_guarnicoes + valor_bebidas + valor_sobremesas
+    self.valor = valor_minimo + valor_saladas + valor_proteinas + valor_guarnicoes + valor_bebidas + valor_sobremesas +valor_acompanhamentos
     self.save!
   end
 
@@ -102,6 +104,10 @@ class Pedido < ActiveRecord::Base
 
     def cancelar!
       self.cancelar
+      self.pedidos_acompanhamentos.each do |pedido_acompanhamento|
+        acompanhamento = pedido_acompanhamento.acompanhamento
+        acompanhamento.acrescer(pedido_acompanhamento.quantidade)
+      end
       self.pedidos_proteinas.each do |pedido_proteina|
         proteina = pedido_proteina.proteina
         proteina.acrescer(pedido_proteina.quantidade)
@@ -130,6 +136,14 @@ class Pedido < ActiveRecord::Base
     end
 
     def confirmar!
+      self.pedidos_acompanhamentos.each do |pedido_acompanhamento|
+        acompanhamento = pedido_acompanhamento.acompanhamento
+        if acompanhamento.quantidade < pedido_acompanhamento.quantidade
+          return 0
+        else
+        acompanhamento.decrescer(pedido_acompanhamento.quantidade)
+      end
+      end
       self.pedidos_proteinas.each do |pedido_proteina|
         proteina = pedido_proteina.proteina
         if proteina.quantidade < pedido_proteina.quantidade

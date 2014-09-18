@@ -6,6 +6,10 @@
   <legend class="legend1">Dados Cadastrais</legend>
   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
   <%= @acompanhamento.nome %><br/>
+  <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
+  <%= @acompanhamento.quantidade %><br/>
+  <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
+  <%= @acompanhamento.valor %><br/>  
   <strong><%= model_class.human_attribute_name(:descricao) %>:</strong>
   <%= @acompanhamento.descricao %><br/>
   <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
@@ -17,15 +21,14 @@
 <%= link_to acompanhamentos_path, :class => 'button gray' do  %>
                       <span class="voltar"></span>          
           <% end %>
-<%= link_to new_acompanhamento_path, :class => 'button green', :title => "Novo Cardápio" do %>
+<%= link_to new_acompanhamento_path, :class => 'button green', :title => "Novo Acompanhamento" do %>
                     <span class="adicionar"></span> 
          <% end %>
   <%= link_to edit_acompanhamento_path(@acompanhamento), :class => 'button blue' do %>
                       <span class="editar"></span>          
           <% end %>
-
-  <%= link_to acompanhamento_path(@acompanhamento), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta acompanhamento?')) }, :class => 'button red' do %>
-                        <span class="remover"></span>
-                      <% end %>
+          <%= link_to desativar_acompanhamento_path(@acompanhamento), html_options = { :class => 'button red', :title => "Desativar"} do %>
+                      <span class="remover"></span>          
+          <% end %>
 </div>
 </center>
