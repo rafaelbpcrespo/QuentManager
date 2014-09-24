@@ -3,8 +3,8 @@
     Não existem pedidos confirmados para o dia de hoje.
 
   <% else %>
-
     <% @pedidos.each do |pedido| %>
+    <div class="relatorio_pedidos">
     <dl class="dl-horizontal">
       <dt><strong>Cliente:</strong></dt>
       <dd><font size="5pt"><%= pedido.cliente.nome %> - <%= pedido.cliente.empresa.nome %> - <%= pedido.cliente.setor %></font></dd>
@@ -44,6 +44,6 @@
       <dd><%= pedido.qtd_extra(pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebidas extra</dd>
       <dd><%= pedido.qtd_extra(pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> sobremesas extra</dd>
     </dl>
-    <br/><br/><br/><br/><br/><br/><br/><br/>
+    </div>
     <% end %>
   <% end %>

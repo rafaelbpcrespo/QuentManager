@@ -1175,3 +1175,15 @@ li span{
 .mensagem_login {
         margin-bottom: 20px;
 }
+
+@media print
+{
+#header {display:none;}
+#lineorange {display:none;}
+#navtop {display:none;}
+#faixa {display:none;}
+#rodape {display:none;}
+.relatorio_pedidos {
+  margin-bottom: 300%;
+}
+}
