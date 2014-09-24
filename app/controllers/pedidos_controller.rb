@@ -7,7 +7,13 @@ class PedidosController < ApplicationController
   # GET /pedidos.json
   def index
     if current_usuario.admin?
-      @pedidos = Pedido.where(created_at: (Time.now.midnight)..Time.now.midnight + 1.day).paginate(:page => params[:page], :per_page => 10)
+      @pedidos = Pedido.paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
+      if !params[:empresa].blank?
+        @nome_da_empresa = Empresa.find(params[:empresa]).nome
+        @quantidade_de_pedidos = @pedidos.count
+      else
+        @nome_da_empresa = "Todas as Empresas"
+      end
     else
       @pedidos = Pedido.where(:cliente_id => current_usuario.cliente.id).paginate(:page => params[:page], :per_page => 10)
     end
@@ -508,6 +514,10 @@ class PedidosController < ApplicationController
       format.html { redirect_to pedidos_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @pedidos = Pedidos.search params[:empresa]
   end
 
   private

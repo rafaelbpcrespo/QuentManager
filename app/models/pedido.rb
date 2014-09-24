@@ -257,6 +257,20 @@ class Pedido < ActiveRecord::Base
       self.conta.calcular_saldo
     end
 
+    def self.search(search,empresa)
+      pedidos = []
+      if empresa.blank?
+        pedidos = Pedido.confirmados_do_dia
+      else
+        Pedido.confirmados_do_dia.each do |pedido|
+          if pedido.cliente.empresa == Empresa.find(empresa)
+            pedidos << pedido
+          end
+        end
+      end
+      return pedidos
+    end
+
     # def guarnicoes_extra
     #   total_guarnicoes=0
     #   self.pedidos_guarnicoes.each do |guarnicao|
