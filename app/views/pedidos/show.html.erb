@@ -33,7 +33,7 @@
   <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
   <dd><%= @pedido.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
-  <dd><%= @pedido.valor %></dd>
+  <dd><font size="5pt">R$ <%= @pedido.valor %></font></dd>
   <dt><strong><%= model_class.human_attribute_name(:observacoes) %>:</strong></dt>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamentos extra</dd>
   <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteínas extra</dd>

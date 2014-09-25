@@ -225,6 +225,7 @@ h2{
   margin-right: 15px;
   padding-left: 60px;
   float: left;
+  padding-bottom: 60px;
   /*width: 600px;*/
 
 }
@@ -1185,4 +1186,14 @@ li span{
 
 .mensagem_login {
         margin-bottom: 20px;
+}
+
+@media print
+{
+#rodape {display:none;}
+#header {display:none;}
+#lineorange {display:none;}
+#navtop {display:none;}
+#faixa {display:none;}
+.relatorio_pedidos {padding-bottom: 750px;}
 }

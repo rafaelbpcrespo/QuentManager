@@ -94,7 +94,7 @@ class Pedido < ActiveRecord::Base
 
   def self.vendas_do_mes
     valor = 0;
-    Pedido.find(:all, :conditions => ['(created_at > ?) & (situacao == "Confirmado") ', Time.now.beginning_of_month]).map { |p| valor = valor + p.valor}
+    Pedido.find(:all, :conditions => ['(created_at > ?) & (situacao = "Confirmado") ', Time.now.beginning_of_month]).map { |p| valor = valor + p.valor}
     valor
   end
 
@@ -255,6 +255,28 @@ class Pedido < ActiveRecord::Base
 
     def atualizar_conta
       self.conta.calcular_saldo
+    end
+
+    def self.search(situacao,empresa)
+      pedidos = []
+      if empresa.blank? && situacao.blank?
+        pedidos = Pedido.do_dia
+      elsif !empresa.blank? && situacao.blank?
+        Pedido.do_dia.each do |pedido|
+          if pedido.cliente.empresa == Empresa.find(empresa)
+            pedidos << pedido
+          end
+        end
+      elsif empresa.blank? && !situacao.blank?
+        pedidos = Pedido.do_dia.where(:situacao => situacao)
+      elsif !empresa.blank? && !situacao.blank?
+        Pedido.do_dia.each do |pedido|
+          if pedido.cliente.empresa == Empresa.find(empresa) && pedido.situacao == situacao
+            pedidos << pedido
+          end
+        end
+      end
+      return pedidos
     end
 
     # def guarnicoes_extra

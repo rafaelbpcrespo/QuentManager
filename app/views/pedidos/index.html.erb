@@ -1,7 +1,8 @@
 <%- model_class = Pedido -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
+
   <% if !current_usuario.admin? %>
+  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h1>  
     <% if Time.now.hour > 6 && Time.now.hour < 10 && !current_usuario.cliente.bloqueado? %>
     <%= link_to "Novo Pedido",
               new_pedido_path,
@@ -10,10 +11,23 @@
               </h1>
               <h2><font color="red">Horário para realização de pedidos finalizado</font></h2>
               <% end %>
-  <% end %>              
-</h1>
-
+  <% else %> 
+    <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de hoje da <%= @nome_da_empresa %><br/></h1>
+            <h3>Quantidade de pedidos de hoje para <%= @nome_da_empresa %>: <%= @quantidade_de_pedidos %></h3>
+<% end %>             
 </div>
+<% if current_usuario.admin? || current_usuario.gerente? %>
+<%= form_tag(pedidos_path, :method => "get", :class => "validate", id: "search-formulario") do %>
+   <td>
+      <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas as Empresas", :class => "form-control input-search" %><br>
+      <%= select_tag :situacao, options_for_select(["Confirmado", "Cancelado", "Em processamento"]), :prompt => "Todas as Situações", :class => "form-control input-search" %><br>
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
+           of using a Rails form helper -->
+   <%= submit_tag "Buscar", :name => nil, :class => 'button gray-voltar' %></td>
+
+    <br><br><br><br>
+  <% end %>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -38,8 +52,10 @@
           <%= link_to pedido_path(pedido), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
+          <% if (DateTime.now < pedido.created_at.change(hour: 10)) || (current_usuario.admin? || current_usuario.gerente?) %>
             <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "button red", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
                       <span class="bloquear"></span>
+            <% end %>
             <% end %>
             <%= link_to confirmar_pedido_path(pedido), html_options = {:class => "button green", :title => "Confirmar Pedido", :id => "confirmar_#{pedido.id}"} do %>
                       <span class="desbloquear"></span>
@@ -49,7 +65,6 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @pedidos, renderer: BootstrapPagination::Rails %>
 <% if !current_usuario.admin? %>
   <% if Time.now.hour > 6 && Time.now.hour < 10 && !current_usuario.cliente.bloqueado?%>
     <%= link_to "Novo Pedido",

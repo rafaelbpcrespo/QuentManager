@@ -33,7 +33,14 @@ QuentManager::Application.routes.draw do
     end
   end    
 
-  resources :empresas
+  resources :empresas do
+    member do
+      get :bloquear
+      get :confirmar_bloqueio
+      get :desbloquear
+      get :confirmar_desbloqueio
+    end
+  end
 
   resources :proteinas do
     member do
@@ -72,6 +79,7 @@ QuentManager::Application.routes.draw do
 
     get "home/relatorio_produtos"
     get "home/relatorio_pedidos"
+    get "home/pedidos_do_dia"
     get "home/sobre"
     get "home/inicial"
 

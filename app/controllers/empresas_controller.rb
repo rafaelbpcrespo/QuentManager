@@ -22,6 +22,39 @@ class EmpresasController < ApplicationController
   def edit
   end
 
+  def bloquear
+    @empresa = Empresa.find(params[:id])
+  end
+
+  def confirmar_bloqueio
+    @empresa = Empresa.find(params[:id])
+    @empresa.bloquear!
+
+    if @empresa.save
+      flash[:notice] = "Empresa bloqueada"
+    else
+      flash[:alert] = "Erro ao bloquear empresa."
+    end
+    redirect_to empresas_path
+  end
+
+  def desbloquear
+    @empresa = Empresa.find(params[:id])
+  end
+
+  def confirmar_desbloqueio
+    @empresa = Empresa.find(params[:id])
+    @empresa.desbloquear!
+
+    if @empresa.save
+      flash[:notice] = "Empresa bloqueada"
+    else
+      flash[:alert] = "Erro ao bloquear empresa."
+    end
+    redirect_to empresas_path
+  end
+
+
   # POST /empresas
   # POST /empresas.json
   def create

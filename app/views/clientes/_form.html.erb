@@ -1,6 +1,6 @@
 <%= form_for @cliente, :html => { :class => 'validate' } do |f| %>
 
-  <% @empresa.errors.full_messages.each do |msg| %>
+  <% @cliente.errors.full_messages.each do |msg| %>
     <li><%= msg %></li><br/>
   <% end %>
   

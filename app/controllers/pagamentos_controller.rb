@@ -24,6 +24,8 @@ class PagamentosController < ApplicationController
   # POST /pagamentos
   # POST /pagamentos.json
   def create
+    valor = params[:pagamento][:valor]
+    params[:pagamento][:valor] = valor.split( ',').join('.')    
     #conta = Conta.find_by_cliente_id(params[:conta_id].to_i)
     # params[:pagamento][:conta_id] = conta.id.to_i
     @pagamento = Pagamento.new(pagamento_params)
@@ -43,6 +45,9 @@ class PagamentosController < ApplicationController
   # PATCH/PUT /pagamentos/1
   # PATCH/PUT /pagamentos/1.json
   def update
+    valor = params[:pagamento][:valor]
+    params[:pagamento][:valor] = valor.split( ',').join('.')    
+    
     respond_to do |format|
       if @pagamento.update(pagamento_params)
         format.html { redirect_to @pagamento, notice: 'Pagamento atualizado com sucesso.' }

@@ -55,6 +55,9 @@
 <%= link_to new_produto_path, :class => 'button green', :title => "Novo Produto" do %>
               <span class="adicionar"></span> 
               <% end %>
+<%= link_to new_transacao_path(:produto_id => @produto.id), :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          
+              <span class="operacoes"></span>
+              <% end %>              
   <%= link_to edit_produto_path(@produto), :class => 'button blue', :title => "Editar Produto" do %>
                       <span class="editar"></span>          
           <% end %>

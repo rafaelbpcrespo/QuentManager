@@ -17,6 +17,10 @@ class HomeController < ApplicationController
     @produtos_em_falta = Produto.zerados
   end
 
+  def pedidos_do_dia
+    @pedidos = Pedido.confirmados_do_dia
+  end
+
   def relatorio_pedidos
     @pedidos_confirmados_do_mes = Pedido.confirmados_do_mes
     @pedidos_cancelados_do_mes = Pedido.cancelados_do_mes

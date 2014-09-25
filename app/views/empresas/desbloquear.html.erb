@@ -1,0 +1,19 @@
+<%- model_class = Empresa -%>
+
+  <h1>Desbloquear Empresa</h1>
+  <%= link_to '#', html_options = {:class => "btn btn-small btn-info informacoes", :id => "_informacoes", :'data-content' => "Administrador Operacional bloqueia o acesso de um Empresa ao sistema.", :rel => "popover"} do %>
+  <% end %>
+
+<div class="show1">
+<fieldset class='form-clientes'>
+<legend>Dados do empresa a ser desbloqueado</legend>
+
+   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
+    <%= @empresa.nome %><br>
+ </fieldset>
+</div> 
+
+      <%= link_to t('.cancelar', :default => t("helpers.links.cancelar")),
+                empresas_path, :class => 'button gray-voltar' %>
+    <%= link_to 'Confirmar Desbloqueio', confirmar_desbloqueio_empresa_path(@empresa), :class => "button blue-cadastrar-top" %>
+
