@@ -19,6 +19,10 @@ class Usuario < ActiveRecord::Base
     self.tipo == "Gerente"
   end
 
+  def usuario?
+    self.tipo == "Usuario"
+  end
+
   def admin?
     self.tipo == "Administrador"
   end
