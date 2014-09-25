@@ -26,9 +26,17 @@
                       <span class="editar"></span>          
           <% end %>
 
-  <%= link_to empresa_path(@empresa), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta empresa?')) }, :class => 'button red' do %>
-                        <span class="remover"></span>
-                      <% end %>
+          <% if can? :bloquear, Empresa %>          
+            <% if @cempresabloqueada? %>
+              <%= link_to desbloquear_empresa_path(@empresa), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{@empresa.id}"} do %>
+                        <span class="desbloquear"></span>
+              <% end %>
+            <% else %>
+              <%= link_to bloquear_empresa_path(@empresa), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{@empresa.id}"} do %>
+                        <span class="bloquear"></span>
+              <% end %>
+            <% end %>
+          <% end %>
 
   <%= link_to new_empresa_path, :class=>'button green' do %>
                 <span class="adicionar"></span>          

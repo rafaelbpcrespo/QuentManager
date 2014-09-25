@@ -33,7 +33,14 @@ QuentManager::Application.routes.draw do
     end
   end    
 
-  resources :empresas
+  resources :empresas do
+    member do
+      get :bloquear
+      get :confirmar_bloqueio
+      get :desbloquear
+      get :confirmar_desbloqueio
+    end
+  end
 
   resources :proteinas do
     member do

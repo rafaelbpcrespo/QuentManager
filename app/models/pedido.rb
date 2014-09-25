@@ -17,6 +17,7 @@ class Pedido < ActiveRecord::Base
   has_many :sobremesas, through: :pedidos_sobremesas
 
   validates :cliente_id, presence: true
+  validate :verificar_situacao_cliente
 
   accepts_nested_attributes_for :item_de_pedidos,  :allow_destroy => true
 
@@ -34,6 +35,10 @@ class Pedido < ActiveRecord::Base
   LIMITE_SALADAS = 1
   LIMITE_BEBIDAS = 0
   LIMITE_SOBREMESAS = 0
+
+  def verificar_situacao_cliente
+    self.errors.add(:cliente, "Não foi possível realizar o pedido, pois o cliente está bloqueado!") if (self.cliente.bloqueado? && current_usuario.usuario?)
+  end
 
   def self.vendidos_hoje
     valor_total = 0
