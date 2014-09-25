@@ -7,15 +7,16 @@ class PedidosController < ApplicationController
   # GET /pedidos.json
   def index
     if current_usuario.admin?
-      @pedidos = Pedido.paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
+      @pedidos = Pedido.search(params[:situacao],params[:empresa])
       if !params[:empresa].blank?
         @nome_da_empresa = Empresa.find(params[:empresa]).nome
         @quantidade_de_pedidos = @pedidos.count
       else
         @nome_da_empresa = "Todas as Empresas"
+        @quantidade_de_pedidos = @pedidos.count
       end
     else
-      @pedidos = Pedido.where(:cliente_id => current_usuario.cliente.id).paginate(:page => params[:page], :per_page => 10)
+      @pedidos = Pedido.where(:cliente_id => current_usuario.cliente.id)
     end
   end
 
@@ -25,10 +26,12 @@ class PedidosController < ApplicationController
   end
 
   def confirmar
-    if @pedido.situacao == "Cancelado"
+    if @pedido.situacao == "Cancelado" && current_usuario.usuario?
       flash[:alert] = "Você não pode confirmar um pedido já cancelado."
     elsif @pedido.situacao == "Confirmado"
       flash[:alert] = "Este pedido já foi confirmado."
+    elsif ((DateTime.now > @pedido.created_at.change(hour: 10)) && (current_usuario.usuario?))
+      flash[:alert] = "Horário limite para confirmação ultrapassado."
     else
       if @pedido.confirmar! == 0
         flash[:alert] = "Você não pode confirmar este pedido pois existem itens indisponíveis no estoque."
@@ -41,7 +44,7 @@ class PedidosController < ApplicationController
 
   def cancelar
     @pedido = Pedido.find(params[:id])
-    if DateTime.now > DateTime.now.change(hour: 10)
+    if (DateTime.now > @pedido.created_at.change(hour: 10)) && !(current_usuario.admin? || current_usuario.gerente?)
       flash[:alert] = "Horário limite para cancelamento ultrapassado."
     else
       @pedido.cancelar!
