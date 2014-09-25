@@ -28,9 +28,7 @@ class PedidosController < ApplicationController
   def confirmar
     if @pedido.cliente.bloqueado? && current_usuario.usuario?
       flash[:alert] = "Você não pode confirmar um pedido pois seu cadastro está bloqueado. Favor entrar em contato com a Si Quitutes."
-      redirect_to pedidos_path
-    end
-    if @pedido.situacao == "Cancelado" && current_usuario.usuario?
+    elsif @pedido.situacao == "Cancelado" && current_usuario.usuario?
       flash[:alert] = "Você não pode confirmar um pedido já cancelado."
     elsif @pedido.situacao == "Confirmado"
       flash[:alert] = "Este pedido já foi confirmado."
