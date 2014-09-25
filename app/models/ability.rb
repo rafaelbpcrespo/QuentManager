@@ -19,9 +19,9 @@ class Ability
           can [:create, :update, :read, :cancelar, :confirmar ], Pedido, :cliente_id => usuario.id
           cannot :destroy, Pedido
           #can , Pedido, :usuario_id => usuario.id
-        if (usuario.cliente.bloqueado? || usuario.empresa.bloqueada? || (Time.now.hour < 6 || DateTime.now > DateTime.now.change(hour: 10)))
-          cannot [:create, :update, :confirmar, :cancelar ], Pedido
-        end
+        #if (usuario.cliente.bloqueado? || usuario.empresa.bloqueada? || (Time.now.hour < 6 || DateTime.now > DateTime.now.change(hour: 10)))
+         # cannot [:create, :update, :confirmar, :cancelar ], Pedido
+        #end
         end
       else
 
