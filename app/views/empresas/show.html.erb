@@ -27,7 +27,7 @@
           <% end %>
 
           <% if can? :bloquear, Empresa %>          
-            <% if @cempresabloqueada? %>
+            <% if @empresa.bloqueada? %>
               <%= link_to desbloquear_empresa_path(@empresa), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{@empresa.id}"} do %>
                         <span class="desbloquear"></span>
               <% end %>
