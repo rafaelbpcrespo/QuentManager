@@ -239,7 +239,7 @@
       <% elsif (current_usuario.admin? && params[:action] == "edit") %>
         <%= f.hidden_field :cliente_id, :value => Pedido.find_by_id(params[:id].to_i).cliente.id %>
       <% else %>
-        <%= f.hidden_field :cliente_id, :value => current_usuario.id %>
+        <%= f.hidden_field :cliente_id, :value => current_usuario.cliente.id %>
       <% end %>
 
 
