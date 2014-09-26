@@ -22,6 +22,13 @@ class AcompanhamentosController < ApplicationController
   def edit
   end
 
+  def desativar
+    @acompanhamento = Acompanhamento.find(params[:id])
+    @acompanhamento.desativar!
+    flash[:notice] = "Acompanhamento desativado com sucesso."
+    redirect_to acompanhamentos_path
+  end  
+
   # POST /acompanhamentos
   # POST /acompanhamentos.json
   def create
