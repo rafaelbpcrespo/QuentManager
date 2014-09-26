@@ -32,7 +32,7 @@ class PedidosController < ApplicationController
       flash[:alert] = "Você não pode confirmar um pedido já cancelado."
     elsif @pedido.situacao == "Confirmado"
       flash[:alert] = "Este pedido já foi confirmado."
-    elsif ((DateTime.now > @pedido.created_at.change(hour: 10)) && (current_usuario.usuario?))
+    elsif (((DateTime.now < @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MIN)) || (DateTime.now > @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX))) && (current_usuario.usuario?))
       flash[:alert] = "Horário limite para confirmação ultrapassado."
     else
       if @pedido.confirmar! == 0
@@ -46,7 +46,7 @@ class PedidosController < ApplicationController
 
   def cancelar
     @pedido = Pedido.find(params[:id])
-    if (DateTime.now > @pedido.created_at.change(hour: 10)) && !(current_usuario.admin? || current_usuario.gerente?)
+    if (DateTime.now > @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE)) && !(current_usuario.admin? || current_usuario.gerente?)
       flash[:alert] = "Horário limite para cancelamento ultrapassado."
     elsif @pedido.situacao == "Cancelado"
       flash[:alert] = "Este pedido já foi cancelado."
