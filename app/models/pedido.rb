@@ -96,7 +96,7 @@ class Pedido < ActiveRecord::Base
 
   def self.vendas_do_mes
     valor = 0;
-    Pedido.where(created_at: (DateTime.beginning_of_month)..(DateTime.end_of_month), :situacao => "Confirmado").map { |p| valor = valor + p.valor}
+    Pedido.where(created_at: (DateTime.now.beginning_of_month)..(DateTime.now.end_of_month), :situacao => "Confirmado").map { |p| valor = valor + p.valor}
     valor
   end
 
