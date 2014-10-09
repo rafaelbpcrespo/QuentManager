@@ -5,7 +5,7 @@ class Produto < ActiveRecord::Base
   belongs_to :produto_tipo
   belongs_to :produto_categoria
 
-  validates :produto_categoria_id, :produto_tipo_id, :nome, :quantidade, :limite_minimo, presence: true
+  validates :produto_categoria_id, :nome, :quantidade, :limite_minimo, presence: true
   validates :nome, uniqueness: true  
 
   scope :bebidas, -> { where(categoria: "Bebida") }

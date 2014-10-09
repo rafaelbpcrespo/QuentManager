@@ -19,7 +19,7 @@
   </p>
   <p>
    <%= f.label :tipo %>
-   <%= f.collection_select :produto_tipo_id, ProdutoTipo.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
+   <%= f.collection_select :produto_tipo_id, ProdutoTipo.all, :id, :nome, {:prompt => "Selecione"} %>
   <span class="validate">Selecione um item</span>
   
   </p>

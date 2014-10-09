@@ -985,8 +985,13 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', end
 
   .ped {
   margin-right: 30px;
-  width: 240px;
-    
+  width: 240px;    
+}
+
+  .obs {
+  margin-top:  20px;
+  margin-right: 30px;
+  width: 830px;    
 }
 
 .bot {
