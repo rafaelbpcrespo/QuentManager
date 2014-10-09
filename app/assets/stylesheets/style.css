@@ -107,11 +107,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
 #logo {
   position: absolute;
   background: url("../images/siquitutes_logo.png") no-repeat;
-  background-size: 75%;
+  background-size: 97%;
   height:160px;
   width:470px;
   margin-left: 10px;
-  margin-top: -25px;
+  margin-top: 25px;
   z-index: 2;
   }
 
