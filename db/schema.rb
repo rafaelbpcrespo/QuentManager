@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925221549) do
+ActiveRecord::Schema.define(version: 20141009010536) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20140925221549) do
   end
 
   create_table "pedidos", force: true do |t|
-    t.text     "descricao"
+    t.text     "observacao"
     t.float    "valor"
     t.integer  "cliente_id"
     t.datetime "created_at"

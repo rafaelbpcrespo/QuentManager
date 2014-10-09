@@ -29,7 +29,7 @@ class Pedido < ActiveRecord::Base
   after_save :atualizar_conta
 
   LIMITE_ACOMPANHAMENTOS = 3
-  LIMITE_GUARNICOES = 2
+  LIMITE_GUARNICOES = 1
   LIMITE_PROTEINAS = 1
   LIMITE_SALADAS = 1
   LIMITE_BEBIDAS = 0

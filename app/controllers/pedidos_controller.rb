@@ -536,6 +536,6 @@ class PedidosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
       #debugger
-      params.require(:pedido).permit(:proteinas, :bebidas, :sobremesas, :acompanhamentos, :guarnicoes, :saladas,:valor, :id, :cliente_id, :situacao, :conta)
+      params.require(:pedido).permit(:proteinas, :observacao, :bebidas, :sobremesas, :acompanhamentos, :guarnicoes, :saladas,:valor, :id, :cliente_id, :situacao, :conta)
     end
 end
