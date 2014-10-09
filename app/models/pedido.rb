@@ -34,8 +34,8 @@ class Pedido < ActiveRecord::Base
   LIMITE_SALADAS = 1
   LIMITE_BEBIDAS = 0
   LIMITE_SOBREMESAS = 0
-  HORARIO_LIMITE_MAX = 22
-  HORARIO_LIMITE_MIN = 6
+  HORARIO_LIMITE_MAX = 24
+  HORARIO_LIMITE_MIN = 0
 
   def self.vendidos_hoje
     valor_total = 0
