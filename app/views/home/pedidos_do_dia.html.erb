@@ -32,8 +32,8 @@
       <% pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
       <dd> <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %></dd>
       <% end %>
-      <dt><strong>Descrição:</strong></dt>
-      <dd><%= pedido.descricao %></dd>
+      <dt><strong>Observação:</strong></dt>
+      <dd><%= pedido.observacao %></dd>
       <dt><strong>Valor:</strong></dt>
       <dd><font size="5pt">R$ <%= pedido.valor %></font></dd>
       <dt><strong>Observações:</strong></dt>
