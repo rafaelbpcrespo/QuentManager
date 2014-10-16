@@ -27,4 +27,19 @@ class HomeController < ApplicationController
     @pedidos_confirmados_do_dia = Pedido.confirmados_do_dia
     @pedidos_cancelados_do_dia = Pedido.cancelados_do_dia
   end
+
+  def pedidos_empresa
+    @pedidos = Pedido.confirmados_do_dia.search("",params[:empresa])
+      if !params[:empresa].blank?
+        @nome_da_empresa = Empresa.find(params[:empresa]).nome
+      else
+        @nome_da_empresa = "Todas as Empresas"
+      end    
+    #@pedidos = Pedido.confirmados_do_dia    
+  end
+
+  def search
+    @pedidos = Pedidos.search params[:empresa]
+  end
+
 end

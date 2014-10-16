@@ -1,8 +1,19 @@
+<%= form_tag(home_pedidos_empresa_path, :method => "get", :class => "validate", id: "search-formulario") do %>
+   <td>
+      <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas as Empresas", :class => "form-control input-search" %><br>
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
+           of using a Rails form helper -->
+   <%= submit_tag "Buscar", :name => nil, :class => 'button gray-voltar' %></td>
+
+    <br><br><br><br>
+  <% end %>
+
   <% if @pedidos.empty? %>
 
     Não existem pedidos confirmados para o dia de hoje.
 
   <% else %>
+    <h2> Pedidos - <%= @nome_da_empresa %></h2>
     <% @pedidos.each do |pedido| %>
     <div class="relatorio_pedidos">
     <dl class="dl-horizontal">
