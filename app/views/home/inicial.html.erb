@@ -7,7 +7,7 @@
       <p>Clientes Cadastrados hoje: <%= Cliente.where(created_at: Time.now.beginning_of_day).count %></p>
   </fieldset>
 
-
+<% if current_usuario.admin? %>
 <fieldset class='form-princ'>
     <legend class='legend1'>Vendas<span class="venda"></span></legend>
       <h3> Informações de Vendas</h3>
@@ -21,7 +21,7 @@
       <h3> Informações de Vendas</h3>
       <p>Valor vendido hoje: R$<%= exibir_decimal(Pedido.vendidos_hoje) %></p>
   </fieldset>
-
+<% end %>
 <fieldset class='form-princ'>
     <legend class='legend1'>Estoque<span class="estoque"></span></legend>
       <h3> Informações de Estoque </h3>
