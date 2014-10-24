@@ -38,6 +38,7 @@ class PedidosController < ApplicationController
       if @pedido.confirmar! == 0
         flash[:alert] = "Você não pode confirmar este pedido pois existem itens indisponíveis no estoque."
       else
+        PedidoMailer.confirmar_pedido(@pedido.cliente.usuario,@pedido).deliver
         flash[:notice] = "Pedido confimado com sucesso."
       end
     end

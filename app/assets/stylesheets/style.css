@@ -1200,5 +1200,6 @@ li span{
 #lineorange {display:none;}
 #navtop {display:none;}
 #faixa {display:none;}
+.busca_empresas { display:none;}
 .relatorio_pedidos {padding-bottom: 750px;}
 }

@@ -98,8 +98,9 @@
                        <span ><a class="botao" href="#">Relatórios</a></span>
                         <ol class="dropdown">                                          
                           <li class="dropdown"><a><%= link_to "Estoque", "/home/relatorio_produtos", :class => 'botao2'  %></a></li>
-                          <li class="dropdown"><a><%= link_to "Impressão de Pedidos", "/home/pedidos_do_dia", :class => 'botao2'  %></a></li>
+                          <li class="dropdown"><a><%= link_to "Impressão de Pedidos do dia", "/home/pedidos_do_dia", :class => 'botao2'  %></a></li>
                           <li class="dropdown"><a><%= link_to "Pedidos do dia X Empresa", "/pedidos", :class => 'botao2'  %></a></li>
+                          <li class="dropdown"><a><%= link_to "Impressao Pedidos X Empresa", "/home/pedidos_empresa", :class => 'botao2'  %></a></li>
                         </ol>
                      </li>
                      <% else %>
