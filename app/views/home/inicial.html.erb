@@ -1,4 +1,4 @@
-<% if current_usuario.admin? %>
+<% if current_usuario.admin? || current_usuario.gerente? %>
   <fieldset class='form-princ'>
     <legend class='legend1'>Clientes <span class="usuario"></span></legend>
       <h3> Informações de Clientes</h3>
