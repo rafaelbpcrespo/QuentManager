@@ -6,8 +6,10 @@
 
   <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
   <%= @produto.nome %><br/>
+  <% if @produto.tipo? %>
   <strong><%= model_class.human_attribute_name(:tipo) %>:</strong>
   <%= @produto.produto_tipo.nome %><br/>
+  <% end %>
   <strong><%= model_class.human_attribute_name(:categoria) %>:</strong>
   <%= @produto.produto_categoria.nome %><br/>
   <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
