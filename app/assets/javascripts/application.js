@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require bootstrap
 //= require jquery.min
 //= require jquery.validate
 //= require jquery.maskedinput
@@ -27,7 +28,7 @@ jQuery(function($){
   $("#empresa_telefone").mask("(99)9999-9999");
 
   $(".alert-success").fadeOut(3000);
-  $(".alert-error").fadeOut(3000);
+  $(".alert-danger").fadeOut(3000);
 });
 
 

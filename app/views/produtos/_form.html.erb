@@ -1,43 +1,72 @@
-<%= form_for @produto, :html => { :class => 'validate' } do |f| %>
+<%= form_for @produto, :html => { :class => 'form-horizontal validate' } do |f| %>
 
   <% @produto.errors.full_messages.each do |msg| %>
     <li><%= msg %></li><br/>
   <% end %>
 
-<table>
-  <td> 
-    <p>
-    <%= f.label :nome %>
-    <%= f.text_field :nome, placeholder: "Campo obrigatório", :class => 'required' %>
-    <span class="validate">Campo requerido</span>
-  </p>
-  <p>
-   <%= f.label :categoria %>
-   <%= f.collection_select :produto_categoria_id, ProdutoCategoria.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
-  <span class="validate">Selecione um item</span>
-  
-  </p>
-  <p>
-   <%= f.label :tipo %>
-   <%= f.collection_select :produto_tipo_id, ProdutoTipo.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
-  <span class="validate">Selecione um item</span>
-  
-  </p>
-  <p>
-    <%= f.label :quantidade %>
-    <%= f.text_field :quantidade, :class => 'required numeric' %>
-    <span class="validate">Campo requerido</span>
-   </p>
-  <p>
-  <p>
-    <%= f.label :limite_minimo %>
-    <%= f.text_field :limite_minimo, :class => 'required numeric' %>
-    <span class="validate">Campo requerido</span>
-</p><br>
-<p>
-    <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
-    <%= link_to "Cancelar", produtos_path, :class => 'button gray-voltar' %>
-</p>
-</td>
-  </table>
+<div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Produto</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Nome</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= f.text_field :nome, :class => 'form-control required' %>                    
+                    <span class="validate">Nome</span>
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Categoria</label>
+                  </div>
+                  <div class="col-sm-5">
+                    <%= f.collection_select :produto_categoria_id, ProdutoCategoria.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'form-control required' } %>
+                    <span class="validate">Selecione um item</span>
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Tipo</label>
+                  </div>
+                  <div class="col-sm-5">
+                    <%= f.collection_select :produto_tipo_id, ProdutoTipo.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'form-control required' } %>
+                    <span class="validate">Selecione um item</span>
+                  </div>
+                </div>                 
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <label class="control-label">Quantidade</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <%= f.text_field :quantidade, :class => 'form-control required numeric' %>
+                    <span class="validate">Quantidade</span>
+                  </div>
+                </div> 
+                <div class="form-group">
+                    <div class="col-sm-3">
+                      <label class="control-label">Limite Mínimo</label>
+                    </div>
+                    <div class="col-sm-9">
+                      <%= f.text_field :limite_minimo, :class => 'form-control required numeric' %>
+                      <span class="validate">Limite Mínimo</span>
+                    </div>
+                  </div>                 
+                </div>
+          </div>
+        </div>
+  </div>
+  <br>
+  <div class="row">
+        <div class="col-md-6 text-right">          
+          <%= f.submit nil, :class => 'btn btn-success' %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to "Cancelar", produtos_path, :class => 'btn btn-default' %>
+        </div>
+</div>
 <% end %>

@@ -1,11 +1,12 @@
+<h2>Acompanhamentos</h2> <br>
 <%- model_class = Acompanhamento -%>
-<div class="page-header">
-  <h1 class='titulo'>
-    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
-    <%= link_to 'Cadastrar Acompanhamento', new_acompanhamento_path, :class=>"button blue-cadastrar-top" %>
-  </h1>
-        
+
+<div class="row">
+        <div class="col-md-6 "> 
+        <%= link_to "Nova Acompanhamento", new_acompanhamento_path, :class => 'btn btn-success' %>                  
+        </div>        
 </div>
+<br>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -18,26 +19,66 @@
   </thead>
   <tbody>
       <% @acompanhamentos.each do |acompanhamento| %>
+        <% if acompanhamento.disponibilidade? %>
       <tr>
         <td><%= acompanhamento.nome %></td>
         <td><%= acompanhamento.quantidade %></td>
         <td><%= acompanhamento.valor %></td>
         <td><% if acompanhamento.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
         <td>
-          <%= link_to edit_acompanhamento_path(acompanhamento), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
-                      <span class="editar"></span>
+          <%= link_to edit_acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                      <span class="glyphicon glyphicon-pencil"></span>
                       <% end %>
-          <%= link_to acompanhamento_path(acompanhamento), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
-                      <span class="listar"></span>          
+          <%= link_to acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                      <span class="glyphicon glyphicon-list-alt"></span>     
           <% end %>
-          <%= link_to desativar_acompanhamento_path(acompanhamento), html_options = { :class => 'button red', :title => "Desativar"} do %>
-                      <span class="remover"></span>          
+          <% if acompanhamento.disponibilidade? %>
+            <%= link_to desativar_acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-danger btn-sm', :title => "Desativar"} do %>
+              <span class="glyphicon glyphicon-remove"></span>   
+            <% end %>
+          <% else %>
+            <%= link_to edit_acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-success btn-sm', :title => "Ativar"} do %>
+              <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
           <% end %>
         </td>
       </tr>
+
+    <% else %>
+    <tr class="list-group-font-danger">
+        <td><%= acompanhamento.nome %></td>
+        <td><%= acompanhamento.quantidade %></td>
+        <td><%= acompanhamento.valor %></td>
+        <td><% if acompanhamento.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+        <td>
+          <%= link_to edit_acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                      <span class="glyphicon glyphicon-pencil"></span>
+                      <% end %>
+          <%= link_to acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                      <span class="glyphicon glyphicon-list-alt"></span>     
+          <% end %>
+          <% if acompanhamento.disponibilidade? %>
+            <%= link_to desativar_acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-danger btn-sm', :title => "Desativar"} do %>
+              <span class="glyphicon glyphicon-remove"></span>   
+            <% end %>
+          <% else %>
+            <%= link_to edit_acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-success btn-sm', :title => "Ativar"} do %>
+              <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 <%= will_paginate @acompanhamentos, renderer: BootstrapPagination::Rails %>
-
-<%= link_to 'Cadastrar Acompanhamento', new_acompanhamento_path, :class => 'button blue-cadastrar-bottom' %>
+<br>
+<div class="row">
+        <div class="col-md-6 text-right "> 
+        <%= link_to "Novo Acompanhamento", new_acompanhamento_path, :class => 'btn btn-success' %>                  
+        </div>        
+         <div class="col-md-6">
+          <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
+        </div>
+</div>

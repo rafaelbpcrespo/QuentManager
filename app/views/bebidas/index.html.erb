@@ -1,10 +1,11 @@
+<h2>Bebidas</h2> <br>
 <%- model_class = Bebida -%>
-<div class="page-header">
-  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
-  <%= link_to "Nova Bebida",
-            new_bebida_path,
-            :class => 'button blue-cadastrar-top' %></h1>
+<div class="row">
+        <div class="col-md-6 "> 
+        <%= link_to "Nova Bebida", new_bebida_path, :class => 'btn btn-success' %>                  
+        </div>        
 </div>
+<br>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -17,27 +18,65 @@
   </thead>
   <tbody>
     <% @bebidas.each do |bebida| %>
-      <tr>
-        <td><%= bebida.nome %></td>
-        <td><%= bebida.quantidade %></td>
-        <td>R$<%= exibir_decimal(bebida.valor) %></td>
-        <td><% if bebida.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
-        <td>
-          <%= link_to edit_bebida_path(bebida), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
-                      <span class="editar"></span>
-                      <% end %>
-          <%= link_to bebida_path(bebida), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
-                      <span class="listar"></span>          
-          <% end %>
-          <%= link_to desativar_bebida_path(bebida), html_options = { :class => 'button red', :title => "Desativar"} do %>
-                      <span class="remover"></span>          
-          <% end %>
-        </td>
-      </tr>
+      <% if bebida.disponibilidade? %>
+        <tr>
+          <td><%= bebida.nome %></td>
+          <td><%= bebida.quantidade %></td>
+          <td>R$<%= exibir_decimal(bebida.valor) %></td>
+          <td><% if bebida.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+          <td>
+            <%= link_to edit_bebida_path(bebida), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <%= link_to bebida_path(bebida), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                    <span class="glyphicon glyphicon-list-alt"></span>
+            <% end %>
+            <% if bebida.disponibilidade? %>
+              <%= link_to desativar_bebida_path(bebida), html_options = { :class => 'btn btn-danger btn-sm', :title => "Desativar"} do %>
+                      <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            <% else %>
+              <%= link_to edit_bebida_path(bebida), html_options = { :class => 'btn btn-success btn-sm', :title => "Ativar"} do %>
+                <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% else %>
+        <tr class="list-group-font-danger">
+          <td><%= bebida.nome %></td>
+          <td><%= bebida.quantidade %></td>
+          <td>R$<%= exibir_decimal(bebida.valor) %></td>
+          <td><% if bebida.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+          <td>
+            <%= link_to edit_bebida_path(bebida), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <%= link_to bebida_path(bebida), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                    <span class="glyphicon glyphicon-list-alt"></span>
+            <% end %>
+            <% if bebida.disponibilidade? %>
+              <%= link_to desativar_bebida_path(bebida), html_options = { :class => 'btn btn-danger btn-sm', :title => "Desativar"} do %>
+                      <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            <% else %>
+              <%= link_to edit_bebida_path(bebida), html_options = { :class => 'btn btn-success btn-sm', :title => "Ativar"} do %>
+                <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+<br>
 
-<%= link_to "Nova Bebida",
-            new_bebida_path,
-            :class => 'button blue-cadastrar-bottom' %>
+<div class="row">
+        <div class="col-md-6 text-right "> 
+        <%= link_to "Nova Bebida", new_bebida_path, :class => 'btn btn-success' %>                  
+        </div>        
+         <div class="col-md-6">
+          <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
+        </div>
+</div>

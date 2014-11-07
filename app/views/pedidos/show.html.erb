@@ -1,50 +1,91 @@
 <%- model_class = Pedido -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h2 class="text-center"><%=t '.title', :default => model_class.model_name.human.titleize %></h2>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:cliente_id) %>:</strong></dt>
-  <dd><font size="5pt"><%= @pedido.cliente.nome %> - <%= @pedido.cliente.empresa.nome %> - <%= @pedido.cliente.setor %></font></dd>
-  <dt><strong>Acompanhamentos</strong></dt>
-  <% @pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
-  <dd><%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %></dd>
-  <% end %>
-  <dt><strong>Proteinas</strong></dt>
-  <% @pedido.pedidos_proteinas.each do |pedido_proteina| %>
-  <dd> <%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %></dd>
-  <% end %>
-  <dt><strong>Guarnições</strong></dt>
-  <% @pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
-  <dd> <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %></dd>
-  <% end %>
-  <dt><strong>Saladas</strong></dt>
-  <% @pedido.pedidos_saladas.each do |pedido_salada| %>
-  <dd> <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %></dd>
-  <% end %>
-  <dt><strong>Bebidas</strong></dt>
-  <% @pedido.pedidos_bebidas.each do |pedido_bebida| %>
-  <dd> <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %></dd>
-  <% end %>
-  <dt><strong>Sobremesas</strong></dt>
-  <% @pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
-  <dd> <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %></dd>
-  <% end %>
-  <dt><strong><%= model_class.human_attribute_name(:observacao) %>:</strong></dt>
-  <dd><%= @pedido.observacao %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:valor) %>:</strong></dt>
-  <dd><font size="5pt">R$ <%= @pedido.valor %></font></dd>
-  <dt><strong><%= model_class.human_attribute_name(:observacoes) %>:</strong></dt>
-  <dd><%= @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamentos extra</dd>
-  <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteínas extra</dd>
-  <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnições extra</dd>
-  <dd><%= @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> saladas extra</dd>
-  <dd><%= @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebidas extra</dd>
-  <dd><%= @pedido.qtd_extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> sobremesas extra</dd>
-</dl>
-
-<div class="form-actions">
-  <%= link_to "Corrigir Pedido", edit_pedido_path(@pedido), html_options = { :class => 'button blue-cadastrar-top', :title => "Corrigir Pedido"} %>
-  <%= link_to "Cancelar Pedido", cancelar_pedido_path(@pedido), html_options = {:class => "button purple", :title => "Cancelar Pedido", :id => "cancelar_#{@pedido.id}"} %>
-  <%= link_to "Confirmar Pedido", confirmar_pedido_path(@pedido), html_options = {:class => "button green2", :title => "Confirmar Pedido", :id => "confirmar_#{@pedido.id}"} %>
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success size-xl text-center"><strong>Cliente:&nbsp;<%= @pedido.cliente.nome %> - <%= @pedido.cliente.empresa.nome %> - <%= @pedido.cliente.setor %></strong> 
+        </li>
+        <li class="list-group-item">          
+            <strong>Acompanhamentos:&nbsp;</strong>
+            <% @pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
+            <dd><%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %></dd>
+            <% end %>
+        </li>
+        <li class="list-group-item"><strong>Proteínas:&nbsp;</strong> 
+          <% @pedido.pedidos_proteinas.each do |pedido_proteina| %>
+          <dd><%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %></dd>
+          <% end %>
+        </li>
+        <li class="list-group-item"><strong>Guarnições:&nbsp;</strong> 
+          <% @pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
+          <dd> <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %></dd>
+          <% end %>
+        </li>
+        <li class="list-group-item"><strong>Saladas:&nbsp;</strong> 
+          <% @pedido.pedidos_saladas.each do |pedido_salada| %>
+          <dd> <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %></dd>
+          <% end %>
+        </li> 
+        <li class="list-group-item"><strong>Bebidas:&nbsp;</strong> 
+          <% @pedido.pedidos_bebidas.each do |pedido_bebida| %>
+          <dd> <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %></dd>
+          <% end %>
+        </li> 
+        <li class="list-group-item"><strong>Sobremesas:&nbsp;</strong> 
+          <% @pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
+          <dd> <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %></dd>
+          <% end %>
+        </li> 
+        <li class="list-group-item"><strong>Observação:&nbsp;</strong> 
+          <%= @pedido.observacao %>
+        </li>
+        <li class="list-group-item list-group-item-warning size-xl text-center"><strong><%= model_class.human_attribute_name(:valor) %>:&nbsp;</strong> 
+          R$ <%= @pedido.valor %>
+        </li>
+        <li class="list-group-item"><strong>Observações:&nbsp;</strong> 
+          <% if @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) != 0 %>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamentos extra</dd>
+          <% end %>
+          <% if @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) != 0 %>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteínas extra</dd>
+          <% end %>
+          <% if @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) != 0 %>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnições extra</dd>
+          <% end %>
+          <% if @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) != 0 %>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> saladas extra</dd>
+          <% end %>
+          <% if @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) != 0 %>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebidas extra</dd>
+          <% end %>
+          <% if @pedido.qtd_extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) != 0 %>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> sobremesas extra</dd>
+          <% end %>
+        </li>                              
+      </ul>
+    </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12 text-center">
+        <div class="btn-group">          
+          <%= link_to confirmar_pedido_path(@pedido), :class => 'btn btn-success', :title => "Confirmar" do %>
+          <span class="glyphicon glyphicon-ok"></span>
+          <% end %>
+        </div>
+        <div class="btn-group">          
+          <%= link_to edit_pedido_path(@pedido), :class => 'btn btn-warning', :title => "Editar" do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+        </div>
+        <div class="btn-group">
+          <%= link_to cancelar_pedido_path(@pedido), :class => 'btn btn-danger', :title => "Cancelar" do %>
+          <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </div> 
+    </div>       
 </div>

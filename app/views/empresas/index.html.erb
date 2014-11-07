@@ -1,10 +1,9 @@
+<h2>Empresas</h2> <br>
 <%- model_class = Empresa -%>
-<div class="page-header">
-  <h1 class='titulo'>
-    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
-    <%= link_to 'Cadastrar Empresa', new_empresa_path, :class=>"button blue-cadastrar-top" %>
-  </h1>
-        
+<div class="row">
+        <div class="col-md-6 "> 
+        <%= link_to "Nova Empresa", new_empresa_path, :class => 'btn btn-success' %>                  
+        </div>        
 </div>
 <table class="table table-striped">
   <thead>
@@ -19,34 +18,67 @@
   </thead>
   <tbody>
     <% @empresas.each do |empresa| %>
-
-      <tr>
-        <td><%= empresa.nome %></td>
-        <td><%= empresa.telefone %></td>
-        <td><%= empresa.endereco %></td>
-        <td><%= empresa.bloqueada? ? "Sim" : "Não" %></td>
-        <td width="146px">
-          <%= link_to edit_empresa_path(empresa), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
-                      <span class="editar"></span>
-                      <% end %>
-          <%= link_to empresa_path(empresa), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
-                      <span class="listar"></span>          
-          <% end %>
-          <% if empresa.bloqueada? %>
-            <%= link_to desbloquear_empresa_path(empresa), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{empresa.id}"} do %>
-                      <span class="desbloquear"></span>
+      <% if !empresa.bloqueada? %>
+        <tr>
+          <td><%= empresa.nome %></td>
+          <td><%= empresa.telefone %></td>
+          <td><%= empresa.endereco %></td>
+          <td><%= empresa.bloqueada? ? "Sim" : "Não" %></td>
+          <td width="146px">
+            <%= link_to edit_empresa_path(empresa), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                                <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <%= link_to empresa_path(empresa), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                        <span class="glyphicon glyphicon-list-alt"></span>        
             <% end %>
-          <% else %>
-            <%= link_to bloquear_empresa_path(empresa), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{empresa.id}"} do %>
-                      <span class="bloquear"></span>
+            <% if empresa.bloqueada? %>
+              <%= link_to desbloquear_empresa_path(empresa), html_options = {:class => "btn btn-success btn-sm", :title => "Desbloquear", :id => "desbloquear_#{empresa.id}"} do %>
+                         <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            <% else %>
+              <%= link_to bloquear_empresa_path(empresa), html_options = {:class => "btn btn-danger btn-sm", :title => "Bloquear", :id => "bloquear_#{empresa.id}"} do %>
+                        <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
             <% end %>
-          <% end %>
-        </td>
-
-      </tr>
+          </td>
+        </tr>      
+      <% else %>
+        <tr class="list-group-font-danger">
+          <td><%= empresa.nome %></td>
+          <td><%= empresa.telefone %></td>
+          <td><%= empresa.endereco %></td>
+          <td><%= empresa.bloqueada? ? "Sim" : "Não" %></td>
+          <td width="146px">
+            <%= link_to edit_empresa_path(empresa), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                                <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <%= link_to empresa_path(empresa), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                        <span class="glyphicon glyphicon-list-alt"></span>        
+            <% end %>
+            <% if empresa.bloqueada? %>
+              <%= link_to desbloquear_empresa_path(empresa), html_options = {:class => "btn btn-success btn-sm", :title => "Desbloquear", :id => "desbloquear_#{empresa.id}"} do %>
+                         <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            <% else %>
+              <%= link_to bloquear_empresa_path(empresa), html_options = {:class => "btn btn-danger btn-sm", :title => "Bloquear", :id => "bloquear_#{empresa.id}"} do %>
+                        <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 <%= will_paginate @empresas, renderer: BootstrapPagination::Rails %>
 
-<%= link_to 'Cadastrar Empresa', new_empresa_path, :class => 'button blue-cadastrar-bottom' %>
+<br>
+
+<div class="row">
+        <div class="col-md-6 text-right "> 
+        <%= link_to "Nova Empresa", new_empresa_path, :class => 'btn btn-success' %>                  
+        </div>        
+         <div class="col-md-6">
+          <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
+        </div>
+</div>
