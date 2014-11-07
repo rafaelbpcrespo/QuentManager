@@ -59,6 +59,6 @@ end
 end
 
 ["Arroz Branco", "Feijão", "Farofa"].each do |nome|
-  a = Acompanhamento.new(:nome => nome, :descricao => "Descrição #{nome}", :disponibilidade => true)
+  a = Acompanhamento.new(:nome => nome, :descricao => "Descrição #{nome}", :disponibilidade => true, :quantidade => 20, :valor => "1,50")
   a.save!
 end
