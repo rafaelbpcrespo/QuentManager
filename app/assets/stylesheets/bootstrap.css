@@ -904,7 +904,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: #f1f1f1;
 }
 input,
 button,
@@ -1393,6 +1393,14 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
+
+.white{
+  background-color: white;
+  -webkit-box-shadow:   0px 12px 15px 0px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow:      0px 12px 15px 0px rgba(0, 0, 0, 0.35);
+  box-shadow:           0px 12px 15px 0px rgba(0, 0, 0, 0.35);
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -3869,7 +3877,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
@@ -5063,6 +5071,11 @@ a.list-group-item-warning.active:focus {
   color: #a94442;
   background-color: #f2dede;
 }
+
+.list-group-font-danger {
+  color: #a94442;
+}
+
 a.list-group-item-danger {
   color: #a94442;
 }
@@ -5469,8 +5482,14 @@ a.list-group-item-danger.active:focus {
   border-radius: 6px;
 }
 .well-sm {
-  padding: 9px;
+  padding: 5px;
   border-radius: 3px;
+}
+
+.well-xs {
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 8pt;
 }
 .close {
   float: right;
@@ -5839,6 +5858,14 @@ button.close {
   border-right-width: 0;
   border-left-color: #fff;
 }
+
+.transbox{
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  opacity: 0.7;
+}
+
 .carousel {
   position: relative;
 }
@@ -6019,6 +6046,20 @@ button.close {
   margin: 0;
   background-color: #fff;
 }
+
+.carousel-caption2 {
+  margin-left: -15px;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+
 .carousel-caption {
   position: absolute;
   right: 15%;
@@ -6356,3 +6397,85 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+/* INICIO STYLE VALIDATE PLUGIN */
+.hide
+{
+    display:none;
+}
+
+
+.validate .invalid
+{
+  
+    border:1px solid red;
+    -moz-box-shadow: 0 0 3px red;
+    -webkit-box-shadow: 0 0 3px red;
+    box-shadow: 0 0 3px red;  
+    border-radius:4px; 
+    -moz-border-radius:4px;
+    background: url(../images/error.png) no-repeat right;
+
+}
+.validate .valid
+{
+    background: url(../images/success.png) no-repeat right;  
+}
+
+.validate span
+{
+  border:0px solid red;
+    color:red;
+    font-size: 11px;    
+  display:block;
+}
+
+/* FIM STYLE VALIDATE PLUGIN */
+#push{
+  height: 70px;
+}
+
+
+footer {
+  width: 100%;
+  position: fixed;
+  bottom:0;
+  height: 60px;
+  padding: 1.2em 0;
+  background: #404040;
+  color: #fff;
+  font-weight: normal;
+  font-size: 0.9em;
+  clear: both;
+  margin-left: 0;
+  margin-right: 0;
+}
+footer:before,
+footer:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+footer:after {
+  clear: both;
+}
+footer:before,
+footer:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+footer:after {
+  clear: both;
+}
+footer div:nth-child(1) {
+  position: relative;
+  float: left;
+  width: 66.66666667%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
