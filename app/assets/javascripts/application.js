@@ -12,7 +12,6 @@
 //
 //= require bootstrap
 //= require jquery-2.1.1
-//= require jquery.min
 //= require jquery.validate
 //= require jquery.maskedinput
 //= require jquery_ujs
