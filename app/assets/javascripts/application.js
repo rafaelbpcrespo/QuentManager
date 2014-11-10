@@ -12,9 +12,8 @@
 //
 //= require bootstrap
 //= require jquery.min
-//= require jquery.validate
-//= require jquery.maskedinput
 //= require jquery_ujs
+//= require jquery.validate
 //= require_tree .
 
 jQuery(function($){
