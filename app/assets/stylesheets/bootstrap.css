@@ -6479,3 +6479,11 @@ footer div:nth-child(1) {
   padding-right: 15px;
   text-align: center;
 }
+
+#wrap {
+  overflow: hidden;
+  min-height: 100%;
+  height: auto !important;
+  margin-bottom: -60px;
+  padding-bottom: 60px;
+}
