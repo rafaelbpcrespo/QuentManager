@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-2.1.1
 //= require bootstrap
+//= require jquery.min
 //= require jquery.validate
 //= require jquery.maskedinput
 //= require jquery_ujs
