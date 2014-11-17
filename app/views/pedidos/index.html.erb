@@ -2,18 +2,17 @@
 <div class="page-header">
 
   <% if !current_usuario.admin? %>
-  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h1>  
+  <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h2>  
   <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>
     <%# if Time.now.hour > 6 && Time.now.hour < 10 && !current_usuario.cliente.bloqueado? %>
     <%= link_to "Novo Pedido",
               new_pedido_path,
-              :class => 'button blue-cadastrar-top' %></h1>
+              :class => 'btn btn-succes' %>
               <% else %> 
-              </h1>
-              <h2><font color="red">Horário para realização de pedidos finalizado</font></h2>
+              <h3><font color="red">Horário para realização de pedidos finalizado</font></h3>
               <% end %>
   <% else %> 
-    <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de hoje da <%= @nome_da_empresa %><br/></h1>
+    <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de hoje da <%= @nome_da_empresa %><br/></h2>
             <h3>Quantidade de pedidos de hoje para <%= @nome_da_empresa %>: <%= @quantidade_de_pedidos %></h3>
 <% end %>             
 </div>
