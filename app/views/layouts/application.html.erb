@@ -186,11 +186,15 @@
                 </li>
               <% else %>
                 <li>
-                    <a><span class="glyphicon glyphicon-usd"></span><%= link_to "Conta", conta_cliente_path(current_usuario.cliente), html_options = {:title => "Conta"} %></a>
+                    <%= link_to "Conta", conta_cliente_path(current_usuario.cliente) do %>
+                      <span class="glyphicon glyphicon-usd"></span>&nbsp;Conta
+                    <% end %>
                 </li>
                 <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>                
                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-cutlery"></span><%= link_to "Fazer Pedido", new_pedido_path(:cliente_id => current_usuario.cliente.id) %></a>
+                    <%= link_to "Fazer Pedido", new_pedido_path(:cliente_id => current_usuario.cliente.id) do %>
+                      <span class="glyphicon glyphicon-cutlery"></span>
+                    <% end %>
                 </li>
                 <% end %>
                 <li>
