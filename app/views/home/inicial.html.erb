@@ -1,31 +1,51 @@
 <% if current_usuario.admin? %>
-  <fieldset class='form-princ'>
-    <legend class='legend1'>Clientes <span class="usuario"></span></legend>
-      <h3> Informações de Clientes</h3>
-      <p>Clientes Cadastrados: <%= Cliente.all.count %></p>
-      <p>Clientes Bloqueados: <%= Cliente.where(bloqueado: true).count %></p>
-      <p>Clientes Cadastrados hoje: <%= Cliente.where(created_at: Time.now.beginning_of_day).count %></p>
-  </fieldset>
 
-<% if current_usuario.admin? %>
-<fieldset class='form-princ'>
-    <legend class='legend1'>Vendas<span class="venda"></span></legend>
-      <h3> Informações de Vendas</h3>
-      <p>Valor vendido hoje: R$ <%= exibir_decimal(Pedido.vendidos_hoje) %></p>
-      <p>Vendas do mês: R$<%= exibir_decimal(Pedido.vendas_do_mes) %></p>    
-  </fieldset>
-
-
-<fieldset class='form-princ'>
-    <legend class='legend1'>Pedidos<span class="pedido"></span></legend>
-      <h3> Informações de Vendas</h3>
-      <p>Valor vendido hoje: R$<%= exibir_decimal(Pedido.vendidos_hoje) %></p>
-  </fieldset>
-<% end %>
-<fieldset class='form-princ'>
-    <legend class='legend1'>Estoque<span class="estoque"></span></legend>
-      <h3> Informações de Estoque </h3>
-      <table class='tabela'>
+<br><br>
+<div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Informações dos Clientes</h3>
+            </div>
+            <div class="panel-body">
+              <p>Clientes Cadastrados: <%= Cliente.all.count %></p>
+              <p>Clientes Bloqueados: <%= Cliente.where(bloqueado: true).count %></p>
+              <p>Clientes Cadastrados hoje: <%= Cliente.where(created_at: Time.now.beginning_of_day).count %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Informações de Vendas</h3>
+            </div>
+            <div class="panel-body">
+              <p>Valor vendido hoje: R$ <%= exibir_decimal(Pedido.vendidos_hoje) %></p>
+              <p>Vendas do mês: R$<%= exibir_decimal(Pedido.vendas_do_mes) %></p> 
+              <p>Quantidade de vendas do mês: <%= Pedido.confirmados_do_mes.count %></p> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Informações dos Pedidos de Hoje</h3>
+            </div>
+            <div class="panel-body">
+              <p>Valor vendido hoje: R$<%= exibir_decimal(Pedido.vendidos_hoje) %></p>
+              <p>Quantidade de pedidos: <%= Pedido.de_hoje %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Informações do Estoque</h3>
+            </div>
+            <div class="panel-body">
+              <table class='tabela'>
         <thead>
           <tr>
             <th>Acabando</th>
@@ -53,52 +73,113 @@
           <% end %>
         </tbody>
       </table>
-      <%= link_to 'Detalhes', home_relatorio_produtos_path %>      
-  </fieldset>
-
-
+      <%= link_to 'Detalhes', home_relatorio_produtos_path %> 
+            </div>
+          </div>
+        </div>
+  </div>
   <% else %>
-   <div class='cardapio_h1'><h1>Cardápio de Hoje</h1></div>
-          <fieldset class='cardapio'>
-            <legend class='legend1'>Proteínas<span class="usuario"></span></legend>
-             
-              <% Proteina.all.where(:disponibilidade => true).each do |proteina| %>
-                <%= proteina.nome %> /
-              <% end %>
-          </fieldset>
-         
-           <fieldset class='cardapio'>
-            <legend class='legend1'>Guarnições<span class="usuario"></span></legend>
-              <% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
-                <%= guarnicao.nome %> /
-              <% end %>            
-            </fieldset>
-           
-             <fieldset class='cardapio'>
-             <legend class='legend1'>Acompanhamentos<span class="usuario"></span></legend>
-              <% Acompanhamento.all.where(:disponibilidade => true).each do |acompanhamento| %>
-                <%= acompanhamento.nome %> /
-              <% end %>              
-            </fieldset>
-
-             <fieldset class='cardapio'>
-             <legend class='legend1'>Saladas<span class="usuario"></span></legend>
-              <% Salada.all.where(:disponibilidade => true).each do |salada| %>
-                <%= salada.nome %> /
-              <% end %>              
-            </fieldset>
-
-             <fieldset class='cardapio'>
-             <legend class='legend1'>Sobremesas<span class="usuario"></span></legend>
-              <% Sobremesa.all.where(:disponibilidade => true).each do |sobremesa| %>
-                <%= sobremesa.nome %> /
-              <% end %>              
-            </fieldset>
-
-<fieldset class='fieldset_conta'>
-    <legend class='legend1'>Conta<span class="venda"></span></legend>
-      <center><p>Quantidade de pedidos:  <%= current_usuario.cliente.pedidos.count %></p>
+<br>
+<center><h1>Cardápio de Hoje</h1></center><br>
+  <div class="row">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/proteina.jpg" class="img-responsive">
+            <div class="caption">
+              <h3>Proteínas</h3>
+              <p><% Proteina.all.where(:disponibilidade => true).each do |proteina| %>
+                  <% if Proteina.all.where(:disponibilidade => true).last == proteina %>
+                    <%= proteina.nome %>.
+                  <% else %>
+                    <%= proteina.nome %> ,
+                  <% end %>
+              <% end %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/carboidrato.jpg" class="img-responsive">
+            <div class="caption">
+              <h3>Acompanhamentos</h3>
+              <p><% Guarnicao.all.where(:disponibilidade => true).each do |guarnicao| %>
+                  <% if Guarnicao.all.where(:disponibilidade => true).last == guarnicao %>
+                    <%= guarnicao.nome %>.
+                  <% else %>
+                    <%= guarnicao.nome %> ,
+                  <% end %>
+              <% end %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/acompanhamento.jpg" class="img-responsive">
+            <div class="caption">
+              <h3>Guarnições</h3>
+              <p><% Acompanhamento.all.where(:disponibilidade => true).each do |acompanhamento| %>
+                  <% if Acompanhamento.all.where(:disponibilidade => true).last == acompanhamento %>
+                    <%= acompanhamento.nome %>.
+                  <% else %>
+                    <%= acompanhamento.nome %> ,
+                  <% end %>
+              <% end %>  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/salada.jpg" class="img-responsive">
+            <div class="caption">
+              <h3>Saladas</h3>
+              <p>   <% Salada.all.where(:disponibilidade => true).each do |salada| %>
+                  <% if Salada.all.where(:disponibilidade => true).last == salada %>
+                    <%= salada.nome %>.
+                  <% else %>
+                    <%= salada.nome %> ,
+                  <% end %>
+              <% end %> </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/sobremesa.jpg" class="img-responsive">
+            <div class="caption">
+              <h3>Sobremesas</h3>
+              <p><% Sobremesa.all.where(:disponibilidade => true).each do |sobremesa| %>
+                  <% if Sobremesa.all.where(:disponibilidade => true).last == sobremesa %>
+                    <%= sobremesa.nome %>.
+                  <% else %>
+                    <%= sobremesa.nome %> ,
+                  <% end %>
+              <% end %>  </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/bebidas.jpg" class="img-responsive">
+            <div class="caption">
+              <h3>Bebidas</h3>
+              <p><% Bebida.all.where(:disponibilidade => true).each do |bebida| %>
+                  <% if Bebida.all.where(:disponibilidade => true).last == bebida %>
+                    <%= bebida.nome %>.
+                  <% else %>
+                    <%= bebida.nome %> ,
+                  <% end %>
+              <% end %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="container white"><br><hr>
+      <center><b><h3>Conta</h3></b><p>Quantidade de pedidos:  <%= current_usuario.cliente.pedidos.count %></p>
       <p>Saldo atual: R$<%= current_usuario.cliente.conta.saldo.to_f %></p></center>
-  </fieldset>
-
+  <br><br>
+</div>
 <% end %>

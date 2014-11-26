@@ -1,87 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "QuentManager" %></title>
-    <%= csrf_meta_tags %>
+    <%#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
+  <%#= stylesheet_link_tag    "bootstrap.css", media: "all", "data-turbolinks-track" => false %>
+  <%= stylesheet_link_tag    "style.css", media: "all", "data-turbolinks-track" => false %>
+  <%#= javascript_include_tag "bootstrap.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "jquery.min.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "application.js", "data-turbolinks-track" => false %>
+  <%#= javascript_include_tag "nested_form.js", "data-turbolinks-track" => false %>
+   <%= javascript_include_tag "jquery.validate.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "jquery.cycle2.js", "data-turbolinks-track" => false %>
+  <%= csrf_meta_tags %>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
-    <![endif]-->
-
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    
-
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- Size should be 114 x 114 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-
-    <!-- For first- and second-generation iPad: -->
-    <!-- Size should be 72 x 72 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!-- Size should be 57 x 57 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
-    <%= javascript_include_tag "application" %>
+    <!-- <meta charset="utf-8"> -->
+     <link rel="shortcut icon" href="favicon.ico">
+    <meta name="description" content="Siquitutes">
+    <meta name="keywords" content="almoço, macaé, quentinha, quentinha macaé, entrega, comida, food" />
+    <meta name="author" content="R2L Solutions">
+    <title>Sua Empresa</title>
   </head>
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">QuentManager</a>
-          <div class="container nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+    
+<body>
+<div id="all">
+  <div id="header">
+      <% if usuario_signed_in? %>
+          <ul class="menu">              
+          <li class="menu">
+            <a class="menu"href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
+          <ul class="menu">
+          <li class="menu"><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
+          <li class="menu"><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
+          <li class="menu"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
+          </ul>
+          </li>
+        </ul>
+    <% else %>
+      <div class='login'>
+        <%= form_for(:usuario, :html => { :class => "validate"}, url: session_path(:usuario))  do |f| %>
+          <div class='login_fields'><%= f.text_field :email, autofocus: true, placeholder: "Email", :class => "validate" %></div>
+          <div class='login_fields'><%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "validate"%></div>
+          <%= f.submit "Entrar", :class => "login_button blue-login"%>
+          <%= link_to "Senha?", new_password_path(:usuario), html_options = { :class => 'link_button  blue-login', :title => "Esqueceu sua senha?"} %>
+        <% end %>
       </div>
-    </div>
+    <% end %>
+  </div>
+  <div id="lineorange">
+    <% if (usuario_signed_in? && !current_usuario.admin?) || !usuario_signed_in? %>
+      <div id="boxorange"> Envie-nos sua sugestão <p> contato@suaempresa.com.br </div>
+    <% end %>
+  </div>
 
-    <div class="container">
-        <div class="row">
-          <div class="span9">
+      <div id="navtop">
+          <div id="logo"> </div>
+      </div>
+      <% if (request.env['PATH_INFO'] == new_usuario_session_path) || (usuario_signed_in? && !current_usuario.admin?) %>
+      <div class='mensagem_login'>
+        <% if !notice.nil? %>
+          <div class="alert-success"><%= notice %></div>
+        <% elsif !alert.nil? %>
+          <div class="alert-error"><%= alert %></div>
+        <% end %>
+      </div>
+      <% end %>
+
+      <div id="faixa">    
+        <div id="navbaresq"> </div> 
+          <div id="navbar">
+            <ul class="dropdown">
+            <% if usuario_signed_in? %>
+               <div id="home"> <a class="botao" href="/home/inicial"> <img src="../images/home.png" width="40" height="40"></a></div>
+                    <li class="dropdown"><a class="botao" href="/home/inicial"> Home </a></li>
+                    <% else %>
+               <div id="home"> <a class="botao" href="/"> <img src="../images/home.png" width="40" height="40"></a></div>
+                    <li class="dropdown"><a class="botao" href="/"> Home </a></li>
+                    <% end %>
+                    <% if !usuario_signed_in? %>
+                     <li class="dropdown"> <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a></li>
+                     <li class="dropdown"> <a class="botao" href="/home/sobre"> Sobre </a></li>
+                    <% else %>
+                    <% if can? :manage, Proteina %>
+                     <li class="dropdown">
+                       <span ><a class="botao" href="#"> Cadastros</a></span>
+                        <ol class="dropdown">                                          
+                        <li class="dropdown"><a><%= link_to "Proteínas", "/proteinas", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Guarnições", "/guarnicoes", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Saladas", "/saladas", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Bebidas", "/bebidas", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Sobremesas", "/sobremesas", :class => 'botao2'  %></a></li>
+                        <li class="dropdown"><a><%= link_to "Empresas", "/empresas", :class => 'botao2'  %></a></li>
+                    </ol>
+                      </li>
+                       <li class="dropdown"><a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a></li> 
+                       <li class="dropdown"><a><%= link_to "Estoque", "/produtos", :class => 'botao'  %></a></li>
+                     <li class="dropdown">
+                       <span ><a class="botao" href="#">Relatórios</a></span>
+                        <ol class="dropdown">                                          
+                          <li class="dropdown"><a><%= link_to "Estoque", "/home/relatorio_produtos", :class => 'botao2'  %></a></li>
+                          <li class="dropdown"><a><%= link_to "Impressão de Pedidos", "/home/pedidos_do_dia", :class => 'botao2'  %></a></li>
+                          <li class="dropdown"><a><%= link_to "Pedidos do dia X Empresa", "/pedidos", :class => 'botao2'  %></a></li>
+                        </ol>
+                     </li>
+                     <% else %>
+                       <li class="dropdown"><a><%= link_to "Conta", conta_cliente_path(current_usuario.cliente), html_options = { :class => 'botao', :title => "Conta"} %></a></li>
+                       <li class="dropdown"><a><%= link_to "Meus Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
+                      <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>
+                       <%# if DateTime.now > 6 && Time.now.hour < 22 && !current_usuario.cliente.bloqueado? %>                       
+                        <li class="dropdown"><a><%= link_to "Fazer Pedido", new_pedido_path(:cliente_id => current_usuario.cliente.id), :class => 'botao'  %></a></li> 
+                       <% end %>
+                     
+                     <% end %>
+                    <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
+              <% end %>
+            </ul>  
+          </div>
+        <div id="navbardir"></div> 
+      </div>
+      <div id="colcentral">
+                <% if !notice.nil? %>
+            <div class="alert-success"><%= notice %></div>
+          <% elsif !alert.nil? %>
+            <div class="alert-error"><%= alert %></div>
+          <% end %>
+        <% if usuario_signed_in? && (request.env['PATH_INFO'] != root_path && request.env['PATH_INFO'] != home_index_path) %>
+          <div id="coldados">
             <%= yield %>
           </div>
-          <div class="span3">
-            <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
-              <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
-              </ul>
-            </div><!--/.well -->
-          </div><!--/span-->
-        </div><!--/row-->
+        <% else %>
+          <% if request.env['PATH_INFO'] == new_usuario_session_path || request.env['PATH_INFO'] == root_path %>
+            <div id="banner"> 
+              <div class="cycle-slideshow"
+                data-cycle-fx='tileSlide' 
+                data-cycle-speed="2000"
+                data-cycle-delay="1500">
+                <img src="../images/slide1.jpg">
+                <img src="../images/slide2.jpg">
+                <img src="../images/slide3.jpg">
+              </div>
+            </div> 
+      <div id="legumes"></div>
+          <% end %>
+           <div id="colcad">
+            <%= yield %>
+            </div>
+            <% end %>
 
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-  </body>
+      
+      </div>
+      
+<div id="rodape">
+    <div id="lineorange"></div>
+    <div id="boxblue">Todos os Direitos Reservados <br> R2L Solutions </div>
+</div>    
+</div>
+</body>
 </html>

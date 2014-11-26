@@ -1,45 +1,54 @@
 <%- model_class = Empresa -%>
-  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h2 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h2>
 
 
-<div class="show1">
-
-<fieldset class='form-clientes'>
-  <legend class="legend1">Dados Cadastrais</legend>
-  <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
-  <%= @empresa.nome %><br/>
-  <strong><%= model_class.human_attribute_name(:telefone) %>:</strong>
-  <%= @empresa.telefone %><br/>
-  <strong>Endereço:</strong>
-  <%= @empresa.endereco %><br/>
-  <strong>Observação:</strong>
-  <%= @empresa.observacao %>
-</fieldset>
+<br>
+<div class="row">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><strong> Dados Cadastrais</strong> 
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:nome) %>:&nbsp;</strong> 
+          <%= @empresa.nome %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:telefone) %>:&nbsp;</strong>
+          <%= @empresa.telefone %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:endereco) %>:&nbsp;</strong>
+          <%= @empresa.endereco %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:observacao) %>:&nbsp;</strong>
+          <%= @empresa.observacao %>
+        </li>        
+      </ul>
+    </div>
 </div>
-<center>
-<div class="acoes">
-  <%= link_to empresas_path, :class => 'button gray' do %>
-             <span class="voltar"></span>          
+<br>
+<div class="row">
+  <div class="col-md-6 text-center">
+        <div class="btn-group">
+          <%= link_to empresas_path, :class => 'btn btn-default', :title => "Voltar" do %>
+          <span class="glyphicon glyphicon-arrow-left"></span>
           <% end %>
-
-  <%= link_to edit_empresa_path(@empresa), :class => 'button blue' do %>
-                      <span class="editar"></span>          
+        </div>
+        <div class="btn-group">          
+          <%= link_to new_empresa_path, :class => 'btn btn-success', :title => "Nova Empresa" do %>
+          <span class="glyphicon glyphicon-plus"></span>
           <% end %>
-
-          <% if can? :bloquear, Empresa %>          
-            <% if @empresa.bloqueada? %>
-              <%= link_to desbloquear_empresa_path(@empresa), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{@empresa.id}"} do %>
-                        <span class="desbloquear"></span>
-              <% end %>
-            <% else %>
-              <%= link_to bloquear_empresa_path(@empresa), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{@empresa.id}"} do %>
-                        <span class="bloquear"></span>
-              <% end %>
-            <% end %>
+        </div>
+        <div class="btn-group">          
+          <%= link_to edit_empresa_path, :class => 'btn btn-warning', :title => "Editar" do %>
+          <span class="glyphicon glyphicon-pencil"></span>
           <% end %>
-
-  <%= link_to new_empresa_path, :class=>'button green' do %>
-                <span class="adicionar"></span>          
-                <% end %>
-
-</div></center>
+        </div>
+        <div class="btn-group">
+          <%= link_to bloquear_empresa_path, :class => 'btn btn-danger', :title => "Bloquear" do %>
+          <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </div> 
+    </div>       
+</div>

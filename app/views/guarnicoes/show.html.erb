@@ -1,34 +1,56 @@
 <%- model_class = Guarnicao -%>
-<h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-
-<div class="show1">
-<fieldset class='form-clientes'>
-  <legend class="legend1">Dados Cadastrais</legend>
-  <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
-  <%= @guarnicao.nome %><br/>
-  <strong><%= model_class.human_attribute_name(:quantidade) %>:</strong>
-  <%= @guarnicao.quantidade %><br/>
-  <strong><%= model_class.human_attribute_name(:valor) %>:</strong>
-  <%= @guarnicao.valor %><br/>
-  <strong><%= model_class.human_attribute_name(:descricao) %>:</strong>
-  <%= @guarnicao.descricao %><br/>
-  <strong><%= model_class.human_attribute_name(:disponibilidade) %>:</strong>
-  <% if @guarnicao.disponibilidade? %> Ativado <% else %> Desativado <% end %>
-</fieldset>
+<h2 class='titulo'><%=t '.title', :default => model_class.model_name.human.titleize %></h2>
+<br>
+<div class="row">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><strong> Dados Cadastrais</strong> 
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:nome) %>:&nbsp;</strong> 
+          <%= @guarnicao.nome %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:quantidade) %>:&nbsp;</strong>
+          <%= @guarnicao.quantidade %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:valor) %>:&nbsp;</strong>
+          <%= @guarnicao.valor %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:descricao) %>:&nbsp;</strong>
+          <%= @guarnicao.descricao %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:disponibilidade) %>:&nbsp;</strong>
+          <% if @guarnicao.disponibilidade? %> Ativado <% else %> Desativado <% end %>
+        </li>
+      </ul>
+    </div>
 </div>
-<center>
-<div class="acoes">
-<%= link_to guarnicoes_path, :class => 'button gray' do  %>
-                      <span class="voltar"></span>          
+<br>
+<div class="row">
+  <div class="col-md-6 text-center">
+        <div class="btn-group">
+          <%= link_to guarnicoes_path, :class => 'btn btn-default', :title => "Voltar" do %>
+          <span class="glyphicon glyphicon-arrow-left"></span>
           <% end %>
-<%= link_to new_guarnicao_path, :class => 'button green', :title => "Nova Guarnição" do %>
-                    <span class="adicionar"></span> 
-         <% end %>
-  <%= link_to edit_guarnicao_path(@guarnicao), :class => 'button blue' do %>
-                      <span class="editar"></span>          
+        </div>
+        <div class="btn-group">          
+          <%= link_to new_guarnicao_path, :class => 'btn btn-success', :title => "Nova Guarnição" do %>
+          <span class="glyphicon glyphicon-plus"></span>
           <% end %>
-          <%= link_to desativar_guarnicao_path(@guarnicao), html_options = { :class => 'button red', :title => "Desativar"} do %>
-                      <span class="remover"></span>          
+        </div>
+        <div class="btn-group">          
+          <%= link_to edit_guarnicao_path, :class => 'btn btn-warning', :title => "Editar" do %>
+          <span class="glyphicon glyphicon-pencil"></span>
           <% end %>
+        </div>
+        <div class="btn-group">
+          <%= link_to desativar_guarnicao_path, :class => 'btn btn-danger', :title => "Desativar" do %>
+          <span class="glyphicon glyphicon-remove"></span>
+          <% end %>
+        </div> 
+    </div>       
 </div>
-</center>

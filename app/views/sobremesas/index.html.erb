@@ -1,10 +1,11 @@
+<h2>Sobremesas</h2> <br>
 <%- model_class = Sobremesa -%>
-<div class="page-header">
-  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
-  <%= link_to "Nova Sobremesa",
-            new_sobremesa_path,
-            :class => 'button blue-cadastrar-top' %></h1>
+<div class="row">
+        <div class="col-md-6 "> 
+        <%= link_to "Nova Sobremesa", new_sobremesa_path, :class => 'btn btn-success' %>                  
+        </div>        
 </div>
+<br>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -17,27 +18,64 @@
   </thead>
   <tbody>
     <% @sobremesas.each do |sobremesa| %>
-      <tr>
-        <td><%= sobremesa.nome %></td>
-        <td><%= sobremesa.quantidade %></td>
-        <td>R$<%= exibir_decimal(sobremesa.valor) %></td>
-        <td><% if sobremesa.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
-        <td>
-          <%= link_to edit_sobremesa_path(sobremesa), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
-                      <span class="editar"></span>
-                      <% end %>
-          <%= link_to sobremesa_path(sobremesa), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
-                      <span class="listar"></span>          
-          <% end %>
-          <%= link_to desativar_sobremesa_path(sobremesa), html_options = { :class => 'button red', :title => "Desativar"} do %>
-                      <span class="remover"></span>          
-          <% end %>
-        </td>
-      </tr>
+      <% if sobremesa.disponibilidade? %>
+        <tr>
+          <td><%= sobremesa.nome %></td>
+          <td><%= sobremesa.quantidade %></td>
+          <td>R$<%= exibir_decimal(sobremesa.valor) %></td>
+          <td><% if sobremesa.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+          <td>
+            <%= link_to edit_sobremesa_path(sobremesa), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                         <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <%= link_to sobremesa_path(sobremesa), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                        <span class="glyphicon glyphicon-list-alt"></span>
+            <% end %>
+            <% if sobremesa.disponibilidade? %>
+            <%= link_to desativar_sobremesa_path(sobremesa), html_options = { :class => 'btn btn-danger btn-sm', :title => "Desativar"} do %>
+                        <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+            <% else %>
+            <%= link_to edit_sobremesa_path(sobremesa), html_options = { :class => 'btn btn-success btn-sm', :title => "Ativar"} do %>
+              <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% else %>
+        <tr class="list-group-font-danger">
+          <td><%= sobremesa.nome %></td>
+          <td><%= sobremesa.quantidade %></td>
+          <td>R$<%= exibir_decimal(sobremesa.valor) %></td>
+          <td><% if sobremesa.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+          <td>
+            <%= link_to edit_sobremesa_path(sobremesa), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                         <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <%= link_to sobremesa_path(sobremesa), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                        <span class="glyphicon glyphicon-list-alt"></span>
+            <% end %>
+            <% if sobremesa.disponibilidade? %>
+            <%= link_to desativar_sobremesa_path(sobremesa), html_options = { :class => 'btn btn-danger btn-sm', :title => "Desativar"} do %>
+                        <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+            <% else %>
+            <%= link_to edit_sobremesa_path(sobremesa), html_options = { :class => 'btn btn-success btn-sm', :title => "Ativar"} do %>
+              <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to "Nova Sobremesa",
-            new_sobremesa_path,
-            :class => 'button blue-cadastrar-bottom' %>
+<br>
+<div class="row">
+        <div class="col-md-6 text-right "> 
+        <%= link_to "Nova Sobremesa", new_sobremesa_path, :class => 'btn btn-success' %>                  
+        </div>        
+         <div class="col-md-6">
+          <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
+        </div>
+</div>

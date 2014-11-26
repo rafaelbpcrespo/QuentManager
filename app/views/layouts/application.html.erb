@@ -1,159 +1,290 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <%#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => false %>
-  <%#= stylesheet_link_tag    "bootstrap.css", media: "all", "data-turbolinks-track" => false %>
-  <%= stylesheet_link_tag    "style.css", media: "all", "data-turbolinks-track" => false %>
-  <%#= javascript_include_tag "bootstrap.js", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "jquery.min.js", "data-turbolinks-track" => false %>
   <%= javascript_include_tag "application.js", "data-turbolinks-track" => false %>
-  <%#= javascript_include_tag "nested_form.js", "data-turbolinks-track" => false %>
-   <%= javascript_include_tag "jquery.validate.js", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "jquery.cycle2.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "bootstrap.js", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "jquery.maskedinput.js", "data-turbolinks-track" => false %>
+  <%= stylesheet_link_tag "bootstrap.css", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
     <!-- <meta charset="utf-8"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="shortcut icon" href="favicon.ico">
-    <meta name="description" content="Siquitutes">
-    <meta name="keywords" content="Siquitutes, almoço, macaé, quentinha, quentinha macaé, entrega, comida, food" />
+    <meta name="description" content="Sua Empresa">
+    <meta name="keywords" content="almoço, macaé, quentinha, quentinha macaé, entrega, comida, food" />
     <meta name="author" content="R2L Solutions">
-    <title>Si Quitutes</title>
+    <title>Sua Empresa</title>
   </head>
     
-<body>
-<div id="all">
-  <div id="header">
-      <% if usuario_signed_in? %>
-          <ul class="menu">              
-          <li class="menu">
-            <a class="menu"href="#"> <%= current_usuario.email %> <b class="caret"> </b></a>
-          <ul class="menu">
-          <li class="menu"><%= link_to "Editar Perfil", cliente_path(current_usuario.cliente.id) %></li>
-          <li class="menu"><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></li>
-          <li class="menu"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></li>
-          </ul>
-          </li>
-        </ul>
-    <% else %>
-      <div class='login'>
-        <%= form_for(:usuario, :html => { :class => "validate"}, url: session_path(:usuario))  do |f| %>
-          <div class='login_fields'><%= f.text_field :email, autofocus: true, placeholder: "Email", :class => "validate" %></div>
-          <div class='login_fields'><%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "validate"%></div>
-          <%= f.submit "Entrar", :class => "login_button blue-login"%>
-          <%= link_to "Senha?", new_password_path(:usuario), html_options = { :class => 'link_button  blue-login', :title => "Esqueceu sua senha?"} %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div id="lineorange">
-    <% if (usuario_signed_in? && !current_usuario.admin?) || !usuario_signed_in? %>
-      <div id="boxorange"> Envie-nos sua sugestão <p> contato@siquitutes.com.br </div>
-    <% end %>
-  </div>
-
-      <div id="navtop">
-          <div id="logo"> </div>
-      </div>
-      <% if (request.env['PATH_INFO'] == new_usuario_session_path) || (usuario_signed_in? && !current_usuario.admin?) %>
-      <div class='mensagem_login'>
-        <% if !notice.nil? %>
-          <div class="alert-success"><%= notice %></div>
-        <% elsif !alert.nil? %>
-          <div class="alert-error"><%= alert %></div>
-        <% end %>
-      </div>
-      <% end %>
-
-      <div id="faixa">    
-        <div id="navbaresq"> </div> 
-          <div id="navbar">
-            <ul class="dropdown">
-            <% if usuario_signed_in? %>
-               <div id="home"> <a class="botao" href="/home/inicial"> <img src="../images/home.png" width="40" height="40"></a></div>
-                    <li class="dropdown"><a class="botao" href="/home/inicial"> Home </a></li>
-                    <% else %>
-               <div id="home"> <a class="botao" href="/"> <img src="../images/home.png" width="40" height="40"></a></div>
-                    <li class="dropdown"><a class="botao" href="/"> Home </a></li>
-                    <% end %>
-                    <% if !usuario_signed_in? %>
-                     <li class="dropdown"> <a><%= link_to "Cadastre-se", new_usuario_registration_path, :class => 'botao' %></a></li>
-                     <li class="dropdown"> <a class="botao" href="/home/sobre"> Sobre </a></li>
-                    <% else %>
-                    <% if can? :manage, Proteina %>
-                     <li class="dropdown">
-                       <span ><a class="botao" href="#"> Cadastros</a></span>
-                        <ol class="dropdown">                                          
-                        <li class="dropdown"><a><%= link_to "Proteínas", "/proteinas", :class => 'botao2'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Acompanhamentos", "/acompanhamentos", :class => 'botao2'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Guarnições", "/guarnicoes", :class => 'botao2'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Saladas", "/saladas", :class => 'botao2'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Bebidas", "/bebidas", :class => 'botao2'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Sobremesas", "/sobremesas", :class => 'botao2'  %></a></li>
-                        <li class="dropdown"><a><%= link_to "Empresas", "/empresas", :class => 'botao2'  %></a></li>
-                    </ol>
-                      </li>
-                       <li class="dropdown"><a><%= link_to "Clientes", "/clientes", :class => 'botao'  %></a></li> 
-                       <li class="dropdown"><a><%= link_to "Estoque", "/produtos", :class => 'botao'  %></a></li>
-                     <li class="dropdown">
-                       <span ><a class="botao" href="#">Relatórios</a></span>
-                        <ol class="dropdown">                                          
-                          <li class="dropdown"><a><%= link_to "Estoque", "/home/relatorio_produtos", :class => 'botao2'  %></a></li>
-                          <li class="dropdown"><a><%= link_to "Impressão de Pedidos do dia", "/home/pedidos_do_dia", :class => 'botao2'  %></a></li>
-                          <li class="dropdown"><a><%= link_to "Pedidos do dia X Empresa", "/pedidos", :class => 'botao2'  %></a></li>
-                          <li class="dropdown"><a><%= link_to "Impressao Pedidos X Empresa", "/home/pedidos_empresa", :class => 'botao2'  %></a></li>
-                        </ol>
-                     </li>
-                     <% else %>
-                       <li class="dropdown"><a><%= link_to "Conta", conta_cliente_path(current_usuario.cliente), html_options = { :class => 'botao', :title => "Conta"} %></a></li>
-                       <li class="dropdown"><a><%= link_to "Meus Pedidos", "/pedidos", :class => 'botao'  %></a></li> 
-                      <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>
-                       <%# if DateTime.now > 6 && Time.now.hour < 22 && !current_usuario.cliente.bloqueado? %>                       
-                        <li class="dropdown"><a><%= link_to "Fazer Pedido", new_pedido_path(:cliente_id => current_usuario.cliente.id), :class => 'botao'  %></a></li> 
-                       <% end %>
-                     
-                     <% end %>
-                    <!-- <a class="botao" href="/clientes"> Cadastro </a> -->
-              <% end %>
-            </ul>  
-          </div>
-        <div id="navbardir"></div> 
-      </div>
-      <div id="colcentral">
-                <% if !notice.nil? %>
-            <div class="alert-success"><%= notice %></div>
-          <% elsif !alert.nil? %>
-            <div class="alert-error"><%= alert %></div>
-          <% end %>
-        <% if usuario_signed_in? && (request.env['PATH_INFO'] != root_path && request.env['PATH_INFO'] != home_index_path) %>
-          <div id="coldados">
-            <%= yield %>
-          </div>
-        <% else %>
-          <% if request.env['PATH_INFO'] == new_usuario_session_path || request.env['PATH_INFO'] == root_path %>
-            <div id="banner"> 
-              <div class="cycle-slideshow"
-                data-cycle-fx='tileSlide' 
-                data-cycle-speed="2000"
-                data-cycle-delay="1500">
-                <img src="../images/slide1.jpg">
-                <img src="../images/slide2.jpg">
-                <img src="../images/slide3.jpg">
-              </div>
-            </div> 
-      <div id="legumes"></div>
-          <% end %>
-           <div id="colcad">
-            <%= yield %>
+<body onload="">
+  <div id="wrap">
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <% if !usuario_signed_in? %>
+          <%= form_for(:usuario, :html => { :class => "navbar-form navbar-right"}, url: session_path(:usuario))  do |f| %>
+            <div class="form-group">
+              <%= f.text_field :email, autofocus: true, placeholder: "Email", :class => "form-control" %>
             </div>
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Senha", :class => "form-control"%>
+            </div>
+            <%= f.submit "Entrar", :class => "btn btn-success"%>
+            <%= link_to "?", new_password_path(:usuario), html_options = { :class => 'btn btn-success', :title => "Esqueceu sua senha?"} %>
             <% end %>
+            <% else %>
+              <div class="btn-group navbar-form navbar-right">
+                <button type="button" class="btn btn-success"><%= current_usuario.cliente.nome %></button>
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li></li>
+                  <li><a href="#"><%= link_to "Editar Perfil", edit_cliente_path(current_usuario.cliente) %></a></li>
+                  <li><a href="#"><%= link_to "Editar senha", edit_usuario_registration_path(current_usuario) %></a></li>
+                  <li class="divider"></li>
+                  <li><a href="#"><%= link_to "Sair", destroy_usuario_session_path, method: :get %></a></li>
+                </ul>
+              </div> 
+            <% end %>
+        </div>
+        <!--/.navbar-collapse -->
+      </div>
+    </div>
+    <div class="container">
+      <div class="row"></div>
+    </div>
+    <div class="container white">
+      <div class="row">
+        <div class="col-md-12">
+          <% if !usuario_signed_in? && request.env['PATH_INFO'] == new_usuario_session_path || request.env['PATH_INFO'] == root_path %>
+          <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide cycle-slideshow" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="../images/sabor.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption2">
+              <h1>Pratos Especiais para você cliente!</h1>
+              <div class="transbox">Bife grelhado ao molho madeira com batatas temperadas usando nossos mais puros temperos. Melhor sabor encontra-se aqui</div>
+              <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../images/clean.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption2">
+              <h1>Comodidade e Organização para você.</h1>
+              <div class="transbox">Ambiente limpo e equipe preparada para receber você cliente em nosso restaurante com a maior comodidade possível.</div>
+              <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../images/cartoes.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption2">
+              <h1>Aceitamos Todos os tipos de cartões.</h1>
+              <div class="transbox">Almoce sem preocupação em como pagar a conta, aceitamos cartões.</div>
+              <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../images/responsive.jpg" alt="Fourth slide">
+          <div class="container">
+            <div class="carousel-caption2">
+              <h1>Visite nosso site também pelo seu celular!</h1>
+              <div class="transbox">Sites Responsivos são projetados para fornecer uma ótima visualização, leitura e navegação em qualquer dispositivo: computadores, celulares ou tablets.</div>
+              <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+    <%end %>
+        </div>
+      </div>
+    </div>
+    <div class="container white">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="navbar navbar-default navbar-inverse">
+            
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-left navbar-nav">
+                <li class="active">
+                  <a href="/home/inicial"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                </li>
+            <% if !usuario_signed_in? %>
+                <li>
+                  <a href="/usuarios/sign_up"><span class="glyphicon glyphicon-user"></span>&nbsp;Cadastre-se</a>
+                </li>
+                <li>
+                  <a href="/home/sobre"><span class="glyphicon glyphicon-star"></span>&nbsp;Sobre</a>
+                </li>
+            <% else %>
+              <% if current_usuario.admin? %>                
+                <li>
+                    <a type="button" class="glyphicon glyphicon-plus" data-toggle="dropdown">
+                      Cadastros <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a><%= link_to "Proteínas", "/proteinas" %></a></li>
+                      <li><a><%= link_to "Acompanhamentos", "/acompanhamentos" %></a></li>
+                      <li><a><%= link_to "Guarnições", "/guarnicoes" %></a></li>
+                      <li><a><%= link_to "Saladas", "/saladas" %></a></li>
+                      <li><a><%= link_to "Bebidas", "/bebidas" %></a></li>
+                      <li><a><a><%= link_to "Sobremesas", "/sobremesas" %></a></li>                      
+                      <li class="divider"></li>
+                      <li><a><%= link_to "Empresas", "/empresas" %></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/clientes"><span class="glyphicon glyphicon-user"></span>&nbsp;Clientes</a>
+                </li>
+                <li>
+                    <a href="/produtos"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Estoque</a>
+                </li>
+                <li>
+                    <a type="button" class="glyphicon glyphicon-list-alt" data-toggle="dropdown">
+                      Relatórios <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a><%= link_to "Estoque", "/home/relatorio_produtos" %></a></li>
+                      <li><a><%= link_to "Impressão de Pedidos", "/home/pedidos_do_dia" %></a></li>
+                      <li><a><%= link_to "Pedidos do dia X Empresa", "/pedidos" %></a></li>
+                    </ul>
+                </li>
+              <% else %>
+                <li>
+                    <%= link_to conta_cliente_path(current_usuario.cliente) do %>
+                      <span class="glyphicon glyphicon-usd"></span>&nbsp;Conta
+                    <% end %>
+                </li>
+                <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>                
+                <li>
+                    <%= link_to new_pedido_path(:cliente_id => current_usuario.cliente.id) do %>
+                      <span class="glyphicon glyphicon-cutlery"></span>&nbsp;Fazer Pedido
+                    <% end %>
+                </li>
+                <% end %>
+                <li>
+                    <a href="/pedidos"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Meus Pedidos</a>
+                </li>
+              <% end %>
+            <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if !usuario_signed_in? && request.env['PATH_INFO'] == new_usuario_session_path || request.env['PATH_INFO'] == root_path  %>
+      <div class="container white">
+        <% if !notice.nil? %>
+          <div class="alert alert-success text-center"><%= notice %></div>
+        <% elsif !alert.nil? %>
+          <div class="alert alert-danger text-center"><%= alert %></div>
+        <% end %>
+      </div>
 
-      
+    <div class="container white">
+      <div class="row">
+        <div class="col-md-6" style="">
+          <h2 style="" class="text-center">História</h2>
+          <p>O termo restaurante (do francês restaurant) surgiu no século XVI, com o significado de "comida restauradora", e se referia especificamente a uma sopa. O uso moderno da palavra surgiu por volta de 1765 quando um parisiense conhecido por Boulanger (sobrenome comum, mas que significa padeiro em francês) abriu seu estabelecimento.</p>
+          <a class="btn btn-success" href="#">Veja detalhes...</a>
+        </div>
+        <div class="col-md-6">
+          <h2 class="text-center">Equipe</h2>
+          <p>A equipe de um restaurante é formada por uma brigada de profissionais em que cada um tem sua tarefa bem definida dentro de sua especialidade, todos comandados pelo Chef. Não é incomum referir-se a cada um deles pelo nome de sua profissão no idioma francês.</p>
+          <a class="btn btn-success" href="#">Veja detalhes...</a>
+        </div>
       </div>
       
-<div id="rodape">
-    <div id="lineorange"></div>
-    <div id="boxblue">Todos os Direitos Reservados <br> R2L Solutions </div>
-</div>    
-</div>
-</body>
+    </div>
+    <div class="container white">
+      <br>
+    </div>
+    <div class="container white">
+     <div class="row">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/prato1.jpg" class="img-responsive">
+            <div class="caption">
+              <h3 class="text-center">Especialidade Chinesa</h3>
+              <p>Os pratos de peixe e crustáceos de distintos sabores são habituais na cozinha do leste chinês, que caracteriza-se pelo seu sabor doce. Utilizam, sobretudo, peixe e marisco, destacando-se a sopa condimentada com alho poró. </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/prato2.jpg" class="img-responsive">
+            <div class="caption">
+              <h3 class="text-center">Especialidade Italiana</h3>
+              <p>Espaguete é um tipo de Massa alimentícia cilíndrica, longa e fina. Sabendo que em Portugal se diz "esparguete" e no Brasil "Espaguete", o nome é um aportuguesamento de spaghetti, que em italiano é o diminuitivo de spago, barbante.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="../images/prato3.jpg" class="img-responsive">
+            <div class="caption">
+              <h3 class="text-center">Sanduíches</h3>
+              <p>Sanduíche, é um tipo de alimento que consiste em dois pedaços de pão, entre os quais é colocada carne, queijo ou outro tipo de alimento. Também pode ser feito com um pão inteiro, geralmente de pequenas dimensões.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% else %>
+      <div class="container white">
+        <% if !notice.nil? %>
+          <div class="alert alert-success text-center"><%= notice %></div>
+        <% elsif !alert.nil? %>
+          <div class="alert alert-error text-center"><%= alert %></div>
+        <% end %>
+        <%= yield %>
+        <br><br><br><br>
+      </div>
+
+    <% end %>
+
+     <div id="push white"></div>
+     </div>  <!-- Fecha Wrap -->
+    <footer>
+    <center>Todos os Direitos Reservados</center>
+    </footer>
+  
+  </body>
+
 </html>

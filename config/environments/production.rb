@@ -20,7 +20,7 @@ QuentManager::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.server_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -80,7 +80,7 @@ QuentManager::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   #Added per active admin install instructions
-  config.action_mailer.default_url_options = { :host => '104.131.56.174' }
+  config.action_mailer.default_url_options = { :host => 'http://quentmanager.herokuapp.com' }
 
 
   #These settings are for the sending out email for active admin and consequently the   devise mailer

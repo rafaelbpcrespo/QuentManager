@@ -32,7 +32,7 @@ class TransacoesController < ApplicationController
 
     respond_to do |format|
       if @transacao.save
-        format.html { redirect_to @transacao.produto, notice: 'Transacao was successfully created.' }
+        format.html { redirect_to @transacao.produto, notice: 'Operação realizada com sucesso!' }
         format.json { render action: 'show', status: :created, location: @transacao }
       else
         format.html { render action: 'new' }
@@ -49,7 +49,7 @@ class TransacoesController < ApplicationController
     
     respond_to do |format|
       if @transacao.update(transacao_params)
-        format.html { redirect_to @transacao.produto, notice: 'Transacao was successfully updated.' }
+        format.html { redirect_to @transacao.produto, notice: 'Operação atualizada com sucesso!' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

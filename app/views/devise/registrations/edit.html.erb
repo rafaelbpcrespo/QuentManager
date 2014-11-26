@@ -1,37 +1,63 @@
-<h1>Editar <%= resource_name.to_s.humanize %></h1>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'validate' , method: :put }) do |f| %>
+<h2>Editar Senha</h2>
+<br>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'form-horizontal validate' , method: :put }) do |f| %>
   <%= devise_error_messages! %>
-<p>
-  <%= f.label :email %>
-  <%= f.text_field :email, autofocus: true, :class => "required email"%>
-  <span class="validate">Campo requerido</span>
-</p>
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    Aguardando confirmação de: <%= resource.unconfirmed_email %>
-  <% end %>
-<p>
-  <%= f.label :password, "Senha" %>
-  <%= f.password_field :password, autocomplete: "off", :class => "required password" %>
-  <span class="validate">Campo requerido</span>
-</p>
-<p>
-  <%= f.label :password_confirmation, "Confirmação de senha" %>
-  <%= f.password_field :password_confirmation, autocomplete: "off", :class => "required password" %>
-  <span class="validate">Campo requerido</span>
-</p>
-<p>
-  <%= f.label :current_password, "Senha atual" %>
-  <%= f.password_field :current_password, autocomplete: "off", :class => "required" %>
-  <span class="validate">Campo requerido</span>
- </p>
-<fieldset class="bot">
 
- <%= f.submit "Atualizar Senha", :class => 'button blue-cadastrar-top' %>
+
+<div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dados do Sistema</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">E-mail</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= f.text_field :email, autofocus: true, :class => "form-control required email" %>
+                    <span class="validate">Campo Requerido, informe um e-mail válido</span>
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <div class="col-sm-3">
+                    <label class="control-label">Senha Atual</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <%= f.password_field :current_password, autocomplete: "off", :class => "form-control required minlength", minlength:"6" %>
+                    <span class="validate">Digite a senha atual</span>
+                  </div>
+                </div>                 
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Senha</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= f.password_field :password, autocomplete: "off", :class => "form-control required minlength password", minlength:"6" %>
+                    <span class="validate">Campo requerido, mínimo 6 caracteres</span>
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <div class="col-sm-4">
+                    <label class="control-label">Confirmação Senha</label>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control required password" %>
+                    <span class="validate">Confirmação de Senha</span>
+                  </div>
+                </div>                 
+            </div>
+          </div>           
+        </div>
+</div>
+<br>
+<div class="row">
+        <div class="col-md-6 text-right">          
+          <%= f.submit "Atualizar Senha", :class => 'btn btn-success' %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to "Cancelar", root_path, :class => 'btn btn-default' %>
+        </div>
+</div>
 <% end %>
-
-<%= button_to "Cancelar minha conta", registration_path(resource_name), :class => 'button purple', data: { confirm: "Tem certeza que deseja remover seu cadastro?" }, method: :delete %>
-
-<%= link_to "Voltar", :back , :class => 'button gray-voltar' %>
-
-</fieldset>
