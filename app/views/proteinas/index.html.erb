@@ -37,6 +37,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @proteinas, renderer: BootstrapPagination::Rails %>
 
 <%= link_to "Novo Proteina",
             new_proteina_path,

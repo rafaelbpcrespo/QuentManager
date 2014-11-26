@@ -37,6 +37,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @guarnicoes, renderer: BootstrapPagination::Rails %>
 
 <%= link_to "Nova Guarnicao",
             new_guarnicao_path,

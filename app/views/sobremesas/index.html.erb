@@ -37,6 +37,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @sobremesas, renderer: BootstrapPagination::Rails %>
 
 <%= link_to "Nova Sobremesa",
             new_sobremesa_path,

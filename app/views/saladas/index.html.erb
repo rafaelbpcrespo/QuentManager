@@ -37,6 +37,7 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @saladas, renderer: BootstrapPagination::Rails %>
 
 <%= link_to "Nova Salada",
             new_salada_path,
