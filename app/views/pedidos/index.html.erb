@@ -46,18 +46,18 @@
         <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.situacao %></td>
         <td>
-          <%= link_to edit_pedido_path(pedido), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
+          <%= link_to edit_pedido_path(pedido), html_options = { :class => 'btn btn-primary', :title => "Editar Dados"} do %>
                       <span class="editar"></span>
                       <% end %>        
-          <%= link_to pedido_path(pedido), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
+          <%= link_to pedido_path(pedido), html_options = { :class => 'btn btn-succes', :title => "Ver Dados Completos"} do %>
                       <span class="listar"></span>          
           <% end %>
           <% if (DateTime.now < pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX)) || (current_usuario.admin? || current_usuario.gerente?) %>
-            <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "button red", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
+            <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "btn btn-danger", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
                       <span class="bloquear"></span>
             <% end %>
             <% end %>
-            <%= link_to confirmar_pedido_path(pedido), html_options = {:class => "button green", :title => "Confirmar Pedido", :id => "confirmar_#{pedido.id}"} do %>
+            <%= link_to confirmar_pedido_path(pedido), html_options = {:class => "btn btn-succes", :title => "Confirmar Pedido", :id => "confirmar_#{pedido.id}"} do %>
                       <span class="desbloquear"></span>
             <% end %>
         </td>
@@ -69,6 +69,6 @@
   <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>
     <%= link_to "Novo Pedido",
               new_pedido_path,
-              :class => 'button blue-cadastrar-bottom' %>
+              :class => 'btn btn-primary' %>
   <% end %> 
 <% end %>
