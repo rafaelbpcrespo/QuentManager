@@ -2,7 +2,7 @@
 try{
 $(function() {
 	
-	$('.validate p span').hide();
+	$('.validate span').hide();
     /* Required message */
     var requiredMsg = "Campo Requerido!";    
 	/*Radio Mensagem*/
@@ -318,10 +318,12 @@ $(function() {
 	
             /* password */
             if ( $(this).hasClass('password') && $(this).parent().parent().find('.password').hasClass('password')){ 
-                
-                if ($.trim( $(this).val() ) != $.trim( $(this).parent().parent().find('.password').val() )){
+
+                if ($.trim( $(this).val() ) != $.trim( $("#usuario_password_confirmation").val() )){
                     $(this).parent().find('.password').removeClass('valid').addClass('invalid');
                     $(this).parent().find('.password').focus();
+                    $("#usuario_password_confirmation").removeClass('valid').addClass('invalid');
+                    $("#usuario_password_confirmation").focus();
                     $(this).parent().find('span').html(passwordMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
                     valid = false;
                     return false;

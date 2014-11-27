@@ -2,18 +2,17 @@
 <div class="page-header">
 
   <% if !current_usuario.admin? %>
-  <h1 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h1>  
+  <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h2>  
   <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>
     <%# if Time.now.hour > 6 && Time.now.hour < 10 && !current_usuario.cliente.bloqueado? %>
     <%= link_to "Novo Pedido",
               new_pedido_path,
-              :class => 'button blue-cadastrar-top' %></h1>
+              :class => 'btn btn-succes' %>
               <% else %> 
-              </h1>
-              <h2><font color="red">Horário para realização de pedidos finalizado</font></h2>
+              <h3><font color="red">Horário para realização de pedidos finalizado</font></h3>
               <% end %>
   <% else %> 
-    <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de hoje da <%= @nome_da_empresa %><br/></h1>
+    <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de hoje da <%= @nome_da_empresa %><br/></h2>
             <h3>Quantidade de pedidos de hoje para <%= @nome_da_empresa %>: <%= @quantidade_de_pedidos %></h3>
 <% end %>             
 </div>
@@ -47,19 +46,19 @@
         <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.situacao %></td>
         <td>
-          <%= link_to edit_pedido_path(pedido), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
-                      <span class="editar"></span>
+          <%= link_to edit_pedido_path(pedido), html_options = { :class => 'btn btn-primary btn-sm', :title => "Editar Dados"} do %>
+                      <span class="glyphicon glyphicon-pencil"></span>
                       <% end %>        
-          <%= link_to pedido_path(pedido), html_options = { :class => 'button green', :title => "Ver Dados Completos"} do %>
-                      <span class="listar"></span>          
+          <%= link_to pedido_path(pedido), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                      <span class="glyphicon glyphicon-list-alt"></span>          
           <% end %>
           <% if (DateTime.now < pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX)) || (current_usuario.admin? || current_usuario.gerente?) %>
-            <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "button red", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
-                      <span class="bloquear"></span>
+            <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "btn btn-danger btn-sm", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
+                      <span class="glyphicon glyphicon-remove"></span>
             <% end %>
             <% end %>
-            <%= link_to confirmar_pedido_path(pedido), html_options = {:class => "button green", :title => "Confirmar Pedido", :id => "confirmar_#{pedido.id}"} do %>
-                      <span class="desbloquear"></span>
+            <%= link_to confirmar_pedido_path(pedido), html_options = {:class => "btn btn-success btn-sm", :title => "Confirmar Pedido", :id => "confirmar_#{pedido.id}"} do %>
+                      <span class="glyphicon glyphicon-ok"></span>
             <% end %>
         </td>
       </tr>
@@ -70,6 +69,6 @@
   <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>
     <%= link_to "Novo Pedido",
               new_pedido_path,
-              :class => 'button blue-cadastrar-bottom' %>
+              :class => 'btn btn-primary' %>
   <% end %> 
 <% end %>

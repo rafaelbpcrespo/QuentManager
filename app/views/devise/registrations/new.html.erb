@@ -1,144 +1,248 @@
-<center><h1>cadastro de novo cliente</h1></center><br>
-
 <% resource.build_cliente %>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'validate' }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => 'form-horizontal validate' }) do |f| %>
 <%= f.fields_for :cliente do |cliente_form| %>
 
 <% resource.errors.full_messages.each do |msg| %>
     <li><%= msg %></li><br/>
 <% end %>
 
-<table>
-  <td>  
-  <fieldset class="form-clientes pess">
-  <legend class="legend1">Dados de Sistema</legend>
-    <p>
-      <%= f.label :email %>
-      <%= f.text_field :email, autofocus: true, :class => "required email" %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= f.label :password, "Senha" %>
-      <%= f.password_field :password, autocomplete: "off", :class => "required password" %>
-       <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= f.label :password_confirmation, "Confirmação de senha" %>
-      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "required password"%>
-       <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :data_de_pagamento, "Dia de Pagamento", :class => 'control-label' %>
-      <%= cliente_form.select :data_de_pagamento, options_for_select(1..31),:class => 'required numeric' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-  </fieldset>
-  <fieldset class="form-clientes pess">
-  <legend class="legend1">Dados Pessoais</legend>
-    <p>  
-      <%= cliente_form.label "Nome"%>
-      <%= cliente_form.text_field :nome, :class => 'required' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :cpf, "CPF", :class => 'control-label' %>
-      <%= cliente_form.text_field :cpf, :class => 'required cpf' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :rg, "RG", :class => 'control-label' %>
-      <%= cliente_form.text_field :rg, :class => 'required numeric' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :sexo, :class => 'control-label' %>
-      M
-      <%= cliente_form.radio_button :sexo, "M" , :checked => true, :value => "Masculino" %>
-      F
-      <%= cliente_form.radio_button :sexo, "F" , :checked => false, :value => "Feminino" %>
-    </p>
-    <p>
-      <%= cliente_form.label :data_de_nascimento, :class => 'control-label' %>
-      <%= cliente_form.text_field :data_de_nascimento, :class => 'required' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :endereco, :class => 'control-label' %>
-      <%= cliente_form.text_field :endereco, :class => 'required' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :numero, :class => 'control-label' %>
-      <%= cliente_form.text_field :numero, :class => 'required' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :bairro, :class => 'control-label' %>
-      <%= cliente_form.text_field :bairro, :class => 'required' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :cidade, :class => 'control-label' %>
-      <%= cliente_form.text_field :cidade, :class => 'required' %>
-      <span class="validate">Campo requerido</span>
-    </p>
-    <p>
-      <%= cliente_form.label :complemento, :class => 'control-label' %>
-      <%= cliente_form.text_field :complemento, :class => 'text_field' %>
-    </p>
-    <p>
-      <%= cliente_form.label :telefone, :class => 'control-label' %>
-      <%= cliente_form.text_field :telefone, :class => 'text_field' %>
-    </p>
-    <p>
-      <%= cliente_form.label :celular, :class => 'control-label' %>
-      <%= cliente_form.text_field :celular, :class => 'required' %>
-      <span class="validate">Campo requerido</span>
-    </p>
+<center><h1>Novo Cliente</h1></center><br>
 
-    </fieldset>
-    <fieldset class="form-clientes pess">
-    <legend class="legend1">Dados Profissionais</legend>
-      <p>
-        <%= cliente_form.label :empresa, :class => 'control-label' %>
-        <%= cliente_form.collection_select :empresa_id, Empresa.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'required' } %>
-        <span class="validate">Selecione um item</span>
-      </p>
-      <p>
-        <%= cliente_form.label :cargo, :class => 'control-label' %>
-        <%= cliente_form.text_field :cargo, :class => 'required' %>
-        <span class="validate">Campo requerido</span>
-      </p>
-      <p>
-        <%= cliente_form.label :setor, :class => 'control-label' %>
-        <%= cliente_form.text_field :setor, :class => 'required' %>
-        <span class="validate">Campo requerido</span>
-      </p>
-      <p>
-        <%= cliente_form.label :telefone_empresa, "Telefone Fixo", :class => 'control-label' %>
-        <%= cliente_form.text_field :telefone_empresa, :class => 'required' %>
-        <span class="validate">Campo requerido</span>
-      </p>
-      <p>
-        <%= cliente_form.label :ramal, :class => 'control-label' %>
-        <%= cliente_form.text_field :ramal, :class => 'text_field' %>
-      </p>
-      <p>
-        <%= cliente_form.label :celular_empresa, "Celular", :class => 'control-label' %>
-        <%= cliente_form.text_field :celular_empresa, :class => 'text_field' %>
-      </p>
-      <p>
-        <%= cliente_form.label :email_empresa, "Email", :class => 'control-label' %>
-        <%= cliente_form.text_field :email_empresa, :class => 'text_field' %>
-      </p>
-   </fieldset>
-   <fieldset class="bot">
-    <p>
-      <%= f.submit nil, :class => 'button blue-cadastrar-top' %>
-      <%= link_to "Cancelar", root_path, :class => 'button gray-voltar' %>
-    </p>
-  </fieldset>
-</td>
-</table>
+
+ <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dados do Sistema</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">E-mail</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= f.text_field :email, autofocus: true, :class => "form-control required email" %>
+                    <span class="validate">Campo Requerido, informe um e-mail válido</span>
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Senha</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= f.password_field :password, autocomplete: "off", :class => "form-control required minlength password", minlength:"6" %>
+                    <span class="validate">Campo requerido, mínimo 6 caracteres</span>
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <div class="col-sm-4">
+                    <label class="control-label">Confirmação Senha</label>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control required password" %>
+                    <span class="validate">Confirmação de Senha</span>
+                  </div>
+                </div>                 
+                <div class="form-group">
+                  <label class="col-md-4" for="selectbasic">Dia de Pagamento</label>
+                  <div class="col-md-4">
+                    <%= cliente_form.select :data_de_pagamento, options_for_select(1..31), {:prompt => "Selecione"} , { :class => 'form-control required numeric' } %>  
+                    <span class="validate">Campo requerido</span>
+                  </div>
+                </div>             
+            </div>
+          </div>
+             <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dados Profissionais</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Empresa</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= cliente_form.collection_select :empresa_id, Empresa.all, :id, :nome, {:prompt => "Selecione"} , { :class => 'form-control required' } %>
+                    <span class="validate">Selecione um item</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Cargo</label>
+                  </div>
+                  <div class="col-sm-10">
+                     <%= cliente_form.text_field :cargo, :class => 'form-control required' %>
+                     <span class="validate">Campo requerido</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Setor</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= cliente_form.text_field :setor, :class => 'form-control required' %>
+                    <span class="validate">Campo requerido</span>
+                  </div>
+                </div>                                                                
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Telefone Empresa</label>
+                  </div>
+                  <div class="col-sm-4">
+                     <%= cliente_form.text_field :telefone_empresa, :class => 'form-control required' %>
+                     <span class="validate">Campo requerido</span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label class="control-label">Celular Empresa</label>
+                  </div>
+                  <div class="col-sm-4">
+                    <%= cliente_form.text_field :celular_empresa, :class => 'form-control', placeholder:"Celular Empresa" %>
+                  </div>                    
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Ramal</label>
+                  </div>
+                  <div class="col-sm-4">
+                    <%= cliente_form.text_field :ramal, :class => 'form-control', placeholder:"Ramal" %>
+                  </div>                   
+                </div> 
+                 <div class="form-group">
+                  <div class="col-sm-4">
+                    <label class="control-label">E-mail Empresa</label>
+                  </div>
+                  <div class="col-sm-8">
+                    <%= cliente_form.text_field :email_empresa, :class => 'form-control', placeholder:"E-mail Empresa" %>
+                  </div>
+                </div>               
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Dados Pessoais</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">Nome</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= cliente_form.text_field :nome, :class => 'form-control required' %>
+                    <span class="validate">Nome Completo</span>
+                  </div>
+                </div> <br>             
+                 <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">CPF</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= cliente_form.text_field :cpf, :class => 'form-control required cpf' %>
+                    <span class="validate">CPF</span>
+                  </div>
+                </div> 
+                 <div class="form-group">
+                  <div class="col-sm-2">
+                    <label class="control-label">RG</label>
+                  </div>
+                  <div class="col-sm-10">
+                    <%= cliente_form.text_field :rg, :class => 'form-control required numeric' %>
+                    <span class="validate">RG</span>
+                  </div>
+                </div><br>
+              <div class="form-group">
+              <label class="col-md-2" for="radios">Sexo</label>
+              <div class="col-md-3"> 
+                <label class="radio-inline" for="radios-0">
+                  <%= cliente_form.radio_button :sexo, "M" , :checked => true, :value => "Masculino" %>
+                  M
+                </label> 
+                <label class="radio-inline" for="radios-1">
+                  <%= cliente_form.radio_button :sexo, "F" , :checked => false, :value => "Feminino" %>
+                  F
+                </label>     
+              </div>                                                    
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4">
+                  <label class="control-label">Data de Nascimento</label>
+                </div>
+                <div class="col-sm-4">
+                  <%= cliente_form.text_field :data_de_nascimento, :class => 'form-control required' %>
+                  <span class="validate">Campo requerido</span>
+                </div>                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                  <label class="control-label">Endereço</label>
+                </div>
+                <div class="col-sm-10">
+                   <%= cliente_form.text_field :endereco, :class => 'form-control required' %>
+                   <span class="validate">Endereço</span>
+                </div>                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                  <label class="control-label">Número</label>
+                </div>
+                <div class="col-sm-4">
+                   <%= cliente_form.text_field :numero, :class => 'form-control required' %>
+                   <span class="validate">Nº</span>
+                </div>                                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">
+                  <label class="control-label">Complemento</label>
+                </div>
+                <div class="col-sm-9">
+                  <%= cliente_form.text_field :complemento, :class => 'form-control', placeholder:"Complemento" %>
+                </div>                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                  <label class="control-label">Bairro</label>
+                </div>
+                <div class="col-sm-10">
+                  <%= cliente_form.text_field :bairro, :class => 'form-control required' %>
+                  <span class="validate">Bairro</span>
+                </div>                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2">
+                  <label class="control-label">Cidade</label>
+                </div>
+                <div class="col-sm-10">
+                  <%= cliente_form.text_field :cidade, :class => 'form-control required' %>
+                  <span class="validate">Cidade</span>
+                </div>                                
+            </div><br>
+            <div class="form-group">
+                <div class="col-sm-2">
+                  <label class="control-label">Telefone</label>
+                </div>
+                <div class="col-sm-4">
+                  <%= cliente_form.text_field :telefone, :class => 'form-control', placeholder:"Telefone" %>
+                </div>
+                <div class="col-sm-2">
+                  <label class="control-label">Celular</label>
+                </div>
+                <div class="col-sm-4">
+                  <%= cliente_form.text_field :celular, :class => 'form-control required' %>
+                  <span class="validate">Celular</span>
+                </div>                    
+            </div>
+          </div>
+        </div>
+      </div>
+  </div><br>
+<div class="row">
+        <div class="col-md-6 text-right">          
+          <%= f.submit nil, :class => 'btn btn-success' %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to "Cancelar", root_path, :class => 'btn btn-default' %>
+        </div>
+</div>
 <% end %>
 <% end %>

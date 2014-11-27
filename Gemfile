@@ -7,8 +7,8 @@ gem 'less-rails'
 gem 'therubyracer'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
-#gem 'pg'
-gem 'mysql2'
+gem 'pg'
+#gem 'mysql2'
 
 gem 'wicked'
 gem 'whenever', :require => false
@@ -56,4 +56,4 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]

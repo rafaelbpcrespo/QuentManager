@@ -111,8 +111,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
   height:160px;
   width:470px;
   margin-left: 10px;
-  margin-top: -25px;
-  z-index: 2;
+/*  margin-top: -25px;
+*/  z-index: 2;
   }
 
 #estatistica {
@@ -1135,10 +1135,9 @@ li span{
   /*list-style-type: disc;*/
 } 
 
-.alert-success {
+/*.alert-success {
   width: 100%;
   margin-top: -15px;
-  /*margin-left: 25%;*/
   padding-top: 10px;
   position: absolute;
   height: 30px;
@@ -1150,7 +1149,6 @@ li span{
 .alert-error {
   width: 100%;
   margin-top: -15px;
-  /*margin-left: 25%;*/
   padding-top: 10px;
   position: absolute;
   height: 30px;
@@ -1159,7 +1157,7 @@ li span{
   color: #b94a48;
   text-align: center;
    }
-
+*/
    .saldo_conta {
     text-align: center;
     border: 2px solid;

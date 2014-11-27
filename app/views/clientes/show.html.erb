@@ -1,57 +1,103 @@
 <%- model_class = Cliente -%>
-<h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<h2><%=t '.title', :default => model_class.model_name.human.titleize %></h2>
  <!--  <%= link_to t('.novo', :default => t("helpers.links.novo_cliente")),
             new_cliente_path, :class => 'button blue-cadastrar-top' %> -->
 
-<div class="show1">
-<fieldset class='form-clientes show coluna_esquerda'>
-<legend class="legend1">Dados Pessoais</legend>
-    <strong><%= model_class.human_attribute_name(:nome) %>:</strong>
-    <%= @cliente.nome %><br/>
-    <strong>CPF:</strong>
-    <%= @cliente.cpf %><br/>
-    <strong>RG:</strong>
-    <%= @cliente.rg %><br/>
-    <strong><%= model_class.human_attribute_name(:sexo) %>:</strong>
-    <%= @cliente.sexo %><br/>
-    <strong><%= model_class.human_attribute_name(:data_de_nascimento) %>:</strong>
-    <%= @cliente.data_de_nascimento.strftime("%d/%m/%Y") %><br/>
-    <strong>Endereço:</strong>
-    <%= @cliente.endereco %><br/>
-    <strong>Número:</strong>
-    <%= @cliente.numero %><br/>
-    <strong><%= model_class.human_attribute_name(:bairro) %>:</strong>
-    <%= @cliente.bairro %><br/>
-    <strong><%= model_class.human_attribute_name(:cidade) %>:</strong>
-    <%= @cliente.cidade %><br/>
-    <strong><%= model_class.human_attribute_name(:complemento) %>:</strong>
-    <%= @cliente.complemento %><br/>
-    <strong><%= model_class.human_attribute_name(:telefone) %>:</strong>
-    <%= @cliente.telefone %><br/>
-    <strong><%= model_class.human_attribute_name(:celular) %>:</strong>
-    <%= @cliente.celular %>
-</fieldset>
-<fieldset class='form-clientes show'>
-<legend class="legend1">Dados Profissionais</legend>
-    <strong><%= model_class.human_attribute_name(:empresa) %>:</strong>
-    <%= @cliente.empresa.nome %><br/>
-    <strong><%= model_class.human_attribute_name(:cargo) %>:</strong>
-    <%= @cliente.cargo %><br/>
-    <strong><%= model_class.human_attribute_name(:setor) %>:</strong>
-    <%= @cliente.setor %><br/>
-    <strong><%= model_class.human_attribute_name(:telefone_empresa) %>:</strong>
-    <%= @cliente.telefone_empresa %><br/>
-    <strong><%= model_class.human_attribute_name(:ramal) %>:</strong>
-    <%= @cliente.ramal %><br/>
-    <strong><%= model_class.human_attribute_name(:celular_empresa) %>:</strong>
-    <%= @cliente.celular_empresa %><br/>
-    <strong><%= model_class.human_attribute_name(:email_empresa) %>:</strong>
-    <%= @cliente.email_empresa %><br/>
-    </fieldset>
-    <br>
-    <fieldset class='form-clientes lista_pedidos'>
-      <legend class="legend1">Dados Pedidos</legend>
-        <table class="table table-striped">
+<br>
+<div class="row">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><strong> Dados Pessoais</strong> 
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:nome) %>:&nbsp;</strong> 
+          <%= @cliente.nome %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:cpf) %>:&nbsp;</strong> 
+          <%= @cliente.cpf %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:rg) %>:&nbsp;</strong> 
+          <%= @cliente.rg %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:sexo) %>:&nbsp;</strong> 
+          <%= @cliente.sexo %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:data_de_nascimento) %>:&nbsp;</strong> 
+          <%= @cliente.data_de_nascimento.strftime("%d/%m/%Y") %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:endereco) %>:&nbsp;</strong> 
+          <%= @cliente.endereco %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:numero) %>:&nbsp;</strong>
+          <%= @cliente.numero %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:bairro) %>:&nbsp;</strong>
+          <%= @cliente.bairro %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:cidade) %>:&nbsp;</strong>
+          <%= @cliente.cidade %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:complemento) %>:&nbsp;</strong>
+          <%= @cliente.complemento %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:telefone) %>:&nbsp;</strong>
+          <%= @cliente.telefone %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:celular) %>:&nbsp;</strong>
+          <%= @cliente.celular %>
+        </li>           
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><strong> Dados Profissionais</strong> 
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:empresa) %>:&nbsp;</strong> 
+          <%= @cliente.empresa.nome %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:cargo) %>:&nbsp;</strong>
+          <%= @cliente.cargo %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:setor) %>:&nbsp;</strong>
+          <%= @cliente.setor %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:telefone_empresa) %>:&nbsp;</strong>
+          <%= @cliente.telefone_empresa %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:ramal) %>:&nbsp;</strong>
+          <%= @cliente.ramal %>
+        </li>
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:celular_empresa) %>:&nbsp;</strong>
+          <%= @cliente.celular_empresa %>
+        </li>        
+        <li class="list-group-item"><strong>
+          <%= model_class.human_attribute_name(:email_empresa) %>:&nbsp;</strong>
+          <%= @cliente.email_empresa %>
+        </li>
+      </ul>
+    </div>
+</div>
+
+<h2> Dados dos Pedidos</h2> <br><br> 
+<table class="table table-striped">
           <thead>
             <tr>
               <th>Valor</th>
@@ -92,33 +138,44 @@
               </tr>
             <% end %>
           </tbody>
-        </table>
-        <div class='saldo_conta'>Saldo Atual: R$ <%= @cliente.conta.saldo.to_f %></div>
-    </fieldset>
-  </div>
-  <br/>
-  <br/>
-<center>
-<div class="acoes">
-          <%= link_to clientes_path, :class => 'button gray' do %>
-              <span class="voltar"></span> 
+        </table><br>  
+  <div class="row">
+  <div class="col-md-12 text-center">
+    Saldo Atual: R$ <%= @cliente.conta.saldo.to_f %>
+   </div>
+  </div><br><br> 
+<div class="row">
+  <div class="col-md-12 text-center">
+    <div class="btn-group">
+          <%= link_to clientes_path, :class => 'btn btn-default' do %>
+              <span class="glyphicon glyphicon-arrow-left"></span>
               <% end %>
-          <%= link_to edit_cliente_path(@cliente), :class => 'button blue' do %>
-                      <span class="editar"></span>          
+    </div>
+    <div class="btn-group">
+            <%= link_to new_pedido_path(:cliente_id => @cliente.id), html_options = {:class => "btn btn-primary", :title => "Pedido"} do %>
+                      <span class="glyphicon glyphicon-cutlery"></span>
+            <% end %>      
+      </div>                  
+    <div class="btn-group">
+          <%= link_to edit_cliente_path(@cliente), :class => 'btn btn-warning' do %>
+              <span class="glyphicon glyphicon-pencil"></span>         
           <% end %>
+    </div>
+    <div class="btn-group">
           <% if can? :bloquear, Cliente %>          
             <% if @cliente.bloqueado? %>
-              <%= link_to desbloquear_cliente_path(@cliente), html_options = {:class => "button green", :title => "Desbloquear", :id => "desbloquear_#{@cliente.id}"} do %>
-                        <span class="desbloquear"></span>
+    
+              <%= link_to desbloquear_cliente_path(@cliente), html_options = {:class => "btn btn-success", :title => "Desbloquear", :id => "desbloquear_#{@cliente.id}"} do %>
+                        <span class="glyphicon glyphicon-plus"></span>
               <% end %>
             <% else %>
-              <%= link_to bloquear_cliente_path(@cliente), html_options = {:class => "button red", :title => "Bloquear", :id => "bloquear_#{@cliente.id}"} do %>
-                        <span class="bloquear"></span>
+              <%= link_to bloquear_cliente_path(@cliente), html_options = {:class => "btn btn-danger", :title => "Bloquear", :id => "bloquear_#{@cliente.id}"} do %>
+                        <span class="glyphicon glyphicon-remove"></span>
               <% end %>
             <% end %>
           <% end %>
-            <%= link_to new_pedido_path(:cliente_id => @cliente.id), html_options = {:class => "button green", :title => "Pedido"} do %>
-                      <span class="pedido"></span>
-            <% end %>                        
+      </div>    
     </div>
-</center>
+  </div>
+  <br><br>
+</div>

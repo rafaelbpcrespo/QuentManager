@@ -1,10 +1,12 @@
 <%- model_class = Produto -%>
-<div class="page-header">
-  <h1 class='titulo'>
-    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
-    <%= link_to 'Cadastrar Produto', new_produto_path, :class=>"button blue-cadastrar-top" %>
-  </h1>
+  <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h2>
+  <br>
+  <div class="row">
+        <div class="col-md-6 "> 
+        <%= link_to "Novo Produto", new_produto_path, :class => 'btn btn-success' %>                  
+        </div>        
 </div>
+<br>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,27 +22,37 @@
         <td><%= produto.nome %></td>
         <td><%= produto.quantidade %></td>
         <td><%= produto.limite_minimo %></td>
-        <td>
-          <%= link_to edit_produto_path(produto), html_options = { :class => 'button blue', :title => "Editar Dados"} do %>
-                      <span class="editar"></span>
+        <td class="text-center">
+          <%= link_to edit_produto_path(produto), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                      <span class="glyphicon glyphicon-pencil"></span>
                       <% end %>
-          <%= link_to produto_path(produto), html_options = { :class => 'button gray', :title => "Ver Dados Completos"} do %>
-                      <span class="listar"></span>          
+          <%= link_to produto_path(produto), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                      <span class="glyphicon glyphicon-list-alt"></span>          
           <% end %>
-          <%= link_to new_transacao_path(:produto_id => produto.id), :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          
-                      <span class="operacoes"></span>
+          <%= link_to new_transacao_path(:produto_id => produto.id), :class => 'btn btn-primary btn-sm', :title => 'Adicionar/Subtrair' do %>          
+                      <span class="glyphicon glyphicon-transfer"></span>
                       <% end %>
           <%#= link_to atualizar_produto_path(produto), method: :post, :class => 'button blue', :title => 'Adicionar/Subtrair' do %>          
                       <!-- <span class="operacoes"></span> -->
                       <%# end %>
-          <%= link_to produto_path(produto), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta produto?')) },
+          <%#= link_to produto_path(produto), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Deseja excluir esta produto?')) },
                       :class => 'button red', :title => "Remover" do %>
-                      <span class="remover"></span>
-                      <% end %>
+                      <!-- <span class="remover"></span> -->
+                      <%# end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br>
+
+<div class="row">
+        <div class="col-md-6 text-right "> 
+        <%= link_to "Novo Produto", new_produto_path, :class => 'btn btn-success' %>                  
+        </div>        
+         <div class="col-md-6">
+          <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
+        </div>
+</div>
 
 <%= will_paginate @produtos, renderer: BootstrapPagination::Rails %>
