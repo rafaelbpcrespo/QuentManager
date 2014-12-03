@@ -62,7 +62,7 @@
         <% end %>
         <dt><strong>Valor:</strong></dt>
         <dd><font size="5pt">R$ <%= pedido.valor %></font></dd>
-        <dt><strong>Observações:</strong></dt>
+        <dt><strong>Extras:</strong></dt>
         <% if pedido.qtd_extra(pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) != 0 %>
         <dd><%= pedido.qtd_extra(pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamento(s) extra</dd>
         <% end %>

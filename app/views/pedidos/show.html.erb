@@ -46,7 +46,7 @@
         <li class="list-group-item list-group-item-warning size-xl text-center"><strong><%= model_class.human_attribute_name(:valor) %>:&nbsp;</strong> 
           R$ <%= @pedido.valor %>
         </li>
-        <li class="list-group-item"><strong>Observações:&nbsp;</strong> 
+        <li class="list-group-item"><strong>Extras:&nbsp;</strong> 
           <% if @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) != 0 %>
             <dd><%= @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamentos extra</dd>
           <% end %>
