@@ -72,8 +72,8 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @acompanhamentos, renderer: BootstrapPagination::Rails %>
 <br>
+<%= will_paginate @acompanhamentos, renderer: BootstrapPagination::Rails %>
 <div class="row">
         <div class="col-md-6 text-right "> 
         <%= link_to "Novo Acompanhamento", new_acompanhamento_path, :class => 'btn btn-success' %>                  

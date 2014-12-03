@@ -45,6 +45,7 @@
   </tbody>
 </table>
 <br>
+<%= will_paginate @produtos, renderer: BootstrapPagination::Rails %>
 
 <div class="row">
         <div class="col-md-6 text-right "> 
@@ -55,4 +56,3 @@
         </div>
 </div>
 
-<%= will_paginate @produtos, renderer: BootstrapPagination::Rails %>

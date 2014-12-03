@@ -71,6 +71,7 @@
   </tbody>
 </table>
 <br>
+<%= will_paginate @sobremesas, renderer: BootstrapPagination::Rails %>
 <div class="row">
         <div class="col-md-6 text-right "> 
         <%= link_to "Nova Sobremesa", new_sobremesa_path, :class => 'btn btn-success' %>                  
