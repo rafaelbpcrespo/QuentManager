@@ -7,7 +7,7 @@
     <%# if Time.now.hour > 6 && Time.now.hour < 10 && !current_usuario.cliente.bloqueado? %>
     <%= link_to "Novo Pedido",
               new_pedido_path,
-              :class => 'btn btn-succes' %>
+              :class => 'btn btn-primary' %>
               <% else %> 
               <h3><font color="red">Horário para realização de pedidos finalizado</font></h3>
               <% end %>
