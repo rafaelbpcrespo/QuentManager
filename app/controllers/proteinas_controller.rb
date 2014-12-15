@@ -20,6 +20,7 @@ class ProteinasController < ApplicationController
 
   # GET /proteinas/1/edit
   def edit
+    @proteina.valor = @proteina.valor.to_s.split('.').join(',')
   end
 
   def desativar

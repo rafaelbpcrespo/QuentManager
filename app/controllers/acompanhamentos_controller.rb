@@ -20,6 +20,7 @@ class AcompanhamentosController < ApplicationController
 
   # GET /acompanhamentos/1/edit
   def edit
+    @acompanhamento.valor = @acompanhamento.valor.to_s.split('.').join(',')
   end
 
   def desativar

@@ -19,6 +19,7 @@ class BebidasController < ApplicationController
 
   # GET /bebidas/1/edit
   def edit
+    @bebida.valor = @bebida.valor.to_s.split('.').join(',')
   end
 
   def desativar
@@ -33,7 +34,7 @@ class BebidasController < ApplicationController
   # POST /bebidas.json
   def create
     valor = params[:bebida][:valor]
-    params[:bebida][:valor] = valor.split( ',').join('.')  
+    params[:bebida][:valor] = valor.split( ',').join('.')
 
     @bebida = Bebida.new(bebida_params)
 

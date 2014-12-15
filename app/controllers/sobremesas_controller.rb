@@ -19,6 +19,7 @@ class SobremesasController < ApplicationController
 
   # GET /sobremesas/1/edit
   def edit
+    @sobremesa.valor = @sobremesa.valor.to_s.split('.').join(',')
   end
 
   def desativar

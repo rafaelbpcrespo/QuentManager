@@ -1,5 +1,13 @@
-<p>Bem-vindo <%= @email %>!</p>
+<p>Ola,</p>
+ 
+<p>Recebemos sua solicitação de cadastro no site da Si Quitutes Alimentações, os dados iniciais informados são:</p>
 
-<p>Para confirmar seu cadastro no Si Quitutes clique no link abaixo:</p>
+<p>CPF: <%= @resource.cliente.cpf %></p>
+<p>E-mail: <%= @email %></p>
 
+<p> Para completar o seu cadastro clique no link de confirmação abaixo:</p>
+ 
 <p><%= link_to 'Confirmar minha conta', confirmation_url(@resource, confirmation_token: @token) %></p>
+ 
+<p>A Si Quitutes Alimentações agradece o seu cadastro.</p>
+

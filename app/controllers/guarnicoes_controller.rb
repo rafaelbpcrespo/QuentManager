@@ -20,6 +20,7 @@ class GuarnicoesController < ApplicationController
 
   # GET /guarnicoes/1/edit
   def edit
+    @guarnicao.valor = @guarnicao.valor.to_s.split('.').join(',')
   end
 
   def desativar

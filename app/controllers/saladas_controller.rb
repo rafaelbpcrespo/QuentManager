@@ -21,6 +21,7 @@ class SaladasController < ApplicationController
 
   # GET /saladas/1/edit
   def edit
+    @salada.valor = @salada.valor.to_s.split('.').join(',')
   end
 
   def desativar
