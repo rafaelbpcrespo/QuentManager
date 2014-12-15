@@ -48,22 +48,22 @@
         </li>
         <li class="list-group-item"><strong>Extras:&nbsp;</strong> 
           <% if @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) != 0 %>
-            <dd><%= @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamentos extra</dd>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamentos extra - R$<%= @pedido.extra(@pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> </dd>
           <% end %>
           <% if @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) != 0 %>
-            <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteínas extra</dd>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteínas extra - R$<%= @pedido.extra(@pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> </dd>
           <% end %>
           <% if @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) != 0 %>
-            <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnições extra</dd>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnições extra - R$<%= @pedido.extra(@pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> </dd>
           <% end %>
           <% if @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) != 0 %>
-            <dd><%= @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> saladas extra</dd>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> saladas extra - R$<%= @pedido.extra(@pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> </dd>
           <% end %>
           <% if @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) != 0 %>
-            <dd><%= @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebidas extra</dd>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebidas extra - R$<%= @pedido.extra(@pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> </dd>
           <% end %>
           <% if @pedido.qtd_extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) != 0 %>
-            <dd><%= @pedido.qtd_extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> sobremesas extra</dd>
+            <dd><%= @pedido.qtd_extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> sobremesas extra - R$<%= @pedido.extra(@pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> </dd>
           <% end %>
         </li>                              
       </ul>
