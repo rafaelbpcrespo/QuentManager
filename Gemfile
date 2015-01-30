@@ -6,8 +6,8 @@ gem 'rails', '4.0.4'
 gem 'less-rails'
 gem 'therubyracer'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
-gem 'pg'
+gem 'sqlite3'
+#gem 'pg'
 #gem 'mysql2'
 
 gem 'wicked'
