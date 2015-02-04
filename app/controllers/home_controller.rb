@@ -12,6 +12,10 @@ class HomeController < ApplicationController
 
   end
 
+  def cardapio
+
+  end
+
   def relatorio_produtos
     @produtos_acabando = Produto.acabando_completo
     @produtos_em_falta = Produto.zerados
