@@ -80,7 +80,7 @@ QuentManager::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   #Added per active admin install instructions
-  config.action_mailer.default_url_options = { :host => 'http://quentmanager.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'www.siquitutes.com.br' }
 
 
   #These settings are for the sending out email for active admin and consequently the   devise mailer
