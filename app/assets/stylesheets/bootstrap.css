@@ -4810,7 +4810,8 @@ a.list-group-item.active > .badge,
     font-size: 63px;
   }
 }
-.thumbnail {
+
+.thumbnail_2 {
   display: block;
   padding: 4px;
   margin-bottom: 20px;
@@ -4828,6 +4829,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
   -moz-box-shadow:    4px 4px 6px 0px rgba(52, 50, 50, 0.64);
   box-shadow:         4px 4px 6px 0px rgba(52, 50, 50, 0.64);
 }
+
+.thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+
 .thumbnail > img,
 .thumbnail a > img {
   margin-right: auto;
