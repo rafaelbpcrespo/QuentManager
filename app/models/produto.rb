@@ -61,6 +61,17 @@ class Produto < ActiveRecord::Base
     return limite_exibicao
   end
 
+  def self.search(search)
+    if search
+      search = search.titleize
+    end
+    if search
+      find(:all, :conditions => ['nome LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end  
+
 
   def self.acabando_completo
     produtos = []

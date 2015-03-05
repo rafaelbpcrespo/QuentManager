@@ -19,13 +19,27 @@
 <% if current_usuario.admin? || current_usuario.gerente? %>
 <%= form_tag(pedidos_path, :method => "get", :class => "validate", id: "search-formulario") do %>
    <td>
-      <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas as Empresas", :class => "form-control input-search" %><br>
+    <div class="col-sm-2">
+      <label>
+        <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas as Empresas", :class => "form-control input-search" %>
+      </label>
+    </div>
+
+    <div class="col-sm-2">
+      <label>
       <%= select_tag :situacao, options_for_select(["Confirmado", "Cancelado", "Em processamento"]), :prompt => "Todas as Situações", :class => "form-control input-search" %><br>
+      </label>
+    </div>      
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
            of using a Rails form helper -->
-   <%= submit_tag "Buscar", :name => nil, :class => 'button gray-voltar' %></td>
+    <div class="col-sm-2">
+      <label>           
+        <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>
+      </label>
+    </div>
 
-    <br><br><br><br>
+
+    <br>
   <% end %>
 <% end %>
 <table class="table table-striped">

@@ -7,12 +7,17 @@
 <%= form_tag(clientes_path, :method => "get", :class => "form-horizontal", id: "search-form") do %>
     <div class="col-sm-2">
       <label>
-        <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Buscar Clientes" %>
+        <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Nome do Cliente" %>
       </label>
     </div>
-    <div class="col-sm-10">
+    <div class="col-sm-2">
       <label >
         <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas as Empresas", :class => "form-control input-search" %>
+      </label>
+    </div>
+    <div class="col-sm-2">
+      <label>
+        <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>    
       </label>
     </div>
     <% end %>
