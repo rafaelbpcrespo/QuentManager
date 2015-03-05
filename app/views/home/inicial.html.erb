@@ -1,5 +1,83 @@
 
-<% if current_usuario.admin? || current_usuario.gerente? %>
+<% if current_usuario.gerente? %>
+
+<br><br>
+<div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Informações dos Clientes</h3>
+            </div>
+            <div class="panel-body">
+              <p>Clientes Cadastrados: <%= Cliente.all.count %></p>
+              <p>Clientes Bloqueados: <%= Cliente.where(bloqueado: true).count %></p>
+              <p>Clientes Cadastrados hoje: <%= Cliente.where(created_at: Time.now.beginning_of_day).count %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Informações de Vendas</h3>
+            </div>
+            <div class="panel-body">
+              <p>Quantidade de vendas do mês: <%= Pedido.confirmados_do_mes.count %></p> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Informações dos Pedidos de Hoje</h3>
+            </div>
+            <div class="panel-body">
+              <p>Quantidade de pedidos: <%= Pedido.de_hoje %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Informações do Estoque</h3>
+            </div>
+            <div class="panel-body">
+              <table class='tabela'>
+        <thead>
+          <tr>
+            <th>Acabando</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Produto.acabando.each do |produto| %>
+            <tr>
+              <td><%= produto.nome %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <table class='tabela'>
+        <thead>
+          <tr>
+            <th>Em falta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Produto.zerados.each do |produto| %>
+            <tr>
+              <td><%= produto.nome %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Detalhes', home_relatorio_produtos_path %> 
+            </div>
+          </div>
+        </div>
+  </div>
+
+<% elsif current_usuario.admin? %>
 
 <br><br>
 <div class="row">

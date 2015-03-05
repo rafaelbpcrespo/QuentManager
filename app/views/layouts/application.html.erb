@@ -79,12 +79,18 @@
     <div class="container white">
       <div class="row">
         <div class="col-md-12">
+                    <% if !notice.nil? %>
+          <div class="alert alert-success text-center"><%= notice %></div>
+        <% elsif !alert.nil? %>
+          <div class="alert alert-danger text-center"><%= alert %></div>
+        <% end %>
           <div class="navbar navbar-default navbar-orange">
             
             <div class="collapse navbar-collapse navbar-ex1-collapse">
+
               <ul class="nav navbar-left navbar-nav">
                 <li class="active">
-                  <a href="/home/inicial"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                  <a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
                 </li>
             <% if !usuario_signed_in? %>
                 <li>
@@ -94,7 +100,7 @@
                   <a href="/home/sobre"><span class="glyphicon glyphicon-star"></span>&nbsp;Sobre</a>
                 </li>
             <% else %>
-              <% if current_usuario.admin? %>                
+              <% if current_usuario.admin? || current_usuario.gerente? %>                
                 <li>
                     <a type="button" class="glyphicon glyphicon-plus" data-toggle="dropdown">
                       Cadastros <span class="caret"></span>
@@ -225,13 +231,6 @@
         </div>
       </div>
     </div>
-      <div class="container white">
-        <% if !notice.nil? %>
-          <div class="alert alert-success text-center"><%= notice %></div>
-        <% elsif !alert.nil? %>
-          <div class="alert alert-danger text-center"><%= alert %></div>
-        <% end %>
-      </div>
 
     <div class="container white">
       <br>
