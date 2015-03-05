@@ -19,9 +19,9 @@
   <tbody>
     <% @produtos.each do |produto| %>
       <tr>
-        <td><%= produto.nome %></td>
-        <td><%= produto.quantidade %></td>
-        <td><%= produto.limite_minimo %></td>
+        <td><%= produto.nome %> (<%= produto.produto_tipo.nome %>)</td>
+        <td><%= produto.quantidade %> <%= unidade_medida(produto)%></td>
+        <td><%= produto.limite_minimo %> <%= unidade_medida(produto) %></td>
         <td class="text-center">
           <%= link_to edit_produto_path(produto), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
                       <span class="glyphicon glyphicon-pencil"></span>
