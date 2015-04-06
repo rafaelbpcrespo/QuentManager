@@ -1,0 +1,117 @@
+<%- model_class = Cliente -%>
+<div class="page-header">
+  <h2 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h2>
+</div>
+<br>
+<div class="form-group">
+<%= form_tag(home_conta_clientes_path, :method => "get", :class => "form-horizontal", id: "search-form") do %>
+    <div class="col-sm-2">
+      <label>
+        <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Nome do Cliente" %>
+      </label>
+    </div>
+    <div class="col-sm-2">
+      <label >
+        <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas as Empresas", :class => "form-control input-search" %>
+      </label>
+    </div>
+    <div class="col-sm-2">
+      <label>
+        <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>    
+      </label>
+    </div>
+    <% end %>
+</div>
+<br><br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:celular) %></th>
+      <th><%= model_class.human_attribute_name(:empresa) %></th>
+      <th><%= model_class.human_attribute_name(:saldo) %></th>
+      <th class="text-center"><%=t '.ações', :default => t("helpers.ações") %></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @clientes.each do |cliente| %>
+      <% if !cliente.bloqueado? %>
+        <tr>
+          <td><%= cliente.nome_abreviado %></td>
+          <td><%= cliente.celular %></td>
+          <td><%= cliente.empresa.nome %></td>
+          <td>R$ <%= cliente.conta.saldo.to_f %></td>
+          <td class="text-center">
+              <%= link_to new_pedido_path(:cliente_id => cliente.id), html_options = {:class => "btn btn-primary btn-sm", :title => "Pedido"} do %>
+                        <span class="glyphicon glyphicon-cutlery"></span>
+              <% end %>                        
+            <%= link_to cliente_path(cliente), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                        <span class="glyphicon glyphicon-list-alt"></span>          
+            <% end %>
+            <%= link_to edit_cliente_path(cliente), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <% if cliente.bloqueado? %>
+              <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
+                        <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            <% else %>
+              <%= link_to bloquear_cliente_path(cliente), html_options = {:class => "btn btn-danger btn-sm", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} do %>
+                        <span class="glyphicon glyphicon-ban-circle"></span>
+              <% end %>
+              <% end %>
+              <%= link_to new_pagamento_path(:conta_id => cliente.conta.id), html_options = {:class => "btn btn-success btn-sm", :title => "Pagamento"} do %>
+                        <span class="glyphicon glyphicon-usd"></span>
+              <% end %>                        
+              <%#= link_to conta_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Conta"} do %>
+                       <!--  <span class="glyphicon glyphicon-euro"></span> -->
+              <%# end %>                        
+          </td>
+        </tr>
+      <% else %>
+        <tr class="list-group-font-danger">
+          <td><%= cliente.nome_abreviado %></td>
+          <td><%= cliente.celular %></td>
+          <td><%= cliente.empresa.nome %></td>
+          <td><%= cliente.bloqueado? ? "Sim" : "Não" %></td>
+          <td class="text-center">
+              <%= link_to new_pedido_path(:cliente_id => cliente.id), html_options = {:class => "btn btn-primary btn-sm", :title => "Pedido"} do %>
+                        <span class="glyphicon glyphicon-cutlery"></span>
+              <% end %>                        
+            <%= link_to cliente_path(cliente), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                        <span class="glyphicon glyphicon-list-alt"></span>          
+            <% end %>
+            <%= link_to edit_cliente_path(cliente), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <% if cliente.bloqueado? %>
+              <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
+                        <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            <% else %>
+              <%= link_to bloquear_cliente_path(cliente), html_options = {:class => "btn btn-danger btn-sm", :title => "Bloquear", :id => "bloquear_#{cliente.id}"} do %>
+                        <span class="glyphicon glyphicon-ban-circle"></span>
+              <% end %>
+              <% end %>
+              <%= link_to new_pagamento_path(:conta_id => cliente.conta.id), html_options = {:class => "btn btn-success btn-sm", :title => "Pagamento"} do %>
+                        <span class="glyphicon glyphicon-usd"></span>
+              <% end %>                        
+              <%#= link_to conta_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Conta"} do %>
+                       <!--  <span class="glyphicon glyphicon-euro"></span> -->
+              <%# end %>                        
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<div class="row">
+         <div class="col-md-12 text-center">
+          <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
+        </div>
+</div>
+<% if current_usuario.admin? %>
+  <%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
+<% end %>

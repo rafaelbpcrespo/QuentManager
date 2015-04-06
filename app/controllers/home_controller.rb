@@ -16,6 +16,10 @@ class HomeController < ApplicationController
 
   end
 
+  def conta_clientes
+    @clientes = Cliente.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
+  end
+
   def relatorio_produtos
     @produtos_acabando = Produto.acabando_completo
     @produtos_em_falta = Produto.zerados
