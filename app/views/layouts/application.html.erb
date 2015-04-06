@@ -89,9 +89,21 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
 
               <ul class="nav navbar-left navbar-nav">
-                <li class="active">
-                  <a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
-                </li>
+            <% if !usuario_signed_in? %>
+                  <li class="active">
+                    <a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                  </li>
+            <% else %>
+                <% if current_usuario.admin? || current_usuario.gerente? %>                  
+                  <li class="active">
+                    <a href="/home/inicial"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                  </li>
+                <% else %>
+                  <li class="active">
+                    <a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                  </li>
+                <% end %>
+              <% end %>
             <% if !usuario_signed_in? %>
                 <li>
                   <a href="/usuarios/sign_up"><span class="glyphicon glyphicon-user"></span>&nbsp;Cadastre-se</a>
@@ -134,6 +146,7 @@
                       <li><a><%= link_to "Impressão de Pedidos", "/home/pedidos_do_dia" %></a></li>
                       <li><a><%= link_to "Pedidos do dia X Empresa", "/pedidos" %></a></li>
                       <li><a><%= link_to "Impressão Pedidos X Empresa", "/home/pedidos_empresa" %></a></li>
+                      <li><a><%= link_to "Saldo Clientes", "/home/conta_clientes" %></a></li>
                     </ul>
                 </li>
               <% else %>
@@ -267,7 +280,7 @@
     <% end %>
      </div>  <!-- Fecha Wrap -->
     
-    <footer>
+    <footer id="footer">
       <center>Si Quitutes Alimentações</center>
     <center>Todos os Direitos Reservados</center>
     </footer>
