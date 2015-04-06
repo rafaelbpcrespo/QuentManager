@@ -47,7 +47,7 @@ class PedidosController < ApplicationController
 
   def cancelar
     @pedido = Pedido.find(params[:id])
-    if (DateTime.now > @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE)) && !(current_usuario.admin? || current_usuario.gerente?)
+    if (DateTime.now > @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !(current_usuario.admin? || current_usuario.gerente?)
       flash[:alert] = "Horário limite para cancelamento ultrapassado."
     elsif @pedido.situacao == "Cancelado"
       flash[:alert] = "Este pedido já foi cancelado."
