@@ -101,7 +101,8 @@
             <div class="panel-body">
               <p>Valor vendido hoje: R$ <%= exibir_decimal(Pedido.vendidos_hoje) %></p>
               <p>Vendas do mês: R$<%= exibir_decimal(Pedido.vendas_do_mes) %></p> 
-              <p>Quantidade de vendas do mês: <%= Pedido.confirmados_do_mes.count %></p> 
+              <p>Pedidos Confirmados: <%= Pedido.confirmados_do_mes.count %></p> 
+              <p>Pedidos Cancelados: <%= Pedido.cancelados_do_mes.count %></p> 
             </div>
           </div>
         </div>
@@ -114,7 +115,8 @@
             </div>
             <div class="panel-body">
               <p>Valor vendido hoje: R$<%= exibir_decimal(Pedido.vendidos_hoje) %></p>
-              <p>Quantidade de pedidos: <%= Pedido.de_hoje %></p>
+              <p>Pedidos Confirmados: <%= Pedido.confirmados_do_dia.count %></p>
+              <p>Pedidos Cancelados: <%= Pedido.cancelados_do_dia.count %></p>
             </div>
           </div>
         </div>
