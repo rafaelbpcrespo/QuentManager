@@ -138,54 +138,88 @@ class Pedido < ActiveRecord::Base
     end
 
     def confirmar!
+      # Verificacao se algum item do pedido esta em falta
       self.pedidos_acompanhamentos.each do |pedido_acompanhamento|
         acompanhamento = pedido_acompanhamento.acompanhamento
         if acompanhamento.quantidade < pedido_acompanhamento.quantidade
           return 0
-        else
-        acompanhamento.decrescer(pedido_acompanhamento.quantidade)
+        #else
+#        acompanhamento.decrescer(pedido_acompanhamento.quantidade)
       end
       end
       self.pedidos_proteinas.each do |pedido_proteina|
         proteina = pedido_proteina.proteina
         if proteina.quantidade < pedido_proteina.quantidade
           return 0
-        else
-        proteina.decrescer(pedido_proteina.quantidade)
+       # else
+        #proteina.decrescer(pedido_proteina.quantidade)
       end
       end
       self.pedidos_guarnicoes.each do |pedido_guarnicao|
         guarnicao = pedido_guarnicao.guarnicao
         if guarnicao.quantidade < pedido_guarnicao.quantidade
           return 0
-        else
-          guarnicao.decrescer(pedido_guarnicao.quantidade)
+        #else
+        # guarnicao.decrescer(pedido_guarnicao.quantidade)
         end        
       end
       self.pedidos_saladas.each do |pedido_salada|
         salada = pedido_salada.salada
         if salada.quantidade < pedido_salada.quantidade
           return 0
-        else
-          salada.decrescer(pedido_salada.quantidade)
+        #else
+        #  salada.decrescer(pedido_salada.quantidade)
         end        
       end
       self.pedidos_bebidas.each do |pedido_bebida|
         bebida = pedido_bebida.bebida
         if bebida.quantidade < pedido_bebida.quantidade
           return 0
-        else
-          bebida.decrescer(pedido_bebida.quantidade)
+        #else
+          #bebida.decrescer(pedido_bebida.quantidade)
         end
       end
       self.pedidos_sobremesas.each do |pedido_sobremesa|
         sobremesa = pedido_sobremesa.sobremesa
         if sobremesa.quantidade < pedido_sobremesa.quantidade
           return 0
-        else
-          sobremesa.decrescer(pedido_sobremesa.quantidade)
+        #else
+          #sobremesa.decrescer(pedido_sobremesa.quantidade)
         end
       end
+
+      #Depois de verificado que todos os itens estao disponiveis, confirmar o pedido e decrescer quantidades
+
+      self.pedidos_acompanhamentos.each do |pedido_acompanhamento|
+        acompanhamento = pedido_acompanhamento.acompanhamento
+        acompanhamento.decrescer(pedido_acompanhamento.quantidade)
+      end
+      
+      self.pedidos_proteinas.each do |pedido_proteina|
+        proteina = pedido_proteina.proteina
+        proteina.decrescer(pedido_proteina.quantidade)
+      end
+      
+      self.pedidos_guarnicoes.each do |pedido_guarnicao|
+       guarnicao = pedido_guarnicao.guarnicao
+       guarnicao.decrescer(pedido_guarnicao.quantidade)
+     end      
+
+     self.pedidos_saladas.each do |pedido_salada|
+       salada = pedido_salada.salada
+       salada.decrescer(pedido_salada.quantidade)
+     end              
+
+      self.pedidos_bebidas.each do |pedido_bebida|
+        bebida = pedido_bebida.bebida
+        bebida.decrescer(pedido_bebida.quantidade)
+      end
+
+      self.pedidos_sobremesas.each do |pedido_sobremesa|
+        sobremesa = pedido_sobremesa.sobremesa
+        sobremesa.decrescer(pedido_sobremesa.quantidade)
+     end      
+
       self.confirmar
       self.save!      
     end

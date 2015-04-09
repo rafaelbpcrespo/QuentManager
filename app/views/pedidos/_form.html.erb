@@ -46,7 +46,11 @@
                 <div class='well-xs'><%= "#{acompanhamento.descricao} - R$#{sprintf('%.2f', acompanhamento.valor)} cada" %></div>
                 </div>
                 <div class="col-md-4">                
-                  <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :class => "form-control input-search" %>
+                  <% if @flag_situacao == 1 %>
+                    <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :class => "form-control input-search" %>
+                  <% else %>
+                    <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade+@pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(acompanhamento.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :class => "form-control input-search" %>
+                  <% end %>
                 </div>                               
                 </div>
                 <% end %>
@@ -89,7 +93,13 @@
                   <div class='well-xs'><%= "#{proteina.descricao} - R$#{sprintf('%.2f', proteina.valor)} cada" %></div>      
                   </div>
                   <div class="col-md-4">
+                  <% debugger %>
+                  <%# Aqui adicionei a quantidade de pedidos que estava no pedido que esta sendo editado para aparecer na disponibilidade na hora de fazer o pedido %>
+                  <% if @flag_situacao == 1 %>
                   <%= select_tag "quantidade_proteina_#{i}", options_for_select((1.."#{proteina.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_proteinas.where(:proteina_id => proteina.id).first.quantidade), :class => "form-control input-search" %>
+                  <% else %>
+                  <%= select_tag "quantidade_proteina_#{i}", options_for_select((1.."#{proteina.quantidade+@pedido.pedidos_proteinas.find_by_proteina_id(proteina.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_proteinas.where(:proteina_id => proteina.id).first.quantidade), :class => "form-control input-search" %>
+                  <% end %>
                   </div>
                   </div>
                   <% end %>
@@ -132,7 +142,12 @@
                   <div class='well-xs'><%= "#{guarnicao.descricao} - R$#{sprintf('%.2f', guarnicao.valor)} cada" %></div>      
                   </div>
                   <div class="col-md-4">
+                  <% if @flag_situacao == 1 %>
                     <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_guarnicoes.where(:guarnicao_id => guarnicao.id).first.quantidade), :class => "form-control input-search" %>
+                  <% else %>
+                    <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade+@pedido.pedidos_guarnicoes.find_by_guarnicao_id(guarnicao.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_guarnicoes.where(:guarnicao_id => guarnicao.id).first.quantidade), :class => "form-control input-search" %>                  
+                  <% end %>
+                  
                   </div>
                   </div>
                   <% end %>
@@ -178,7 +193,11 @@
                     <div class='well-xs'><%= "#{salada.descricao} - R$#{sprintf('%.2f', salada.valor)} cada" %></div>      
                     </div>
                     <div class="col-md-4">
+                  <% if @flag_situacao == 1 %>
                     <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade), :class => "form-control input-search" %>
+                  <% else %>
+                    <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade+@pedido.pedidos_saladas.find_by_salada_id(salada.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade), :class => "form-control input-search" %>                  
+                  <% end %>                    
                     </div>
                     </div>
                     <% end %>
@@ -221,7 +240,11 @@
                     <div class='well-xs'><%= "#{bebida.tipo} - R$#{sprintf('%.2f', bebida.valor)} cada" %></div>
                     </div>
                     <div class="col-md-4">
-                    <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_bebidas.where(:bebida_id => bebida.id).first.quantidade), :class => "form-control input-search" %>
+                    <% if @flag_situacao == 1 %>
+                      <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_bebidas.where(:bebida_id => bebida.id).first.quantidade), :class => "form-control input-search" %>
+                    <% else %>
+                      <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade+@pedido.pedidos_bebidas.find_by_bebida_id(bebida.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_bebidas.where(:bebida_id => bebida.id).first.quantidade), :class => "form-control input-search" %>
+                    <% end %>                                        
                     </div>
                     </div>
                     <% end %>
@@ -263,7 +286,11 @@
                       <div class="well-xs"><%= "#{sobremesa.descricao} - R$#{sprintf('%.2f', sobremesa.valor)} cada" %></div>
                       </div>
                       <div class="col-md-4">
+                    <% if @flag_situacao == 1 %>
                       <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_sobremesas.where(:sobremesa_id => sobremesa.id).first.quantidade), :class => "form-control input-search" %>
+                    <% else %>
+                      <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade+@pedido.pedidos_sobremesas.find_by_sobremesa_id(sobremesa.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_sobremesas.where(:sobremesa_id => sobremesa.id).first.quantidade), :class => "form-control input-search" %>                    
+                    <% end %>                      
                       </div>
                       </div>
                       <% end %>
