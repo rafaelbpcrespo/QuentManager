@@ -55,7 +55,7 @@
   <tbody>
     <% @pedidos.each do |pedido| %>
       <tr>
-        <td><%= pedido.cliente.nome %></td>
+        <td><%= link_to pedido.cliente.nome, cliente_path(pedido.cliente) %></td>
         <td><%= pedido.valor %></td>
         <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.situacao %></td>
