@@ -199,6 +199,7 @@ th {
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
   }
+  footer, meta, title, #description {display: none;}
   a,
   a:visited {
     text-decoration: underline;
@@ -252,12 +253,19 @@ th {
   .label {
     border: 1px solid #000;
   }
+
+  .panel {
+    height: 270px;
+  }
+
   .table {
     border-collapse: collapse !important;
+    font-size: 8pt;
   }
   .table td,
   .table th {
     background-color: #fff !important;
+    max-width: 200px;
   }
   .table-bordered th,
   .table-bordered td {
@@ -5241,7 +5249,7 @@ a.list-group-item-danger.active:focus {
   line-height: 1.3;
 }
 .panel {
-  margin-bottom: 20px;
+  margin-bottom: 4px;
   background-color: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
