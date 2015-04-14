@@ -471,7 +471,7 @@ class PedidosController < ApplicationController
 
     # debugger
 
-    puts "teste"
+#    puts "teste"
     ##################### Fim sobremesas removidos #####################
 
     # proteinas = Proteina.where(:disponibilidade => true, :tipo => "Carne").count

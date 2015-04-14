@@ -93,7 +93,7 @@
                   <div class='well-xs'><%= "#{proteina.descricao} - R$#{sprintf('%.2f', proteina.valor)} cada" %></div>      
                   </div>
                   <div class="col-md-4">
-                  <% debugger %>
+                  <%# debugger %>
                   <%# Aqui adicionei a quantidade de pedidos que estava no pedido que esta sendo editado para aparecer na disponibilidade na hora de fazer o pedido %>
                   <% if @flag_situacao == 1 %>
                   <%= select_tag "quantidade_proteina_#{i}", options_for_select((1.."#{proteina.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_proteinas.where(:proteina_id => proteina.id).first.quantidade), :class => "form-control input-search" %>
