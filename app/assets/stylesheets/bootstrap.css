@@ -256,6 +256,11 @@ th {
 
   .panel {
     height: 270px;
+    margin-bottom: 30px;
+  }
+
+  .break {
+    page-break-after: always;
   }
 
   .table {

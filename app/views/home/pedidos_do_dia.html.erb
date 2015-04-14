@@ -3,7 +3,7 @@
     Não existem pedidos confirmados para o dia de hoje.
 
   <% else %>
-    <% @pedidos.each do |pedido| %>
+    <% @pedidos.each_with_index do |pedido,i| %>
    
     
   <div class="panel panel-default">
@@ -63,6 +63,8 @@
       </table>
    
   </div>
-   
+      <% if i % 3 == 0 && i != 0%>
+        <div class="break"> </div>
+      <% end %>
     <% end %>
   <% end %>
