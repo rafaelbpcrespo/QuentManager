@@ -244,7 +244,10 @@ class PedidosController < ApplicationController
     #Esta verificacao e feita para evitar que quando um NOVO pedido nao possa ser confirmado por falta de itens disponiveis, os itens do pedido não sejam decrescidos.
     if @pedido.situacao == "Em processamento"
       @flag_situacao = 1
+    elsif @pedido.situacao == "Confirmado"
+      @flag_situacao = 2
     end
+
 #    descricao = ""
     @pedido.situacao = "Em processamento"
     @pedido.save
@@ -259,7 +262,7 @@ class PedidosController < ApplicationController
       if  !params["acompanhamento_#{i}"].blank?
         acompanhamento = Acompanhamento.find(params["acompanhamento_#{i}"])
       end
-      if (( @pedido.acompanhamentos.include? acompanhamento) && ( !params["acompanhamento_#{i}"].blank?) && (params["quantidade_acompanhamento_#{i}"].to_i != @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(acompanhamento.id).quantidade) && (@flag_situacao != 1))
+      if (( @pedido.acompanhamentos.include? acompanhamento) && ( !params["acompanhamento_#{i}"].blank?) && (params["quantidade_acompanhamento_#{i}"].to_i != @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(acompanhamento.id).quantidade) && (@flag_situacao != 1) )
         atualiza_acompanhamento = @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(params["acompanhamento_#{i}"])
         acompanhamento.acrescer(atualiza_acompanhamento.quantidade) #Aqui adiciona o que tinha ficado no pedido antes de ser editado.
         atualiza_acompanhamento.quantidade = params["quantidade_acompanhamento_#{i}"].to_i
@@ -269,11 +272,12 @@ class PedidosController < ApplicationController
         atualiza_acompanhamento = @pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(params["acompanhamento_#{i}"])
         acompanhamento.acrescer(atualiza_acompanhamento.quantidade)
         acompanhamento_editado << atualiza_acompanhamento
-      elsif (( !params["acompanhamento_#{i}"].blank?) && ( !params["quantidade_acompanhamento_#{i}"].nil?))
+      elsif ( !(@pedido.acompanhamentos.include? acompanhamento) && ( !params["acompanhamento_#{i}"].blank?) && ( !params["quantidade_acompanhamento_#{i}"].nil?))
         acompanhamento_novo << @pedido.pedidos_acompanhamentos.create!(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
         #acompanhamento_novo.last.acompanhamento.decrescer(acompanhamento_novo.last.quantidade)        
       end
     end
+    if  @flag_situacao != 1
       acompanhamentos_removidos = pa - acompanhamento_editado
       acompanhamentos_removidos = acompanhamentos_removidos - acompanhamento_novo
       acompanhamentos_removidos.each do |acompanhamento_removido|
@@ -283,6 +287,7 @@ class PedidosController < ApplicationController
         @pedido.acompanhamentos.delete(acomp)
         acompanhamento_removido.destroy
       end
+    end    
 
     proteina_novo = []
     pc = @pedido.pedidos_proteinas
@@ -294,7 +299,7 @@ class PedidosController < ApplicationController
       if  !params["proteina_#{i}"].blank?
         proteina = Proteina.find(params["proteina_#{i}"])
       end
-      if (( @pedido.proteinas.include? proteina) && ( !params["proteina_#{i}"].blank?) && (params["quantidade_proteina_#{i}"].to_i != @pedido.pedidos_proteinas.find_by_proteina_id(proteina.id).quantidade) && (@flag_situacao != 1))
+      if (( @pedido.proteinas.include? proteina) && ( !params["proteina_#{i}"].blank?) && (params["quantidade_proteina_#{i}"].to_i != @pedido.pedidos_proteinas.find_by_proteina_id(proteina.id).quantidade) && (@flag_situacao != 1) )
         atualiza_proteina = @pedido.pedidos_proteinas.find_by_proteina_id(params["proteina_#{i}"])
         proteina.acrescer(atualiza_proteina.quantidade) #Aqui adiciona o que tinha ficado no pedido antes de ser editado.
         atualiza_proteina.quantidade = params["quantidade_proteina_#{i}"].to_i
@@ -305,21 +310,24 @@ class PedidosController < ApplicationController
         proteina.acrescer(atualiza_proteina.quantidade) #Aqui adiciona o que tinha ficado no pedido antes de ser editado.
         proteina_editado << atualiza_proteina
         # Aqui acho que poderia não fazer nada...
-      elsif (( !params["proteina_#{i}"].blank?) && ( !params["quantidade_proteina_#{i}"].nil?))
+      elsif ( !(@pedido.proteinas.include? proteina) && ( !params["proteina_#{i}"].blank?) && ( !params["quantidade_proteina_#{i}"].nil?) )
         proteina_novo << @pedido.pedidos_proteinas.create!(:proteina_id => params["proteina_#{i}"], :quantidade => params["quantidade_proteina_#{i}"])
         #proteina_novo.last.proteina.decrescer(proteina_novo.last.quantidade)
         # Cria nova proteina adicionada no pedido e remove a quantidade da qtd disponivel no cardapio.
       end
     end
     #### Removendo proteinas após edição ####
-    proteinas_removidos = pc - proteina_editado
-    proteinas_removidos = proteinas_removidos - proteina_novo
-    proteinas_removidos.each do |proteina_removido|
-      proteina_removido.proteina.acrescer(proteina_removido.quantidade)
-      prote = Proteina.find_by_id(proteina_removido.proteina_id)
-      @pedido.pedidos_proteinas.delete(proteina_removido)
-      @pedido.proteinas.delete(prote)
-      proteina_removido.destroy
+    
+    if  @flag_situacao != 1
+      proteinas_removidos = pc - proteina_editado
+      proteinas_removidos = proteinas_removidos - proteina_novo
+      proteinas_removidos.each do |proteina_removido|
+        proteina_removido.proteina.acrescer(proteina_removido.quantidade)
+        prote = Proteina.find_by_id(proteina_removido.proteina_id)
+        @pedido.pedidos_proteinas.delete(proteina_removido)
+        @pedido.proteinas.delete(prote)
+        proteina_removido.destroy
+      end
     end
     ##################### Fim proteinas removidos #####################
 
@@ -343,20 +351,23 @@ class PedidosController < ApplicationController
         atualiza_guarnicao = @pedido.pedidos_guarnicoes.find_by_guarnicao_id(params["guarnicao_#{i}"])
         guarnicao.acrescer(atualiza_guarnicao.quantidade)
         guarnicao_editado << atualiza_guarnicao
-      elsif (( !params["guarnicao_#{i}"].blank?) && ( !params["quantidade_guarnicao_#{i}"].nil?))
+      elsif ( !(@pedido.guarnicoes.include? guarnicao) && ( !params["guarnicao_#{i}"].blank?) && ( !params["quantidade_guarnicao_#{i}"].nil?))
         guarnicao_novo << @pedido.pedidos_guarnicoes.create!(:guarnicao_id => params["guarnicao_#{i}"], :quantidade => params["quantidade_guarnicao_#{i}"])
         #guarnicao_novo.last.guarnicao.decrescer(guarnicao_novo.last.quantidade)
       end
     end
+    
     #### Removendo proteinas após edição ####
-    guarnicoes_removidos = pc - guarnicao_editado
-    guarnicoes_removidos = guarnicoes_removidos - guarnicao_novo
-    guarnicoes_removidos.each do |guarnicao_removido|
-      guarnicao_removido.guarnicao.acrescer(guarnicao_removido.quantidade)
-      guarni = Guarnicao.find_by_id(guarnicao_removido.guarnicao_id)
-      @pedido.pedidos_guarnicoes.delete(guarnicao_removido)
-      @pedido.guarnicoes.delete(guarni)
-      guarnicao_removido.destroy
+    if  @flag_situacao != 1
+      guarnicoes_removidos = pc - guarnicao_editado
+      guarnicoes_removidos = guarnicoes_removidos - guarnicao_novo
+      guarnicoes_removidos.each do |guarnicao_removido|
+        guarnicao_removido.guarnicao.acrescer(guarnicao_removido.quantidade)
+        guarni = Guarnicao.find_by_id(guarnicao_removido.guarnicao_id)
+        @pedido.pedidos_guarnicoes.delete(guarnicao_removido)
+        @pedido.guarnicoes.delete(guarni)
+        guarnicao_removido.destroy
+      end
     end
     ##################### Fim guarnicoes removidos #####################
 
@@ -380,20 +391,23 @@ class PedidosController < ApplicationController
         atualiza_salada = @pedido.pedidos_saladas.find_by_salada_id(params["salada_#{i}"])
         salada.acrescer(atualiza_salada.quantidade)
         salada_editado << atualiza_salada
-      elsif (( !params["salada_#{i}"].blank?) && ( !params["quantidade_salada_#{i}"].nil?))
+      elsif ( !(@pedido.saladas.include? salada) && ( !params["salada_#{i}"].blank?) && ( !params["quantidade_salada_#{i}"].nil?))
         salada_novo << @pedido.pedidos_saladas.create!(:salada_id => params["salada_#{i}"], :quantidade => params["quantidade_salada_#{i}"])
         #salada_novo.last.salada.decrescer(salada_novo.last.quantidade)
       end
     end
+
     #### Removendo proteinas após edição ####
-    saladas_removidos = pc - salada_editado
-    saladas_removidos = saladas_removidos - salada_novo
-    saladas_removidos.each do |salada_removido|
-      salada_removido.salada.acrescer(salada_removido.quantidade)
-      salad = Salada.find_by_id(salada_removido.salada_id)
-      @pedido.pedidos_saladas.delete(salada_removido)
-      @pedido.saladas.delete(salad)
-      salada_removido.destroy
+    if  @flag_situacao != 1
+      saladas_removidos = pc - salada_editado
+      saladas_removidos = saladas_removidos - salada_novo
+      saladas_removidos.each do |salada_removido|
+        salada_removido.salada.acrescer(salada_removido.quantidade)
+        salad = Salada.find_by_id(salada_removido.salada_id)
+        @pedido.pedidos_saladas.delete(salada_removido)
+        @pedido.saladas.delete(salad)
+        salada_removido.destroy
+      end
     end
     ##################### Fim saladas removidos #####################
 
@@ -417,20 +431,23 @@ class PedidosController < ApplicationController
         atualiza_bebida = @pedido.pedidos_bebidas.find_by_bebida_id(params["bebida_#{i}"])
         bebida.acrescer(atualiza_bebida.quantidade)
         bebida_editado << atualiza_bebida
-      elsif (( !params["bebida_#{i}"].blank?) && ( !params["quantidade_bebida_#{i}"].nil?))
+      elsif ( !(@pedido.bebidas.include? bebida) && ( !params["bebida_#{i}"].blank?) && ( !params["quantidade_bebida_#{i}"].nil?))
         bebida_novo << @pedido.pedidos_bebidas.create!(:bebida_id => params["bebida_#{i}"], :quantidade => params["quantidade_bebida_#{i}"])
         #bebida_novo.last.bebida.decrescer(bebida_novo.last.quantidade)
       end
     end
+
     #### Removendo proteinas após edição ####
-    bebidas_removidos = pc - bebida_editado
-    bebidas_removidos = bebidas_removidos - bebida_novo
-    bebidas_removidos.each do |bebida_removido|
-      bebida_removido.bebida.acrescer(bebida_removido.quantidade)
-      bebid = Bebida.find_by_id(bebida_removido.bebida_id)
-      @pedido.pedidos_bebidas.delete(bebida_removido)
-      @pedido.bebidas.delete(bebid)
-      bebida_removido.destroy
+    if  @flag_situacao != 1
+      bebidas_removidos = pc - bebida_editado
+      bebidas_removidos = bebidas_removidos - bebida_novo
+      bebidas_removidos.each do |bebida_removido|
+        bebida_removido.bebida.acrescer(bebida_removido.quantidade)
+        bebid = Bebida.find_by_id(bebida_removido.bebida_id)
+        @pedido.pedidos_bebidas.delete(bebida_removido)
+        @pedido.bebidas.delete(bebid)
+        bebida_removido.destroy
+      end
     end
     ##################### Fim bebidas removidos #####################
 
@@ -453,20 +470,23 @@ class PedidosController < ApplicationController
       elsif (( @pedido.sobremesas.include? sobremesa) && ( !params["sobremesa_#{i}"].blank?) && (params["quantidade_sobremesa_#{i}"].to_i == @pedido.pedidos_sobremesas.find_by_sobremesa_id(sobremesa.id).quantidade) && (@flag_situacao != 1))
         atualiza_sobremesa = @pedido.pedidos_sobremesas.find_by_sobremesa_id(params["sobremesa_#{i}"])
         sobremesa_editado << atualiza_sobremesa
-      elsif (( !params["sobremesa_#{i}"].blank?) && ( !params["quantidade_sobremesa_#{i}"].nil?))
+      elsif ( !(@pedido.sobremesas.include? sobremesa) && ( !params["sobremesa_#{i}"].blank?) && ( !params["quantidade_sobremesa_#{i}"].nil?))
         sobremesa_novo << @pedido.pedidos_sobremesas.create!(:sobremesa_id => params["sobremesa_#{i}"], :quantidade => params["quantidade_sobremesa_#{i}"])
         #sobremesa_novo.last.sobremesa.decrescer(sobremesa_novo.last.quantidade)
       end
     end
+
     #### Removendo sobremesas após edição ####
-    sobremesas_removidos = pc - sobremesa_editado
-    sobremesas_removidos = sobremesas_removidos - sobremesa_novo
-    sobremesas_removidos.each do |sobremesa_removido|
-      sobremesa_removido.sobremesa.acrescer(sobremesa_removido.quantidade)
-      sobremes = Sobremesa.find_by_id(sobremesa_removido.sobremesa_id)
-      @pedido.pedidos_sobremesas.delete(sobremesa_removido)
-      @pedido.sobremesas.delete(sobremes)
-      sobremesa_removido.destroy
+    if  @flag_situacao != 1
+      sobremesas_removidos = pc - sobremesa_editado
+      sobremesas_removidos = sobremesas_removidos - sobremesa_novo
+      sobremesas_removidos.each do |sobremesa_removido|
+        sobremesa_removido.sobremesa.acrescer(sobremesa_removido.quantidade)
+        sobremes = Sobremesa.find_by_id(sobremesa_removido.sobremesa_id)
+        @pedido.pedidos_sobremesas.delete(sobremesa_removido)
+        @pedido.sobremesas.delete(sobremes)
+        sobremesa_removido.destroy
+      end
     end
 
     # debugger
