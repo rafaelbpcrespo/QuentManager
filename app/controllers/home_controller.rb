@@ -17,7 +17,8 @@ class HomeController < ApplicationController
   end
 
   def conta_clientes
-    @clientes = Cliente.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
+    @clientes = Cliente.select('*').joins(:conta).where('saldo < 0').order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
+   #@clientes = Cliente.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
   end
 
   def relatorio_produtos
