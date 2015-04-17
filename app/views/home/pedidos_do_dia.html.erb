@@ -19,17 +19,29 @@
         </thead>
         <!-- <tbody> -->
           <tr>          
+            <% if !pedido.acompanhamentos.empty? %>                      
             <td><% pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
             <%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %><br>
             <% end %></td>
+            <% else %>
+            <td> Nenhum </td>
+            <% end %>
 
+            <% if !pedido.proteinas.empty? %>            
             <td><% pedido.pedidos_proteinas.each do |pedido_proteina| %>
             <%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %><br>
             <% end %></td>
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>
             
+            <% if !pedido.guarnicoes.empty? %>                        
             <td><% pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
             <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %><br>
             <% end %></td>
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>            
           </tr>
 
          <thead>
@@ -40,17 +52,29 @@
           </tr>
          </thead>
           <tr>
+            <% if !pedido.saladas.empty? %>
             <td><% pedido.pedidos_saladas.each do |pedido_salada| %>
             <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %><br>
             <% end %></td>
-            
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>
+
+            <% if !pedido.bebidas.empty? %>            
             <td><% pedido.pedidos_bebidas.each do |pedido_bebida| %>
             <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %><br>
             <% end %></td>
-            
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>
+
+            <% if !pedido.sobremesas.empty? %>            
             <td><% pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
             <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %><br>
             <% end %></td>
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>            
           </tr>
 
         <thead>
