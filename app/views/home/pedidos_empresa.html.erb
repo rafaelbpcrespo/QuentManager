@@ -9,80 +9,97 @@
     <br><br><br><br>
   <% end %>
 </div>
-  <% if @pedidos.empty? %>
+<% if @pedidos.empty? %>
 
     Não existem pedidos confirmados para o dia de hoje.
 
   <% else %>
-    <h2> Pedidos - <%= @nome_da_empresa %></h2>
-    <% @pedidos.each do |pedido| %>
-    <div class="relatorio_pedidos">
-      <dl class="dl-horizontal">
-        <dt><strong>Cliente:</strong></dt>
-        <dd><font size="5pt"><%= pedido.cliente.nome %> - <%= pedido.cliente.empresa.nome %> - <%= pedido.cliente.setor %></font></dd>
-        <% if !pedido.acompanhamentos.empty? %>
-          <dt><strong>Acompanhamentos</strong></dt>
-          <% pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
-          <dd><%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %></dd>
-          <% end %>
-        <% end %>
-        <% if !pedido.proteinas.empty? %>  
-          <dt><strong>Proteinas</strong></dt>
-          <% pedido.pedidos_proteinas.each do |pedido_proteina| %>
-          <dd> <%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %></dd>
-          <% end %>
-        <% end %>
-        <% if !pedido.guarnicoes.empty? %>  
-          <dt><strong>Guarnições</strong></dt>
-          <% pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
-          <dd> <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %></dd>
-          <% end %>
-        <% end %>
-        <% if !pedido.saladas.empty? %>  
-          <dt><strong>Saladas</strong></dt>
-          <% pedido.pedidos_saladas.each do |pedido_salada| %>
-          <dd> <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %></dd>
-          <% end %>
-        <% end %> 
-        <% if !pedido.bebidas.empty? %>  
-          <dt><strong>Bebidas</strong></dt>
-          <% pedido.pedidos_bebidas.each do |pedido_bebida| %>
-          <dd> <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %></dd>
-          <% end %>
-        <% end %>
-        <% if !pedido.sobremesas.empty? %>  
-          <dt><strong>Sobremesas</strong></dt>
-          <% pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
-          <dd> <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %></dd>
-          <% end %>
-        <% end %>
-        <% if !pedido.observacao.empty? %>
-        <dt><strong>Observação:</strong></dt>
-        <dd><%= pedido.observacao %></dd>
-        <% end %>
-        <dt><strong>Valor:</strong></dt>
-        <dd><font size="5pt">R$ <%= pedido.valor %></font></dd>
-        <dt><strong>Extras:</strong></dt>
-        <% if pedido.qtd_extra(pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) != 0 %>
-        <dd><%= pedido.qtd_extra(pedido.pedidos_acompanhamentos,Pedido::LIMITE_ACOMPANHAMENTOS) %> acompanhamento(s) extra</dd>
-        <% end %>
-        <% if pedido.qtd_extra(pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) != 0 %>
-        <dd><%= pedido.qtd_extra(pedido.pedidos_proteinas,Pedido::LIMITE_PROTEINAS) %> proteína(s) extra</dd>
-        <% end %>
-        <% if pedido.qtd_extra(pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) != 0 %>
-        <dd><%= pedido.qtd_extra(pedido.pedidos_guarnicoes,Pedido::LIMITE_GUARNICOES) %> guarnição(ões) extra</dd>
-        <% end %>
-        <% if pedido.qtd_extra(pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) != 0 %>
-        <dd><%= pedido.qtd_extra(pedido.pedidos_saladas,Pedido::LIMITE_SALADAS) %> salada(s) extra</dd>
-        <% end %>
-        <% if pedido.qtd_extra(pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) != 0 %>
-        <dd><%= pedido.qtd_extra(pedido.pedidos_bebidas,Pedido::LIMITE_BEBIDAS) %> bebida(s) extra</dd>
-        <% end %>
-        <% if pedido.qtd_extra(pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) != 0 %>
-        <dd><%= pedido.qtd_extra(pedido.pedidos_sobremesas,Pedido::LIMITE_SOBREMESAS) %> sobremesa(s) extra</dd>
-        <% end %>
-      </dl>
-    </div>
-    <br/><br/><br/><br/>
+    <% @pedidos.each_with_index do |pedido,i| %>
+   
+    
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Cliente:</strong> <%= pedido.cliente.nome %> - <%= pedido.cliente.empresa.nome %> - <%= pedido.cliente.setor %></div>
+      
+      <table class="table">  
+        <thead>
+          <tr>
+            <th><strong>Acompanhamentos</strong></th>
+            <th><strong>Proteinas</strong></th>
+            <th><strong>Guarnições</strong></th>            
+          </tr>
+        </thead>
+        <!-- <tbody> -->
+          <tr>          
+            <% if !pedido.acompanhamentos.empty? %>                      
+            <td><% pedido.pedidos_acompanhamentos.each do |pedido_acompanhamento| %>
+            <%= pedido_acompanhamento.quantidade %> <%= pedido_acompanhamento.acompanhamento.nome %><br>
+            <% end %></td>
+            <% else %>
+            <td> Nenhum </td>
+            <% end %>
+
+            <% if !pedido.proteinas.empty? %>            
+            <td><% pedido.pedidos_proteinas.each do |pedido_proteina| %>
+            <%= pedido_proteina.quantidade %> <%= pedido_proteina.proteina.nome %><br>
+            <% end %></td>
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>
+            
+            <% if !pedido.guarnicoes.empty? %>                        
+            <td><% pedido.pedidos_guarnicoes.each do |pedido_guarnicao| %>
+            <%= pedido_guarnicao.quantidade %> <%= pedido_guarnicao.guarnicao.nome %><br>
+            <% end %></td>
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>            
+          </tr>
+
+         <thead>
+          <tr>
+            <th><strong>Saladas</strong></th>
+            <th><strong>Bebidas</strong></th>
+            <th><strong>Sobremesas</strong></th>            
+          </tr>
+         </thead>
+          <tr>
+            <% if !pedido.saladas.empty? %>
+            <td><% pedido.pedidos_saladas.each do |pedido_salada| %>
+            <%= pedido_salada.quantidade %> <%= pedido_salada.salada.nome %><br>
+            <% end %></td>
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>
+
+            <% if !pedido.bebidas.empty? %>            
+            <td><% pedido.pedidos_bebidas.each do |pedido_bebida| %>
+            <%= pedido_bebida.quantidade %> <%= pedido_bebida.bebida.nome %><br>
+            <% end %></td>
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>
+
+            <% if !pedido.sobremesas.empty? %>            
+            <td><% pedido.pedidos_sobremesas.each do |pedido_sobremesa| %>
+            <%= pedido_sobremesa.quantidade %> <%= pedido_sobremesa.sobremesa.nome %><br>
+            <% end %></td>
+            <% else %>
+            <td> Nenhuma </td>
+            <% end %>            
+          </tr>
+
+        <thead>
+          <tr>
+            <td><strong>Observação: </strong> <%= pedido.observacao %></td>
+            <td><strong>Valor:</strong><font color="red" font-size="12pt"> R$ <%= pedido.valor %></font></td>         
+          </tr>
+        </thead>           
+        <!-- </tbody> -->
+      </table>
+   
+  </div>
+      <% if ((i+1) % 3) == 0 %>
+        <div class="break"> </div>
+      <% end %>
     <% end %>
   <% end %>

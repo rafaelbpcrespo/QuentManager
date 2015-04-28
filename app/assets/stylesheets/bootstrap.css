@@ -263,6 +263,10 @@ th {
     page-break-after: always;
   }
 
+  .form-control, .button, .validate {
+    display: none;
+  }
+
   .table {
     border-collapse: collapse !important;
     font-size: 8pt;
