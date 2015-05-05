@@ -103,6 +103,3 @@
           <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
         </div>
 </div>
-<% if current_usuario.admin? %>
-  <%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
-<% end %>
