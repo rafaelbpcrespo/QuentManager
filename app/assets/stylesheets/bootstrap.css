@@ -243,6 +243,9 @@ th {
   select {
     background: #fff !important;
   }
+
+  .noprint { display: none; }
+
   .navbar {
     display: none;
   }
