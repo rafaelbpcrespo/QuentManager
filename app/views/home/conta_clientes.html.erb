@@ -35,7 +35,7 @@
     </tr>
   </thead>
   <tbody>
-      <% @clientes.each do |cliente| %>
+      <% @clientes.each_with_index do |cliente,i| %>
       <% if !cliente.bloqueado? %>
         <tr>
           <td><%= cliente.nome_abreviado %></td>
@@ -93,6 +93,9 @@
           </td>
         </tr>
       <% end %>
+      <% if ((i+1) % 27) == 0 %>
+        <div class="break"> </div>
+      <% end %>      
     <% end %>
   </tbody>
 </table>
