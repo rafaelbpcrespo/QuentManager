@@ -1,10 +1,10 @@
 <%- model_class = Cliente -%>
-<div class="page-header">
+<div class="page-header noprint">
   <h2 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h2>
 </div>
 <br>
-<div class="form-group">
-<%= form_tag(clientes_path, :method => "get", :class => "form-horizontal", id: "search-form") do %>
+<div class="form-group noprint">
+<%= form_tag(home_conta_clientes_path, :method => "get", :class => "form-horizontal", id: "search-form") do %>
     <div class="col-sm-2">
       <label>
         <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Nome do Cliente" %>
@@ -29,28 +29,24 @@
       <th><%= model_class.human_attribute_name(:nome) %></th>
       <th><%= model_class.human_attribute_name(:celular) %></th>
       <th><%= model_class.human_attribute_name(:empresa) %></th>
-      <th><%= model_class.human_attribute_name(:bloqueado) %></th>
-      <th class="text-center"><%=t '.ações', :default => t("helpers.ações") %></th>
+      <th><%= model_class.human_attribute_name(:setor) %></th>
+      <th><%= model_class.human_attribute_name(:saldo) %></th>
+      <th class="text-center noprint"><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
   </thead>
   <tbody>
-      <% @clientes.each do |cliente| %>
+      <% @clientes.each_with_index do |cliente,i| %>
       <% if !cliente.bloqueado? %>
         <tr>
           <td><%= cliente.nome_abreviado %></td>
           <td><%= cliente.celular %></td>
           <td><%= cliente.empresa.nome %></td>
-          <td><%= cliente.bloqueado? ? "Sim" : "Não" %></td>
-          <td class="text-center">
-              <%= link_to new_pedido_path(:cliente_id => cliente.id), html_options = {:class => "btn btn-primary btn-sm", :title => "Pedido"} do %>
-                        <span class="glyphicon glyphicon-cutlery"></span>
-              <% end %>                        
+          <td><%= cliente.setor %></td>
+          <td>R$ <%= cliente.conta.saldo.to_f %></td>
+          <td class="text-center noprint">
             <%= link_to cliente_path(cliente), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
                         <span class="glyphicon glyphicon-list-alt"></span>          
             <% end %>
-            <%= link_to edit_cliente_path(cliente), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <% end %>
             <% if cliente.bloqueado? %>
               <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
                         <span class="glyphicon glyphicon-ok"></span>
@@ -73,17 +69,12 @@
           <td><%= cliente.nome_abreviado %></td>
           <td><%= cliente.celular %></td>
           <td><%= cliente.empresa.nome %></td>
+          <td><%= cliente.setor %></td>          
           <td><%= cliente.bloqueado? ? "Sim" : "Não" %></td>
           <td class="text-center">
-              <%= link_to new_pedido_path(:cliente_id => cliente.id), html_options = {:class => "btn btn-primary btn-sm", :title => "Pedido"} do %>
-                        <span class="glyphicon glyphicon-cutlery"></span>
-              <% end %>                        
             <%= link_to cliente_path(cliente), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
                         <span class="glyphicon glyphicon-list-alt"></span>          
             <% end %>
-            <%= link_to edit_cliente_path(cliente), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <% end %>
             <% if cliente.bloqueado? %>
               <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
                         <span class="glyphicon glyphicon-ok"></span>
@@ -102,16 +93,16 @@
           </td>
         </tr>
       <% end %>
+      <% if ((i+1) % 26) == 0 %>
+        <div class="break"> </div>
+      <% end %>      
     <% end %>
   </tbody>
 </table>
 <br>
 
-<div class="row">
+<div class="row noprint">
          <div class="col-md-12 text-center">
           <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
         </div>
 </div>
-<% if current_usuario.admin? %>
-  <%= will_paginate @clientes, renderer: BootstrapPagination::Rails %>
-<% end %>

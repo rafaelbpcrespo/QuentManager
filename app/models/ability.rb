@@ -12,14 +12,15 @@ class Ability
         elsif usuario.gerente?
           can :manage, :all
           cannot :destroy, :all
-          cannot :desbloquear, Cliente
+          cannot [:desbloquear, :bloquear, :update], Cliente
+          can [:create, :update, :read, :conta ], [Cliente], :usuario_id => usuario.id          
         else
           cannot :manage, :all
           can [:create, :update, :read, :conta ], [Cliente], :usuario_id => usuario.id
           can [:create, :update, :read, :cancelar, :confirmar ], Pedido, :cliente_id => usuario.cliente.id
           cannot :destroy, Pedido
           #can , Pedido, :usuario_id => usuario.id
-        #if (usuario.cliente.bloqueado? || usuario.empresa.bloqueada? || (Time.now.hour < 6 || DateTime.now > DateTime.now.change(hour: 10)))
+        #if (usuario.cliente.bloqueado? || usuario.empresa.bloqueada? || (Time.now.hour < 6 || DateTime.now > DateTime.now.change(hour: 12)))
          # cannot [:create, :update, :confirmar, :cancelar ], Pedido
         #end
         end

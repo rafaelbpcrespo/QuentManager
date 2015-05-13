@@ -83,6 +83,8 @@ QuentManager::Application.routes.draw do
     get "home/pedidos_empresa"
     get "home/sobre"
     get "home/inicial"
+    get "home/cardapio"
+    get "home/conta_clientes"
 
   resources :home
 

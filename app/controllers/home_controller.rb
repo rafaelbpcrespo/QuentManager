@@ -12,6 +12,15 @@ class HomeController < ApplicationController
 
   end
 
+  def cardapio
+
+  end
+
+  def conta_clientes
+    @clientes = Cliente.select('*').joins(:conta).where('saldo < 0').order(:nome => :asc).search(params[:search],params[:empresa])
+   #@clientes = Cliente.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
+  end
+
   def relatorio_produtos
     @produtos_acabando = Produto.acabando_completo
     @produtos_em_falta = Produto.zerados

@@ -6,7 +6,7 @@ class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.json
   def index
-    @produtos = Produto.paginate(:page => params[:page], :per_page => 10)
+    @produtos = Produto.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
     #Produto.paginate(:page => params[:page], :per_page => 30)
     #@produtos = Produto.all
   end
@@ -32,6 +32,7 @@ class ProdutosController < ApplicationController
     params[:produto][:quantidade] = quantidade.split( ',').join('.')  
 
     @produto = Produto.new(produto_params)
+    @produto.nome = @produto.nome.titleize
 
     respond_to do |format|
       if @produto.save
@@ -87,6 +88,10 @@ class ProdutosController < ApplicationController
     end
     redirect_to produto_path(produto)
   end
+
+  def search
+    @produtos = Produtos.search params[:search]
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,12 +1,24 @@
 <%- model_class = Produto -%>
   <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h2>
   <br>
-  <div class="row">
-        <div class="col-md-6 "> 
-        <%= link_to "Novo Produto", new_produto_path, :class => 'btn btn-primary' %>                  
-        </div>        
+
+<div class="form-group">
+<%= form_tag(produtos_path, :method => "get", :class => "form-horizontal", id: "search-form") do %>
+    <div class="col-sm-2">
+      <label>
+        <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Nome do Produto" %>
+      </label>
+    </div>
+    <div class="col-sm-2">
+      <label>    
+       <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>
+      </label>
+    </div>       
+    <% end %>
 </div>
 <br>
+<br>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -19,9 +31,9 @@
   <tbody>
     <% @produtos.each do |produto| %>
       <tr>
-        <td><%= produto.nome %></td>
-        <td><%= produto.quantidade %></td>
-        <td><%= produto.limite_minimo %></td>
+        <td><%= produto.nome %> (<%= produto.produto_tipo.nome %>)</td>
+        <td><%= produto.quantidade %> <%= unidade_medida(produto)%></td>
+        <td><%= produto.limite_minimo %> <%= unidade_medida(produto) %></td>
         <td class="text-center">
           <%= link_to edit_produto_path(produto), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
                       <span class="glyphicon glyphicon-pencil"></span>

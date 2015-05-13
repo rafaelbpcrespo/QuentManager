@@ -11,7 +11,7 @@
     <!-- <meta charset="utf-8"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="shortcut icon" href="favicon.ico">
-    <meta name="description" content="Sua Empresa">
+    <meta name="description" content="Si Quitutes">
     <meta name="keywords" content="almoço, macaé, quentinha, quentinha macaé, entrega, comida, food" />
     <meta name="author" content="R2L Solutions">
     <title>Sua Empresa</title>
@@ -138,13 +138,31 @@
     <div class="container white">
       <div class="row">
         <div class="col-md-12">
-          <div class="navbar navbar-default navbar-inverse">
+        <% if !notice.nil? %>
+          <div class="alert alert-success text-center"><%= notice %></div>
+        <% elsif !alert.nil? %>
+          <div class="alert alert-danger text-center"><%= alert %></div>
+        <% end %>
+          <div class="navbar navbar-default navbar-orange">
             
             <div class="collapse navbar-collapse navbar-ex1-collapse">
+
               <ul class="nav navbar-left navbar-nav">
-                <li class="active">
-                  <a href="/home/inicial"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
-                </li>
+            <% if !usuario_signed_in? %>
+                  <li class="active">
+                    <a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                  </li>
+            <% else %>
+                <% if current_usuario.admin? || current_usuario.gerente? %>                  
+                  <li class="active">
+                    <a href="/home/inicial"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                  </li>
+                <% else %>
+                  <li class="active">
+                    <a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                  </li>
+                <% end %>
+              <% end %>
             <% if !usuario_signed_in? %>
                 <li>
                   <a href="/usuarios/sign_up"><span class="glyphicon glyphicon-user"></span>&nbsp;Cadastre-se</a>
@@ -153,7 +171,7 @@
                   <a href="/home/sobre"><span class="glyphicon glyphicon-star"></span>&nbsp;Sobre</a>
                 </li>
             <% else %>
-              <% if current_usuario.admin? %>                
+              <% if current_usuario.admin? || current_usuario.gerente? %>                
                 <li>
                     <a type="button" class="glyphicon glyphicon-plus" data-toggle="dropdown">
                       Cadastros <span class="caret"></span>
@@ -176,6 +194,9 @@
                     <a href="/produtos"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Estoque</a>
                 </li>
                 <li>
+                    <a href="/home/cardapio"><span class="glyphicon glyphicon-cutlery"></span>&nbsp;Cardápio</a>
+                </li>
+                <li>
                     <a type="button" class="glyphicon glyphicon-list-alt" data-toggle="dropdown">
                       Relatórios <span class="caret"></span>
                     </a>
@@ -183,17 +204,23 @@
                       <li><a><%= link_to "Estoque", "/home/relatorio_produtos" %></a></li>
                       <li><a><%= link_to "Impressão de Pedidos", "/home/pedidos_do_dia" %></a></li>
                       <li><a><%= link_to "Pedidos do dia X Empresa", "/pedidos" %></a></li>
+                      <li><a><%= link_to "Impressão Pedidos X Empresa", "/home/pedidos_empresa" %></a></li>
+                      <li><a><%= link_to "Saldo Clientes", "/home/conta_clientes" %></a></li>
                     </ul>
                 </li>
               <% else %>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-usd"></span>&nbsp;Conta</a>
+                <li>                    
+                  <%= link_to conta_cliente_path(current_usuario.cliente) do %>
+                    <span class="glyphicon glyphicon-usd"></span>&nbsp;Conta
+                  <% end %>
                 </li>
                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-cutlery"></span>&nbsp;Fazer Pedido</a>
+                  <%= link_to new_pedido_path(:cliente_id => current_usuario.cliente.id) do %>
+                    <span class="glyphicon glyphicon-cutlery"></span>&nbsp;Fazer Pedido
+                  <% end %>
                 </li>
                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Meus Pedidos</a>
+                    <a href="/pedidos"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Meus Pedidos</a>
                 </li>
               <% end %>
             <% end %>
@@ -276,7 +303,9 @@
 
      <div id="push white"></div>
      </div>  <!-- Fecha Wrap -->
-    <footer>
+    
+    <footer id="footer">
+      <center>Sua Empresa</center>
     <center>Todos os Direitos Reservados</center>
     </footer>
   

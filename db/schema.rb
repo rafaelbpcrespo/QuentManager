@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009010536) do
+ActiveRecord::Schema.define(version: 20150401000002) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141009010536) do
   create_table "bebidas", force: true do |t|
     t.string   "nome"
     t.integer  "quantidade"
-    t.decimal  "valor",           precision: 10, scale: 0
+    t.decimal  "valor",           precision: 10, scale: 2
     t.boolean  "disponibilidade"
     t.string   "tipo"
     t.datetime "created_at"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20141009010536) do
 
   create_table "contas", force: true do |t|
     t.integer  "cliente_id"
-    t.decimal  "saldo",      precision: 10, scale: 0
+    t.decimal  "saldo",      precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20141009010536) do
     t.string   "nome"
     t.integer  "quantidade"
     t.boolean  "disponibilidade"
-    t.decimal  "valor",           precision: 10, scale: 0
+    t.decimal  "valor",           precision: 10, scale: 2
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20141009010536) do
 
   create_table "pagamentos", force: true do |t|
     t.integer  "conta_id"
-    t.decimal  "valor",      precision: 10, scale: 0
+    t.decimal  "valor",      precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -199,7 +199,7 @@ ActiveRecord::Schema.define(version: 20141009010536) do
     t.string   "nome"
     t.integer  "quantidade"
     t.boolean  "disponibilidade"
-    t.decimal  "valor",           precision: 10, scale: 0
+    t.decimal  "valor",           precision: 10, scale: 2
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -208,7 +208,7 @@ ActiveRecord::Schema.define(version: 20141009010536) do
   create_table "sobremesas", force: true do |t|
     t.string   "nome"
     t.integer  "quantidade"
-    t.decimal  "valor",           precision: 10, scale: 0
+    t.decimal  "valor",           precision: 10, scale: 2
     t.boolean  "disponibilidade"
     t.string   "descricao"
     t.datetime "created_at"
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 20141009010536) do
 
   create_table "transacoes", force: true do |t|
     t.integer  "produto_id"
-    t.decimal  "quantidade", precision: 10, scale: 0
+    t.decimal  "quantidade", precision: 10, scale: 2
     t.integer  "tipo"
     t.datetime "created_at"
     t.datetime "updated_at"
