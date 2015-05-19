@@ -49,5 +49,16 @@ class Salada < ActiveRecord::Base
       self.save!
     end
 
+  def self.search(search)
+    if search
+      search = search.titleize
+    end
+    if search
+      find(:all, :conditions => ['nome LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
 
 end

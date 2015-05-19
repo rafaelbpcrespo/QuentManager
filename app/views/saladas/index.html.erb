@@ -6,6 +6,22 @@
         </div>        
 </div>
 <br>
+
+<div class="form-group">
+<%= form_tag(saladas_path, :method => "get", :class => "form-horizontal", id: "search-form") do %>
+    <div class="col-sm-2">
+      <label>
+        <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Nome do Cliente" %>
+      </label>
+    </div>
+    <div class="col-sm-2">
+      <label>
+        <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>    
+      </label>
+    </div>
+    <% end %>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
