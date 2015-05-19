@@ -293,25 +293,46 @@ class Pedido < ActiveRecord::Base
       self.conta.calcular_saldo
     end
 
-    def self.search(situacao,empresa)
+    def self.search(situacao,empresa,data)
       pedidos = []
-      if empresa.blank? && situacao.blank?
-        pedidos = Pedido.do_dia
-      elsif !empresa.blank? && situacao.blank?
-        Pedido.do_dia.each do |pedido|
-          if pedido.cliente.empresa == Empresa.find(empresa)
-            pedidos << pedido
-          end
-        end
-      elsif empresa.blank? && !situacao.blank?
-        pedidos = Pedido.do_dia.where(:situacao => situacao)
-      elsif !empresa.blank? && !situacao.blank?
-        Pedido.do_dia.each do |pedido|
-          if pedido.cliente.empresa == Empresa.find(empresa) && pedido.situacao == situacao
-            pedidos << pedido
-          end
+      debugger
+      if !empresa.blank?
+        pedidos = Pedido.joins(:cliente).where("clientes.empresa_id == ? ", empresa)
+      end
+
+      if !situacao.blank?
+        if pedidos.blank?
+          pedidos = Pedido.where(:situacao => situacao)
+        else
+          pedidos = pedidos.where(:situacao => situacao)
         end
       end
+
+      if !data.blank?
+        if pedidos.blank?
+          pedidos = Pedido.where(created_at: (data.to_datetime.beginning_of_day..data.to_datetime.end_of_day))
+        else
+          pedidos = pedidos.where(created_at: (data.to_datetime.beginning_of_day..data.to_datetime.end_of_day))
+        end
+      end
+
+      # if empresa.blank? && situacao.blank? && data.blank?
+      #   pedidos = Pedido.do_dia
+      # elsif !empresa.blank? && situacao.blank? 
+      #   Pedido.do_dia.each do |pedido|
+      #     if pedido.cliente.empresa == Empresa.find(empresa)
+      #       pedidos << pedido
+      #     end
+      #   end
+      # elsif empresa.blank? && !situacao.blank?
+      #   pedidos = Pedido.do_dia.where(:situacao => situacao)
+      # elsif !empresa.blank? && !situacao.blank?
+      #   Pedido.do_dia.each do |pedido|
+      #     if pedido.cliente.empresa == Empresa.find(empresa) && pedido.situacao == situacao
+      #       pedidos << pedido
+      #     end
+      #   end
+      # end
       return pedidos
     end
 

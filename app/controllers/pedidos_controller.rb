@@ -6,8 +6,8 @@ class PedidosController < ApplicationController
   # GET /pedidos
   # GET /pedidos.json
   def index
-    if current_usuario.admin?
-      @pedidos = Pedido.search(params[:situacao],params[:empresa])
+    if ((current_usuario.admin?) || (current_usuario.gerente?))
+      @pedidos = Pedido.search(params[:situacao],params[:empresa],params[:data])
       if !params[:empresa].blank?
         @nome_da_empresa = Empresa.find(params[:empresa]).nome
         @quantidade_de_pedidos = @pedidos.count

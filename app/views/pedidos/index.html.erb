@@ -30,6 +30,13 @@
       <%= select_tag :situacao, options_for_select(["Confirmado", "Cancelado", "Em processamento"]), :prompt => "Todas as Situações", :class => "form-control input-search" %><br>
       </label>
     </div>      
+
+    <div class="col-sm-2">
+      <label>
+      <%= text_field_tag :data, params[:data], :class => "form-control", placeholder: "Data" %><br>
+      </label>
+    </div>      
+
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
            of using a Rails form helper -->
     <div class="col-sm-2">
