@@ -6,7 +6,7 @@ class ClientesController < ApplicationController
   # GET /clientes
   # GET /clientes.json
   def index
-    if current_usuario.admin?
+    if ((current_usuario.admin?) || (current_usuario.gerente?))
       @clientes = Cliente.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search],params[:empresa])
     else
       @clientes = Cliente.find_all_by_id(current_usuario.cliente.id)

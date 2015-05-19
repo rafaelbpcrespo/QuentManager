@@ -12,8 +12,8 @@ class Ability
         elsif usuario.gerente?
           can :manage, :all
           cannot :destroy, :all
-          cannot [:desbloquear, :bloquear, :update], Cliente
-          can [:create, :update, :read, :conta ], [Cliente], :usuario_id => usuario.id          
+          cannot [:desbloquear, :bloquear], Cliente
+          #can [:create, :update, :read, :conta ], [Cliente], :usuario_id => usuario.id          
         else
           cannot :manage, :all
           can [:create, :update, :read, :conta ], [Cliente], :usuario_id => usuario.id
