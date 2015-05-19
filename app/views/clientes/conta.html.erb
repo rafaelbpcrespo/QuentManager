@@ -16,15 +16,22 @@
       <th><center>Tipo</center> </th>
       <th><center>Valor</center></th>
       <th><center>Data</center></th>
+      <th><center>Forma de Pagamento</center></th>
     </tr>
   </thead>
   <tbody>
     <% @transacoes.each do |transacao| %>
 
       <tr>
-        <td><%= transacao.class %></td>
-        <td>R$ <%= transacao.valor.to_f %></td>
-        <td><%= transacao.created_at.strftime("%d/%m/%Y") %></td>
+        <td><center><%= transacao.class %></center></td>
+        <td><center>R$ <%= transacao.valor.to_f %></center></td>
+        <% if transacao.class.to_s == "Pagamento" %>
+          <td><center><%= transacao.data.strftime("%d/%m/%Y") %></center></td>
+          <td><center><%= transacao.forma_de_pagamento %></center></td>
+        <% else %>
+          <td><center><%= transacao.created_at.strftime("%d/%m/%Y") %></center></td>
+          <td><center>Pedido</center></td>        
+        <% end %>
       </tr>
     <% end %>
   </tbody>
