@@ -31,28 +31,6 @@
 </div>
 <br>
 
-<h2> Dados de Movimentações</h2> <br><br> 
-<table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Tipo</th>
-              <th>Quantidade</th>
-              <th>Data de Lançamento</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @produto.transacoes.each do |transacao| %>
-              <tr>
-              <td> <%= transacao.tipo == 1 ? "Entrada" : "Saída" %> </td>
-                <td><%= transacao.quantidade %></td>
-                <td><%= transacao.created_at.strftime("%d/%m/%Y") %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table><br>  
-<br><br> 
-
-
 <div class="row">
   <div class="col-md-6 text-center">
         <div class="btn-group">
@@ -81,3 +59,23 @@
         <!-- </div>  -->
     </div>       
 </div>
+
+<h2> Dados de Movimentações</h2> <br><br> 
+<table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Quantidade</th>
+              <th>Data de Lançamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @produto.transacoes.each do |transacao| %>
+              <tr>
+              <td> <%= transacao.tipo == 1 ? "Entrada" : "Saída" %> </td>
+                <td><%= transacao.quantidade %></td>
+                <td><%= transacao.created_at.strftime("%d/%m/%Y") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table><br>  
