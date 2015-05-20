@@ -1,6 +1,6 @@
     <center><h2>Estatísticas do Estoque<span class="estoque"></span></h2></center>
     <fieldset class='form-clientes lista_pedidos'>
-      <legend class="legend1"> Produtos Acabando </legend>
+      <legend class="legend1"> <center>Produtos Acabando </center></legend>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -22,7 +22,7 @@
   </fieldset>
   
     <fieldset class='form-clientes lista_pedidos'>
-      <legend class="legend1"> Produtos Em falta </legend>
+      <legend class="legend1"><center> Produtos Em falta </center></legend>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -32,7 +32,7 @@
         <tbody>
           <% @produtos_em_falta.each do |produto| %>
             <tr>
-              <td><%= produto.nome %></td>
+              <td><center><%= produto.nome %></center></td>
             </tr>
           <% end %>
         </tbody>
