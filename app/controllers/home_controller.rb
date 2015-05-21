@@ -38,7 +38,7 @@ class HomeController < ApplicationController
   end
 
   def pedidos_empresa
-    @pedidos = Pedido.confirmados_do_dia.search("",params[:empresa])
+    @pedidos = Pedido.confirmados_do_dia.search("",params[:empresa],"")
       if !params[:empresa].blank?
         @nome_da_empresa = Empresa.find(params[:empresa]).nome
       else
