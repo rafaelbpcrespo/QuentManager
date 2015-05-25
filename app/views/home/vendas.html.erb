@@ -1,0 +1,95 @@
+<br>
+<div class="form-group noprint">
+  <%= form_tag(home_vendas_path, :method => "get", :class => "validate", id: "search-formulario") do %>
+    <div class="col-sm-2">
+      <label>
+      <%= text_field_tag :data, params[:data], :class => "form-control", placeholder: "Data" %><br>
+      </label>
+    </div>      
+
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
+           of using a Rails form helper -->
+    <div class="col-sm-2">
+      <label>           
+        <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>
+      </label>
+    </div>
+</div>
+    <br>
+  <% end %>
+<br><br>
+<div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Acompanhamentos</h3>
+            </div>
+            <div class="panel-body">
+              <% if !@quantidade_acompanhamento.blank? %>
+                <% @quantidade_acompanhamento.each do |k,v| %>
+                  <p><%= k %>: <%= v %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Proteínas</h3>
+            </div>
+            <div class="panel-body">
+              <% if !@quantidade_proteina.blank? %>
+                <% @quantidade_proteina.each do |k,v| %>
+                  <p><%= k %>: <%= v %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Guarnições</h3>
+            </div>
+            <div class="panel-body">
+              <% if !@quantidade_guarnicao.blank? %>
+                <% @quantidade_guarnicao.each do |k,v| %>
+                  <p><%= k %>: <%= v %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Saladas</h3>
+            </div>
+            <div class="panel-body">
+              <% if !@quantidade_salada.blank? %>
+                <% @quantidade_salada.each do |k,v| %>
+                  <p><%= k %>: <%= v %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Bebidas</h3>
+            </div>
+            <div class="panel-body">
+              <% if !@quantidade_bebida.blank? %>
+                <% @quantidade_bebida.each do |k,v| %>
+                  <p><%= k %>: <%= v %></p>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+  </div>

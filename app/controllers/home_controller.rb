@@ -12,6 +12,73 @@ class HomeController < ApplicationController
 
   end
 
+  def teste
+
+  end
+
+  def vendas
+    if params[:data].blank?
+      data = DateTime.now
+    else
+      data = params[:data].to_datetime
+    end
+
+    @acompanhamentos = [] 
+    @qtds_acompanhamento = []
+    PedidoAcompanhamento.where(created_at: data.beginning_of_day..data.end_of_day).map { |p| @acompanhamentos << p.acompanhamento.nome; @qtds_acompanhamento << p.quantidade }
+    @quantidade_acompanhamento = Hash.new 0
+
+    @acompanhamentos.each_with_index do |acompanhamento,i|
+      @quantidade_acompanhamento[acompanhamento] += @qtds_acompanhamento[i]
+    end
+
+    @proteinas = []
+    @qtds_proteina = []
+    PedidoProteina.where(created_at: data.beginning_of_day..data.end_of_day).map { |p| @proteinas << p.proteina.nome; @qtds_proteina << p.quantidade  }
+    @quantidade_proteina = Hash.new 0
+
+    @proteinas.each_with_index do |proteina,i|
+      @quantidade_proteina[proteina] += @qtds_proteina[i]
+    end
+
+    @guarnicoes = []
+    @qtds_guarnicao = []
+    PedidoGuarnicao.where(created_at: data.beginning_of_day..data.end_of_day).map { |p| @guarnicoes << p.guarnicao.nome; @qtds_guarnicao << p.quantidade }
+    @quantidade_guarnicao = Hash.new 0
+
+    @guarnicoes.each_with_index do |guarnicao,i|
+      @quantidade_guarnicao[guarnicao] += @qtds_guarnicao[i]
+    end
+
+    @saladas = []
+    @qtds_salada = []
+    PedidoSalada.where(created_at: data.beginning_of_day..data.end_of_day).map { |p| @saladas << p.salada.nome; @qtds_salada << p.quantidade  }
+    @quantidade_salada= Hash.new 0
+
+    @saladas.each_with_index do |salada,i|
+      @quantidade_salada[salada] += @qtds_salada[i]
+    end
+
+    @bebidas = []
+    @qtds_bebida = []
+    PedidoBebida.where(created_at: data.beginning_of_day..data.end_of_day).map { |p| @bebidas << p.bebida.nome; @qtds_bebida << p.quantidade }
+    @quantidade_bebida = Hash.new 0
+
+    @bebidas.each_with_index do |bebida,i|
+      @quantidade_bebida[bebida] += @qtds_bebida[i]
+    end
+
+    @sobremesas = []
+    @qtds_sobremesa = []
+    PedidoSobremesa.where(created_at: data.beginning_of_day..data.end_of_day).map { |p| @sobremesas << p.sobremesa.nome; @qtds_sobremesa << p.quantidade }
+    @quantidade_sobremesa = Hash.new 0
+
+    @sobremesas.each_with_index do |sobremesa,i|
+      @quantidade_sobremesa[sobremesa] += @qtds_sobremesa[i]
+    end
+
+  end
+
   def cardapio
 
   end
