@@ -28,21 +28,28 @@ class PedidosController < ApplicationController
   def confirmar
     if @pedido.cliente.bloqueado? && current_usuario.usuario?
       flash[:alert] = "Você não pode confirmar um pedido pois seu cadastro está bloqueado. Favor entrar em contato com a Si Quitutes."
+      redirect_to pedidos_path
     elsif @pedido.situacao == "Cancelado" && current_usuario.usuario?
       flash[:alert] = "Você não pode confirmar um pedido já cancelado."
+      redirect_to pedidos_path
     elsif @pedido.situacao == "Confirmado"
       flash[:alert] = "Este pedido já foi confirmado."
+      redirect_to pedidos_path
     elsif (((DateTime.now < @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MIN)) || (DateTime.now > @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX))) && (current_usuario.usuario?))
       flash[:alert] = "Horário limite para confirmação ultrapassado."
+      redirect_to pedidos_path
     else
-      if @pedido.confirmar! == 0
-        flash[:alert] = "Você não pode confirmar este pedido pois existem itens indisponíveis no estoque."
+      itens = @pedido.confirmar!
+      if !itens.empty?
+        redirect_to edit_pedido_path(@pedido) #render "pedidos/edit"
+        flash[:alert] = "Você não pode confirmar este pedido pois o(s) item(s): #{itens} está indisponível(is)."
       else
         PedidoMailer.confirmar_pedido(@pedido.cliente.usuario,@pedido).deliver
         flash[:notice] = "Pedido confimado com sucesso."
+        redirect_to pedidos_path
       end
     end
-    redirect_to pedidos_path
+    #redirect_to pedidos_path
   end
 
   def cancelar

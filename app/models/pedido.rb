@@ -138,11 +138,14 @@ class Pedido < ActiveRecord::Base
     end
 
     def confirmar!
+      flag = 1
+      itens = []
       # Verificacao se algum item do pedido esta em falta
       self.pedidos_acompanhamentos.each do |pedido_acompanhamento|
         acompanhamento = pedido_acompanhamento.acompanhamento
         if acompanhamento.quantidade < pedido_acompanhamento.quantidade
-          return 0
+          flag = 0
+          itens << pedido_acompanhamento.acompanhamento.nome
         #else
 #        acompanhamento.decrescer(pedido_acompanhamento.quantidade)
       end
@@ -150,7 +153,8 @@ class Pedido < ActiveRecord::Base
       self.pedidos_proteinas.each do |pedido_proteina|
         proteina = pedido_proteina.proteina
         if proteina.quantidade < pedido_proteina.quantidade
-          return 0
+          flag = 0
+          itens << pedido_proteina.proteina.nome
        # else
         #proteina.decrescer(pedido_proteina.quantidade)
       end
@@ -158,7 +162,8 @@ class Pedido < ActiveRecord::Base
       self.pedidos_guarnicoes.each do |pedido_guarnicao|
         guarnicao = pedido_guarnicao.guarnicao
         if guarnicao.quantidade < pedido_guarnicao.quantidade
-          return 0
+          flag = 0
+          itens << pedido_guarnicao.guarnicao.nome
         #else
         # guarnicao.decrescer(pedido_guarnicao.quantidade)
         end        
@@ -166,7 +171,8 @@ class Pedido < ActiveRecord::Base
       self.pedidos_saladas.each do |pedido_salada|
         salada = pedido_salada.salada
         if salada.quantidade < pedido_salada.quantidade
-          return 0
+          flag = 0
+          itens << pedido_salada.salada.nome
         #else
         #  salada.decrescer(pedido_salada.quantidade)
         end        
@@ -174,7 +180,8 @@ class Pedido < ActiveRecord::Base
       self.pedidos_bebidas.each do |pedido_bebida|
         bebida = pedido_bebida.bebida
         if bebida.quantidade < pedido_bebida.quantidade
-          return 0
+          flag = 0
+          itens << pedido_bebida.bebida.nome
         #else
           #bebida.decrescer(pedido_bebida.quantidade)
         end
@@ -182,10 +189,15 @@ class Pedido < ActiveRecord::Base
       self.pedidos_sobremesas.each do |pedido_sobremesa|
         sobremesa = pedido_sobremesa.sobremesa
         if sobremesa.quantidade < pedido_sobremesa.quantidade
-          return 0
+          flag = 0
+          itens << pedido_sobremesa.sobremesa.nome
         #else
           #sobremesa.decrescer(pedido_sobremesa.quantidade)
         end
+      end
+
+      if flag == 0
+        return itens
       end
 
       #Depois de verificado que todos os itens estao disponiveis, confirmar o pedido e decrescer quantidades
@@ -295,7 +307,6 @@ class Pedido < ActiveRecord::Base
 
     def self.search(situacao,empresa,data)
       pedidos = []
-      debugger
       if !empresa.blank?
         pedidos = Pedido.joins(:cliente).where("clientes.empresa_id == ? ", empresa)
       end
