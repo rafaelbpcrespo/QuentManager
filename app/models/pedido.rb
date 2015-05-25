@@ -306,7 +306,12 @@ class Pedido < ActiveRecord::Base
     end
 
     def self.search(situacao,empresa,data)
-      pedidos = []
+      if ( !empresa.blank? || !situacao.blank? || !data.blank?)
+        pedidos = []
+      else
+        pedidos = Pedido.do_dia
+      end
+
       if !empresa.blank?
         pedidos = Pedido.joins(:cliente).where("clientes.empresa_id == ? ", empresa)
       end
