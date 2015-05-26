@@ -35,6 +35,7 @@ class Pedido < ActiveRecord::Base
   LIMITE_BEBIDAS = 0
   LIMITE_SOBREMESAS = 0
   HORARIO_LIMITE_MAX = 13
+  MINUTO_LIMITE_MAX = 5
   HORARIO_LIMITE_MIN = 7 
 
   def self.vendidos_hoje
