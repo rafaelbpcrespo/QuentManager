@@ -21,7 +21,8 @@
               <h3 class="panel-title">Informações de Vendas</h3>
             </div>
             <div class="panel-body">
-              <p>Quantidade de vendas do mês: <%= Pedido.confirmados_do_mes.count %></p> 
+              <p>Pedidos Confirmados: <%= Pedido.confirmados_do_mes.count %></p> 
+              <p>Pedidos Cancelados: <%= Pedido.cancelados_do_mes.count %></p> 
             </div>
           </div>
         </div>
@@ -33,7 +34,8 @@
               <h3 class="panel-title">Informações dos Pedidos de Hoje</h3>
             </div>
             <div class="panel-body">
-              <p>Quantidade de pedidos: <%= Pedido.de_hoje %></p>
+              <p>Pedidos Confirmados: <%= Pedido.confirmados_do_dia.count %></p>
+              <p>Pedidos Cancelados: <%= Pedido.cancelados_do_dia.count %></p>
             </div>
           </div>
         </div>
@@ -43,35 +45,9 @@
               <h3 class="panel-title">Informações do Estoque</h3>
             </div>
             <div class="panel-body">
-              <table class='tabela'>
-        <thead>
-          <tr>
-            <th>Acabando</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% Produto.acabando.each do |produto| %>
-            <tr>
-              <td><%= produto.nome %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <table class='tabela'>
-        <thead>
-          <tr>
-            <th>Em falta</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% Produto.zerados.each do |produto| %>
-            <tr>
-              <td><%= produto.nome %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= link_to 'Detalhes', home_relatorio_produtos_path %> 
+              <p><strong>Acabando:</strong> <%= Produto.acabando.count %></p>
+              <p><strong>Em falta:</strong> <%= Produto.zerados.count %></p>            
+              <center><%= link_to 'Detalhes', home_relatorio_produtos_path %> </center>
             </div>
           </div>
         </div>
@@ -128,8 +104,7 @@
             <div class="panel-body">
               <p><strong>Acabando:</strong> <%= Produto.acabando.count %></p>
               <p><strong>Em falta:</strong> <%= Produto.zerados.count %></p>            
-
-      <center><%= link_to 'Detalhes', home_relatorio_produtos_path %> </center>
+              <center><%= link_to 'Detalhes', home_relatorio_produtos_path %> </center>
             </div>
           </div>
         </div>
