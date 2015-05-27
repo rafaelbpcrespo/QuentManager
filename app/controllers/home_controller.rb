@@ -23,6 +23,10 @@ class HomeController < ApplicationController
       data = params[:data].to_datetime
     end
 
+    @valor_vendido = Pedido.vendidos(data)
+    @confirmados = Pedido.where(:situacao => "Confirmado",created_at: data.beginning_of_day..data.end_of_day).count
+    @cancelados = Pedido.where(:situacao => "Cancelado",created_at: data.beginning_of_day..data.end_of_day).count
+
     @acompanhamentos = [] 
     @qtds_acompanhamento = []
     PedidoAcompanhamento.where(created_at: data.beginning_of_day..data.end_of_day).map { |p| @acompanhamentos << p.acompanhamento.nome; @qtds_acompanhamento << p.quantidade }
