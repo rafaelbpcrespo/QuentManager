@@ -156,7 +156,7 @@
                       <span class="glyphicon glyphicon-usd"></span>&nbsp;Conta
                     <% end %>
                 </li>
-                <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX, min: Pedido::MINUTO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>                
+                <% if (DateTime.now > DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MIN) && DateTime.now < DateTime.now.change(hour: Pedido::HORARIO_LIMITE_MAX)) && !current_usuario.cliente.bloqueado?%>                
                 <li>
                     <%= link_to new_pedido_path(:cliente_id => current_usuario.cliente.id) do %>
                       <span class="glyphicon glyphicon-cutlery"></span>&nbsp;Fazer Pedido
