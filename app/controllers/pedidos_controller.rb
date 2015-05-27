@@ -30,7 +30,7 @@ class PedidosController < ApplicationController
       flash[:alert] = "Você não pode confirmar um pedido pois seu cadastro está bloqueado. Favor entrar em contato com a Si Quitutes."
       redirect_to pedidos_path
     elsif @pedido.situacao == "Cancelado" && current_usuario.usuario?
-      flash[:alert] = "Você não pode confirmar um pedido já cancelado."
+      flash[:alert] = "Você não pode confirmar um pedido já cancelado. Por favor faça um novo pedido."
       redirect_to pedidos_path
     elsif @pedido.situacao == "Confirmado"
       flash[:alert] = "Este pedido já foi confirmado."
@@ -40,6 +40,10 @@ class PedidosController < ApplicationController
       redirect_to pedidos_path
     else
       itens = @pedido.confirmar!
+      if itens == true
+        itens = []
+      end
+      debugger
       if !itens.empty?
         redirect_to edit_pedido_path(@pedido) #render "pedidos/edit"
         flash[:alert] = "Você não pode confirmar este pedido pois o(s) item(s): #{itens} está indisponível(is) no estoque. Pedimos que por favor substitua estes itens do seu pedido."
