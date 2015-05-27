@@ -47,6 +47,15 @@ class Pedido < ActiveRecord::Base
     valor_total
   end
 
+  def self.vendidos(data)
+    valor_total = 0
+    pedidos = Pedido.where(created_at: (data.beginning_of_day)..(data.end_of_day), :situacao => "Confirmado")
+    pedidos.each do |pedido|
+      valor_total = valor_total + pedido.valor
+    end
+    valor_total
+  end
+
   def self.timeout
     pedidos = Pedido.where(:situacao => "Em processamento")
     pedidos.each do |pedido|
