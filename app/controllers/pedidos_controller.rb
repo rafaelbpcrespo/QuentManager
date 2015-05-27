@@ -42,8 +42,9 @@ class PedidosController < ApplicationController
       itens = @pedido.confirmar!
       if itens == true
         itens = []
+      else
+        @pedido.remover_itens_em_falta(itens)
       end
-      debugger
       if !itens.empty?
         redirect_to edit_pedido_path(@pedido) #render "pedidos/edit"
         flash[:alert] = "Você não pode confirmar este pedido pois o(s) item(s): #{itens} está indisponível(is) no estoque. Pedimos que por favor substitua estes itens do seu pedido."

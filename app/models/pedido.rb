@@ -47,6 +47,22 @@ class Pedido < ActiveRecord::Base
     valor_total
   end
 
+  def remover_item(item)
+    ["Proteina", "Guarnicao", "Salada", "Bebida", "Acompanhamento", "Sobremesa"].each do |classe|
+      if !Object.const_get(classe).find_by_nome(item).nil?
+        item_to_remove = self.send("pedidos_#{classe.downcase.pluralize}").where(:"#{classe.downcase}" =>  Object.const_get(classe).find_by_nome(item))
+        self.send("pedidos_#{classe.downcase.pluralize}").delete(item_to_remove)        
+        item_to_remove.first.destroy
+      end
+    end
+  end
+
+  def remover_itens_em_falta(itens)
+    itens.each do |item|
+      self.remover_item(item)
+    end
+  end
+
   def self.vendidos(data)
     valor_total = 0
     pedidos = Pedido.where(created_at: (data.beginning_of_day)..(data.end_of_day), :situacao => "Confirmado")
