@@ -35,14 +35,14 @@ class PedidosController < ApplicationController
     elsif @pedido.situacao == "Confirmado"
       flash[:alert] = "Este pedido já foi confirmado."
       redirect_to pedidos_path
-    elsif (((DateTime.now < @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MIN)) || (DateTime.now > @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX))) && (current_usuario.usuario?))
+    elsif (((DateTime.now < @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MIN)) || (DateTime.now > @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX, min: Pedido::MINUTO_LIMITE_MAX))) && (current_usuario.usuario?))
       flash[:alert] = "Horário limite para confirmação ultrapassado."
       redirect_to pedidos_path
     else
       itens = @pedido.confirmar!
       if !itens.empty?
         redirect_to edit_pedido_path(@pedido) #render "pedidos/edit"
-        flash[:alert] = "Você não pode confirmar este pedido pois o(s) item(s): #{itens} está indisponível(is)."
+        flash[:alert] = "Você não pode confirmar este pedido pois o(s) item(s): #{itens} está indisponível(is) no estoque. Pedimos que por favor substitua estes itens do seu pedido."
       else
         PedidoMailer.confirmar_pedido(@pedido.cliente.usuario,@pedido).deliver
         flash[:notice] = "Pedido confimado com sucesso."
