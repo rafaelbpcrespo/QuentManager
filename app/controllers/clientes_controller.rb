@@ -16,7 +16,7 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
-    @pedidos = @cliente.pedidos.paginate(:page => params[:page], :per_page => 25)
+    @pedidos = @cliente.pedidos.paginate(:page => params[:page], :per_page => 25).order('created_at DESC')
   end
 
   # GET /clientes/new
