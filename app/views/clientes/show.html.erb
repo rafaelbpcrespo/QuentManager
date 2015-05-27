@@ -147,6 +147,11 @@
   <div class="col-md-12 text-center">
     Saldo Atual: R$ <%= @cliente.conta.saldo.to_f %>
    </div>
+<div class="row">
+  <div class="col-md-12 text-center">   
+    <%= will_paginate @pedidos, renderer: BootstrapPagination::Rails %>
+  </div>
+</div>
   </div><br><br> 
 <div class="row">
   <div class="col-md-12 text-center">
