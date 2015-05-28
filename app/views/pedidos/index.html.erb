@@ -12,8 +12,8 @@
               <h3><font color="red">Horário para realização de pedidos finalizado</font></h3>
               <% end %>
   <% else %> 
-    <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de hoje da <%= @nome_da_empresa %><br/></h2>
-            <h3>Quantidade de pedidos para <%= @nome_da_empresa %>: <%= @quantidade_de_pedidos %></h3>
+    <center><h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de <%= @data %> de <%= @nome_da_empresa %><br/></h2>
+            <h3>Quantidade de pedidos para <%= @nome_da_empresa %>: <%= @quantidade_de_pedidos %></h3></center>
 <% end %>             
 </div>
 <% if current_usuario.admin? || current_usuario.gerente? %>
