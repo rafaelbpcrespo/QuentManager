@@ -9,10 +9,10 @@ class Acompanhamento < ActiveRecord::Base
 
   def ver_disponibilidade
     if self.quantidade != 0
-      self.disponibilidade = true
+      return self.disponibilidade = true
     else
-      self.disponibilidade = false
-      true
+      return self.disponibilidade = false
+      #true
     end
   end
 

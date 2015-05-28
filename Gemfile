@@ -6,9 +6,9 @@ gem 'rails', '4.0.4'
 gem 'less-rails'
 gem 'therubyracer'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
 #gem 'pg'
-gem 'mysql2'
+#gem 'mysql2'
 
 gem 'wicked'
 gem 'whenever', :require => false
@@ -31,7 +31,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+gem 'rspec-rails'
 gem 'rails_12factor', group: :production
 gem 'heroku'
 
@@ -56,4 +56,9 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-#gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
+gem 'guard'
+gem 'guard-rspec'
+gem 'simplecov'
+gem 'factory_girl_rails'
+gem 'shoulda-matchers'
