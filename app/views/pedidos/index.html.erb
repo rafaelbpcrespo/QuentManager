@@ -56,7 +56,7 @@
       <th><%= model_class.human_attribute_name(:valor) %></th>
       <th>Data</th>
       <th><%= model_class.human_attribute_name(:situação) %></th>      
-      <th><%=t '.ações', :default => t("helpers.ações") %></th>
+      <th class="text-center noprint"><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
   </thead>
   <tbody>
@@ -66,7 +66,7 @@
         <td>R$ <%= exibir_decimal(pedido.valor) %></td>
         <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.situacao %></td>
-        <td>
+        <td class="text-center noprint">
           <%= link_to edit_pedido_path(pedido), html_options = { :class => 'btn btn-primary btn-sm', :title => "Editar Dados"} do %>
                       <span class="glyphicon glyphicon-pencil"></span>
                       <% end %>        
