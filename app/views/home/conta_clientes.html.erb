@@ -1,6 +1,7 @@
 <%- model_class = Cliente -%>
 <div class="page-header noprint">
-  <h2 class='titulo'><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></h2>
+  <center><h2>Conta dos Clientes<span class="estoque"></span></h2></center>
+
 </div>
 <br>
 <div class="form-group noprint">
@@ -15,11 +16,16 @@
         <%= select_tag :empresa, options_from_collection_for_select(Empresa.all, "id", "nome"), :prompt => "Todas as Empresas", :class => "form-control input-search" %>
       </label>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-1">
       <label>
-        <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>    
+        <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>
       </label>
     </div>
+    <div class="col-sm-2">
+      <label>
+        <input class='btn btn-default' type="button" onClick="window.print()" value="Imprimir"/>
+      </label>
+    </div>    
     <% end %>
 </div>
 <br><br>

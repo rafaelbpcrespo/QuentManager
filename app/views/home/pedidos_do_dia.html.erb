@@ -1,8 +1,16 @@
+<center><h2>Pedidos do Dia<span class="estoque"></span></h2></center>
 <% if @pedidos.empty? %>
 
     Não existem pedidos confirmados para o dia de hoje.
 
   <% else %>
+  <br>
+<div class="row noprint">
+      <div class="col-md-12 text-center">
+        <center><input class='btn btn-default' type="button" onClick="window.print()" value="Imprimir Pedidos"/></center>
+      </div>
+</div>  
+<br>
     <% @pedidos.each_with_index do |pedido,i| %>
    
     
