@@ -338,6 +338,10 @@ class Pedido < ActiveRecord::Base
         pedidos = Pedido.do_dia
       end
 
+      if data.blank?
+        data = DateTime.now
+      end
+
       if !empresa.blank?
         pedidos = Pedido.joins(:cliente).where("clientes.empresa_id == ? ", empresa)
       end
