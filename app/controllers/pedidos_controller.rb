@@ -8,6 +8,11 @@ class PedidosController < ApplicationController
   def index
     if ((current_usuario.admin?) || (current_usuario.gerente?))
       @pedidos = Pedido.search(params[:situacao],params[:empresa],params[:data])
+      if params[:data].blank?
+        @data = DateTime.now
+      else
+        @data = params[:data].to_datetime
+      end
       if !params[:empresa].blank?
         @nome_da_empresa = Empresa.find(params[:empresa]).nome
         @quantidade_de_pedidos = @pedidos.count
