@@ -73,13 +73,13 @@
           <%= link_to pedido_path(pedido), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
                       <span class="glyphicon glyphicon-list-alt"></span>          
           <% end %>
-          <% if (DateTime.now < pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX)) || (current_usuario.admin? || current_usuario.gerente?) %>
+          <% if (DateTime.now < pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX, min: MINUTO_LIMITE_MAX)) || (current_usuario.admin? || current_usuario.gerente?) %>
             <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "btn btn-danger btn-sm", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
                       <span class="glyphicon glyphicon-remove"></span>
             <% end %>
-            <% end %>
             <%= link_to confirmar_pedido_path(pedido), html_options = {:class => "btn btn-success btn-sm", :title => "Confirmar Pedido", :id => "confirmar_#{pedido.id}"} do %>
                       <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
             <% end %>
         </td>
       </tr>
