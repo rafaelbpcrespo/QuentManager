@@ -36,7 +36,7 @@
               <%= link_to edit_pagamento_path(transacao,:conta_id => transacao.conta.id), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
                           <span class="glyphicon glyphicon-pencil"></span>
               <% end %>
-              <%= link_to transacao, html_options = {:class => 'btn btn-danger btn-sm', :title => "Excluir" }, method: :delete, data: { confirm: 'Tem certeza que deseja excluir esta transação?' } do %>
+              <%= link_to transacao, html_options = {:class => 'btn btn-danger btn-sm', :title => "Excluir Pagamento" }, method: :delete, data: { confirm: 'Tem certeza que deseja excluir esta transação?' } do %>
                           <span class="glyphicon glyphicon-remove"></span>
               <% end %>                        
             </td>
@@ -49,9 +49,9 @@
               <%= link_to edit_pedido_path(transacao), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
                           <span class="glyphicon glyphicon-pencil"></span>
               <% end %>
-              <%= link_to transacao, html_options = {:class => 'btn btn-danger btn-sm', :title => "Excluir" }, method: :delete, data: { confirm: 'Tem certeza que deseja excluir esta transação?' } do %>
-                          <span class="glyphicon glyphicon-remove"></span>
-              <% end %>                        
+            <%= link_to cancelar_pedido_path(transacao), html_options = {:class => "btn btn-danger btn-sm", :title => "Cancelar Pedido", :id => "cancelar_#{transacao.id}"} do %>
+                      <span class="glyphicon glyphicon-remove"></span>
+            <% end %>              
             </td>
           <% end %>
         <% end %>
