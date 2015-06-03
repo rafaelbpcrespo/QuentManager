@@ -52,6 +52,9 @@
             <%= link_to cliente_path(cliente), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
                         <span class="glyphicon glyphicon-list-alt"></span>          
             <% end %>
+              <%= link_to conta_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Conta"} do %>
+                       <span class="glyphicon glyphicon-euro"></span>
+              <% end %>                        
             <% if cliente.bloqueado? %>
               <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
                         <span class="glyphicon glyphicon-ok"></span>
@@ -64,9 +67,6 @@
               <%= link_to new_pagamento_path(:conta_id => cliente.conta.id), html_options = {:class => "btn btn-success btn-sm", :title => "Pagamento"} do %>
                         <span class="glyphicon glyphicon-usd"></span>
               <% end %>                        
-              <%#= link_to conta_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Conta"} do %>
-                       <!--  <span class="glyphicon glyphicon-euro"></span> -->
-              <%# end %>                        
           </td>
         </tr>
       <% else %>
@@ -80,6 +80,9 @@
             <%= link_to cliente_path(cliente), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
                         <span class="glyphicon glyphicon-list-alt"></span>          
             <% end %>
+              <%= link_to conta_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Conta"} do %>
+                       <span class="glyphicon glyphicon-euro"></span>
+              <% end %>                        
             <% if cliente.bloqueado? %>
               <%= link_to desbloquear_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Desbloquear", :id => "desbloquear_#{cliente.id}"} do %>
                         <span class="glyphicon glyphicon-ok"></span>
@@ -92,9 +95,6 @@
               <%= link_to new_pagamento_path(:conta_id => cliente.conta.id), html_options = {:class => "btn btn-success btn-sm", :title => "Pagamento"} do %>
                         <span class="glyphicon glyphicon-usd"></span>
               <% end %>                        
-              <%#= link_to conta_cliente_path(cliente), html_options = {:class => "btn btn-success btn-sm", :title => "Conta"} do %>
-                       <!--  <span class="glyphicon glyphicon-euro"></span> -->
-              <%# end %>                        
           </td>
         </tr>
       <% end %>
