@@ -39,14 +39,19 @@
 
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
            of using a Rails form helper -->
-    <div class="col-sm-2">
+    <div class="col-sm-1">
       <label>           
         <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>
       </label>
     </div>
 
+    <div class="col-sm-2">
+      <label>
+        <input class='btn btn-default' type="button" onClick="window.print()" value="Imprimir"/>
+      </label>
+    </div>    
+<br><br>
 
-    <br>
   <% end %>
 <% end %>
 <table class="table table-striped">
