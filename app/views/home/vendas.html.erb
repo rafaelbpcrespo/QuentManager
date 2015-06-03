@@ -26,7 +26,9 @@
               <h3 class="panel-title">Vendas</h3>
             </div>
             <div class="panel-body">
-              <p>Valor vendido: R$ <%= exibir_decimal(@valor_vendido) %></p> 
+                <% if current_usuario.admin? %>
+                  <p>Valor vendido: R$ <%= exibir_decimal(@valor_vendido) %></p> 
+                <% end %>
               <p>Pedidos Confirmados: <%= @confirmados %></p> 
               <p>Pedidos Cancelados: <%= @cancelados %></p> 
             </div>
