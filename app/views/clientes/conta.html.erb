@@ -17,6 +17,9 @@
       <th><center>Valor</center></th>
       <th><center>Data</center></th>
       <th><center>Forma de Pagamento</center></th>
+      <% if current_usuario.admin? || current_usuario.gerente? %>
+      <th class="text-center"><%=t '.ações', :default => t("helpers.ações") %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -28,9 +31,29 @@
         <% if transacao.class.to_s == "Pagamento" %>
           <td><center><%= transacao.data.strftime("%d/%m/%Y") %></center></td>
           <td><center><%= transacao.forma_de_pagamento %></center></td>
+          <% if current_usuario.admin? || current_usuario.gerente? %>
+            <td class="text-center">
+              <%= link_to edit_pagamento_path(transacao,:conta_id => transacao.conta.id), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                          <span class="glyphicon glyphicon-pencil"></span>
+              <% end %>
+              <%= link_to transacao, html_options = {:class => 'btn btn-danger btn-sm', :title => "Excluir" }, method: :delete, data: { confirm: 'Tem certeza que deseja excluir esta transação?' } do %>
+                          <span class="glyphicon glyphicon-remove"></span>
+              <% end %>                        
+            </td>
+          <% end %>
         <% else %>
           <td><center><%= transacao.created_at.strftime("%d/%m/%Y") %></center></td>
           <td><center>Pedido</center></td>        
+          <% if current_usuario.admin? || current_usuario.gerente? %>
+            <td class="text-center">
+              <%= link_to edit_pedido_path(transacao), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                          <span class="glyphicon glyphicon-pencil"></span>
+              <% end %>
+              <%= link_to transacao, html_options = {:class => 'btn btn-danger btn-sm', :title => "Excluir" }, method: :delete, data: { confirm: 'Tem certeza que deseja excluir esta transação?' } do %>
+                          <span class="glyphicon glyphicon-remove"></span>
+              <% end %>                        
+            </td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
