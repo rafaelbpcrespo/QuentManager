@@ -1,7 +1,7 @@
 <%- model_class = Conta -%>
 <div class="page-header">
   <h2>
-    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
+    <center><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></center>
     <%#= link_to 'Cadastrar Empresa', new_empresa_path, :class=>"button blue-cadastrar-top" %>
     Cliente: <%= Cliente.find_by_id(params[:id].to_i).nome %>
   </h2>
@@ -56,5 +56,9 @@
     <% end %>
   </tbody>
 </table>
-<div class='saldo_conta'>Saldo Atual: R$ <%= @conta.saldo.to_f %></div>
+<div class="row">
+  <div class="col-md-12 text-center">   
+    <div class='saldo_conta'>Saldo Atual: R$ <%= @conta.saldo.to_f %></div>
+  </div>
+</div>
 <% end %>
