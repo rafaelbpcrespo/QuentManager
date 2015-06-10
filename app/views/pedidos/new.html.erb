@@ -1,5 +1,5 @@
 <%- model_class = Pedido -%>
 <div class="page-header">
-  <h2><%=t '.title', :default => [:'helpers.titles.new', 'Novo %{model}'], :model => model_class.model_name.human.titleize %></h2>
+  <h2><%=t '.title', :default => [:'helpers.titles.new', 'Novo %{model}'], :model => model_class.model_name.human.titleize %> - O valor inicial da quentinha é de R$11,00.</h2>
 </div>
 <%= render :partial => 'form' %>

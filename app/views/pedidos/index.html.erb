@@ -12,8 +12,8 @@
               <h3><font color="red">Horário para realização de pedidos finalizado</font></h3>
               <% end %>
   <% else %> 
-    <h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de hoje da <%= @nome_da_empresa %><br/></h2>
-            <h3>Quantidade de pedidos para <%= @nome_da_empresa %>: <%= @quantidade_de_pedidos %></h3>
+    <center><h2><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> de <%= @data %> de <%= @nome_da_empresa %><br/></h2>
+            <h3>Quantidade de pedidos para <%= @nome_da_empresa %>: <%= @quantidade_de_pedidos %></h3></center>
 <% end %>             
 </div>
 <% if current_usuario.admin? || current_usuario.gerente? %>
@@ -39,14 +39,19 @@
 
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
            of using a Rails form helper -->
-    <div class="col-sm-2">
+    <div class="col-sm-1">
       <label>           
         <%= submit_tag "Buscar", :name => nil, :class => 'btn btn-success' %>
       </label>
     </div>
 
+    <div class="col-sm-2">
+      <label>
+        <input class='btn btn-default' type="button" onClick="window.print()" value="Imprimir"/>
+      </label>
+    </div>    
+<br><br>
 
-    <br>
   <% end %>
 <% end %>
 <table class="table table-striped">
@@ -56,30 +61,30 @@
       <th><%= model_class.human_attribute_name(:valor) %></th>
       <th>Data</th>
       <th><%= model_class.human_attribute_name(:situação) %></th>      
-      <th><%=t '.ações', :default => t("helpers.ações") %></th>
+      <th class="text-center noprint"><%=t '.ações', :default => t("helpers.ações") %></th>
     </tr>
   </thead>
   <tbody>
     <% @pedidos.each do |pedido| %>
       <tr>
         <td><%= link_to pedido.cliente.nome, cliente_path(pedido.cliente) %></td>
-        <td><%= pedido.valor %></td>
+        <td>R$ <%= exibir_decimal(pedido.valor) %></td>
         <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.situacao %></td>
-        <td>
-          <%= link_to edit_pedido_path(pedido), html_options = { :class => 'btn btn-primary btn-sm', :title => "Editar Dados"} do %>
-                      <span class="glyphicon glyphicon-pencil"></span>
-                      <% end %>        
+        <td class="text-center noprint">
           <%= link_to pedido_path(pedido), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
                       <span class="glyphicon glyphicon-list-alt"></span>          
           <% end %>
-          <% if (DateTime.now < pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX)) || (current_usuario.admin? || current_usuario.gerente?) %>
+          <% if (DateTime.now < pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX, min: Pedido::MINUTO_LIMITE_MAX)) || (current_usuario.admin? || current_usuario.gerente?) %>
+          <%= link_to edit_pedido_path(pedido), html_options = { :class => 'btn btn-primary btn-sm', :title => "Editar Dados"} do %>
+                      <span class="glyphicon glyphicon-pencil"></span>
+                      <% end %>        
             <%= link_to cancelar_pedido_path(pedido), html_options = {:class => "btn btn-danger btn-sm", :title => "Cancelar Pedido", :id => "cancelar_#{pedido.id}"} do %>
                       <span class="glyphicon glyphicon-remove"></span>
             <% end %>
-            <% end %>
             <%= link_to confirmar_pedido_path(pedido), html_options = {:class => "btn btn-success btn-sm", :title => "Confirmar Pedido", :id => "confirmar_#{pedido.id}"} do %>
                       <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
             <% end %>
         </td>
       </tr>

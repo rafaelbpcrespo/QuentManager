@@ -19,6 +19,7 @@ class PagamentosController < ApplicationController
 
   # GET /pagamentos/1/edit
   def edit
+    @pagamento.data = @pagamento.data.to_s.split(/\-/).reverse.join('/')
   end
 
   # POST /pagamentos
@@ -50,6 +51,7 @@ class PagamentosController < ApplicationController
     
     respond_to do |format|
       if @pagamento.update(pagamento_params)
+        @pagamento.conta.calcular_saldo
         format.html { redirect_to @pagamento, notice: 'Pagamento atualizado com sucesso.' }
         format.json { head :no_content }
       else
@@ -77,6 +79,6 @@ class PagamentosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pagamento_params
-      params.require(:pagamento).permit(:conta_id, :valor)
+      params.require(:pagamento).permit(:conta_id, :valor,:data, :forma_de_pagamento)
     end
 end

@@ -164,7 +164,12 @@
             <%= link_to new_pedido_path(:cliente_id => @cliente.id), html_options = {:class => "btn btn-primary", :title => "Pedido"} do %>
                       <span class="glyphicon glyphicon-cutlery"></span>
             <% end %>      
-      </div>                  
+      </div>                
+    <div class="btn-group">
+      <%= link_to conta_cliente_path(@cliente), html_options = {:class => "btn btn-success", :title => "Conta"} do %>
+        <span class="glyphicon glyphicon-euro"></span>
+      <% end %>                        
+    </div>        
     <div class="btn-group">
           <%= link_to edit_cliente_path(@cliente), :class => 'btn btn-warning' do %>
               <span class="glyphicon glyphicon-pencil"></span>         

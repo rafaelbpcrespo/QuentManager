@@ -5,9 +5,9 @@
   <% end %>
 
 
-  <% if current_usuario.admin? && params[:action] == "new" %>
+  <% if (current_usuario.admin? || current_usuario.gerente?) && params[:action] == "new" %>
   <h4> Cliente: <%= Cliente.find_by_id(params[:cliente_id].to_i).nome %> </h4>
-  <% elsif current_usuario.admin? && params[:action] == "edit" %>
+  <% elsif (current_usuario.admin? || current_usuario.gerente?) && params[:action] == "edit" %>
     <h4> Cliente: <%= Pedido.find_by_id(params[:id].to_i).cliente.nome %> </h4>
   <% else %>
     <h4> Cliente: <%= current_usuario.cliente.nome %> </h4>

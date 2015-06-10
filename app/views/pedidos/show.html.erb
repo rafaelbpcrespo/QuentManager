@@ -70,22 +70,24 @@
     </div>
 </div>
 <br>
-<div class="row">
-  <div class="col-md-12 text-center">
-        <div class="btn-group">          
-          <%= link_to confirmar_pedido_path(@pedido), :class => 'btn btn-success', :title => "Confirmar" do %>
-          <span class="glyphicon glyphicon-ok"></span>
-          <% end %>
-        </div>
-        <div class="btn-group">          
-          <%= link_to edit_pedido_path(@pedido), :class => 'btn btn-warning', :title => "Editar" do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-          <% end %>
-        </div>
-        <div class="btn-group">
-          <%= link_to cancelar_pedido_path(@pedido), :class => 'btn btn-danger', :title => "Cancelar" do %>
-          <span class="glyphicon glyphicon-remove"></span>
-          <% end %>
-        </div> 
-    </div>       
-</div>
+<% if (DateTime.now < @pedido.created_at.change(hour: Pedido::HORARIO_LIMITE_MAX, min: Pedido::MINUTO_LIMITE_MAX)) || (current_usuario.admin? || current_usuario.gerente?) %>
+  <div class="row">
+    <div class="col-md-12 text-center">
+          <div class="btn-group">          
+            <%= link_to confirmar_pedido_path(@pedido), :class => 'btn btn-success', :title => "Confirmar" do %>
+            <span class="glyphicon glyphicon-ok"></span>
+            <% end %>
+          </div>
+          <div class="btn-group">          
+            <%= link_to edit_pedido_path(@pedido), :class => 'btn btn-warning', :title => "Editar" do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+          </div>
+          <div class="btn-group">
+            <%= link_to cancelar_pedido_path(@pedido), :class => 'btn btn-danger', :title => "Cancelar" do %>
+            <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+          </div> 
+      </div>       
+  </div>
+<% end %>

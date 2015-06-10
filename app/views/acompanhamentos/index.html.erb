@@ -38,7 +38,7 @@
       <tr>
         <td><%= acompanhamento.nome %></td>
         <td><%= acompanhamento.quantidade %></td>
-        <td><%= acompanhamento.valor %></td>
+        <td>R$ <%= exibir_decimal(acompanhamento.valor) %></td>
         <td><% if acompanhamento.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
         <td>
           <%= link_to edit_acompanhamento_path(acompanhamento), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>

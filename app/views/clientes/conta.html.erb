@@ -1,7 +1,7 @@
 <%- model_class = Conta -%>
 <div class="page-header">
   <h2>
-    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/>
+    <center><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %><br/></center>
     <%#= link_to 'Cadastrar Empresa', new_empresa_path, :class=>"button blue-cadastrar-top" %>
     Cliente: <%= Cliente.find_by_id(params[:id].to_i).nome %>
   </h2>
@@ -16,18 +16,49 @@
       <th><center>Tipo</center> </th>
       <th><center>Valor</center></th>
       <th><center>Data</center></th>
+      <th><center>Forma de Pagamento</center></th>
+      <% if current_usuario.admin? || current_usuario.gerente? %>
+      <th class="text-center"><%=t '.ações', :default => t("helpers.ações") %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <% @transacoes.each do |transacao| %>
 
       <tr>
-        <td><%= transacao.class %></td>
-        <td>R$ <%= transacao.valor.to_f %></td>
-        <td><%= transacao.created_at.strftime("%d/%m/%Y") %></td>
+        <td><center><%= transacao.class %></center></td>
+        <td><center>R$ <%= transacao.valor.to_f %></center></td>
+        <% if transacao.class.to_s == "Pagamento" %>
+          <td><center><%= transacao.data.strftime("%d/%m/%Y") %></center></td>
+          <td><center><%= transacao.forma_de_pagamento %></center></td>
+          <% if current_usuario.admin? || current_usuario.gerente? %>
+            <td class="text-center">
+              <%= link_to edit_pagamento_path(transacao,:conta_id => transacao.conta.id), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                          <span class="glyphicon glyphicon-pencil"></span>
+              <% end %>
+            </td>
+          <% end %>
+        <% else %>
+          <td><center><%= transacao.created_at.strftime("%d/%m/%Y") %></center></td>
+          <td><center>Pedido</center></td>        
+          <% if current_usuario.admin? || current_usuario.gerente? %>
+            <td class="text-center">
+              <%= link_to edit_pedido_path(transacao), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                          <span class="glyphicon glyphicon-pencil"></span>
+              <% end %>
+            <%= link_to cancelar_pedido_path(transacao), html_options = {:class => "btn btn-danger btn-sm", :title => "Cancelar Pedido", :id => "cancelar_#{transacao.id}"} do %>
+                      <span class="glyphicon glyphicon-remove"></span>
+            <% end %>              
+            </td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-<div class='saldo_conta'>Saldo Atual: R$ <%= @conta.saldo.to_f %></div>
+<div class="row">
+  <div class="col-md-12 text-center">   
+    <div class='saldo_conta'>Saldo Atual: R$ <%= @conta.saldo.to_f %></div>
+  </div>
+</div>
 <% end %>
