@@ -12,7 +12,7 @@ class Sobremesa < ActiveRecord::Base
       self.disponibilidade = true
     else
       self.disponibilidade = false
-      true
+      #true
     end
   end
 
@@ -28,6 +28,9 @@ class Sobremesa < ActiveRecord::Base
   end
 
   def decrescer(quantidade_vendida)
+    if quantidade_vendida > self.quantidade
+      return false
+    end    
     self.quantidade = self.quantidade - quantidade_vendida
     self.save
     self.verificar_quantidade
