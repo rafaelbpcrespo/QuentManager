@@ -1,3 +1,88 @@
+<h2>Bebidas</h2> <br>
+<%- model_class = Bebida -%>
+<div class="row">
+        <div class="col-md-6 "> 
+        <%= link_to "Nova Bebida", new_bebida_path, :class => 'btn btn-primary' %>                  
+        </div>        
+</div>
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:nome) %></th>
+      <th><%= model_class.human_attribute_name(:qtd) %></th>
+      <th><%= model_class.human_attribute_name(:valor) %></th>
+      <th><%= model_class.human_attribute_name(:disponibilidade) %></th>
+      <th width="164px"><center><%=t '.ações', :default => t("helpers.ações") %></center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bebidas.each do |bebida| %>
+      <% if bebida.disponibilidade? %>
+        <tr>
+          <td><%= bebida.nome %></td>
+          <td><%= bebida.quantidade %></td>
+          <td>R$<%= exibir_decimal(bebida.valor) %></td>
+          <td><% if bebida.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+          <td>
+            <%= link_to edit_bebida_path(bebida), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <%= link_to bebida_path(bebida), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                    <span class="glyphicon glyphicon-list-alt"></span>
+            <% end %>
+            <% if bebida.disponibilidade? %>
+              <%= link_to desativar_bebida_path(bebida), html_options = { :class => 'btn btn-danger btn-sm', :title => "Desativar"} do %>
+                      <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            <% else %>
+              <%= link_to edit_bebida_path(bebida), html_options = { :class => 'btn btn-success btn-sm', :title => "Ativar"} do %>
+                <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% else %>
+        <tr class="list-group-font-danger">
+          <td><%= bebida.nome %></td>
+          <td><%= bebida.quantidade %></td>
+          <td>R$<%= exibir_decimal(bebida.valor) %></td>
+          <td><% if bebida.disponibilidade? %> Ativado <% else %> Desativado <% end %></td>
+          <td>
+            <%= link_to edit_bebida_path(bebida), html_options = { :class => 'btn btn-warning btn-sm', :title => "Editar Dados"} do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                        <% end %>
+            <%= link_to bebida_path(bebida), html_options = { :class => 'btn btn-info btn-sm', :title => "Ver Dados Completos"} do %>
+                    <span class="glyphicon glyphicon-list-alt"></span>
+            <% end %>
+            <% if bebida.disponibilidade? %>
+              <%= link_to desativar_bebida_path(bebida), html_options = { :class => 'btn btn-danger btn-sm', :title => "Desativar"} do %>
+                      <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            <% else %>
+              <%= link_to edit_bebida_path(bebida), html_options = { :class => 'btn btn-success btn-sm', :title => "Ativar"} do %>
+                <span class="glyphicon glyphicon-ok"></span>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= will_paginate @transacoes, renderer: BootstrapPagination::Rails %>
+
+<div class="row">
+        <div class="col-md-6 text-right "> 
+        <%= link_to "Nova Bebida", new_transacao_path, :class => 'btn btn-primary' %>                  
+        </div>        
+         <div class="col-md-6">
+          <%= link_to "Cancelar", home_inicial_path, :class => 'btn btn-default' %>
+        </div>
+</div>
+
+
 <h2>Listing transacoes</h2>
 
 <table>
