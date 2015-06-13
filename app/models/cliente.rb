@@ -20,7 +20,7 @@ class Cliente < ActiveRecord::Base
   def nome_abreviado
     nomes = self.nome.split
     if nomes.count > 2
-      return nomes[0] + " " + nomes[1]
+      return nomes[0] + " " + nomes.last
     else
       return self.nome
     end
