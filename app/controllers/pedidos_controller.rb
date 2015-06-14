@@ -52,7 +52,7 @@ class PedidosController < ApplicationController
       end
       if !itens.empty?
         redirect_to edit_pedido_path(@pedido) #render "pedidos/edit"
-        flash[:alert] = "Você não pode confirmar este pedido pois o(s) item(s): #{itens} está indisponível(is) no estoque. Pedimos que por favor substitua estes itens do seu pedido."
+        flash[:alert] = "Você não pode confirmar este pedido pois o(s) item(s): #{itens} está(ão) indisponível(is) no estoque. Pedimos que por favor substitua estes itens do seu pedido."
       else
         PedidoMailer.confirmar_pedido(@pedido.cliente.usuario,@pedido).deliver
         flash[:notice] = "Pedido confimado com sucesso."
