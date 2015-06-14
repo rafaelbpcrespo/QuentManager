@@ -244,8 +244,8 @@ ActiveRecord::Schema.define(version: 20150519002713) do
     t.string   "tipo"
   end
 
-  add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
-  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
-  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+  add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true, using: :btree
+  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
+  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
 end
