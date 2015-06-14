@@ -62,3 +62,4 @@ gem 'guard-rspec'
 gem 'simplecov'
 gem 'factory_girl_rails'
 gem 'shoulda-matchers'
+
