@@ -4,7 +4,7 @@ class BebidasController < ApplicationController
   # GET /bebidas
   # GET /bebidas.json
   def index
-    @bebidas = Bebida.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
+    @bebidas = Bebida.all.order(:disponibilidade => :desc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
   end
 
   # GET /bebidas/1

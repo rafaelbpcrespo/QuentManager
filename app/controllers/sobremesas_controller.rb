@@ -4,7 +4,7 @@ class SobremesasController < ApplicationController
   # GET /sobremesas
   # GET /sobremesas.json
   def index
-    @sobremesas = Sobremesa.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
+    @sobremesas = Sobremesa.all.order(:disponibilidade => :desc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
   end
 
   # GET /sobremesas/1

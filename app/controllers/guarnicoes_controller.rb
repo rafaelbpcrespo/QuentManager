@@ -5,7 +5,7 @@ class GuarnicoesController < ApplicationController
   # GET /guarnicoes
   # GET /guarnicoes.json
   def index
-    @guarnicoes = Guarnicao.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
+    @guarnicoes = Guarnicao.all.order(:disponibilidade => :desc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
   end
 
   # GET /guarnicoes/1

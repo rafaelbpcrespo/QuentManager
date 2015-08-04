@@ -5,7 +5,7 @@ class ProteinasController < ApplicationController
   # GET /proteinas
   # GET /proteinas.json
   def index
-    @proteinas = Proteina.all.order(:nome => :asc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
+    @proteinas = Proteina.all.order(:disponibilidade => :desc).paginate(:page => params[:page], :per_page => 10).search(params[:search])
   end
 
   # GET /proteinas/1
