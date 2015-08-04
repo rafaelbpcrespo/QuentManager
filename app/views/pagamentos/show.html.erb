@@ -30,13 +30,18 @@
 <div class="row">
   <div class="col-md-6 text-center">
         <div class="btn-group">
-          <%= link_to cliente_path(@pagamento.conta.cliente), :class => 'btn btn-default', :title => "Voltar" do %>
-          <span class="glyphicon glyphicon-arrow-left"></span>
+          <%= link_to cliente_path(@pagamento.conta.cliente), :class => 'btn btn-info', :title => "Perfil do Cliente" do %>
+          <span class="glyphicon glyphicon-user"></span>
           <% end %>
         </div>
         <div class="btn-group">          
           <%= link_to edit_pagamento_path, :class => 'btn btn-warning', :title => "Editar" do %>
           <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+        </div>
+        <div class="btn-group">
+          <%= link_to "/home/conta_clientes", :class => 'btn btn-default', :title => "Pagamentos" do %>
+          <span class="glyphicon glyphicon-arrow-left"></span>
           <% end %>
         </div>
         <!-- <div class="btn-group"> -->
