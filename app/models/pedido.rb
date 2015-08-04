@@ -343,7 +343,7 @@ class Pedido < ActiveRecord::Base
       end
 
       if !empresa.blank?
-        pedidos = Pedido.joins(:cliente).where("clientes.empresa_id == ? ", empresa)
+        pedidos = Pedido.joins(:cliente).where("clientes.empresa_id = ? ", empresa)
       end
 
       if !situacao.blank?
