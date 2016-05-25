@@ -13,7 +13,16 @@
     <h4> Cliente: <%= current_usuario.cliente.nome %> </h4>
   <% end %>
  <br><br>
- 
+ <div class="row">
+  <div class="panel-body">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Meia Quentinha <%= f.check_box :meia %></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
  <div class="row">
     <div class="col-md-4">
         <div class="panel panel-success">
@@ -36,22 +45,22 @@
                 </div>
                 <div class="col-md-4">
                   <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade}".to_i).map{|s| ["#{s}", s]}), :class => "form-control input-search" %>
-                </div>                
+                </div>
                 </div>
                 <% else %>
                 <div class="col-md-12 well well-sm">
-                <div class="col-md-8">                
+                <div class="col-md-8">
                   <%= check_box_tag "acompanhamento_#{i}", "#{acompanhamento.nome}", true, :value => "#{acompanhamento.id}", :title => "#{acompanhamento.descricao}" %>
                   <%= "#{acompanhamento.nome}" %><br>
                 <div class='well-xs'><%= "#{acompanhamento.descricao} - R$#{sprintf('%.2f', acompanhamento.valor)} cada" %></div>
                 </div>
-                <div class="col-md-4">                
+                <div class="col-md-4">
                   <% if @flag_situacao == 1 %>
                     <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :class => "form-control input-search" %>
                   <% else %>
                     <%= select_tag "quantidade_acompanhamento_#{i}", options_for_select((1.."#{acompanhamento.quantidade+@pedido.pedidos_acompanhamentos.find_by_acompanhamento_id(acompanhamento.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_acompanhamentos.where(:acompanhamento_id => acompanhamento.id).first.quantidade), :class => "form-control input-search" %>
                   <% end %>
-                </div>                               
+                </div>
                 </div>
                 <% end %>
                 <%#= select_field_tag "quantidade_#{i}" %>
@@ -90,7 +99,7 @@
                   <div class="col-md-8">
                   <%= check_box_tag "proteina_#{i}", "#{proteina.nome}", true, :value => "#{proteina.id}",:title => "#{proteina.descricao}" %>
                   <%= "#{proteina.nome}" %><br>
-                  <div class='well-xs'><%= "#{proteina.descricao} - R$#{sprintf('%.2f', proteina.valor)} cada" %></div>      
+                  <div class='well-xs'><%= "#{proteina.descricao} - R$#{sprintf('%.2f', proteina.valor)} cada" %></div>
                   </div>
                   <div class="col-md-4">
                   <%# debugger %>
@@ -139,15 +148,15 @@
                   <div class="col-md-8">
                     <%= check_box_tag "guarnicao_#{i}", "#{guarnicao.nome}", true, :value => "#{guarnicao.id}", :title => "#{guarnicao.descricao}"  %>
                     <%= "#{guarnicao.nome}" %><br>
-                  <div class='well-xs'><%= "#{guarnicao.descricao} - R$#{sprintf('%.2f', guarnicao.valor)} cada" %></div>      
+                  <div class='well-xs'><%= "#{guarnicao.descricao} - R$#{sprintf('%.2f', guarnicao.valor)} cada" %></div>
                   </div>
                   <div class="col-md-4">
                   <% if @flag_situacao == 1 %>
                     <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_guarnicoes.where(:guarnicao_id => guarnicao.id).first.quantidade), :class => "form-control input-search" %>
                   <% else %>
-                    <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade+@pedido.pedidos_guarnicoes.find_by_guarnicao_id(guarnicao.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_guarnicoes.where(:guarnicao_id => guarnicao.id).first.quantidade), :class => "form-control input-search" %>                  
+                    <%= select_tag "quantidade_guarnicao_#{i}", options_for_select((1.."#{guarnicao.quantidade+@pedido.pedidos_guarnicoes.find_by_guarnicao_id(guarnicao.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_guarnicoes.where(:guarnicao_id => guarnicao.id).first.quantidade), :class => "form-control input-search" %>
                   <% end %>
-                  
+
                   </div>
                   </div>
                   <% end %>
@@ -155,7 +164,7 @@
                 <% end %>
             </div>
           </div>
-      </div> 
+      </div>
   </div>
 
 <br><br><br><br><br>
@@ -190,14 +199,14 @@
                     <div class="col-md-8">
                     <%= check_box_tag "salada_#{i}", "#{salada.nome}", true, :value => "#{salada.id}", :title => "#{salada.descricao}" %>
                     <%= "#{salada.nome}" %><br>
-                    <div class='well-xs'><%= "#{salada.descricao} - R$#{sprintf('%.2f', salada.valor)} cada" %></div>      
+                    <div class='well-xs'><%= "#{salada.descricao} - R$#{sprintf('%.2f', salada.valor)} cada" %></div>
                     </div>
                     <div class="col-md-4">
                   <% if @flag_situacao == 1 %>
                     <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade), :class => "form-control input-search" %>
                   <% else %>
-                    <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade+@pedido.pedidos_saladas.find_by_salada_id(salada.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade), :class => "form-control input-search" %>                  
-                  <% end %>                    
+                    <%= select_tag "quantidade_salada_#{i}", options_for_select((1.."#{salada.quantidade+@pedido.pedidos_saladas.find_by_salada_id(salada.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_saladas.where(:salada_id => salada.id).first.quantidade), :class => "form-control input-search" %>
+                  <% end %>
                     </div>
                     </div>
                     <% end %>
@@ -222,18 +231,18 @@
                     <%#= "#{proteina.nome}" %>
                     <% if !@pedido.bebidas.include? bebida %>
                     <%# if @pedido.pedidos_proteinas["#{i}".to_i].nil? %>
-                    <div class="col-md-12 well well-sm">                    
+                    <div class="col-md-12 well well-sm">
                     <div class="col-md-8">
                     <%= check_box_tag "bebida_#{i}", "#{bebida.nome}", false, :value => "#{bebida.id}" %>
                     <%= "#{bebida.nome}" %><br>
-                    <div class='well-xs'><%= "#{bebida.tipo} - R$#{sprintf('%.2f', bebida.valor)} cada" %></div>                      
+                    <div class='well-xs'><%= "#{bebida.tipo} - R$#{sprintf('%.2f', bebida.valor)} cada" %></div>
                     </div>
                     <div class="col-md-4">
                     <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}), :class => "form-control input-search" %>
                     </div>
                     </div>
                     <% else %>
-                    <div class="col-md-12 well well-sm">                    
+                    <div class="col-md-12 well well-sm">
                     <div class="col-md-8">
                     <%= check_box_tag "bebida_#{i}", "#{bebida.nome}", true, :value => "#{bebida.id}" %>
                     <%= "#{bebida.nome}" %><br>
@@ -244,7 +253,7 @@
                       <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_bebidas.where(:bebida_id => bebida.id).first.quantidade), :class => "form-control input-search" %>
                     <% else %>
                       <%= select_tag "quantidade_bebida_#{i}", options_for_select((1.."#{bebida.quantidade+@pedido.pedidos_bebidas.find_by_bebida_id(bebida.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_bebidas.where(:bebida_id => bebida.id).first.quantidade), :class => "form-control input-search" %>
-                    <% end %>                                        
+                    <% end %>
                     </div>
                     </div>
                     <% end %>
@@ -279,7 +288,7 @@
                       </div>
                       </div>
                       <% else %>
-                      <div class="col-md-12 well well-sm">                      
+                      <div class="col-md-12 well well-sm">
                       <div class="col-md-8">
                       <%= check_box_tag "sobremesa_#{i}", "#{sobremesa.nome}", true, :value => "#{sobremesa.id}", :title => "#{sobremesa.descricao}" %>
                       <%= "#{sobremesa.nome}" %><br>
@@ -289,8 +298,8 @@
                     <% if @flag_situacao == 1 %>
                       <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_sobremesas.where(:sobremesa_id => sobremesa.id).first.quantidade), :class => "form-control input-search" %>
                     <% else %>
-                      <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade+@pedido.pedidos_sobremesas.find_by_sobremesa_id(sobremesa.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_sobremesas.where(:sobremesa_id => sobremesa.id).first.quantidade), :class => "form-control input-search" %>                    
-                    <% end %>                      
+                      <%= select_tag "quantidade_sobremesa_#{i}", options_for_select((1.."#{sobremesa.quantidade+@pedido.pedidos_sobremesas.find_by_sobremesa_id(sobremesa.id).quantidade}".to_i).map{|s| ["#{s}", s]}, :selected => @pedido.pedidos_sobremesas.where(:sobremesa_id => sobremesa.id).first.quantidade), :class => "form-control input-search" %>
+                    <% end %>
                       </div>
                       </div>
                       <% end %>
@@ -308,7 +317,7 @@
     <div class="panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title">Observação</h3>
-      </div>      
+      </div>
       <%= f.text_area :observacao, :class => 'form-control', :placeholder => "Escreva aqui a observação a respeito do seu pedido" %>
   </div>
 </div>
@@ -326,7 +335,7 @@
         <%= f.hidden_field :cliente_id, :value => current_usuario.cliente.id %>
       <% end %>
 
-        <div class="col-md-6 text-right">          
+        <div class="col-md-6 text-right">
           <%= f.submit nil, :class => 'btn btn-primary' %>
         </div>
         <div class="col-md-6">

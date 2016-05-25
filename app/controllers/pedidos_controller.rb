@@ -102,7 +102,7 @@ class PedidosController < ApplicationController
     if @pedido.situacao == "Em processamento"
       @flag_situacao = 1
     end
-    
+
     @proteinas_disponiveis = Proteina.where(:disponibilidade => true)
     @pedido.proteinas.map { |proteina| @proteinas_disponiveis << proteina unless @proteinas_disponiveis.include? proteina }
     @proteinas_disponiveis.sort!
@@ -185,7 +185,7 @@ class PedidosController < ApplicationController
         @pedido.pedidos_bebidas.new(:bebida_id => params["bebida_#{i}"], :quantidade => params["quantidade_bebida_#{i}"])
       end
     end
-    
+
     sobremesas = Sobremesa.where(:disponibilidade => true).count
     for i in 0...sobremesas do
       if !params["sobremesa_#{i}"].blank?
@@ -291,7 +291,7 @@ class PedidosController < ApplicationController
         acompanhamento_editado << atualiza_acompanhamento
       elsif ( !(@pedido.acompanhamentos.include? acompanhamento) && ( !params["acompanhamento_#{i}"].blank?) && ( !params["quantidade_acompanhamento_#{i}"].nil?))
         acompanhamento_novo << @pedido.pedidos_acompanhamentos.create!(:acompanhamento_id => params["acompanhamento_#{i}"], :quantidade => params["quantidade_acompanhamento_#{i}"])
-        #acompanhamento_novo.last.acompanhamento.decrescer(acompanhamento_novo.last.quantidade)        
+        #acompanhamento_novo.last.acompanhamento.decrescer(acompanhamento_novo.last.quantidade)
       end
     end
     if  @flag_situacao != 1
@@ -304,7 +304,7 @@ class PedidosController < ApplicationController
         @pedido.acompanhamentos.delete(acomp)
         acompanhamento_removido.destroy
       end
-    end    
+    end
 
     proteina_novo = []
     pc = @pedido.pedidos_proteinas
@@ -320,7 +320,7 @@ class PedidosController < ApplicationController
         atualiza_proteina = @pedido.pedidos_proteinas.find_by_proteina_id(params["proteina_#{i}"])
         proteina.acrescer(atualiza_proteina.quantidade) #Aqui adiciona o que tinha ficado no pedido antes de ser editado.
         atualiza_proteina.quantidade = params["quantidade_proteina_#{i}"].to_i
-        proteina_editado << atualiza_proteina # Ver se está adicionando duas instancias de pedidos_proteinas no vetor 
+        proteina_editado << atualiza_proteina # Ver se está adicionando duas instancias de pedidos_proteinas no vetor
         atualiza_proteina.save
       elsif (( @pedido.proteinas.include? proteina) && ( !params["proteina_#{i}"].blank?) && (params["quantidade_proteina_#{i}"].to_i == @pedido.pedidos_proteinas.find_by_proteina_id(proteina.id).quantidade) && (@flag_situacao != 1))
         atualiza_proteina = @pedido.pedidos_proteinas.find_by_proteina_id(params["proteina_#{i}"])
@@ -334,7 +334,7 @@ class PedidosController < ApplicationController
       end
     end
     #### Removendo proteinas após edição ####
-    
+
     if  @flag_situacao != 1
       proteinas_removidos = pc - proteina_editado
       proteinas_removidos = proteinas_removidos - proteina_novo
@@ -373,7 +373,7 @@ class PedidosController < ApplicationController
         #guarnicao_novo.last.guarnicao.decrescer(guarnicao_novo.last.quantidade)
       end
     end
-    
+
     #### Removendo proteinas após edição ####
     if  @flag_situacao != 1
       guarnicoes_removidos = pc - guarnicao_editado
@@ -560,14 +560,14 @@ class PedidosController < ApplicationController
     # descricao = descricao + params[:proteina] + ", " + params[:acompanhamento] + " Salada: "+ params[:salada]
     # @pedido.descricao = descricao
     #@pedido.calcular_valor
-    
+
     #parametros[:valor] = @pedido.valor
     respond_to do |format|
       if @pedido.update(pedido_params)
         @pedido.calcular_valor
         @pedido.conta.calcular_saldo
         #proteina = @pedido.proteina
-        #carne.decrescer        
+        #carne.decrescer
         format.html { redirect_to @pedido, notice: 'Pedido atualizado com sucesso.' }
         format.json { head :no_content }
       else
@@ -600,6 +600,6 @@ class PedidosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
       #debugger
-      params.require(:pedido).permit(:proteinas, :bebidas, :sobremesas, :acompanhamentos, :guarnicoes, :saladas,:valor, :id, :cliente_id, :situacao, :conta, :observacao)
+      params.require(:pedido).permit(:proteinas, :bebidas, :sobremesas, :acompanhamentos, :guarnicoes, :saladas,:valor, :id, :cliente_id, :situacao, :conta, :observacao, :meia)
     end
 end

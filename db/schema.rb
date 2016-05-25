@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519002713) do
+ActiveRecord::Schema.define(version: 20160525173119) do
 
   create_table "acompanhamentos", force: true do |t|
     t.string   "nome"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150519002713) do
     t.string   "celular_empresa"
     t.string   "email_empresa"
     t.boolean  "bloqueado"
+    t.string   "cnpj"
   end
 
   create_table "contas", force: true do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150519002713) do
     t.datetime "updated_at"
     t.string   "observacao"
     t.boolean  "bloqueada"
+    t.decimal  "desconto",   precision: 10, scale: 2
   end
 
   create_table "guarnicoes", force: true do |t|
@@ -113,6 +115,8 @@ ActiveRecord::Schema.define(version: 20150519002713) do
     t.integer  "cardapio_id"
     t.string   "situacao"
     t.integer  "conta_id"
+    t.decimal  "desconto",    precision: 10, scale: 2
+    t.boolean  "meia",                                 default: false
   end
 
   create_table "pedidos_acompanhamentos", force: true do |t|
@@ -244,8 +248,8 @@ ActiveRecord::Schema.define(version: 20150519002713) do
     t.string   "tipo"
   end
 
-  add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true, using: :btree
-  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
-  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
+  add_index "usuarios", ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
+  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
+  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
 
 end

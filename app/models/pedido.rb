@@ -51,7 +51,7 @@ class Pedido < ActiveRecord::Base
     ["Proteina", "Guarnicao", "Salada", "Bebida", "Acompanhamento", "Sobremesa"].each do |classe|
       if !Object.const_get(classe).find_by_nome(item).nil?
         item_to_remove = self.send("pedidos_#{classe.downcase.pluralize}").where(:"#{classe.downcase}" =>  Object.const_get(classe).find_by_nome(item))
-        self.send("pedidos_#{classe.downcase.pluralize}").delete(item_to_remove)        
+        self.send("pedidos_#{classe.downcase.pluralize}").delete(item_to_remove)
         item_to_remove.first.destroy
       end
     end
@@ -83,7 +83,11 @@ class Pedido < ActiveRecord::Base
   end
 
   def calcular_valor
-    valor_minimo = 11
+    if self.meia
+      valor_minimo = 6
+    else
+      valor_minimo = 11
+    end
     valor_acompanhamentos = 0
     valor_produtos = 0
     valor_guarnicoes = 0
@@ -147,7 +151,7 @@ class Pedido < ActiveRecord::Base
       self.pedidos_saladas.each do |pedido_salada|
         salada = pedido_salada.salada
         salada.acrescer(pedido_salada.quantidade)
-      end      
+      end
       self.pedidos_bebidas.each do |pedido_bebida|
         bebida = pedido_bebida.bebida
         bebida.acrescer(pedido_bebida.quantidade)
@@ -192,7 +196,7 @@ class Pedido < ActiveRecord::Base
           itens << pedido_guarnicao.guarnicao.nome
         #else
         # guarnicao.decrescer(pedido_guarnicao.quantidade)
-        end        
+        end
       end
       self.pedidos_saladas.each do |pedido_salada|
         salada = pedido_salada.salada
@@ -201,7 +205,7 @@ class Pedido < ActiveRecord::Base
           itens << pedido_salada.salada.nome
         #else
         #  salada.decrescer(pedido_salada.quantidade)
-        end        
+        end
       end
       self.pedidos_bebidas.each do |pedido_bebida|
         bebida = pedido_bebida.bebida
@@ -232,21 +236,21 @@ class Pedido < ActiveRecord::Base
         acompanhamento = pedido_acompanhamento.acompanhamento
         acompanhamento.decrescer(pedido_acompanhamento.quantidade)
       end
-      
+
       self.pedidos_proteinas.each do |pedido_proteina|
         proteina = pedido_proteina.proteina
         proteina.decrescer(pedido_proteina.quantidade)
       end
-      
+
       self.pedidos_guarnicoes.each do |pedido_guarnicao|
        guarnicao = pedido_guarnicao.guarnicao
        guarnicao.decrescer(pedido_guarnicao.quantidade)
-     end      
+     end
 
      self.pedidos_saladas.each do |pedido_salada|
        salada = pedido_salada.salada
        salada.decrescer(pedido_salada.quantidade)
-     end              
+     end
 
       self.pedidos_bebidas.each do |pedido_bebida|
         bebida = pedido_bebida.bebida
@@ -256,10 +260,10 @@ class Pedido < ActiveRecord::Base
       self.pedidos_sobremesas.each do |pedido_sobremesa|
         sobremesa = pedido_sobremesa.sobremesa
         sobremesa.decrescer(pedido_sobremesa.quantidade)
-     end      
+     end
 
       self.confirmar
-      self.save!      
+      self.save!
     end
 
 
@@ -277,7 +281,7 @@ class Pedido < ActiveRecord::Base
     end
 
     def extra(dados,limite)
-      if !dados.empty? 
+      if !dados.empty?
         classe = dados.first.class
         total=0
         dados.each do |dado|
@@ -364,7 +368,7 @@ class Pedido < ActiveRecord::Base
 
       # if empresa.blank? && situacao.blank? && data.blank?
       #   pedidos = Pedido.do_dia
-      # elsif !empresa.blank? && situacao.blank? 
+      # elsif !empresa.blank? && situacao.blank?
       #   Pedido.do_dia.each do |pedido|
       #     if pedido.cliente.empresa == Empresa.find(empresa)
       #       pedidos << pedido
