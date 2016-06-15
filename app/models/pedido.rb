@@ -84,7 +84,7 @@ class Pedido < ActiveRecord::Base
 
   def calcular_valor
     if self.meia
-      valor_minimo = 6
+      valor_minimo = 7
     else
       valor_minimo = 11
     end
